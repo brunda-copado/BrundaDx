@@ -6144,6 +6144,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>AccessDisputePrompts</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>AccessToComplaintMgmt</name>
     </userPermissions>
     <userPermissions>
@@ -6168,6 +6172,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>ActivateSystemModeFlows</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>ActivitiesAccess</name>
     </userPermissions>
     <userPermissions>
@@ -6181,6 +6189,10 @@
     <userPermissions>
         <enabled>false</enabled>
         <name>AddWaveNotificationRecipients</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
+        <name>AdvancedCsvDataImportUser</name>
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
@@ -6384,6 +6396,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>ContactInspectorUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>ContentAdministrator</name>
     </userPermissions>
     <userPermissions>
@@ -6477,6 +6493,10 @@
     <userPermissions>
         <enabled>false</enabled>
         <name>DeleteTopics</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
+        <name>DigitalLendingAdminUser</name>
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
@@ -6720,6 +6740,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>LeadInspectorUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>LearningManager</name>
     </userPermissions>
     <userPermissions>
@@ -6749,6 +6773,10 @@
     <userPermissions>
         <enabled>false</enabled>
         <name>LoanOfficerUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
+        <name>LobbyManagementUserAccess</name>
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
@@ -6916,6 +6944,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>ManageOrchestrationRuns</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>ManagePasswordPolicies</name>
     </userPermissions>
     <userPermissions>
@@ -7064,6 +7096,14 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>PersonalizationPlatform</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
+        <name>PersonalizedFinanceUserAccess</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>PreventClassicExperience</name>
     </userPermissions>
     <userPermissions>
@@ -7085,6 +7125,10 @@
     <userPermissions>
         <enabled>false</enabled>
         <name>QuipUserEngagementMetrics</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
+        <name>ReassignOrchestrationWorkItems</name>
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
@@ -7168,11 +7212,19 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>SimpleCsvDataImportUser</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>SkipIdentityConfirmation</name>
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
         <name>SolutionImport</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
+        <name>StageManagementDesignUser</name>
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
@@ -7252,6 +7304,10 @@
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
+        <name>UseExchangesAPIs</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
         <name>UseFulfillmentAPIs</name>
     </userPermissions>
     <userPermissions>
@@ -7273,6 +7329,10 @@
     <userPermissions>
         <enabled>false</enabled>
         <name>UseQuerySuggestions</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>false</enabled>
+        <name>UseRegisterGuestBuyerAPI</name>
     </userPermissions>
     <userPermissions>
         <enabled>false</enabled>
