@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apr25_caseFS</fullName>
+    <description>Apr25_caseFS</description>
+    <label>Apr25_caseFS</label>
+</FieldSet>

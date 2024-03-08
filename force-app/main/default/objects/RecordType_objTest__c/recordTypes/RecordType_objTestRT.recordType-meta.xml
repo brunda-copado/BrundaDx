@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RecordType_objTestRT</fullName>
+    <active>true</active>
+    <description>RecordType_objTestRT</description>
+    <label>RecordType_objTestRT</label>
+    <picklistValues>
+        <picklist>RecordType_picklist1__c</picklist>
+        <values>
+            <fullName>pick1%2Cpick2%2Cpick3%2Cpick4%2Cpick5</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>RecordType_picklist2__c</picklist>
+        <values>
+            <fullName>A%2CB%2CC%2CD%2CX%2CY%2CZ</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

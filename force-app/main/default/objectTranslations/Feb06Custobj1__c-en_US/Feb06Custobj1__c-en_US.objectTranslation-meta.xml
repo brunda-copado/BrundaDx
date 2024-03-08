@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Feb06Custobj1</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Feb06Custobj1s</value>
+    </caseValues>
+    <fieldSets>
+        <label></label>
+        <name>Feb06Custobjfs</name>
+    </fieldSets>
+    <layouts>
+        <layout>##$@@Feb06Custobj</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>sachinFeb06Custobjly</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>Feb06Custobjrt</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

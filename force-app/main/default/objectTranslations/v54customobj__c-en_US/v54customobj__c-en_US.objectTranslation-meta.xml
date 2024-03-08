@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>v54customobj</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>v54customobjs</value>
+    </caseValues>
+    <fieldSets>
+        <label>v54fieldset</label>
+        <name>v54fieldset</name>
+    </fieldSets>
+    <recordTypes>
+        <label></label>
+        <name>v54RecordType</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

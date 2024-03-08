@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <customApplications>
+        <description xsi:nil="true"/>
+        <label><!-- School --></label>
+        <name>School</name>
+    </customApplications>
+    <customApplications>
+        <description xsi:nil="true"/>
+        <label><!-- fp lapp --></label>
+        <name>fp_lapp</name>
+    </customApplications>
+    <customApplications>
+        <description xsi:nil="true"/>
+        <label><!-- testApp --></label>
+        <name>testApp</name>
+    </customApplications>
+    <customLabels>
+        <label><!-- AparajitaTestCustomLabel01 --></label>
+        <name>AparajitaTestCustomLabel01</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AparajitaTestCustomLabel02 --></label>
+        <name>AparajitaTestCustomLabel02</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AparajitaTestCustomLabel03 --></label>
+        <name>AparajitaTestCustomLabel03</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AparajitaTestCustomLabel04 --></label>
+        <name>AparajitaTestCustomLabel04</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CL410 --></label>
+        <name>CL410</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- KompalCustomL1 --></label>
+        <name>KompalCustomL1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- KompalCustomL2 --></label>
+        <name>KompalCustomL2</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Sachin _CL1 --></label>
+        <name>Sachin_CL1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Vercustlabel --></label>
+        <name>Vercustlabel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- comfixcl --></label>
+        <name>comfixcl</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- kompalCL1 --></label>
+        <name>kompalCL1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- kompalCustomL3 --></label>
+        <name>kompalCustomL3</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- myLabel1 --></label>
+        <name>myLabel1</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- myLabel2 --></label>
+        <name>myLabel2</name>
+    </customLabels>
+    <customLabels>
+        <label>retrieve only label</label>
+        <name>retrieve_only_label</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- rollbacklabel --></label>
+        <name>rollbacklabel</name>
+    </customLabels>
+    <customTabs>
+        <label><!-- fp app --></label>
+        <name>fp_app</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- fp pageapp --></label>
+        <name>fp_pageapp</name>
+    </customTabs>
+    <flowDefinitions>
+        <flows/>
+        <fullName>Activeaccount</fullName>
+    </flowDefinitions>
+    <quickActions>
+        <label><!-- LogACall --></label>
+        <name>LogACall</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewAccount --></label>
+        <name>NewAccount</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewCase --></label>
+        <name>NewCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewContact --></label>
+        <name>NewContact</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewEvent --></label>
+        <name>NewEvent</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewGroup --></label>
+        <name>NewGroup</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewLead --></label>
+        <name>NewLead</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewNote --></label>
+        <name>NewNote</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewOpportunity --></label>
+        <name>NewOpportunity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewTask --></label>
+        <name>NewTask</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- SendEmail --></label>
+        <name>SendEmail</name>
+    </quickActions>
+    <reportTypes>
+        <description><!-- Orchestration Run Logs Spring &apos;24 --></description>
+        <label><!-- Orchestration Run Logs Spring &apos;24 --></label>
+        <name>flow_orchestration_log_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Run Log --></label>
+            <name>Orchestration Run Log</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Runs --></label>
+            <name>Orchestration Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Stage Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Stage Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_stage_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Stage Runs --></label>
+            <name>Orchestration Stage Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Step Runs Spring &apos;24 --></description>
+        <label><!-- Orchestration Step Runs Spring &apos;24 --></label>
+        <name>flow_orchestration_step_run_ootb_crt_two_four_eight</name>
+        <sections>
+            <label><!-- Orchestration Step Runs --></label>
+            <name>Orchestration Step Runs</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Orchestration Work Items Spring &apos;24 --></description>
+        <label><!-- Orchestration Work Items Spring &apos;24 --></label>
+        <name>flow_orchestration_work_item_ootb_crt_two_four_eight</name>
+        <sections>
+            <columns>
+                <label><!-- Orchestration Step Run: Label --></label>
+                <name>Orchestration Step Run: Label</name>
+            </columns>
+            <columns>
+                <label><!-- Orchestration Step Run: Name --></label>
+                <name>Orchestration Step Run: Name</name>
+            </columns>
+            <columns>
+                <label><!-- Orchestration Step Run: Status --></label>
+                <name>Orchestration Step Run: Status</name>
+            </columns>
+            <label><!-- Orchestration Step Runs --></label>
+            <name>Orchestration Step Runs</name>
+        </sections>
+        <sections>
+            <columns>
+                <label><!-- Assigned Group or Queue --></label>
+                <name>Assigned Group or Queue</name>
+            </columns>
+            <columns>
+                <label><!-- Assigned User --></label>
+                <name>Assigned User</name>
+            </columns>
+            <label><!-- Orchestration Work Items --></label>
+            <name>Orchestration Work Items</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Screen Flows --></description>
+        <label><!-- Screen Flows --></label>
+        <name>screen_flows_prebuilt_crt</name>
+        <sections>
+            <label><!-- Flow Interview Log Entries --></label>
+            <name>Flow Interview Log Entries</name>
+        </sections>
+        <sections>
+            <label><!-- Flow Interview Logs --></label>
+            <name>Flow Interview Logs</name>
+        </sections>
+    </reportTypes>
+</Translations>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>March PS Group 1</label>
+    <mutingPermissionSets>March_PS_Group_1_Muted</mutingPermissionSets>
+    <permissionSets>March_PS1</permissionSets>
+    <permissionSets>March_PS2</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

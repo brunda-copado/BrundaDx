@@ -1,0 +1,6 @@
+<apex:page >
+  <!-- Start Here Conflict here US 3-->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <!-- Start Here Conflict here US 3 -->
+</apex:page>

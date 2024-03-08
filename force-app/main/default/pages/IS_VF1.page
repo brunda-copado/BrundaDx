@@ -1,0 +1,6 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  Page 1 for dev@copado.com
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

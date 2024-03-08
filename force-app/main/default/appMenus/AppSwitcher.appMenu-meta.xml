@@ -17,11 +17,7 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__ServiceConsole</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AppLauncher</name>
+        <name>standard__Chatter</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -29,19 +25,19 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__Sites</name>
+        <name>standard__AppLauncher</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__Chatter</name>
+        <name>standard__ServiceConsole</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__Content</name>
-        <type>CustomApplication</type>
+        <name>Power_of_Us_Hub</name>
+        <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__Insights</name>
+        <name>standard__LightningSales</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -53,31 +49,7 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__LightningSales</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__LightningInstrumentation</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>standard__SalesforceCMS</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AllTabSet</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__QueueManagement</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__DataManager</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__RevenueCloudConsole</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -85,11 +57,27 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__LightningScheduler</name>
+        <name>standard__AllTabSet</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__Commerce</name>
+        <name>standard__OnlineSales</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>DEVHUB_bwm9dp8w8bbmwywhxepl</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>testApp</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>School</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>fp_lapp</name>
         <type>CustomApplication</type>
     </appMenuItems>
 </AppMenu>

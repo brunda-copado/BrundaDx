@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>jan92024_custobj</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>jan92024_custobjs</value>
+    </caseValues>
+    <fieldSets>
+        <label></label>
+        <name>janfieldset</name>
+    </fieldSets>
+    <recordTypes>
+        <description></description>
+        <label></label>
+        <name>jan_record_type</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

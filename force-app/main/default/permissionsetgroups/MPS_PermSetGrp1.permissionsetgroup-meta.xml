@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>MPS PermSetGrp1</label>
+    <permissionSets>MPS_PermSet1</permissionSets>
+    <permissionSets>MPS_PermSet2</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>
