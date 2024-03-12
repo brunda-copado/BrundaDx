@@ -19,6 +19,11 @@
                 <field>CollaborationType</field>
                 <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>CanHaveGuests</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
         </quickActionLayoutColumns>
         <quickActionLayoutColumns/>
     </quickActionLayout>

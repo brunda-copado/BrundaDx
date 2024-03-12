@@ -256,18 +256,6 @@
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <externalSharingModel>Private</externalSharingModel>
-    <profileSearchLayouts>
-        <fields>FULL_NAME</fields>
-        <fields>LEAD.TITLE</fields>
-        <fields>LEAD.COMPANY</fields>
-        <fields>LEAD.PHONE</fields>
-        <fields>LEAD.MOBILE_PHONE</fields>
-        <fields>LEAD.EMAIL</fields>
-        <fields>LEAD.STATUS</fields>
-        <fields>CORE.USERS.ALIAS</fields>
-        <fields>LEAD.COUNTRY</fields>
-        <profileName>FallCFS_Prof</profileName>
-    </profileSearchLayouts>
     <searchLayouts>
         <customTabListAdditionalFields>FULL_NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>LEAD.COMPANY</customTabListAdditionalFields>

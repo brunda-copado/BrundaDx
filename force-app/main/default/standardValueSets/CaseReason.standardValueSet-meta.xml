@@ -2,33 +2,45 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>User didn&apos;t attend training</fullName>
+        <fullName>Installation</fullName>
         <default>false</default>
-        <label>User didn&apos;t attend training</label>
+        <label>Installation</label>
         <cssExposed>false</cssExposed>
     </standardValue>
     <standardValue>
-        <fullName>Complex functionality</fullName>
+        <fullName>Equipment Complexity</fullName>
         <default>false</default>
-        <label>Complex functionality</label>
+        <label>Equipment Complexity</label>
         <cssExposed>false</cssExposed>
     </standardValue>
     <standardValue>
-        <fullName>Existing problem</fullName>
+        <fullName>Performance</fullName>
         <default>false</default>
-        <label>Existing problem</label>
+        <label>Performance</label>
         <cssExposed>false</cssExposed>
     </standardValue>
     <standardValue>
-        <fullName>Instructions not clear</fullName>
+        <fullName>Breakdown</fullName>
         <default>false</default>
-        <label>Instructions not clear</label>
+        <label>Breakdown</label>
         <cssExposed>false</cssExposed>
     </standardValue>
     <standardValue>
-        <fullName>New problem</fullName>
+        <fullName>Equipment Design</fullName>
         <default>false</default>
-        <label>New problem</label>
+        <label>Equipment Design</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Feedback</fullName>
+        <default>false</default>
+        <label>Feedback</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
         <cssExposed>false</cssExposed>
     </standardValue>
 </StandardValueSet>

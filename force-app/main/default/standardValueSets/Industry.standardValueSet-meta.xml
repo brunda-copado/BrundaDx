@@ -122,11 +122,6 @@
         <label>Not For Profit</label>
     </standardValue>
     <standardValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
-    </standardValue>
-    <standardValue>
         <fullName>Recreation</fullName>
         <default>false</default>
         <label>Recreation</label>
@@ -160,5 +155,10 @@
         <fullName>Utilities</fullName>
         <default>false</default>
         <label>Utilities</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
     </standardValue>
 </StandardValueSet>

@@ -19,10 +19,9 @@
                 <field>WhoId</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
-        </quickActionLayoutColumns>
-        <quickActionLayoutColumns>
             <quickActionLayoutItems>
-                <emptySpace>true</emptySpace>
+                <emptySpace>false</emptySpace>
+                <field>WhatId</field>
                 <uiBehavior>Edit</uiBehavior>
             </quickActionLayoutItems>
             <quickActionLayoutItems>
@@ -32,10 +31,11 @@
             </quickActionLayoutItems>
             <quickActionLayoutItems>
                 <emptySpace>false</emptySpace>
-                <field>WhatId</field>
-                <uiBehavior>Edit</uiBehavior>
+                <field>Status</field>
+                <uiBehavior>Required</uiBehavior>
             </quickActionLayoutItems>
         </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
     </quickActionLayout>
     <standardLabel>New</standardLabel>
     <targetObject>Task</targetObject>
