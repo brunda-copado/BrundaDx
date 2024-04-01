@@ -1,0 +1,24 @@
+<aura:component controller="EnhancedResultDetailCtrl" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="isVisible" type="Boolean" access="private"/>
+    <aura:attribute name="errorMessage" type="String" access="private"/>
+
+    <div class="slds-section slds-is-open" aura:id="QualityResult">
+        <h3 class="slds-section__title">
+            <button class="slds-button slds-section__title-action" onclick="{!c.toggleSection}"
+                data-aura-id="QualityResult">
+                <lightning:icon iconName="utility:switch" size="x-small"
+                    class="slds-section__title-action-icon slds-button__icon_left" />
+                <span class="slds-truncate"
+                    title="{!$Label.c.QualityResults}">{!$Label.c.QualityResults}</span>
+            </button>
+        </h3>
+        <div class="slds-section__content">
+            <aura:if isTrue="{!v.errorMessage}">
+                <c:copadoAlert message="{!v.errorMessage}" variant="error" />
+            </aura:if>
+            <c:enhancedResultDetail aura:id="enhancedResultDetail" />
+        </div>
+    </div>
+</aura:component>

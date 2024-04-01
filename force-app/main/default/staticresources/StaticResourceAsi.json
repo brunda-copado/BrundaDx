@@ -1,0 +1,92 @@
+{
+  "recordTypeMap": {},
+  "RecordSetBundles": [
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__JobTemplate__c",
+            "url": "/services/data/v52.0/sobjects/copado__JobTemplate__c/a1r5p00000IyWYNAA3"
+          },
+          "copado__ApiName__c": "testJsonResult_1",
+          "copado__Type__c": "Custom",
+          "copado__Version__c": 1,
+          "CreatedDate": "2021-08-05T10:27:39.000+0000",
+          "Id": "a1r5p00000IyWYNAA3",
+          "IsDeleted": false,
+          "LastModifiedDate": "2021-08-05T10:27:39.000+0000",
+          "LastReferencedDate": "2021-08-05T10:27:40.000+0000",
+          "LastViewedDate": "2021-08-05T10:27:40.000+0000",
+          "Name": "testJsonResult",
+          "SystemModstamp": "2021-08-05T10:27:39.000+0000"
+        }
+      ],
+      "ObjectType": "copado__JobTemplate__c"
+    },
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v52.0/sobjects/copado__JobStep__c/a1q5p000003xulMAAQ"
+          },
+          "copado__ApiName__c": "testJsonResult_step1(function)",
+          "copado__ConfigJson__c": "{\r\n    \"functionName\": \"rt_02_08\",\r\n    \"parameters\": [\r\n        {\r\n            \"name\": \"key1\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.key1}\"\r\n        },\r\n        {\r\n            \"name\": \"key2\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.nested.key2}\"\r\n        },\r\n        {\r\n            \"name\": \"key3\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.key3}\"\r\n        }\r\n    ]\r\n}",
+          "copado__JobTemplate__c": "a1r5p00000IyWYNAA3",
+          "copado__Order__c": 1,
+          "copado__Type__c": "Function",
+          "CreatedDate": "2021-08-05T10:28:03.000+0000",
+          "Id": "a1q5p000003xulMAAQ",
+          "IsDeleted": false,
+          "LastModifiedDate": "2021-08-05T10:28:03.000+0000",
+          "Name": "step1(function)",
+          "SystemModstamp": "2021-08-05T10:28:03.000+0000"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v52.0/sobjects/copado__JobStep__c/a1q5p000003xumFAAQ"
+          },
+          "copado__ApiName__c": "JE-882_step1(function)",
+          "copado__ConfigJson__c": "{\r\n    \"functionName\": \"rt_02_08\",\r\n    \"parameters\": [\r\n        {\r\n            \"name\": \"key1\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.key1}\"\r\n        },\r\n        {\r\n            \"name\": \"key2\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.nested.key2}\"\r\n        },\r\n        {\r\n            \"name\": \"key3\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.key3}\"\r\n        }\r\n    ]\r\n}",
+          "copado__Order__c": 1,
+          "copado__Type__c": "Function",
+          "CreatedDate": "2021-08-06T05:31:51.000+0000",
+          "Id": "a1q5p000003xumFAAQ",
+          "IsDeleted": false,
+          "LastModifiedDate": "2021-08-06T05:31:54.000+0000",
+          "Name": "step1(function)",
+          "SystemModstamp": "2021-08-06T05:31:54.000+0000"
+        }
+      ],
+      "ObjectType": "copado__JobStep__c"
+    },
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__Function__c",
+            "url": "/services/data/v52.0/sobjects/copado__Function__c/a1h5p0000083KQvAAM"
+          },
+          "copado__API_Name__c": "Echo_MuleSoft",
+          "copado__Image_Name__c": "us.gcr.io/copado/copado-multicloud-mulesoft:v1",
+          "copado__Options__c": "[ ]",
+          "copado__Parameters__c": "[ {\n  \"required\" : false,\n  \"name\" : \"name\",\n  \"defaultValue\" : \"Asi_Mule\"\n} ]",
+          "copado__Script__c": "echo hello world $name",
+          "copado__Type__c": "Custom",
+          "copado__Worker_Size__c": "S",
+          "CreatedDate": "2021-07-06T12:44:42.000+0000",
+          "Id": "a1h5p0000083KQvAAM",
+          "IsDeleted": false,
+          "LastModifiedDate": "2021-07-06T12:44:59.000+0000",
+          "LastReferencedDate": "2021-08-05T09:51:46.000+0000",
+          "LastViewedDate": "2021-08-05T09:51:46.000+0000",
+          "Name": "Echo_MuleSoft",
+          "SystemModstamp": "2021-07-06T12:44:59.000+0000"
+        }
+      ],
+      "ObjectType": "copado__Function__c"
+    }
+  ],
+  "blobsByUID": {}
+}

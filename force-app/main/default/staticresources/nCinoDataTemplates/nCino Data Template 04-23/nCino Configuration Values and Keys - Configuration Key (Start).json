@@ -1,0 +1,231 @@
+[
+    {
+        "templateUUId": "76ac42da-1402-4533-a2d4-9229f6738a73",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Configuration Values and Keys - Configuration Key (Start)",
+                "templateMainObject": "LLC_BI__CFG_ConfigKey__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Action Display Name",
+                        "apiName": "LLC_BI__Action_Display_Name__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Action Type",
+                        "apiName": "LLC_BI__Action_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Action Name",
+                        "apiName": "LLC_BI__Action_Name__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "CFG_ConfigType Key",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__CFG_ConfigKeys__c",
+                        "relationshipName": "LLC_BI__CFG_CKJs__r",
+                        "childSObject": "LLC_BI__CFG_CKJ__c",
+                        "childSObjectLabel": "CFG_CKJ"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "aa71a2ee-6c7e-43ee-93b3-24196bf5a163",
+                    "relationName": "LLC_BI__CFG_CKJs__r",
+                    "childSObject": "LLC_BI__CFG_CKJ__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "aa71a2ee-6c7e-43ee-93b3-24196bf5a163",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Configuration Values and Keys- Key Value Join",
+                "templateMainObject": "LLC_BI__CFG_CKJ__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "CFG_ConfigValue",
+                        "apiName": "LLC_BI__CFG_ConfigValue__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "83bf6574-21e7-449a-ac22-4c0c9b0256e3",
+                    "relationName": "LLC_BI__CFG_ConfigValue__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "83bf6574-21e7-449a-ac22-4c0c9b0256e3",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Configuration Values and Keys - Configuration Value",
+                "templateMainObject": "LLC_BI__CFG_ConfigValue__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "fieldValue",
+                        "apiName": "LLC_BI__fieldValue__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Value",
+                        "apiName": "LLC_BI__Value__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Key",
+                        "apiName": "LLC_BI__Key__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "apiName": "LLC_BI__Category__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": [
+                {
+                    "order": 1,
+                    "operator": "e",
+                    "fieldName": "--None--",
+                    "fieldType": "STRING",
+                    "finalValue": ""
+                }
+            ]
+        }
+    }
+]

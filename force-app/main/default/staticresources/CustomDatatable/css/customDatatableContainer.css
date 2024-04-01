@@ -1,0 +1,15 @@
+.datatable-container .slds-card {
+    border: var(--lwc-borderWidthThin) solid var(--lwc-cardColorBorder) !important;
+    border-radius: var(--lwc-borderRadiusMedium,0.25rem);
+}
+.datatable-container .slds-card__header {
+    margin-bottom: 0;
+    padding: 0;
+}
+.datatable-container .slds-card__body {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.datatable-container .quick-filter label {
+    font-weight: bold;
+}

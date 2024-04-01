@@ -1,0 +1,14 @@
+<template>
+    <c-copadocore-modal>
+        <span slot="title">{label.Editing_Items}</span>
+        <slot class="slds-align_absolute-center">
+            {label.Filter_Confirmation}
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.Stay_On_This_List} title={label.Stay_On_This_List} variant="neutral" onclick={handleStay}>
+            </lightning-button>
+            <lightning-button class="slds-m-left_x-small" label={label.Discard_Changes} title={label.handleDiscardChanges} variant="brand"
+                onclick={handleDiscardChanges}></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

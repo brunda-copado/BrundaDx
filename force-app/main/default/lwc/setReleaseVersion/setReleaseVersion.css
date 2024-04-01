@@ -1,0 +1,9 @@
+.slds-form-element__label {
+    margin-right: 0.5rem;
+}
+
+.hidden-section {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-bottom: var(--lwc-varSpacingVerticalXSmall, spacingXSmall);
+}

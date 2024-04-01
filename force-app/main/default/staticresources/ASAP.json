@@ -1,0 +1,146 @@
+{
+   "recordTypeMap":{
+      
+   },
+   "RecordSetBundles":[
+      {
+         "Records":[
+            {
+               "attributes":{
+                  "type":"copado__JobTemplate__c",
+                  "url":"/services/data/v52.0/sobjects/copado__JobTemplate__c/a1r5p00000IyVxvAAF"
+               },
+               "copado__ApiName__c":"TestAK_1",
+               "copado__Type__c":"Custom",
+               "copado__Version__c":1,
+               "copado__VolumeOptions__c":"[\r\n    {\r\n        \"name\": \"volumeSize\",\r\n        \"value\": \"10\"\r\n    },\r\n    {\r\n        \"name\": \"volumeTTL\",\r\n        \"value\": \"100\"\r\n    },\r\n    {\r\n        \"name\": \"preserveVolumeAfterExecution\",\r\n        \"value\": \"true\"\r\n    }\r\n]",
+               "CreatedDate":"2021-07-19T08:01:26.000+0000",
+               "Id":"a1r5p00000IyVxvAAF",
+               "IsDeleted":false,
+               "LastModifiedDate":"2021-07-21T09:35:51.000+0000",
+               "LastReferencedDate":"2021-07-21T09:43:35.000+0000",
+               "LastViewedDate":"2021-07-21T09:43:35.000+0000",
+               "Name":"TestAK",
+               "SystemModstamp":"2021-07-21T09:35:51.000+0000"
+            }
+         ],
+         "ObjectType":"copado__JobTemplate__c"
+      },
+      {
+         "Records":[
+            {
+               "attributes":{
+                  "type":"copado__JobStep__c",
+                  "url":"/services/data/v52.0/sobjects/copado__JobStep__c/a1q5p000003xopEAAQ"
+               },
+               "copado__ApiName__c":"TestAK_Step 1(Flow)",
+               "copado__ConfigJson__c":"{\r\n\"flowName\": \"testFlow\",\r\n\"parameters\": [\r\n{\r\n\"name\": \"key1\",\r\n\"value\": \"value1\"\r\n},\r\n{\r\n\"name\": \"key2\",\r\n\"value\": \"value2\"\r\n}\r\n]\r\n}",
+               "copado__JobTemplate__c":"a1r5p00000IyVxvAAF",
+               "copado__Order__c":1,
+               "copado__Type__c":"Flow",
+               "CreatedDate":"2021-07-19T09:38:06.000+0000",
+               "Id":"a1q5p000003xopEAAQ",
+               "IsDeleted":false,
+               "LastModifiedDate":"2021-07-19T09:38:53.000+0000",
+               "Name":"Step 1(Flow)",
+               "SystemModstamp":"2021-07-19T09:38:54.000+0000"
+            },
+            {
+               "attributes":{
+                  "type":"copado__JobStep__c",
+                  "url":"/services/data/v52.0/sobjects/copado__JobStep__c/a1q5p000003xopJAAQ"
+               },
+               "copado__ApiName__c":"TestAK_Step 2(Function)",
+               "copado__ConfigJson__c":"{\r\n\"functionName\": \"echo_json\",\r\n\"parameters\": [\r\n{\r\n\"name\": \"json_param\",\r\n\"value\": \"value1\"\r\n},\r\n{\r\n\"name\": \"key2\",\r\n\"value\": \"value2\"\r\n}\r\n]\r\n}",
+               "copado__JobTemplate__c":"a1r5p00000IyVxvAAF",
+               "copado__Order__c":2,
+               "copado__Type__c":"Function",
+               "CreatedDate":"2021-07-19T09:38:45.000+0000",
+               "Id":"a1q5p000003xopJAAQ",
+               "IsDeleted":false,
+               "LastModifiedDate":"2021-07-19T09:38:45.000+0000",
+               "Name":"Step 2(Function)",
+               "SystemModstamp":"2021-07-19T09:38:45.000+0000"
+            },
+            {
+               "attributes":{
+                  "type":"copado__JobStep__c",
+                  "url":"/services/data/v52.0/sobjects/copado__JobStep__c/a1q5p000003xopKAAQ"
+               },
+               "copado__ApiName__c":"TestAK_Step 3(Manual)",
+               "copado__ConfigJson__c":"{ \"instructions\": \"My Message\"}",
+               "copado__JobTemplate__c":"a1r5p00000IyVxvAAF",
+               "copado__Order__c":3,
+               "copado__Type__c":"Manual",
+               "CreatedDate":"2021-07-19T09:39:20.000+0000",
+               "Id":"a1q5p000003xopKAAQ",
+               "IsDeleted":false,
+               "LastModifiedDate":"2021-07-19T09:39:20.000+0000",
+               "Name":"Step 3(Manual)",
+               "SystemModstamp":"2021-07-19T09:39:20.000+0000"
+            },
+            {
+               "attributes":{
+                  "type":"copado__JobStep__c",
+                  "url":"/services/data/v52.0/sobjects/copado__JobStep__c/a1q5p000003xopOAAQ"
+               },
+               "copado__ApiName__c":"TestAK_Step 4(Function)",
+               "copado__ConfigJson__c":"{\r\n\"functionName\": \"echo_json\",\r\n\"parameters\": [\r\n{\r\n\"name\": \"json_param\",\r\n\"value\": \"value1\"\r\n},\r\n{\r\n\"name\": \"key2\",\r\n\"value\": \"value2\"\r\n}\r\n]\r\n}",
+               "copado__JobTemplate__c":"a1r5p00000IyVxvAAF",
+               "copado__Order__c":4,
+               "copado__Type__c":"Function",
+               "CreatedDate":"2021-07-19T09:40:01.000+0000",
+               "Id":"a1q5p000003xopOAAQ",
+               "IsDeleted":false,
+               "LastModifiedDate":"2021-07-19T09:40:01.000+0000",
+               "Name":"Step 4(Function)",
+               "SystemModstamp":"2021-07-19T09:40:01.000+0000"
+            },
+            {
+               "attributes":{
+                  "type":"copado__JobStep__c",
+                  "url":"/services/data/v52.0/sobjects/copado__JobStep__c/a1q5p000003xuvRAAQ"
+               },
+               "copado__ApiName__c":"testJsonResult_step1(function)",
+               "copado__ConfigJson__c":"{\r\n    \"functionName\": \"rt_02_08\",\r\n    \"parameters\": [\r\n        {\r\n            \"name\": \"key1\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.key1}\"\r\n        },\r\n        {\r\n            \"name\": \"key2\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.nested.key2}\"\r\n        },\r\n        {\r\n            \"name\": \"key3\",\r\n            \"value\": \"{$RecordId.JobExecution__r.DataJson.key3}\"\r\n        }\r\n    ]\r\n}",
+               "copado__Order__c":1,
+               "copado__Type__c":"Function",
+               "CreatedDate":"2021-08-09T13:51:13.000+0000",
+               "Id":"a1q5p000003xuvRAAQ",
+               "IsDeleted":false,
+               "LastModifiedDate":"2021-08-09T13:51:13.000+0000",
+               "Name":"step1(function)",
+               "SystemModstamp":"2021-08-09T13:51:13.000+0000"
+            }
+         ],
+         "ObjectType":"copado__JobStep__c"
+      },
+      {
+         "Records":[
+            {
+               "attributes":{
+                  "type":"copado__Function__c",
+                  "url":"/services/data/v52.0/sobjects/copado__Function__c/a1h5p000003zUv8AAE"
+               },
+               "copado__API_Name__c":"Mule_Promote",
+               "copado__Description__c":"Creates promotion branch",
+               "copado__Image_Name__c":"us.gcr.io/copado/copado-function-core",
+               "copado__Options__c":"[ ]",
+               "copado__Parameters__c":"[ {\n  \"required\" : true,\n  \"name\" : \"git_json\",\n  \"defaultValue\" : \"{$RecordId.Repository.Credential}\"\n}, {\n  \"required\" : true,\n  \"name\" : \"user_stories\",\n  \"defaultValue\" : \"\"\n}, {\n  \"required\" : true,\n  \"name\" : \"promotion\",\n  \"defaultValue\" : \"\"\n}, {\n  \"required\" : true,\n  \"name\" : \"target_branch\",\n  \"defaultValue\" : \"\"\n}, {\n  \"required\" : false,\n  \"name\" : \"tag\",\n  \"defaultValue\" : \"\"\n} ]",
+               "copado__Script__c":"echo \"promotion: $promotion\"\npromotion_branch=\"promotion/$promotion\"\necho \"promotion branch: $promotion_branch\"\n\ncopado --progress \"fetching $target_branch\"\n\ncopado-git-get --depth 100 \"$target_branch\"\ncopado-git-get --depth 100 --create \"$promotion_branch\"\n\nuser_stories=${user_stories//,/ }\n\n# Print each value of the array by using the loop\nfor user_story in \"${user_stories[@]}\"; do\n    echo \"merging feature/$user_story\"\n    copado-git-get --depth 100 \"feature",
+               "copado__Type__c":"Custom",
+               "CreatedDate":"2021-05-10T12:23:08.000+0000",
+               "Id":"a1h5p000003zUv8AAE",
+               "IsDeleted":false,
+               "LastModifiedDate":"2021-05-10T12:24:45.000+0000",
+               "Name":"Mule Promote",
+               "SystemModstamp":"2021-05-10T12:24:45.000+0000"
+            }
+         ],
+         "ObjectType":"copado__Function__c"
+      }
+   ],
+   "blobsByUID":{
+      
+   }
+}

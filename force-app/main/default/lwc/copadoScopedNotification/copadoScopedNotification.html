@@ -1,0 +1,9 @@
+<template>
+    <div class={styleClasses}>
+        <lightning-icon icon-name={iconName} size="small" variant={iconVariant} class="slds-m-right_x-small"></lightning-icon>
+        <div class="slds-media__body">
+            <lightning-formatted-rich-text value={message}></lightning-formatted-rich-text>
+            <slot name="additionalMessage"></slot>
+        </div>
+    </div>
+</template>

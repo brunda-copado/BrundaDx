@@ -1,0 +1,240 @@
+[
+    {
+        "templateUUId": "0bdd8802-79f0-46f4-aa1d-e7eb5212849c",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Rules Engine (start)",
+                "templateMainObject": "nFORCE__Rule_Engine_Context__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "nFORCE__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Context",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "nFORCE__Rule_Engine_Context__c",
+                        "relationshipName": "nFORCE__Rule_Engine_Context_Rules__r",
+                        "childSObject": "nFORCE__Rule_Engine_Context_Rule__c",
+                        "childSObjectLabel": "Rule Engine Context Rule"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "1c59bf67-d026-4446-8231-e94da2d9c1a5",
+                    "relationName": "nFORCE__Rule_Engine_Context_Rules__r",
+                    "childSObject": "nFORCE__Rule_Engine_Context_Rule__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "1c59bf67-d026-4446-8231-e94da2d9c1a5",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Rule Engine Context Rule Template",
+                "templateMainObject": "nFORCE__Rule_Engine_Context_Rule__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "nFORCE__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Context Rule Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "nFORCE__Rule_Engine_Context_Rule__c",
+                        "relationshipName": "nFORCE__Rule_Engine_Rules__r",
+                        "childSObject": "nFORCE__Rule_Engine_Rule__c",
+                        "childSObjectLabel": "Rule Engine Rule"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "49a61fff-cc0c-4fa3-9235-2a8b766f52db",
+                    "relationName": "nFORCE__Rule_Engine_Rules__r",
+                    "childSObject": "nFORCE__Rule_Engine_Rule__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "49a61fff-cc0c-4fa3-9235-2a8b766f52db",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Rule Engine Rule Template",
+                "templateMainObject": "nFORCE__Rule_Engine_Rule__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Start Date",
+                        "apiName": "nFORCE__Start_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Rule Engine",
+                        "apiName": "nFORCE__Rule_Engine__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Rule Engine Rule Reference",
+                        "apiName": "nFORCE__Rule_Engine_Rule_Reference__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Rule Engine Rule Name",
+                        "apiName": "nFORCE__Rule_Engine_Rule_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "End Date",
+                        "apiName": "nFORCE__End_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "nFORCE__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

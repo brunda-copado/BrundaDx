@@ -1,0 +1,20 @@
+<template>
+    <div class="cds-empty-state-wrapper">
+        <div slot="icon" class="cds-empty-state-icon">
+            <slot name="headerIcon">
+                <div if:true={iconName} class="cds-icon-container">
+                    <lightning-icon icon-name={iconName} size={iconSize} class="cds-icon"></lightning-icon>
+                </div>
+            </slot>
+        </div>
+        <h2 class="cds-empty-state-title">
+            <slot name="title">{message}</slot>
+        </h2>
+        <div if:true={hasBody} class="cds-empty-state-body">
+            <slot name="body"> </slot>
+        </div>
+        <div if:true={hasAction} class="cds-empty-state-action">
+            <slot name="action"></slot>
+        </div>
+    </div>
+</template>

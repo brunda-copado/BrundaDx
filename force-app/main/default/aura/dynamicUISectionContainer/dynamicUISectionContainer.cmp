@@ -1,0 +1,16 @@
+<aura:component controller="UISectionHelper" access="global" implements="flexipage:availableForAllPageTypes,force:hasRecordId" extends="c:utils">
+    <aura:attribute name="locationId" type="String" access="global" />
+    <aura:attribute name="recordId" type="String" access="global" />
+    <aura:attribute name="locationOnly" type="Boolean" access="global" default="false"/>
+    <aura:attribute name="requiredInformation" type="String" access="global" default="Platform" />
+
+    <aura:registerEvent name="showContent" type="c:displayDynamicContent"/>
+
+    <lightning:messageChannel
+        aura:id="messageChannel"
+        type="copado__DynamicRenderingCommunication__c"
+        onMessage="{!c.handleMessageSubscription}"
+        scope="APPLICATION"
+    />
+    {! v.body }
+</aura:component>

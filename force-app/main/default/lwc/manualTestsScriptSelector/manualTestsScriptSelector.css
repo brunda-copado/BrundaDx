@@ -1,0 +1,124 @@
+.align-right {
+    justify-content: right;
+    height: 3rem;
+}
+
+.read-only .slds-form-element__label {
+    display: block;
+    width: 100%;
+    max-width: unset;
+}
+
+.read-only .stepReference {
+    flex-grow: 2;
+    max-width: 10rem;
+}
+
+.read-only .action {
+    flex-grow: 2;
+    flex-shrink: 2;
+    width: 8rem;
+}
+
+.read-only .expectedResult {
+    flex-grow: 2;
+    flex-shrink: 2;
+    width: 8rem;
+}
+
+.read-only .guidanceNotes {
+    flex-grow: 2;
+    flex-shrink: 2;
+    width: 8rem;
+}
+
+.read-only .scriptData {
+    flex-grow: 2;
+    min-width: 8rem;
+}
+
+.read-only {
+    padding: 1rem 0.5rem;
+}
+
+.read-only .slds-form-element__label {
+    display: block;
+    width: 100%;
+    max-width: unset;
+}
+
+.read-only .slds-form-element__control {
+    padding-left: 0;
+    padding-bottom: 0px;
+    margin-bottom: -5px;
+}
+
+.read-only .slds-form__item {
+    min-width: unset;
+}
+
+.read-only .slds-form__row {
+    margin-right: unset;
+}
+
+.test-scripts-selection .list li {
+    display: flex;
+    clear: both;
+    padding: 7px 0;
+}
+
+.read-only .slds-form__item {
+    min-width: unset;
+}
+
+.test-scripts-selection .list li {
+    display: flex;
+    clear: both;
+    padding: 7px 0;
+}
+
+.test-scripts-selection .list li div.slds-form-element {
+    padding-right: 10px;
+}
+
+.test-scripts-selection .list li div.slds-form-element.script {
+    width: 14rem;
+    display: inline-grid;
+}
+
+.add-button {
+    padding-bottom: 4rem;
+}
+
+.content { 
+    overflow:auto; 
+    width: 100%;  
+} 
+  
+.left{ 
+    width: 50%;
+    float:left;
+}
+
+.right{ 
+    width: 50%;
+    float:right;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.modalheight {
+    height: 640px;
+}
+
+.deleteButton {
+    flex-grow: 1;
+    margin-top: 24px;
+    width: 45px
+}
+
+.script-steps-title {
+    font-size: small !important;
+}

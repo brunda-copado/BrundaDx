@@ -1,0 +1,86 @@
+<template>
+    <lightning-spinner lwc:if={isLoading} size="medium"></lightning-spinner>
+
+    <lightning-card if:false={isAccessible}>
+        <c-copadocore-illustration name="error:no_access" size="small" message="">
+            <p slot="body">{label.INSUFFICIENT_PERMISSION}</p>
+        </c-copadocore-illustration>
+    </lightning-card>
+
+    <div lwc:if={isAccessible} class="slds-var-m-top_small">
+        <lightning-card icon-name="standard:lightning_component">
+            <div slot="title">{label.BACK_PROMOTION_AUTOMATION_SCOPE}</div>
+
+            <div slot="actions">
+                <lightning-button lwc:if={showEditButton} label={label.EDIT} slot="actions" onclick={handleEdit}></lightning-button>
+                <lightning-button lwc:if={isEditMode} label={label.CLEAR_ALL} onclick={handleClickClear}></lightning-button>
+            </div>
+
+            <div>
+                <c-copadocore-illustration lwc:if={showIllustration} name="custom:lake_mountain" size="large" message={label.NO_SCOPE_DEFINED}>
+                    <div slot="body">
+                        <div>{label.NO_SCOPE_DEFINED_BODY}</div>
+                        <div class="slds-var-m-top_large">
+                            <lightning-button
+                                lwc:if={showConfigureScopeButton}
+                                variant="neutral"
+                                label={label.CONFIGURE_SCOPE}
+                                onclick={handleEdit}
+                            ></lightning-button>
+                        </div>
+                    </div>
+                </c-copadocore-illustration>
+
+                <lightning-layout lwc:if={showCurrentConfiguration} multiple-rows="true">
+                    <lightning-layout-item size="12" padding="around-small"> {label.BACK_PROMOTION_ENV_DETAIL} </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label slds-m-bottom_none">{label.SELECTED_ENVIRONMENTS}</label>
+                            <lightning-helptext content={label.SELECTED_ENVIRONMENTS_HELPTEXT} class="slds-var-m-left_x-small"></lightning-helptext>
+                            <div class="slds-form-element__control slds-border_bottom">
+                                <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">{includedEnvironmentNames}</p>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label slds-m-bottom_none">{label.EXCLUDED_ENVIRONMENTS}</label>
+                            <lightning-helptext content={label.EXCLUDED_ENVIRONMENTS_HELPTEXT} class="slds-var-m-left_x-small"></lightning-helptext>
+                            <div class="slds-form-element__control slds-border_bottom">
+                                <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">
+                                    {currentExcludedEnvironmentNames}
+                                </p>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <lightning-layout lwc:if={isEditMode} multiple-rows="true">
+                    <lightning-layout-item size="7" padding="around-small">
+                        <lightning-dual-listbox
+                            name="backPromotionenvironments"
+                            label={label.BACK_PROMOTION_FIELD_LABEL}
+                            source-label={label.INCLUDED_ENVIRONMENTS}
+                            selected-label={label.EXCLUDED_ENVIRONMENTS}
+                            field-level-help={label.EXCLUDED_ENVIRONMENTS_HELPTEXT}
+                            options={environmentOptions}
+                            min="0"
+                            max={maxNumberOfEnvironments}
+                            message-when-range-overflow={label.BACK_PROMOTION_ERROR}
+                            disable-reordering
+                            value={selectedForExclusion}
+                            onchange={handleSelectionChange}
+                        ></lightning-dual-listbox>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <template lwc:if={isEditMode}>
+                    <div slot="footer" class="slds-var-m-top_medium slds-align_absolute-center">
+                        <lightning-button label={label.CANCEL} onclick={handleCancel}></lightning-button>
+                        <lightning-button variant="brand" label={label.SAVE} onclick={handleSave} class="slds-var-m-left_x-small"></lightning-button>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>

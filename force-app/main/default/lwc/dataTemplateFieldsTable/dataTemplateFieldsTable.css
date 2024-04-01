@@ -1,0 +1,8 @@
+.row-height {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.slds-card__header {
+    padding: 12px 12px 0 12px;
+}

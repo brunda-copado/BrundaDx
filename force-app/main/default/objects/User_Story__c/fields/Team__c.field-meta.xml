@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Team__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Team which will tackle the User Story.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Team which will tackle the User Story.</inlineHelpText>
+    <label>Team</label>
+    <referenceTo>Team__c</referenceTo>
+    <relationshipLabel>User Stories</relationshipLabel>
+    <relationshipName>User_Stories</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

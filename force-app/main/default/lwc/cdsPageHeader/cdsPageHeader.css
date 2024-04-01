@@ -1,0 +1,60 @@
+/* for use common style from copado design sysyem */
+@import "c/copadoDesignSystem";
+
+.cds-pageheader-wrapper {
+    background: var(--white);
+}
+
+.cds-pageheader-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.08), 0px 0px 2px 0px rgba(0, 0, 0, 0.04);
+}
+
+.cds-pageheader-left {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    width: 60%;
+}
+
+.cds-pageheader-title {
+    font-size: 1.15rem;
+    color: var(--cds-semantic-color-text-primary);
+    font-weight: 600;
+}
+
+.cds-pageheader-subtitle {
+    font-size: 0.875rem;
+    color: var(--cds-semantic-color-text-secondary);
+}
+
+.cds-icon-container {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cds-semantic-color-accent-background);
+    flex-shrink: 0;
+
+}
+
+.cds-icon {
+    --slds-c-icon-color-foreground-default: #007cbf;
+    --slds-c-icon-color-background: #e6f2f9;
+}
+
+.cds-pageheader-right {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    flex-shrink: 0;
+}

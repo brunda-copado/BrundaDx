@@ -119,5 +119,5 @@
         <searchResultsAdditionalFields>BillingAccount</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>BillToContact</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Private</sharingModel>
 </CustomObject>

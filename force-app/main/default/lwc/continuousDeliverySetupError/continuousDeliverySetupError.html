@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-is-relative modal-height">
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">
+                    {label.Setup_Continuous_Delivery}
+                </h2>
+            </div>
+        </header>
+
+        <div class="slds-modal__content slds-p-around_medium slds-text-align_left">
+            <c-copado-alert-place-holder communication-id={modalCommunicationId}></c-copado-alert-place-holder>
+
+            <div class="slds-p-around_medium">
+                <template for:each={splittedMessages} for:item="error">
+                    <li key={error}>{error}</li>
+                </template>
+            </div>
+        </div>
+
+        <footer class="slds-modal__footer modal-footer">
+            <lightning-button label={label.Close} variant="neutral" onclick={handleCancel}> </lightning-button>
+        </footer>
+    </div>
+</template>

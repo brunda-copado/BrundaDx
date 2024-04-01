@@ -1,0 +1,94 @@
+<template>
+    <div class="slds-box slds-p-around_none">
+        <lightning-record-edit-form object-api-name={schema.DATA_TEMPLATE.objectApiName} record-id={recordId} onsubmit={handleSubmit}>
+            <div class="slds-card">
+                <div class="slds-card__header slds-grid">
+                    <div class="slds-media slds-media_center slds-has-flexi-truncate slds-p-left_small slds-p-top_small slds-p-right_small">
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <span class="slds-text-heading_small slds-truncate">{label.MAIN_OBJECT_FILTER}</span>
+                            </h2>
+                        </div>
+                        <div class="slds-no-flex">
+                            <div class="slds-button-group-row">
+                                <lightning-button
+                                    if:true={validCredential}
+                                    disabled={editMode}
+                                    label={label.REFRESH}
+                                    class="slds-button-group-item"
+                                    onclick={handleClickRefresh}
+                                >
+                                </lightning-button>
+                                <lightning-button
+                                    if:true={validCredential}
+                                    disabled={editMode}
+                                    label={label.EDIT}
+                                    class="slds-button-group-item"
+                                    onclick={handleClickEdit}
+                                >
+                                </lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-card__body slds-m-around_none">
+                    <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+                    <lightning-layout horizontal-align="spread" class="slds-p-left_small slds-p-bottom_small slds-p-right_small">
+                        <lightning-layout-item size="8" class="slds-p-right_medium">
+                            <lightning-layout multiple-rows horizontal-align="spread">
+                                <lightning-layout-item size="12" class="slds-p-horizontal_xx-small">
+                                    <c-data-filters
+                                        default-filters={defaultFilters}
+                                        default-filter-logic={defaultFilterLogic}
+                                        read-only-mode={readOnlyMode}
+                                        filter-context="dataTemplate"
+                                        fields-describe={fieldsDescribe}
+                                    ></c-data-filters>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" class="slds-p-top_medium">
+                                    <lightning-input-field
+                                        variant="label-stacked"
+                                        field-name={fields.MAX_RECORD_LIMIT}
+                                        disabled={readOnlyMode}
+                                    ></lightning-input-field>
+                                    <lightning-input-field
+                                        variant="label-stacked"
+                                        field-name={fields.BATCH_SIZE}
+                                        disabled={readOnlyMode}
+                                    ></lightning-input-field>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="4" class="slds-p-left_medium">
+                            <c-copadocore-Tips
+                                title={label.COPADO_TIPS_TITLE}
+                                tip1={label.COPADO_TIPS1}
+                                tip2={label.COPADO_TIPS2}
+                                tip3={label.COPADO_TIPS3}
+                                tip4={label.COPADO_TIPS4}
+                            ></c-copadocore-Tips>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+                <div class="slds-card__footer slds-docked-form-footer slds-is-relative" style="z-index: auto" if:true={editMode}>
+                    <lightning-button label={label.CANCEL} onclick={handleClickCancel}></lightning-button>
+                    <lightning-button label={label.SAVE} class="slds-m-left_small" variant="brand" type="submit"></lightning-button>
+                </div>
+            </div>
+        </lightning-record-edit-form>
+    </div>
+    <c-copadocore-modal size="small" onmodalclose={handleEditCancel}>
+        <span slot="title">{label.EDIT_DATA_TEMPLATE}</span>
+        <slot class="slds-align_absolute-center"> {label.EDIT_VALIDATION_MESSAGE} </slot>
+        <span slot="footer">
+            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleEditCancel}></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.DEACTIVATE}
+                title={label.DEACTIVATE}
+                variant="brand"
+                onclick={handleClickDeactivate}
+            ></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

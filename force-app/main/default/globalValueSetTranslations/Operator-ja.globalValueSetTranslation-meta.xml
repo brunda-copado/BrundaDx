@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>All</masterLabel>
+        <translation>全て</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Contains</masterLabel>
+        <translation>含む</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ends with</masterLabel>
+        <translation>で終わる</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Equals</masterLabel>
+        <translation>同等</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Starts with</masterLabel>
+        <translation>で始まる</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

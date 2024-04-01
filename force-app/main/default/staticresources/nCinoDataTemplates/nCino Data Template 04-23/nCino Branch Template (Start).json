@@ -1,0 +1,148 @@
+[
+    {
+        "templateUUId": "35ae7337-df66-4fe5-a401-a1a49ecf7507",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Branch Template (start)",
+                "templateMainObject": "LLC_BI__Branch__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "NMLS",
+                        "apiName": "LLC_BI__NMLS__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mortgage License",
+                        "apiName": "LLC_BI__Mortgage_License__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Zip Code",
+                        "apiName": "LLC_BI__Zip_Code__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Street",
+                        "apiName": "LLC_BI__Street__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "State",
+                        "apiName": "LLC_BI__State__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Location (Longitude)",
+                        "apiName": "LLC_BI__Location__Longitude__s",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Location (Latitude)",
+                        "apiName": "LLC_BI__Location__Latitude__s",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "City",
+                        "apiName": "LLC_BI__City__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mortgage License State",
+                        "apiName": "LLC_BI__Mortgage_License_State__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "County",
+                        "apiName": "LLC_BI__County__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Branch Id",
+                        "apiName": "LLC_BI__Branch_Id__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Branch Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

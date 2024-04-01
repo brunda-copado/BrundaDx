@@ -1,0 +1,441 @@
+[
+    {
+        "templateUUId": "89685e77-6b95-4ec1-b328-039bd21f0859",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Connection Role (Start) 2",
+                "templateMainObject": "LLC_BI__Connection_Role__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Enable Treasury Maintenance Display",
+                        "apiName": "LLC_BI__Enable_Treasury_Maintenance_Display__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Use in NCC",
+                        "apiName": "LLC_BI__Use_in_NCC__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Household Member",
+                        "apiName": "LLC_BI__Is_Household_Member__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Manage Reciprocal Involvements",
+                        "apiName": "LLC_HI__Manage_Reciprocal_Involvements__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Role Type",
+                        "apiName": "LLC_BI__Role_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sort Order",
+                        "apiName": "LLC_BI__Sort_Order__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Self Reciprocating",
+                        "apiName": "LLC_BI__Self_Reciprocating__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Role",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Screen Section",
+                        "apiName": "LLC_BI__Screen_Section__c"
+                    },
+                    {
+                        "name": "Reciprocal Role",
+                        "apiName": "LLC_BI__Reciprocal_Role__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "f00d55bf-946b-4e1c-b103-a68944b9384d",
+                    "relationName": "LLC_BI__Reciprocal_Role__c"
+                },
+                {
+                    "templateUUId": "ae08d7c9-9a7d-42b7-a66a-5dddef324258",
+                    "relationName": "LLC_BI__Screen_Section__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "ae08d7c9-9a7d-42b7-a66a-5dddef324258",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Connection Role Screen Section Template 2",
+                "templateMainObject": "nFORCE__Screen_Section__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Validation Service",
+                        "apiName": "nFORCE__Validation_Service__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Auto Save",
+                        "apiName": "nFORCE__Auto_Save__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Are Columns Sortable",
+                        "apiName": "nFORCE__Are_Columns_Sortable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Custom Code in Screen Section?",
+                        "apiName": "Custom_Code_in_Screen_Section__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Number of Columns",
+                        "apiName": "nFORCE__Number_of_Columns__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Conditional Display Criteria",
+                        "apiName": "nFORCE__Conditional_Display_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Read-Only View",
+                        "apiName": "nFORCE__Disable_Read_Only_View__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "sObject Type",
+                        "apiName": "nFORCE__sObject_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Section Resource",
+                        "apiName": "nFORCE__Section_Resource__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Editable",
+                        "apiName": "nFORCE__Is_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Instructions",
+                        "apiName": "nFORCE__Instructions_Text__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Inactive",
+                        "apiName": "nFORCE__Inactive__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Headless",
+                        "apiName": "nFORCE__Headless__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Link",
+                        "apiName": "nFORCE__Display_Toggle_Link__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Header",
+                        "apiName": "nFORCE__Display_Toggle_Header__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Effect",
+                        "apiName": "nFORCE__Display_Toggle_Effect__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Order",
+                        "apiName": "nFORCE__Display_Order__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Print",
+                        "apiName": "nFORCE__Disable_Print__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Rendered",
+                        "apiName": "nFORCE__Default_Rendered__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Editable",
+                        "apiName": "nFORCE__Default_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Break Page Before",
+                        "apiName": "nFORCE__Break_Page_Before__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Break Page After",
+                        "apiName": "nFORCE__Break_Page_After__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Screen Section Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "f00d55bf-946b-4e1c-b103-a68944b9384d",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Reciprocal Connection Role Template 2",
+                "templateMainObject": "LLC_BI__Connection_Role__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Enable Treasury Maintenance Display",
+                        "apiName": "LLC_BI__Enable_Treasury_Maintenance_Display__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Use in NCC",
+                        "apiName": "LLC_BI__Use_in_NCC__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Household Member",
+                        "apiName": "LLC_BI__Is_Household_Member__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Manage Reciprocal Involvements",
+                        "apiName": "LLC_HI__Manage_Reciprocal_Involvements__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Role Type",
+                        "apiName": "LLC_BI__Role_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sort Order",
+                        "apiName": "LLC_BI__Sort_Order__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Self Reciprocating",
+                        "apiName": "LLC_BI__Self_Reciprocating__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Role",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

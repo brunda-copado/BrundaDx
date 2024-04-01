@@ -1,0 +1,8 @@
+.invalid-page {
+    height: 75vh;
+    align-items: stretch;
+}
+
+.error-container {
+    max-width: 70vw;
+}

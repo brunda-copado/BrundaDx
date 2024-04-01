@@ -1,0 +1,126 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card if:false={recordDetail.jobExecutionId}>
+        <c-copadocore-illustration name="error:not_available_in_lightning" size="small" message={noJobTitle}>
+            <p slot="body">{noJobMessage}</p>
+        </c-copadocore-illustration>
+    </lightning-card>
+
+    <lightning-card if:true={recordDetail.jobExecutionId} title={recordDetail.mainTitle} icon-name="standard:custom">
+        <lightning-button-group slot="actions">
+            <lightning-button label={label.View_Job_Execution} onclick={navigateToJobExecution}> </lightning-button>
+        </lightning-button-group>
+
+        <div if:true={isResourceBlocked} class="slds-notify slds-notify_alert slds-alert_warning slds-p-horizontal_x-large" role="alert">
+            <lightning-icon size="small" icon-name="utility:warning" alternative-text={label.WARNING} title={label.WARNING}></lightning-icon>
+            <h2>
+                {label.QueueBlocked}
+                <a onclick={showManageQueue}>{label.ManageJobQueueHeader}</a>
+            </h2>
+        </div>
+
+        <div if:false={hasJobSteps} class="slds-p-horizontal_xxx-small">
+            <c-copadocore-illustration name="custom:no_task" size="small" message={JobEmptyTitle}>
+                <p slot="body">
+                    <template if:false={isJobExecutionEmpty}
+                        >{label.No_Job_Step_Message} <a href={jobTemplateLink}>{label.Add_Job_Steps_now}</a></template
+                    >
+                    <template if:true={isJobExecutionEmpty}>{label.No_Job_Step_for_Job_Execution}</template>
+                </p>
+            </c-copadocore-illustration>
+        </div>
+
+        <template if:true={hasJobSteps}>
+            <div class="timeline-container">
+                <lightning-spinner if:true={isLoading}> </lightning-spinner>
+
+                <ul class="slds-timeline slds-var-m-right_xx-small" id="timelineList">
+                    <template for:each={recordDetail.resultDetails} for:item="record">
+                        <c-result-detail
+                            key={record.jobStepId}
+                            record-id={record.resultId}
+                            data-step-id={record.jobStepId}
+                            job-step-id={record.jobStepId}
+                            job-step-label={record.jobStepLabel}
+                            job-step-type={record.jobStepType}
+                            job-step-custom-type={record.jobStepCustomType}
+                            result-id={record.resultId}
+                            result-value={record.resultValue}
+                            result-label={record.resultLabel}
+                            result-status={record.resultStatus}
+                            subscribed-message={record.liveMessage}
+                            is-queued-step={record.isQueued}
+                            queue-status={recordDetail.queueStatus}
+                            historical-messages={record.historicalMessages}
+                            jobs-started={jobsStarted}
+                            job-execution-status={recordDetail.jobExecutionStatus}
+                            oncompletemanualtask={openManualTaskModal}
+                            onnewstatus={scrollToCurrentStep}
+                            onuserworking={setUserWorking}
+                            onrefresh={refreshManually}
+                        >
+                        </c-result-detail>
+                    </template>
+                </ul>
+                <span class="gradient-mask"></span>
+            </div>
+
+            <template if:false={recordDetail.isUnfinished}>
+                <lightning-layout slot="footer" class="slds-text-align_left" horizontal-align="spread" multiple-rows>
+                    <lightning-layout-item size="12" class="slds-var-p-bottom_x-small">
+                        <b>{label.Job_Execution_Result}</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="7">
+                        <div class="slds-media slds-media_center">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name={recordDetail.iconName} variant={recordDetail.iconVariant} size="small"> </lightning-icon>
+                            </div>
+                            <b>{recordDetail.jobExecutionStatus}</b>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="5" class="slds-text-align_right slds-timeline__date slds-p-right_large">
+                        <lightning-formatted-date-time
+                            value={jobLastModifiedDate}
+                            year="2-digit"
+                            month="numeric"
+                            day="numeric"
+                            hour="2-digit"
+                            minute="2-digit"
+                            second="2-digit"
+                            time-zone={timezoneVariable}
+                        >
+                        </lightning-formatted-date-time>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-var-p-bottom_small job-summary-padding"
+                        ><p class="content-overflow">
+                            {recordDetail.message}
+                            <br /><i if:true={showMessageHelp}>{label.FullErrorMessage}</i>
+                        </p></lightning-layout-item
+                    >
+                    <lightning-layout-item size="12">
+                        <c-quality-checks-container record-id={recordId} job-execution-id={recordDetail.jobExecutionId}></c-quality-checks-container>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+        </template>
+    </lightning-card>
+
+    <c-copadocore-modal title={label.STEP_TYPE_MANUAL_TASK} id="completeManualTask" hide-close>
+        <span slot="title"> {label.Update_Manual_Task} </span>
+        <slot class="slds-align_absolute-center">
+            <c-complete-manual-task record-id={currentJobStepId} onfinishupdate={hideModal} is-not-action-button="true"> </c-complete-manual-task>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={hideModal}> </lightning-button>
+            <lightning-button
+                disabled={removeSaveButtonDisabled}
+                class="slds-var-m-left_x-small"
+                label={label.Save}
+                title={label.Save}
+                variant="brand"
+                onclick={saveManualTaskStatus}
+            >
+            </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

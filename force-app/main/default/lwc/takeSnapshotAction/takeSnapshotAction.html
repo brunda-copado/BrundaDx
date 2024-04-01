@@ -1,0 +1,28 @@
+<template>
+    <lightning-quick-action-panel header={labels.HEADER}>
+        <div class="slds-is-relative">
+            <lightning-spinner if:true={showSpinner} size="large" variant="brand"> </lightning-spinner>
+
+            <c-copado-alert message={infoAlert} variant="info"></c-copado-alert>
+
+            <div class="slds-m-top_medium">
+                <lightning-record-edit-form object-api-name={schema.SNAPSHOT_COMMIT_OBJECT}>
+                    <lightning-messages></lightning-messages>
+                    <lightning-input-field field-name={schema.COMMIT_MESSAGE} value={message} onchange={handleChangeMessage} required>
+                    </lightning-input-field>
+                </lightning-record-edit-form>
+            </div>
+        </div>
+
+        <div slot="footer">
+            <lightning-button variant="neutral" label={labels.CANCEL} onclick={closeQuickAction} disabled={showSpinner}></lightning-button>
+            <lightning-button
+                variant="brand"
+                label={labels.ACCEPT}
+                onclick={takeSnapshot}
+                disabled={showSpinner}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

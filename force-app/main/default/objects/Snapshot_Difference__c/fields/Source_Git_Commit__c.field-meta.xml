@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source_Git_Commit__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Source Git Commit</label>
+    <referenceTo>Git_Org_Commit__c</referenceTo>
+    <relationshipLabel>Snapshot Differences</relationshipLabel>
+    <relationshipName>Snapshot_Differences</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

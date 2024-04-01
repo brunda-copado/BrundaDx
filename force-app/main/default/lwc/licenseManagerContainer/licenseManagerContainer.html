@@ -1,0 +1,50 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+        <c-license-manager-remove-users-popup onlicensesremoved={handleRefresh}> </c-license-manager-remove-users-popup>
+        <c-license-manager-add-users-popup onsavelicenses={handleSave}> </c-license-manager-add-users-popup>
+        <c-license-manager-filter-confirmation-popup ondiscardchanges={handleDiscardChanges}> </c-license-manager-filter-confirmation-popup>
+
+        <lightning-layout if:true={licenses} data-id="counters" class="slds-card" horizontal-align="center" vertical-align="center" multiple-rows>
+            <template for:each={licenses} for:item="license">
+                <lightning-layout-item key={license.name} padding="around-small" size="2">
+                    <lightning-layout class="slds-m-bottom_x-small" horizontal-align="spread" vertical-align="center">
+                        <lightning-layout-item size="8">
+                            <p class="slds-truncate">{license.name}</p>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-text-align_right" size="4"><b>{license.used} / {license.available}</b> </lightning-layout-item>
+                    </lightning-layout>
+                    <lightning-progress-bar class={license.class} value={license.value} size="large"> </lightning-progress-bar>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+
+        <c-related-list
+            table-info={tableInfo}
+            record-size="25"
+            height={height}
+            header-icon="standard:employee_job_position"
+            custom-title={label.Users_With_Licenses}
+            show-subtitle
+            enable-infinite-loading
+            show-row-number-column
+            hide-new-action
+            show-search
+            hide-footer
+            is-outer-component
+            table-info-has-editable-columns
+            custom-handle-save
+            actions={actions}
+            oninlineeditsave={handleSave}
+            onrowselection={handleRowSelection}
+            onheaderaction={handleHeaderAction}
+            onsearchapplied={handleSearchApplied}>
+            <lightning-button-group if:true={canManageUsers} slot="buttonActions">
+                <lightning-button label={label.Remove_Users_Licenses} title={label.Remove_Users_Licenses} onclick={handleRemoveUsers}>
+                </lightning-button>
+                <lightning-button disabled={addUsersDisabled} label={label.Add_User} title={label.Add_User} onclick={handleAddUsers}> </lightning-button>
+            </lightning-button-group>
+        </c-related-list>
+    </div>
+</template>

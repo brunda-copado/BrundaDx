@@ -1,0 +1,3 @@
+<aura:component >
+	Hello World, I'm a CRT Mock Component
+</aura:component>

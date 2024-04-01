@@ -1,0 +1,57 @@
+<template>
+    <div class="slds-is-relative modal-height">
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">
+                    {label.Setup_Continuous_Delivery}
+                </h2>
+            </div>
+        </header>
+
+        <div class="slds-modal__content slds-p-around_medium slds-text-align_center">
+            <h3 class="slds-text-heading_large slds-p-bottom_large slds-p-top_large">
+                {promotionConfigurationData.header}
+            </h3>  
+
+            <p class="slds-text-color_weak slds-p-bottom_x-large">
+                {promotionConfigurationData.body}
+            </p>
+
+            <p class="slds-text-heading_small slds-p-bottom_small">
+                {promotionConfigurationData.pathtext}
+            </p>  
+
+            <nav if:true={pipelineStages} role="navigation" aria-label="Breadcrumbs">
+                <ol class={olTagClass}>
+                    <template for:each={pipelineStages} for:item="stage" for:index="index">
+                        <li key={stage.value} data-id={stage.value} class={stage.className} onclick={handleStagePatchClicked}>
+                            {stage.label}
+                        </li>
+                    </template>
+                </ol>
+            </nav>
+
+            <div class="custom-center slds-p-top_large">
+                <lightning-radio-group 
+                        class="slds-text-align_left"
+                        name="radioGroup"
+                        options={ruleConditonsOptions}
+                        value={selectedRuleConditon}
+                        disabled={isRadioGroupDisabled} 
+                        type="radio"
+                        onchange={handleRuleConditionChange}></lightning-radio-group>
+            </div>
+        </div>
+
+        <footer class="slds-modal__footer modal-footer">
+            <lightning-button if:true={isBackButtonEnabled} label={label.Back} variant="neutral" onclick={handlePrev} class="slds-float_left"> </lightning-button>
+            <lightning-button label={label.Skip_this_step} variant="neutral" onclick={handleSkip}> </lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.Next}
+                variant="brand"
+                onclick={handleNext}
+            ></lightning-button>
+        </footer>
+    </div>
+</template>

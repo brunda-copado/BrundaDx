@@ -1,0 +1,15 @@
+<template>
+    <div if:true={inProgress} class="slds-spinner_container slds-m-right_xx-large">
+        <div role="status" class="slds-spinner slds-spinner_x-small slds-spinner_brand">
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+
+    <lightning-icon if:true={executedStatus} icon-name={iconName} alternative-text={status} title={status} size="x-small" variant={iconVariant}>
+    </lightning-icon>
+
+    <div if:true={notExecutable}>
+        <lightning-helptext content={message} icon-name="utility:error" icon-variant="error"></lightning-helptext>
+    </div>
+</template>

@@ -1,0 +1,46 @@
+<apex:component access="global">
+    <html>
+
+    <body style="min-width: 800px; margin: 0; padding: 0; font-family: Roboto, Tahoma, Geneva, sans-serif; background-color: #F2F2FA;">
+        <div style="width: 800px; margin: 0px auto; padding: 50px;">
+            <div style="background-color: white;">
+
+                <!-- Header -->
+                <div>
+                    <div style="height: 6px; background: linear-gradient(296.09deg, #4DE8CA 0%, #00E3CF 29.52%, #00B3EE 70.53%, #00B3EF 100%);"></div>
+                    <img style="display: block; margin: 0px auto; padding-top: 30px; padding-bottom: 30px;" src="https://copado.secure.force.com/resource/EmailTemplates/Images/CopadoLogo.png"
+                        height="38px" width="142px" />
+                </div>
+
+                <!-- Body -->
+                <div style="width: 80%; font-size: 14px; margin: 0px auto; padding-top: 30px; padding-bottom: 30px;">
+                    <apex:outputText escape="false" value="emailBody" />
+                </div>
+
+                <!-- Footer -->
+                <div style="width: 80%; text-align: center; border-top: 1px solid #dcdcdc; margin: 0px auto; padding-top: 30px; padding-bottom: 30px;">
+                    <div style="font-weight: bold; padding-bottom: 10px;">{!$Label.COPADO_TEAM}</div>
+                    <a style="padding: 0px 3px 0px 3px; text-decoration: none;" href="https://www.facebook.com/CopadoSolutions">
+                        <img width="25px" height="25px" src="https://copado.secure.force.com/resource/EmailTemplates/Images/FacebookIcon.png" />
+                    </a>
+                    <a style="padding: 0px 3px 0px 3px; text-decoration: none;" href="https://www.linkedin.com/company/copado-solutions-s.l">
+                        <img width="25px" height="25px" src="https://copado.secure.force.com/resource/EmailTemplates/Images/LinkedinIcon.png" />
+                    </a>
+                    <a style="padding: 0px 3px 0px 3px; text-decoration: none;" href="https://www.twitter.com/CopadoSolutions">
+                        <img width="25px" height="25px" src="https://copado.secure.force.com/resource/EmailTemplates/Images/TwitterIcon.png" />
+                    </a>
+                    <a style="padding: 0px 3px 0px 3px; text-decoration: none;" href="https://www.youtube.com/channel/UCo2IXZej8qNyIbbWWCG9z3Q">
+                        <img width="25px" height="25px" src="https://copado.secure.force.com/resource/EmailTemplates/Images/YoutubeIcon.png" />
+                    </a>
+                    <a style="padding: 0px 3px 0px 3px; text-decoration: none;" href="https://www.copado.com">
+                        <img width="25px" height="25px" src="https://copado.secure.force.com/resource/EmailTemplates/Images/CopadoIcon.png" />
+                    </a>
+                </div>
+            </div>
+            <!-- Legal -->
+            <c:EmailTemplateLegal />
+        </div>
+    </body>
+
+    </html>
+</apex:component>

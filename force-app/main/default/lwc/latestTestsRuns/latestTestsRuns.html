@@ -1,0 +1,50 @@
+<template>
+    <c-related-list-delete-popup onrecorddeleted={handleRefresh}> </c-related-list-delete-popup>
+    <c-datatable-container
+        icon-name={iconName}
+        has-body="true"
+        enable-default-search={shwSearch}
+        enable-quick-filter={showFilter}
+        rows={data}
+        columns={columns}
+        onsearch={refreshSearchedData}
+        onclearsearch={handleClearSearch}
+        onfilter={refreshSearchedData}
+        onclearfilter={handleClearSearch}
+    >
+        <span slot="title">{label.LatestTestsRuns}</span>
+        <span slot="actions">
+            <lightning-button-icon
+                lwc:if={showRefreshIcon}
+                icon-name="utility:refresh"
+                title={label.Refresh}
+                class="slds-m-left_xx-small"
+                onclick={handleRefresh}
+            >
+            </lightning-button-icon>
+        </span>
+
+        <span slot="datatable">
+            <div style={tableHeight}>
+                <c-tests-table
+                    key-field="id"
+                    columns={columns}
+                    data={filteredData}
+                    hide-checkbox-column
+                    default-sort-direction="asc"
+                    enable-infinite-loading
+                    onloadmore={handleLoadMoreData}
+                ></c-tests-table>
+            </div>
+            <lightning-spinner
+                lwc:if={isLoading}
+                variant="brand"
+                alternative-text="Loading"
+                size="small"
+                class="slds-align_absolute-center slds-m-top_xxx-small slds-spinner_inline slds-p-top_xx-large"
+            >
+            </lightning-spinner>
+            <div lwc:if={hasNoData} class="slds-text-align_center slds-m-around_x-large">{label.NoDataToDisplay}</div>
+        </span>
+    </c-datatable-container>
+</template>

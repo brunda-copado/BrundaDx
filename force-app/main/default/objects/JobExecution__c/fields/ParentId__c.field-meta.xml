@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ParentId__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(NOT(ISBLANK( Deployment__c )), Deployment__c, 
+    IF(NOT(ISBLANK( Promotion__c )), Promotion__c, 
+        IF(NOT(ISBLANK( UserStoryCommit__c )), UserStoryCommit__c, 
+            IF(NOT(ISBLANK( Snapshot__c )), Snapshot__c,  ParentRecord_Id__c)
+        )
+    )
+)</formula>
+    <label>Parent Id(Formula)</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

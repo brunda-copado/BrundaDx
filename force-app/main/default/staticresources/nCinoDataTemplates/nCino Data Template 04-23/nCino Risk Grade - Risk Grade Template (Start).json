@@ -1,0 +1,467 @@
+[
+    {
+        "templateUUId": "382838e4-d12d-403b-bfbc-06ec929d1f69",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Risk Grade - Risk Grade Template (Start)",
+                "templateMainObject": "LLC_BI__Risk_Grade_Template__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Is Template",
+                        "apiName": "LLC_BI__Is_Template__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Template Object Type",
+                        "apiName": "LLC_BI__Template_Object_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Template Object Field Value",
+                        "apiName": "LLC_BI__Template_Object_Field_Value__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Template Object Field Name",
+                        "apiName": "LLC_BI__Template_Object_Field_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Round Final Risk Grade",
+                        "apiName": "LLC_BI__Round_Final_Risk_Grade__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Risk Grade Template Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Risk_Grade_Template__c",
+                        "relationshipName": "LLC_BI__Risk_Grade_Groups__r",
+                        "childSObject": "LLC_BI__Risk_Grade_Group__c",
+                        "childSObjectLabel": "Risk Grade Group"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "4c1dd340-2636-4214-8473-7f63b0d43f2c",
+                    "relationName": "LLC_BI__Risk_Grade_Groups__r",
+                    "childSObject": "LLC_BI__Risk_Grade_Group__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "4c1dd340-2636-4214-8473-7f63b0d43f2c",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Risk Grade - Risk Grade Template > Risk Grade Group",
+                "templateMainObject": "LLC_BI__Risk_Grade_Group__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Risk Grade Group Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Group Number",
+                        "apiName": "LLC_BI__Group_Number__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Weight",
+                        "apiName": "LLC_BI__Weight__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Risk_Grade_Group__c",
+                        "relationshipName": "LLC_BI__Risk_Grade_Factors__r",
+                        "childSObject": "LLC_BI__Risk_Grade_Factor__c",
+                        "childSObjectLabel": "Risk Grade Factor"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "84d48358-935e-4e6a-a1f1-7beab6bcb53a",
+                    "relationName": "LLC_BI__Risk_Grade_Factors__r",
+                    "childSObject": "LLC_BI__Risk_Grade_Factor__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "84d48358-935e-4e6a-a1f1-7beab6bcb53a",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Risk Grade - Risk Grade Group > Risk Grade Factor",
+                "templateMainObject": "LLC_BI__Risk_Grade_Factor__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Risk Grade Factor Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Row_Number",
+                        "apiName": "LLC_BI__Column_Number__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "LLC_BI__Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Units",
+                        "apiName": "LLC_BI__Units__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Weight",
+                        "apiName": "LLC_BI__Weight__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Risk Grade Template",
+                        "apiName": "LLC_BI__Risk_Grade_Template__c"
+                    }
+                ],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Risk_Grade_Factor__c",
+                        "relationshipName": "LLC_BI__Risk_Grade_Criterias__r",
+                        "childSObject": "LLC_BI__Risk_Grade_Criteria__c",
+                        "childSObjectLabel": "Risk Grading Criteria"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "576ae3fc-fcb9-4119-b74c-25ea1ab90c55",
+                    "relationName": "LLC_BI__Risk_Grade_Template__c"
+                },
+                {
+                    "templateUUId": "f2b80482-7646-4372-a602-71a15aa0c5af",
+                    "relationName": "LLC_BI__Risk_Grade_Criterias__r",
+                    "childSObject": "LLC_BI__Risk_Grade_Criteria__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "576ae3fc-fcb9-4119-b74c-25ea1ab90c55",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Risk Grade - Risk Grade Factor > Risk Grade Template",
+                "templateMainObject": "LLC_BI__Risk_Grade_Template__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Risk Grade Template Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Round Final Risk Grade",
+                        "apiName": "LLC_BI__Round_Final_Risk_Grade__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Template Object Field Name",
+                        "apiName": "LLC_BI__Template_Object_Field_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Template Object Field Value",
+                        "apiName": "LLC_BI__Template_Object_Field_Value__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Template Object Type",
+                        "apiName": "LLC_BI__Template_Object_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Is Template",
+                        "apiName": "LLC_BI__Is_Template__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "f2b80482-7646-4372-a602-71a15aa0c5af",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Risk Grade - Risk Grade Factor - Risk Grading Criteria",
+                "templateMainObject": "LLC_BI__Risk_Grade_Criteria__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Qualitative Value",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "High",
+                        "apiName": "LLC_BI__High__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Low",
+                        "apiName": "LLC_BI__Low__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Risk Grade",
+                        "apiName": "LLC_BI__Risk_Grade__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "QV_Index",
+                        "apiName": "LLC_BI__QV_Index__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

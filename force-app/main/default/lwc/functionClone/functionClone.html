@@ -1,0 +1,36 @@
+<template>
+    <lightning-spinner if:true={showSpinner}> </lightning-spinner>
+
+    <!-- sldsValidatorIgnoreNextLine -->
+    <lightning-quick-action-panel if:false={showSpinner} header={label.Clone_Function}>
+        <c-copado-alert message={label.Clone_Function_Info} variant="info"></c-copado-alert>
+
+        <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId} onsubmit={handleSubmit}>
+            <lightning-layout multiple-rows>
+                <template for:each={fields} for:item="field">
+                    <lightning-layout-item padding="around-small" size={field.size} key={field.fieldName}>
+                        <lightning-input-field value={field.value} if:false={field.isOutput} required={field.isRequired}
+                            field-name={field.fieldName}>
+                        </lightning-input-field>
+
+                        <lightning-output-field if:true={field.isOutput} field-name={field.fieldName}>
+                        </lightning-output-field>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+            <lightning-button type="submit" class="submit slds-hide"></lightning-button>
+        </lightning-record-edit-form>
+
+        <div slot="footer" class="slds-align_absolute-center">
+            <c-copadocore-error-popover if:true={error} title={error.title} message={error.message}
+                popover-position="right">
+            </c-copadocore-error-popover>
+            <lightning-button variant="neutral" label={label.Cancel} onclick={closeModal}
+                class="slds-var-m-left_x-small">
+            </lightning-button>
+            <lightning-button variant="brand" onclick={clone} label={label.Clone_Function}
+                class="slds-var-m-left_x-small">
+            </lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

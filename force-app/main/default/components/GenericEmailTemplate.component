@@ -1,0 +1,11 @@
+<apex:component access="global">
+    <div style="width: 80%; margin: 0px auto;">
+        <div style="font-size: 20px; padding-bottom: 20px">
+            emailTitle
+        </div>
+        <div style="width: 625px; border-radius: 3px; border-left: 3px solid rgba(253,169,75,0.65); background-color: #FFFBE6; margin: auto;">
+            <apex:outputText style="color: #524539; font-size: 14px; letter-spacing: 0; line-height: 20px; padding: 15px 30px; display: block;"
+                             escape="false" value="emailBody" />
+        </div>
+    </div>
+</apex:component>

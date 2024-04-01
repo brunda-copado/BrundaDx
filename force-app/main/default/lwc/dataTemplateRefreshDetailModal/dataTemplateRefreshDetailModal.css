@@ -1,0 +1,7 @@
+.remove {
+    --sds-c-icon-color-foreground-default: red;
+}
+
+.add {
+    --sds-c-icon-color-foreground-default: green;
+}

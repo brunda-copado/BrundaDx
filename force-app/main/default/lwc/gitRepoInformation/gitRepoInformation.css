@@ -1,0 +1,20 @@
+.slds-form {
+    margin-bottom: 20px;
+}
+
+.slds-form-element__label {
+    font-weight: bold;
+}
+
+.slds-button {
+    margin-right: 10px;
+}
+
+.button-group {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.inlined-edit {
+    padding-top: 1.5rem;
+}

@@ -1,0 +1,49 @@
+<aura:component controller="ExtensionConfigurationSettingsCtrl" access="global" implements="force:hasRecordId,flexipage:availableForAllPageTypes">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="activeSections" type="List" />
+    <aura:attribute name="generalSettingsFound" type="Boolean" access="private" />
+    <aura:attribute name="acceptanceCriteriaFound" type="Boolean" access="private" />
+    <aura:attribute name="errorMessage" type="String" access="private" />
+    <aura:attribute name="loading" type="Boolean" access="private" default="true" />
+
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant="brand" />
+        </aura:if>
+        <lightning:accordion allowMultipleSectionsOpen="true" activeSectionName="{!v.activeSections}">
+            <lightning:accordionSection name="generalSettings" label="{!$Label.c.GENERAL_SETTINGS}">
+                <aura:if isTrue="{!!v.generalSettingsFound}">
+                    <lightning:card>
+                        <div class="slds-var-p-around_large">
+                            <c:copadocoreIllustrationContainer
+                                message="{!$Label.c.GeneralSettingsNotAvailable}"
+                                slotMessage="{!$Label.c.ExtensionDoesNotSupportGeneralSettings}"
+                            />
+                        </div>
+                    </lightning:card>
+
+                    <aura:set attribute="else">
+                        <c:dynamicUISectionContainer locationId="ATF.ExtensionConfiguration.Settings" requiredInformation="Test Tool" />
+                    </aura:set>
+                </aura:if>
+            </lightning:accordionSection>
+
+            <lightning:accordionSection name="acceptanceCriteria" label="{!$Label.c.ACCEPTANCE_CRITERIA}">
+                <aura:if isTrue="{!!v.acceptanceCriteriaFound}">
+                    <lightning:card>
+                        <div class="slds-var-p-around_large">
+                            <c:copadocoreIllustrationContainer
+                                message="{!$Label.c.AcceptanceCriteriaNotAvailable}"
+                                slotMessage="{!$Label.c.ExtensionDoesNotSupportAcceptanceCriteria}"
+                            />
+                        </div>
+                    </lightning:card>
+                    <aura:set attribute="else">
+                        <c:dynamicUISectionContainer locationId="ATF.ExtensionConfiguration.AcceptanceCriteria" requiredInformation="Test Tool" />
+                    </aura:set>
+                </aura:if>
+            </lightning:accordionSection>
+        </lightning:accordion>
+    </div>
+</aura:component>

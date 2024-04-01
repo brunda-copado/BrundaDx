@@ -1,0 +1,6 @@
+.custom-slds-path {
+    transform: rotate(180deg);
+}
+.custom-slds-path > .custom-slds-path__link {
+    transform: rotate(180deg);
+}

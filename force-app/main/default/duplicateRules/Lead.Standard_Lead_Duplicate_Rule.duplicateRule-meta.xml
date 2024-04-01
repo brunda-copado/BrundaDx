@@ -16,12 +16,20 @@
         <objectMapping>
             <inputObject>Lead</inputObject>
             <mappingFields>
-                <inputField>Company</inputField>
-                <outputField>AccountId</outputField>
+                <inputField>Street</inputField>
+                <outputField>MailingStreet</outputField>
             </mappingFields>
             <mappingFields>
-                <inputField>Email</inputField>
-                <outputField>Email</outputField>
+                <inputField>PostalCode</inputField>
+                <outputField>MailingPostalCode</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>Title</inputField>
+                <outputField>Title</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>Company</inputField>
+                <outputField>AccountId</outputField>
             </mappingFields>
             <mappingFields>
                 <inputField>FirstName</inputField>
@@ -32,24 +40,16 @@
                 <outputField>LastName</outputField>
             </mappingFields>
             <mappingFields>
-                <inputField>City</inputField>
-                <outputField>MailingCity</outputField>
-            </mappingFields>
-            <mappingFields>
-                <inputField>Street</inputField>
-                <outputField>MailingStreet</outputField>
-            </mappingFields>
-            <mappingFields>
-                <inputField>PostalCode</inputField>
-                <outputField>MailingPostalCode</outputField>
-            </mappingFields>
-            <mappingFields>
                 <inputField>Phone</inputField>
                 <outputField>Phone</outputField>
             </mappingFields>
             <mappingFields>
-                <inputField>Title</inputField>
-                <outputField>Title</outputField>
+                <inputField>Email</inputField>
+                <outputField>Email</outputField>
+            </mappingFields>
+            <mappingFields>
+                <inputField>City</inputField>
+                <outputField>MailingCity</outputField>
             </mappingFields>
             <outputObject>Contact</outputObject>
         </objectMapping>

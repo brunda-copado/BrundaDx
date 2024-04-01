@@ -1,0 +1,12 @@
+<template>
+    <c-copadocore-illustration if:false={dataSourceDefined} name="misc:no_content" size="medium" message={label.DATA_SOURCE_MISSING_TITLE}>
+        <lightning-layout multiple-rows slot="body">
+            <lightning-layout-item size="12" class="slds-p-bottom_large"> {label.DATA_SOURCE_INFO_MESSAGE} </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-button label={label.DEFINE_DATA_SOURCE} variant="brand" onclick={handleClickDefineDataSource}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </c-copadocore-illustration>
+
+    <c-data-template-define-data-source-modal record-id={recordId} onsavesource={handleSaveDataSource}></c-data-template-define-data-source-modal>
+</template>

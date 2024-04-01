@@ -1,0 +1,12 @@
+<aura:component controller="DynamicComponentWrapperCtrl" access="global" implements="flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:messageChannel
+        aura:id="messageChannel"
+        type="copado__DynamicRenderingCommunication__c"
+        onMessage="{!c.handleMessageSubscription}"
+        scope="APPLICATION"
+    />
+
+    {! v.body }
+</aura:component>

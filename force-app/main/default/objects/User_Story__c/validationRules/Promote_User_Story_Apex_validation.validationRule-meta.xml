@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Promote_User_Story_Apex_validation</fullName>
+    <active>true</active>
+    <description>If User Story has apex code, validate that the minimum code coverage has been met.</description>
+    <errorConditionFormula>AND(
+  Has_Apex_Code__c = true,
+  OR(  
+     AND(
+       PRIORVALUE(Promote_Change__c) = false,
+        Promote_Change__c = true
+     ),
+     AND(
+      PRIORVALUE(Promote_and_Deploy__c) = false,
+       Promote_and_Deploy__c = true
+        )
+     ),
+  OR(
+    ISNULL(Apex_Code_Coverage__c),
+    ISNULL(Minimum_Apex_Code_Coverage__c),
+    Apex_Code_Coverage__c &lt; Minimum_Apex_Code_Coverage__c
+  )
+)</errorConditionFormula>
+    <errorMessage>This User Story does not meet the required Apex coverage threshold to be promoted.</errorMessage>
+</ValidationRule>

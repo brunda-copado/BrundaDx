@@ -1,0 +1,21 @@
+<design:component label="Job Execution Monitor">
+    <design:attribute
+        name="jobExecutionField"
+        description="This property supports using the relationship field of this object with Job Execution."
+        label="Job Execution Field"
+        required="true"
+        datasource="apex://JobExecutionFieldsPicklist"
+    />
+    <design:attribute
+        name="noJobTitle"
+        label="No Job Title"
+        description="Provide the title for illustration which will be displayed when there is no job created for the record."
+        default="{!$Label.Job_Execution_Not_Started}"
+    />
+    <design:attribute
+        name="noJobMessage"
+        label="No Job Message"
+        description="Provide the message for illustration which will be displayed when there is no job created for the record."
+        default="{!$Label.Live_Message_Component_Message}"
+    />
+</design:component>

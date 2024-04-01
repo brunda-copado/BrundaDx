@@ -1,0 +1,47 @@
+<template>
+    <lightning-layout horizontal-align="spread">
+        <lightning-layout-item flexibility="auto" class="slds-align_absolute-center">
+            <lightning-formatted-text if:true={readOnlyMode} value={contentUpdateOptionLabel}></lightning-formatted-text>
+            <lightning-combobox
+                if:false={readOnlyMode}
+                style="min-width: 240px"
+                variant="label-hidden"
+                value={fieldContentUpdate}
+                options={options}
+                onchange={handleChangeOption}
+            ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={isRecordMatchingFormula} flexibility="auto" class="slds-m-left_small slds-align_absolute-center">
+            <lightning-button if:false={readOnlyMode} label={label.FORMULA} onclick={handleClickRecordMatchingFormula}></lightning-button>
+            <c-data-template-record-matching-formula template-id={recordId} read-only-mode={readOnlyMode}></c-data-template-record-matching-formula>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={isReplace} flexibility="auto" class="slds-m-left_small slds-align_absolute-center">
+            <template if:true={readOnlyMode}>
+                <lightning-formatted-text value={replaceLabel}></lightning-formatted-text>
+            </template>
+            <template if:false={readOnlyMode}>
+                <lightning-combobox
+                    if:true={isBoolean}
+                    style="min-width: 240px"
+                    variant="label-hidden"
+                    value={inputValue}
+                    options={booleanOptions}
+                    placeholder={label.SELECT}
+                    disabled={readOnlyMode}
+                    onchange={handleChangeReplaceValue}
+                ></lightning-combobox>
+                <lightning-input
+                    if:false={isBoolean}
+                    style="min-width: 240px"
+                    variant="label-hidden"
+                    type={replaceInputType}
+                    formatter={replaceFormatter}
+                    step="0.01"
+                    value={inputValue}
+                    disabled={readOnlyMode}
+                    onchange={handleChangeReplaceValue}
+                ></lightning-input>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

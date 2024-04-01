@@ -1,0 +1,68 @@
+<template>
+    <template if:true={isLoaded}>
+        <div class="slds-card">
+            <div class="slds-card__body slds-card__body--inner">
+                <lightning-layout if:true={alerts} multiple-rows="true">
+                    <template for:each={alerts} for:item="alert" for:index="index">
+                        <lightning-layout-item key={alert.id} size="12" class="alert-container">
+                            <c-copado-alert
+                                data-index={index}
+                                message={alert.message}
+                                variant={alert.variant}
+                                dismissible={alert.dismissible}
+                                onclosealert={handleCloseAlert}
+                            ></c-copado-alert>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+
+                <template if:true={steps}>
+                    <div id="headerGrid" class={headerGridStyleClass}>
+                        <div id="flowSteps" class="slds-tabs--path">
+                            <ul class="slds-tabs--path__nav" role="listbox" aria-orientation="horizontal">
+                                <template for:each={steps} for:item="step">
+                                    <li key={step.id} class={step.style} role="presentation">
+                                        <template if:true={step.isCurrent}>
+                                            <a
+                                                id={step.id}
+                                                class="slds-tabs--path__link"
+                                                aria-controls={step.ariaControls}
+                                                aria-selected="true"
+                                                tabindex="0"
+                                                role="tab"
+                                                href="javascript:void(0);"
+                                                aria-live="assertive"
+                                            >
+                                                <span class="slds-tabs--path__stage">
+                                                    <span style="color: white">{step.environment}</span>
+                                                </span>
+                                                <span class="slds-tabs--path__title" title={step.environment}> {step.environment} </span>
+                                            </a>
+                                        </template>
+                                        <template if:false={step.isCurrent}>
+                                            <a
+                                                id={step.id}
+                                                class="slds-tabs--path__link"
+                                                aria-controls={step.ariaControls}
+                                                aria-selected="false"
+                                                tabindex="-1"
+                                                role="tab"
+                                                href="javascript:void(0);"
+                                                aria-live="assertive"
+                                            >
+                                                <span class="slds-tabs--path__stage">
+                                                    <span style="color: white">{step.environment}</span>
+                                                </span>
+                                                <span class="slds-tabs--path__title" title={step.environment}> {step.environment} </span>
+                                            </a>
+                                        </template>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

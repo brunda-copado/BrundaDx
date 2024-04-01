@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63 (101010) - https://sketch.com -->
+    <title>9376F4E1-7296-4F58-A40F-8F2B1EB68467@3x</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M12.8576923,7.03846154 C13.15,6.74615385 13.15,6.34423077 12.8576923,6.05192308 L7.37692308,0.680769231 C7.08461538,0.388461538 6.64615385,0.388461538 6.35384615,0.680769231 L0.873076923,6.05192308 C0.580769231,6.34423077 0.580769231,6.74615385 0.873076923,7.03846154 L1.89615385,8.025 C2.18846154,8.31730769 2.62692308,8.31730769 2.91923077,8.025 L4.63653846,6.34423077 C4.92884615,6.05192308 5.44038462,6.27115385 5.44038462,6.67307692 L5.44038462,16.5384615 C5.44038462,16.9038462 5.76923077,17.2692308 6.17115385,17.2692308 L7.63269231,17.2692308 C8.03461538,17.2692308 8.36346154,16.8673077 8.36346154,16.5384615 L8.36346154,6.67307692 C8.36346154,6.23461538 8.875,6.05192308 9.16730769,6.34423077 L10.8846154,8.025 C11.1769231,8.31730769 11.6153846,8.31730769 11.9076923,8.025 L12.8576923,7.03846154 Z" id="path-1"></path>
+    </defs>
+    <g id="Template-Relationship-Diagram" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2.0-TRD" transform="translate(-93.000000, -718.000000)">
+            <g id="arrow-down" transform="translate(93.000000, 718.000000)">
+                <circle id="Oval-Copy-3" stroke="#95B8D6" fill-opacity="0.1" fill="#86D9FC" cx="17.5" cy="17.5" r="17"></circle>
+                <g id="Icons-/-Utility-Icon-Copy" transform="translate(17.500000, 17.000000) scale(1, -1) translate(-17.500000, -17.000000) translate(10.500000, 8.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="🎨-Color" fill="#706E6B" xlink:href="#path-1"></use>
+                    <g id="🚫-Color-(Deprecated,-Use-Layer-Styles)" mask="url(#mask-2)" fill="#0070D2">
+                        <g transform="translate(-3.730769, -1.730769)" id="color">
+                            <rect x="0" y="0" width="20.4615385" height="20.4615385"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

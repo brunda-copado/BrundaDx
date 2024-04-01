@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <formulas>
+        <name>topicUrl</name>
+        <dataType>String</dataType>
+        <expression>&apos;/events/copado/v1/step-result/&apos; + {!resultId}</expression>
+    </formulas>
+    <interviewLabel>Extension Job Step Mock {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Extension Job Step Mock</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Mock_Result</name>
+        <label>Create Mock Result</label>
+        <locationX>177</locationX>
+        <locationY>205</locationY>
+        <connector>
+            <targetReference>Send_Platform_Event</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Job_Type__c</field>
+            <value>
+                <stringValue>Mock Job Step Result</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Result__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Send_Platform_Event</name>
+        <label>Send Platform Event</label>
+        <locationX>176</locationX>
+        <locationY>345</locationY>
+        <inputAssignments>
+            <field>Payload__c</field>
+            <value>
+                <elementReference>payload</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Topic_Uri__c</field>
+            <value>
+                <elementReference>topicUrl</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Event__e</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Create_Mock_Result</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>payload</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{
+  &quot;isSuccess&quot;: true
+}</text>
+    </textTemplates>
+    <variables>
+        <name>resultId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

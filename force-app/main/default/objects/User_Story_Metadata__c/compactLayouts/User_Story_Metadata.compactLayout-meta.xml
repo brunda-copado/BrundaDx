@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>User_Story_Metadata</fullName>
+    <fields>Name</fields>
+    <fields>User_Story__c</fields>
+    <fields>Status__c</fields>
+    <fields>LastModifiedById</fields>
+    <fields>Last_Commit_Date__c</fields>
+    <label>User Story Metadata</label>
+</CompactLayout>

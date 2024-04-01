@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sprint_Compact_Layout</fullName>
+    <fields>Name</fields>
+    <fields>Status__c</fields>
+    <fields>End_Date__c</fields>
+    <fields>Working_Days_Left__c</fields>
+    <fields>InitialPlannedVelocity__c</fields>
+    <fields>Planned_Velocity__c</fields>
+    <fields>Actual_Velocity__c</fields>
+    <label>Sprint Compact Layout</label>
+</CompactLayout>

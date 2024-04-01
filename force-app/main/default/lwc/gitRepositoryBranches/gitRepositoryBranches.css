@@ -1,0 +1,8 @@
+.spinner-message::after {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    content: attr(data-message);
+    top: calc(50% + 2.5rem);
+    font-weight: bold;
+}

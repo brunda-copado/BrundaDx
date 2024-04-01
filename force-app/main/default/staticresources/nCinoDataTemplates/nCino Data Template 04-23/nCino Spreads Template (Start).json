@@ -1,0 +1,2504 @@
+[
+    {
+        "templateUUId": "d86ba5b1-54a3-48b0-9fda-dc28ed3061e7",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Spreads Template (Start)",
+                "templateMainObject": "LLC_BI__Underwriting_Bundle__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Version",
+                        "apiName": "LLC_BI__Version__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Consolidation",
+                        "apiName": "LLC_BI__Is_Consolidation__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Object API Name",
+                        "apiName": "LLC_BI__Object_API_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Selected Scale",
+                        "apiName": "LLC_BI__Selected_Scale__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Show Footnotes",
+                        "apiName": "LLC_BI__Show_Footnotes__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Disabled",
+                        "apiName": "LLC_BI__Is_Disabled__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Start Date",
+                        "apiName": "LLC_BI__Start_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Template",
+                        "apiName": "LLC_BI__Is_Template__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "End Date",
+                        "apiName": "LLC_BI__End_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Underwriting Bundle Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Bundle__c",
+                        "relationshipName": "LLC_BI__Spread_Statements__r",
+                        "childSObject": "LLC_BI__Spread_Statement_Type__c",
+                        "childSObjectLabel": "Spread Statement Template"
+                    },
+                    {
+                        "field": "LLC_BI__Underwriting_Bundle__c",
+                        "relationshipName": "LLC_BI__Spread_Statement_Row_Mappings__r",
+                        "childSObject": "LLC_BI__Spread_Statement_Row_Mapping__c",
+                        "childSObjectLabel": "Spread Statement Row Mapping"
+                    },
+                    {
+                        "field": "LLC_BI__Bundle__c",
+                        "relationshipName": "LLC_BI__Sensitivity_Analysis__r",
+                        "childSObject": "LLC_BI__Sensitivity_Analysis__c",
+                        "childSObjectLabel": "Sensitivity Analysis"
+                    },
+                    {
+                        "field": "LLC_BI__Bundle__c",
+                        "relationshipName": "LLC_BI__Loan_Assumptions__r",
+                        "childSObject": "LLC_BI__Loan_Assumptions__c",
+                        "childSObjectLabel": "Loan Assumptions"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "48848ef3-270a-4fd3-a574-385dc20fb632",
+                    "relationName": "LLC_BI__Spread_Statements__r",
+                    "childSObject": "LLC_BI__Spread_Statement_Type__c"
+                },
+                {
+                    "templateUUId": "de8332ff-9e3f-4948-9033-fdb43faf59ee",
+                    "relationName": "LLC_BI__Spread_Statement_Row_Mappings__r",
+                    "childSObject": "LLC_BI__Spread_Statement_Row_Mapping__c"
+                },
+                {
+                    "templateUUId": "4f14a3c2-dee1-4671-ac27-393ceb2041a1",
+                    "relationName": "LLC_BI__Sensitivity_Analysis__r",
+                    "childSObject": "LLC_BI__Sensitivity_Analysis__c"
+                },
+                {
+                    "templateUUId": "ca963c50-2c30-40b5-9dce-317a7956577b",
+                    "relationName": "LLC_BI__Loan_Assumptions__r",
+                    "childSObject": "LLC_BI__Loan_Assumptions__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "ca963c50-2c30-40b5-9dce-317a7956577b",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Loan Assumptions Template2",
+                "templateMainObject": "LLC_BI__Loan_Assumptions__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Amortization (months)",
+                        "apiName": "LLC_BI__Amortization_months__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Interest Rate (%)",
+                        "apiName": "LLC_BI__Interest_Rate__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Policy DSCR",
+                        "apiName": "LLC_BI__Policy_DSCR__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Policy LTV (%)",
+                        "apiName": "LLC_BI__Policy_LTV__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Requested Loan Amount",
+                        "apiName": "LLC_BI__Requested_Loan_Amount__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Lookup Key",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "48848ef3-270a-4fd3-a574-385dc20fb632",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Template - spreads migration",
+                "templateMainObject": "LLC_BI__Spread_Statement_Type__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Allow Record Filtering",
+                        "apiName": "LLC_BI__Allow_Record_Filtering__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Balance Total",
+                        "apiName": "LLC_BI__Balance_Total__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Borrower Type",
+                        "apiName": "LLC_BI__Borrower_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "End Date",
+                        "apiName": "LLC_BI__End_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Entity Type",
+                        "apiName": "LLC_BI__Entity_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Group Columns",
+                        "apiName": "LLC_BI__Group_Columns__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "-D Interaction",
+                        "apiName": "LLC_BI__Interaction__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Template",
+                        "apiName": "LLC_BI__Is_Template__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Start Date",
+                        "apiName": "LLC_BI__Start_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Static Periods",
+                        "apiName": "LLC_BI__Static_Periods__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Hide Currency Symbol",
+                        "apiName": "LLC_BI__Total_Hide_Currency_Symbol__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Row Name",
+                        "apiName": "LLC_BI__Total_Row_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "LLC_BI__Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Sort Order",
+                        "apiName": "LLC_BI__Sort_Order__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Common Sizing",
+                        "apiName": "LLC_BI__Display_Common_Sizing__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Trend",
+                        "apiName": "LLC_BI__Display_Trend__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Projection Drivers",
+                        "apiName": "LLC_BI__Display_Projection_Drivers__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Multi-Currency",
+                        "apiName": "LLC_BI__Is_Multi_Currency__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Spread_Statement_Type__c",
+                        "relationshipName": "LLC_BI__Spread_Statement_Total_Groups__r",
+                        "childSObject": "LLC_BI__Spread_Statement_Record_Total__c",
+                        "childSObjectLabel": "Spread Statement Total Group"
+                    },
+                    {
+                        "field": "LLC_BI__Spread_Statement_Template__c",
+                        "relationshipName": "LLC_BI__Tenant_Information__r",
+                        "childSObject": "LLC_BI__Tenant_Information__c",
+                        "childSObjectLabel": "Tenant Information"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "6e7ecbdf-62a1-4f21-ab7a-e9f0044f5596",
+                    "relationName": "LLC_BI__Spread_Statement_Total_Groups__r",
+                    "childSObject": "LLC_BI__Spread_Statement_Record_Total__c"
+                },
+                {
+                    "templateUUId": "6c45f6ff-af1d-48a1-8cd6-db88d8e4906e",
+                    "relationName": "LLC_BI__Tenant_Information__r",
+                    "childSObject": "LLC_BI__Tenant_Information__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "4f14a3c2-dee1-4671-ac27-393ceb2041a1",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Sensitivity Analysis - Spreads Migration",
+                "templateMainObject": "LLC_BI__Sensitivity_Analysis__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Collapsed",
+                        "apiName": "LLC_BI__Is_Collapsed__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Template",
+                        "apiName": "LLC_BI__Is_Template__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 1 Display Type",
+                        "apiName": "LLC_BI__Output_1_Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 1 Formula",
+                        "apiName": "LLC_BI__Output_1_Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 1 Name",
+                        "apiName": "LLC_BI__Output_1_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 2 Display Type",
+                        "apiName": "LLC_BI__Output_2_Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 2 Formula",
+                        "apiName": "LLC_BI__Output_2_Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 2 Name",
+                        "apiName": "LLC_BI__Output_2_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 3 Display Type",
+                        "apiName": "LLC_BI__Output_3_Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 3 Formula",
+                        "apiName": "LLC_BI__Output_3_Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 3 Name",
+                        "apiName": "LLC_BI__Output_3_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 4 Display Type",
+                        "apiName": "LLC_BI__Output_4_Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 4 Formula",
+                        "apiName": "LLC_BI__Output_4_Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 4 Name",
+                        "apiName": "LLC_BI__Output_4_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 5 Display Type",
+                        "apiName": "LLC_BI__Output_5_Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 5 Formula",
+                        "apiName": "LLC_BI__Output_5_Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output 5 Name",
+                        "apiName": "LLC_BI__Output_5_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output A Display Type",
+                        "apiName": "LLC_BI__Output_A_Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output A Formula",
+                        "apiName": "LLC_BI__Output_A_Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output A Name",
+                        "apiName": "LLC_BI__Output_A_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output B Display Type",
+                        "apiName": "LLC_BI__Output_B_Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output B Formula",
+                        "apiName": "LLC_BI__Output_B_Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Variable A Direction",
+                        "apiName": "LLC_BI__Variable_A_Direction__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Variable A Increments",
+                        "apiName": "LLC_BI__Variable_A_Increments__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Variable A Name",
+                        "apiName": "LLC_BI__Variable_A_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Variable B Direction",
+                        "apiName": "LLC_BI__Variable_B_Direction__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Variable B Increments",
+                        "apiName": "LLC_BI__Variable_B_Increments__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Variable B Name",
+                        "apiName": "LLC_BI__Variable_B_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Lookup Key",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "de8332ff-9e3f-4948-9033-fdb43faf59ee",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Row Mapping - Spreads Migration",
+                "templateMainObject": "LLC_BI__Spread_Statement_Row_Mapping__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Spread Statement Row Mapping Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Exclude",
+                        "apiName": "LLC_BI__Exclude__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "-D lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "externalLookupKey",
+                        "apiName": "LLC_BI__externalLookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Data Source Item",
+                        "apiName": "LLC_BI__Data_Source_Item__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "01ef98ce-1e7a-4b22-8d6b-dc600947a1e0",
+                    "relationName": "LLC_BI__Data_Source_Item__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "01ef98ce-1e7a-4b22-8d6b-dc600947a1e0",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Data Source Item - Spreads Migration 2",
+                "templateMainObject": "LLC_BI__Data_Source_Item__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Data Source Item Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External Name",
+                        "apiName": "LLC_BI__External_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sort Order",
+                        "apiName": "LLC_BI__Sort_Order__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Data Source",
+                        "apiName": "LLC_BI__Data_Source__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "59328528-6cfe-47f0-b1c2-ea0c6cc142ce",
+                    "relationName": "LLC_BI__Data_Source__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "6e7ecbdf-62a1-4f21-ab7a-e9f0044f5596",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Total Group - spreads migration",
+                "templateMainObject": "LLC_BI__Spread_Statement_Record_Total__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Group Color",
+                        "apiName": "LLC_BI__Color__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Spread Statement Record Total Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Debit",
+                        "apiName": "LLC_BI__Debit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Hide All Records",
+                        "apiName": "LLC_BI__Hide_All_Records__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "-D Hide Currency Symbol",
+                        "apiName": "LLC_BI__Hide_Currency_Symbol__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Include In Total",
+                        "apiName": "LLC_BI__Include_In_Total__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Row Number",
+                        "apiName": "LLC_BI__Row_Number__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Title",
+                        "apiName": "LLC_BI__Title__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Group Type",
+                        "apiName": "LLC_BI__Group_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is_Summary_Group",
+                        "apiName": "LLC_BI__Is_Summary_Group__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Global Analysis Type",
+                        "apiName": "LLC_BI__Global_Analysis_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Hide Column Totals",
+                        "apiName": "LLC_BI__Hide_Column_Totals__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Highlights Type",
+                        "apiName": "LLC_BI__KPI_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Publish On Init Event",
+                        "apiName": "LLC_BI__Publish_On_Init_Event__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Publish On Update Event",
+                        "apiName": "LLC_BI__Publish_On_Update_Event__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Type",
+                        "apiName": "LLC_BI__Total_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Show Math",
+                        "apiName": "LLC_BI__Show_Math__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Balance Check",
+                        "apiName": "LLC_BI__Is_Balance_Check__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Spread_Statement_Total_Group__c",
+                        "relationshipName": "LLC_BI__Spread_Record_Total_Classifications__r",
+                        "childSObject": "LLC_BI__Spread_Record_Total_Classification__c",
+                        "childSObjectLabel": "Spread Record Total Classification"
+                    },
+                    {
+                        "field": "LLC_BI__Spread_Statement_Record_Total__c",
+                        "relationshipName": "LLC_BI__Spread_Statement_Records__r",
+                        "childSObject": "LLC_BI__Spread_Statement_Record__c",
+                        "childSObjectLabel": "Spread Statement Record"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "e6bf6370-5b7b-4c8e-95a2-8330d5657c3f",
+                    "relationName": "LLC_BI__Spread_Statement_Records__r",
+                    "childSObject": "LLC_BI__Spread_Statement_Record__c"
+                },
+                {
+                    "templateUUId": "412aa40c-07e9-42e7-9014-1a9e25612084",
+                    "relationName": "LLC_BI__Spread_Record_Total_Classifications__r",
+                    "childSObject": "LLC_BI__Spread_Record_Total_Classification__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "6c45f6ff-af1d-48a1-8cd6-db88d8e4906e",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Tenant Information - Spreads Migration",
+                "templateMainObject": "LLC_BI__Tenant_Information__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Tenant Information Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Annual Income",
+                        "apiName": "LLC_BI__Annual_Income__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Lease End",
+                        "apiName": "LLC_BI__Lease_End__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Lease Origination",
+                        "apiName": "LLC_BI__Lease_Origination__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Lease Type",
+                        "apiName": "LLC_BI__Lease_Type__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Monthly Income",
+                        "apiName": "LLC_BI__Monthly_Income__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Monthly Rent",
+                        "apiName": "LLC_BI__Monthly_Rent__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "# Of Occupied Units",
+                        "apiName": "LLC_BI__Occupied_Units__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Price Per Sq Ft Per Year",
+                        "apiName": "LLC_BI__Price_Per_Sq_Ft_Per_Year__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Scenario",
+                        "apiName": "LLC_BI__Scenario__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sq Feet",
+                        "apiName": "LLC_BI__Sq_Feet__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Tenant Name",
+                        "apiName": "LLC_BI__Tenant_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Tenant Type",
+                        "apiName": "LLC_BI__Tenant_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "# Of Units",
+                        "apiName": "LLC_BI__Total_Units__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "LLC_BI__Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Unit Type",
+                        "apiName": "LLC_BI__Unit_Type__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Unit",
+                        "apiName": "LLC_BI__Unit__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Searchable Tenant",
+                        "apiName": "LLC_BI__Searchable_Tenant__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "412aa40c-07e9-42e7-9014-1a9e25612084",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Record Total Classification - spreads migration",
+                "templateMainObject": "LLC_BI__Spread_Record_Total_Classification__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Spread Record Total Classification Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Classification",
+                        "apiName": "LLC_BI__Classification__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "da03f04d-974f-4ff0-87c9-dba84e2550db",
+                    "relationName": "LLC_BI__Classification__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "e6bf6370-5b7b-4c8e-95a2-8330d5657c3f",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Record Template clone2",
+                "templateMainObject": "LLC_BI__Spread_Statement_Record__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Spread Statement Record Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Debit",
+                        "apiName": "LLC_BI__Debit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Include In Total",
+                        "apiName": "LLC_BI__Include_In_Total__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Operation",
+                        "apiName": "LLC_BI__Operation__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Period Over Period Change",
+                        "apiName": "LLC_BI__Period_Over_Period_Change__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Row Number",
+                        "apiName": "LLC_BI__Row_Number__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Record Type",
+                        "apiName": "LLC_BI__Record_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Prior Fiscal Year",
+                        "apiName": "LLC_BI__Prior_Fiscal_Year__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Type",
+                        "apiName": "LLC_BI__Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Highlights Type",
+                        "apiName": "LLC_BI__KPI_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Period Over Prior Fiscal Year",
+                        "apiName": "LLC_BI__Period_Over_Prior_Fiscal_Year__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Formula -D",
+                        "apiName": "LLC_BI__Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Formula",
+                        "apiName": "LLC_BI__Formula_Long_Text__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Spread Statement Type",
+                        "apiName": "LLC_BI__Spread_Statement_Type__c"
+                    },
+                    {
+                        "name": "Linked Spread Statement Total Group",
+                        "apiName": "LLC_BI__Linked_Spread_Statement_Total_Group__c"
+                    }
+                ],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Spread_Statement_Record__c",
+                        "relationshipName": "LLC_BI__Spread_Record_Classifications__r",
+                        "childSObject": "LLC_BI__Spread_Record_Classification__c",
+                        "childSObjectLabel": "Spread Record Classification"
+                    },
+                    {
+                        "field": "LLC_BI__Linked_Spread_Statement_Record__c",
+                        "relationshipName": "LLC_BI__Spread_Statement_Records__r",
+                        "childSObject": "LLC_BI__Spread_Statement_Record__c",
+                        "childSObjectLabel": "Spread Statement Record"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "aa514a4c-73bd-405a-b0c1-185f0e6a7d7e",
+                    "relationName": "LLC_BI__Spread_Statement_Type__c"
+                },
+                {
+                    "templateUUId": "dc271441-8d3b-4003-8f41-64a52e2da5e3",
+                    "relationName": "LLC_BI__Linked_Spread_Statement_Total_Group__c"
+                },
+                {
+                    "templateUUId": "62a6864f-9b80-47a7-9cf3-2f4ed74e6d31",
+                    "relationName": "LLC_BI__Spread_Record_Classifications__r",
+                    "childSObject": "LLC_BI__Spread_Record_Classification__c"
+                },
+                {
+                    "templateUUId": "2a692463-1cb2-485a-a06a-3be10c41d756",
+                    "relationName": "LLC_BI__Spread_Statement_Records__r",
+                    "childSObject": "LLC_BI__Spread_Statement_Record__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "59328528-6cfe-47f0-b1c2-ea0c6cc142ce",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Data Source Template",
+                "templateMainObject": "LLC_BI__Data_Source__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Data Source Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External Name",
+                        "apiName": "LLC_BI__External_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Related Feature",
+                        "apiName": "LLC_BI__Related_Feature__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Callback URL",
+                        "apiName": "LLC_BI__Callback_URL__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Name",
+                        "apiName": "LLC_BI__Display_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "aa514a4c-73bd-405a-b0c1-185f0e6a7d7e",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Template Template76",
+                "templateMainObject": "LLC_BI__Spread_Statement_Type__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Allow Record Filtering",
+                        "apiName": "LLC_BI__Allow_Record_Filtering__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Balance Total",
+                        "apiName": "LLC_BI__Balance_Total__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Borrower Type",
+                        "apiName": "LLC_BI__Borrower_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "End Date",
+                        "apiName": "LLC_BI__End_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Entity Type",
+                        "apiName": "LLC_BI__Entity_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Group Columns",
+                        "apiName": "LLC_BI__Group_Columns__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "-D Interaction",
+                        "apiName": "LLC_BI__Interaction__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Template",
+                        "apiName": "LLC_BI__Is_Template__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Start Date",
+                        "apiName": "LLC_BI__Start_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Static Periods",
+                        "apiName": "LLC_BI__Static_Periods__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Hide Currency Symbol",
+                        "apiName": "LLC_BI__Total_Hide_Currency_Symbol__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Row Name",
+                        "apiName": "LLC_BI__Total_Row_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "LLC_BI__Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Sort Order",
+                        "apiName": "LLC_BI__Sort_Order__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Common Sizing",
+                        "apiName": "LLC_BI__Display_Common_Sizing__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Trend",
+                        "apiName": "LLC_BI__Display_Trend__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Projection Drivers",
+                        "apiName": "LLC_BI__Display_Projection_Drivers__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Multi-Currency",
+                        "apiName": "LLC_BI__Is_Multi_Currency__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "dc271441-8d3b-4003-8f41-64a52e2da5e3",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Total Group Template clone2",
+                "templateMainObject": "LLC_BI__Spread_Statement_Record_Total__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Group Color",
+                        "apiName": "LLC_BI__Color__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Spread Statement Record Total Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Debit",
+                        "apiName": "LLC_BI__Debit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Hide All Records",
+                        "apiName": "LLC_BI__Hide_All_Records__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "-D Hide Currency Symbol",
+                        "apiName": "LLC_BI__Hide_Currency_Symbol__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Include In Total",
+                        "apiName": "LLC_BI__Include_In_Total__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Row Number",
+                        "apiName": "LLC_BI__Row_Number__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Title",
+                        "apiName": "LLC_BI__Title__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Group Type",
+                        "apiName": "LLC_BI__Group_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is_Summary_Group",
+                        "apiName": "LLC_BI__Is_Summary_Group__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Global Analysis Type",
+                        "apiName": "LLC_BI__Global_Analysis_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Hide Column Totals",
+                        "apiName": "LLC_BI__Hide_Column_Totals__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Highlights Type",
+                        "apiName": "LLC_BI__KPI_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Publish On Init Event",
+                        "apiName": "LLC_BI__Publish_On_Init_Event__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Publish On Update Event",
+                        "apiName": "LLC_BI__Publish_On_Update_Event__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Type",
+                        "apiName": "LLC_BI__Total_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Show Math",
+                        "apiName": "LLC_BI__Show_Math__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Balance Check",
+                        "apiName": "LLC_BI__Is_Balance_Check__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Spread Statement Type",
+                        "apiName": "LLC_BI__Spread_Statement_Type__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "456cd03f-6353-4224-bb89-efeb6792f6b4",
+                    "relationName": "LLC_BI__Spread_Statement_Type__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "da03f04d-974f-4ff0-87c9-dba84e2550db",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Classification Template",
+                "templateMainObject": "LLC_BI__Classification__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Classification Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "apiName": "LLC_BI__Category__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "62a6864f-9b80-47a7-9cf3-2f4ed74e6d31",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Record Classification Template6",
+                "templateMainObject": "LLC_BI__Spread_Record_Classification__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Spread Record Classification Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Classification",
+                        "apiName": "LLC_BI__Classification__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "c5647d9b-e570-44e2-a2f7-0e5474ec76de",
+                    "relationName": "LLC_BI__Classification__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "2a692463-1cb2-485a-a06a-3be10c41d756",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Record Template clone3",
+                "templateMainObject": "LLC_BI__Spread_Statement_Record__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Spread Statement Record Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Debit",
+                        "apiName": "LLC_BI__Debit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Include In Total",
+                        "apiName": "LLC_BI__Include_In_Total__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Operation",
+                        "apiName": "LLC_BI__Operation__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Period Over Period Change",
+                        "apiName": "LLC_BI__Period_Over_Period_Change__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Row Number",
+                        "apiName": "LLC_BI__Row_Number__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Record Type",
+                        "apiName": "LLC_BI__Record_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Prior Fiscal Year",
+                        "apiName": "LLC_BI__Prior_Fiscal_Year__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Type",
+                        "apiName": "LLC_BI__Display_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Highlights Type",
+                        "apiName": "LLC_BI__KPI_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Period Over Prior Fiscal Year",
+                        "apiName": "LLC_BI__Period_Over_Prior_Fiscal_Year__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Formula -D",
+                        "apiName": "LLC_BI__Formula__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Formula",
+                        "apiName": "LLC_BI__Formula_Long_Text__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "c5647d9b-e570-44e2-a2f7-0e5474ec76de",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Classification Template9",
+                "templateMainObject": "LLC_BI__Classification__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Classification Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "apiName": "LLC_BI__Category__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "456cd03f-6353-4224-bb89-efeb6792f6b4",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Spread Statement Template Template00",
+                "templateMainObject": "LLC_BI__Spread_Statement_Type__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Allow Record Filtering",
+                        "apiName": "LLC_BI__Allow_Record_Filtering__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Balance Total",
+                        "apiName": "LLC_BI__Balance_Total__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Borrower Type",
+                        "apiName": "LLC_BI__Borrower_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "End Date",
+                        "apiName": "LLC_BI__End_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Entity Type",
+                        "apiName": "LLC_BI__Entity_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Group Columns",
+                        "apiName": "LLC_BI__Group_Columns__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "-D Interaction",
+                        "apiName": "LLC_BI__Interaction__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Template",
+                        "apiName": "LLC_BI__Is_Template__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Start Date",
+                        "apiName": "LLC_BI__Start_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Static Periods",
+                        "apiName": "LLC_BI__Static_Periods__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Hide Currency Symbol",
+                        "apiName": "LLC_BI__Total_Hide_Currency_Symbol__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Total Row Name",
+                        "apiName": "LLC_BI__Total_Row_Name__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "LLC_BI__Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Sort Order",
+                        "apiName": "LLC_BI__Sort_Order__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Common Sizing",
+                        "apiName": "LLC_BI__Display_Common_Sizing__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Trend",
+                        "apiName": "LLC_BI__Display_Trend__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Projection Drivers",
+                        "apiName": "LLC_BI__Display_Projection_Drivers__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Multi-Currency",
+                        "apiName": "LLC_BI__Is_Multi_Currency__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

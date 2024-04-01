@@ -1,0 +1,6 @@
+.slds-dropdown {
+    height: 250px !important;
+    overflow-y: auto !important;
+    position: fixed !important;
+    z-index: 9999 !important;
+}

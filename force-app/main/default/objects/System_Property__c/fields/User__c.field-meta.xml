@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>User__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup field to the user linked to the system property.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Lookup field to the user linked to the system property.</inlineHelpText>
+    <label>User</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>System_Properties</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

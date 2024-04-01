@@ -1,0 +1,226 @@
+/* for use common style from copado design sysyem */
+@import "c/copadoDesignSystem";
+
+.cds-alert {
+    position: relative;
+}
+
+.cds-alert-wrapper {
+    background-image: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem 1rem 1rem;
+    border-radius: 8px;
+    text-align: left;
+    font-weight: normal;
+    background-size: inherit;
+    box-shadow:
+        0px 1px 2px 0px rgba(0, 0, 0, 0.06),
+        0px 5px 4px -4px rgba(0, 0, 0, 0.02);
+    background-color: var(--white);
+}
+
+.cds-alert-left {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+}
+
+.cds-alert-left .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-text-hint);
+}
+
+.cds-alert-content {
+    display: flex;
+    gap: 0 1rem;
+    flex-wrap: wrap;
+}
+
+.cds-alert-title {
+    font-size: 0.875rem;
+    color: var(--cds-semantic-color-text-primary);
+    font-weight: 600;
+}
+
+.cds-alert-subtitle {
+    font-size: 0.875rem;
+    color: var(--cds-semantic-color-text-secondary);
+}
+
+.cds-alert-subtitle a {
+    font-size: 0.875rem;
+    color: var(--cds-semantic-color-text-secondary);
+    text-decoration: underline;
+}
+
+.cds-alert-subtitle a:hover {
+    text-decoration: underline;
+}
+
+.cds-alert-subtitle a:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.cds-alert-right .cds-alert-icon-container .cds-alert-close {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-text-secondary);
+}
+
+.cds-alert-detail-wrap {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cds-alert-detail {
+    font-size: 0.875rem;
+    color: var(--cds-semantic-color-text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cds-alert-detail a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--cds-semantic-color-text-secondary);
+}
+
+.cds-alert-detail a:focus {
+    text-decoration: underline;
+}
+
+.cds-alert-detail a:hover {
+    box-shadow: none;
+    border: none;
+}
+
+.cds-alert-right .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-text-secondary);
+}
+
+/* info alert */
+.cds-alert-wrapper.cds-alert-info {
+    background-color: var(--cds-semantic-color-accent-background);
+}
+
+.cds-alert-wrapper.cds-alert-info .cds-alert-left .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-accent-primary);
+}
+
+.cds-alert-wrapper.cds-alert-info .cds-alert-left .cds-alert-content .cds-alert-title {
+    color: var(--cds-semantic-color-info-medium);
+}
+
+.cds-alert-wrapper.cds-alert-info .cds-alert-left .cds-alert-content .cds-alert-subtitle,
+.cds-alert-wrapper.cds-alert-info .cds-alert-left .cds-alert-content .cds-alert-subtitle a {
+    color: var(--cds-semantic-color-info-medium);
+}
+
+.cds-alert-wrapper.cds-alert-info .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail,
+.cds-alert-wrapper.cds-alert-info .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail a {
+    color: var(--cds-semantic-color-accent-primary);
+}
+
+.cds-alert-wrapper.cds-alert-info .cds-alert-right .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-accent-primary);
+}
+
+.cds-alert-wrapper.cds-alert-info .cds-alert-right .cds-alert-close .cds-close-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-info-medium);
+}
+
+/* Error alert */
+.cds-alert-wrapper.cds-alert-error {
+    background-color: var(--cds-semantic-color-error-light);
+}
+
+.cds-alert-wrapper.cds-alert-error .cds-alert-left .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-error-medium);
+}
+
+.cds-alert-wrapper.cds-alert-error .cds-alert-left .cds-alert-content .cds-alert-title {
+    color: var(--cds-semantic-color-error-medium);
+}
+
+.cds-alert-wrapper.cds-alert-error .cds-alert-left .cds-alert-content .cds-alert-subtitle,
+.cds-alert-wrapper.cds-alert-error .cds-alert-left .cds-alert-content .cds-alert-subtitle a {
+    color: var(--cds-semantic-color-error-contrast);
+}
+
+.cds-alert-wrapper.cds-alert-error .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail,
+.cds-alert-wrapper.cds-alert-error .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail a {
+    color: var(--cds-semantic-color-error-medium);
+}
+
+.cds-alert-wrapper.cds-alert-error .cds-alert-right .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-error-medium);
+}
+
+.cds-alert-wrapper.cds-alert-error .cds-alert-right .cds-alert-close .cds-close-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-error-medium);
+}
+
+/* Success alert */
+.cds-alert-wrapper.cds-alert-success {
+    background-color: var(--cds-semantic-color-success-light);
+}
+
+.cds-alert-wrapper.cds-alert-success .cds-alert-left .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-success-primary);
+}
+
+.cds-alert-wrapper.cds-alert-success .cds-alert-left .cds-alert-content .cds-alert-title {
+    color: var(--cds-semantic-color-success-contrast);
+}
+
+.cds-alert-wrapper.cds-alert-success .cds-alert-left .cds-alert-content .cds-alert-subtitle,
+.cds-alert-wrapper.cds-alert-success .cds-alert-left .cds-alert-content .cds-alert-subtitle a {
+    color: var(--cds-semantic-color-success-contrast);
+}
+
+.cds-alert-wrapper.cds-alert-success .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail,
+.cds-alert-wrapper.cds-alert-success .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail a {
+    color: var(--cds-semantic-color-success-medium);
+}
+
+.cds-alert-wrapper.cds-alert-success .cds-alert-right .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-success-medium);
+}
+
+.cds-alert-wrapper.cds-alert-success .cds-alert-right .cds-alert-close .cds-close-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-success-medium);
+}
+
+/* Warning alert */
+.cds-alert-wrapper.cds-alert-warning {
+    background-color: var(--cds-semantic-color-alert-light);
+}
+
+.cds-alert-wrapper.cds-alert-warning .cds-alert-left .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-alert-medium);
+}
+
+.cds-alert-wrapper.cds-alert-warning .cds-alert-left .cds-alert-content .cds-alert-title {
+    color: var(--cds-semantic-color-alert-contrast);
+}
+
+.cds-alert-wrapper.cds-alert-warning .cds-alert-left .cds-alert-content .cds-alert-subtitle,
+.cds-alert-wrapper.cds-alert-warning .cds-alert-left .cds-alert-content .cds-alert-subtitle a {
+    color: var(--cds-semantic-color-alert-contrast);
+}
+
+.cds-alert-wrapper.cds-alert-warning .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail,
+.cds-alert-wrapper.cds-alert-warning .cds-alert-right .cds-alert-detail-wrap .cds-alert-detail a {
+    color: var(--cds-semantic-color-alert-medium);
+}
+
+.cds-alert-wrapper.cds-alert-warning .cds-alert-right .cds-alert-icon-container .cds-alert-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-alert-medium);
+}
+
+.cds-alert-wrapper.cds-alert-warning .cds-alert-right .cds-alert-close .cds-close-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-alert-medium);
+}

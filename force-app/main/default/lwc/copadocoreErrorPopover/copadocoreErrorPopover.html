@@ -1,0 +1,48 @@
+<template>
+    <!-- sldsValidatorIgnoreNextLine -->
+    <button
+        id="error-button"
+        type="button"
+        class="slds-button slds-button_icon slds-button_icon slds-button_icon-error slds-is-relative"
+        title={title}
+    >
+        <lightning-icon icon-name="utility:error" variant="error" size="small" onclick={togglePopOver}></lightning-icon>
+
+        <template if:true={displayPopover}>
+            <section id="popover-section" class={sectionClass} role="dialog">
+                <!-- sldsValidatorIgnoreNextLine -->
+                <button
+                    type="button"
+                    class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close slds-button_icon-inverse"
+                    title={label.CloseDialog}
+                >
+                    <lightning-icon icon-name="utility:close" variant="inverse" size="xx-small" onclick={closePopOver}> </lightning-icon>
+                </button>
+
+                <header class="slds-popover__header">
+                    <div class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <lightning-icon class="slds-media__figure" icon-name="utility:error" variant="inverse" size="x-small"></lightning-icon>
+
+                        <div class="slds-media__body">
+                            <h2 class="slds-truncate slds-text-heading_medium" title={title}>{title}</h2>
+                        </div>
+                    </div>
+                </header>
+                <template if:true={messageTypeString}>
+                    <div class="slds-popover__body slds-text-body_regular slds-text-align_left slds-text-color_default">
+                        <lightning-formatted-rich-text value={message}></lightning-formatted-rich-text>
+                    </div>
+                </template>
+                <template if:true={messageTypeList}>
+                    <div class="slds-popover__body slds-text-body_regular slds-text-align_left slds-text-color_default">
+                        <ul class="slds-list_dotted">
+                            <template for:each={message} for:item="messageItem">
+                                <li key={messageItem}>{messageItem}</li>
+                            </template>
+                        </ul>
+                    </div>
+                </template>
+            </section>
+        </template>
+    </button>
+</template>

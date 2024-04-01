@@ -1,0 +1,31 @@
+{
+  "recordTypeMap": {},
+  "RecordSetBundles": [
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__Function__c",
+            "url": "/services/data/v56.0/sobjects/copado__Function__c/a1h5p000008XDRvAAO"
+          },
+          "copado__ApexClass__c": "copado.RunJob",
+          "copado__API_Name__c": "echoTestAnmol",
+          "copado__Callback_Type__c": "ApexClass",
+          "copado__Image_Name__c": "copado-function-core:v1",
+          "copado__Options__c": "[ ]",
+          "copado__Parameters__c": "[ {\n  \"required\" : true,\n  \"name\" : \"property\",\n  \"defaultValue\" : \"{$Property.testAnmol}\"\n} ]",
+          "copado__Script__c": "echo $property\necho \"hello\"",
+          "copado__Timeout__c": 2000,
+          "copado__Type__c": "Custom",
+          "copado__Worker_Size__c": "S",
+          "Id": "a1h5p000008XDRvAAO",
+          "LastReferencedDate": "2023-01-11T02:39:16.000+0000",
+          "LastViewedDate": "2023-01-11T02:39:16.000+0000",
+          "Name": "echoTestAnmol"
+        }
+      ],
+      "ObjectType": "copado__Function__c"
+    }
+  ],
+  "blobsByUID": {}
+}

@@ -1,0 +1,24 @@
+.input-wrapper {
+    display: flex;
+}
+
+.input-wrapper .label {
+    width: 210px;
+}
+
+.input-wrapper lightning-helptext {
+    margin-left: 5px;
+}
+
+.input-wrapper .branch-input {
+    position: relative;
+    width: auto;
+    padding-left: 50px;
+    margin-top: -25px;
+}
+
+.input-wrapper .branch-input .select-branch-help-text {
+    position: absolute;
+    top: 0;
+    left: 165px;
+}

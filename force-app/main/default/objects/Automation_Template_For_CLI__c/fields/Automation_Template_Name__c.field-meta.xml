@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Automation_Template_Name__c</fullName>
+    <caseSensitive>true</caseSensitive>
+    <externalId>false</externalId>
+    <inlineHelpText>API name of Automation template</inlineHelpText>
+    <label>Automation Template Name</label>
+    <length>80</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

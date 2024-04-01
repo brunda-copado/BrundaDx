@@ -1,0 +1,78 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+    <c-related-list-delete-popup onrecorddeleted={handleRefresh}> </c-related-list-delete-popup>
+    <c-sprint-wall-edit-stories-popup onrefreshdata={handleRefresh}> </c-sprint-wall-edit-stories-popup>
+    <c-datatable-container
+        icon-name={iconName}
+        has-body="true"
+        has-footer={hasData}
+        enable-default-search={hasData}
+        rows={allRows}
+        columns={columns}
+        onsearch={handleApplySearch}
+        onclearsearch={handleClearSearch}
+    >
+        <span slot="title">{title}</span>
+        <span if:true={hasData} slot="titleInfo">{items}</span>
+
+        <span slot="actions">
+            <lightning-button label={label.VIEW_IN_KANBAN} title={label.VIEW_IN_KANBAN} class="slds-m-left_xx-small" onclick={handleViewInKanban}></lightning-button>
+            <lightning-button
+                label={label.EDIT_STORIES}
+                title={label.EDIT_STORIES}
+                class="slds-m-left_xx-small"
+                onclick={handleEditStories}
+            ></lightning-button>
+            <lightning-button label={label.NEW} title={label.NEW} class="slds-m-left_xx-small" onclick={handleNew}></lightning-button>
+        </span>
+
+        <span if:true={hasData} slot="tableActions">
+            <lightning-button-icon
+                icon-name="utility:refresh"
+                alternative-text={label.REFRESH}
+                title={label.REFRESH}
+                class="slds-m-left_xx-small"
+                onclick={handleRefresh}
+            ></lightning-button-icon>
+        </span>
+
+        <span slot="filter">
+            <c-filter-component
+                record-id={recordId}
+                fieldset={fieldset}
+                record-limit={recordLimit}
+                onsearch={handleApplySearch}
+                onclearsearch={handleClearSearch}
+                ondefaultfilter={handleDefaultFilter}
+            >
+            </c-filter-component>
+        </span>
+
+        <span slot="datatable">
+            <div style="height: calc(100vh - 510px)">
+                <lightning-datatable
+                    if:true={hasData}
+                    key-field={keyField}
+                    columns={columns}
+                    data={data}
+                    show-row-number-column
+                    enable-infinite-loading
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    draft-values={draftValues}
+                    onsort={handleSort}
+                    onrowselection={handleRowSelection}
+                    onrowaction={handleRowAction}
+                    onloadmore={handleLoadMoreData}
+                    onsave={handleSave}
+                >
+                </lightning-datatable>
+            </div>
+        </span>
+
+        <span slot="footer">
+            <a title={label.VIEW_ALL} class="slds-m-left_x-small" onclick={handleViewAll}>{label.VIEW_ALL}</a>
+        </span>
+    </c-datatable-container>
+</template>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Validation_Deployment_Status__c</fullName>
+    <description>Status of the latest validation Promotion for the User Story.</description>
+    <externalId>false</externalId>
+    <formula>IF(Last_Validation_Deployment__r.Date__c &lt; Latest_Commit_Date__c,
+IMAGE(&apos;/img/msg_icons/warning16.png&apos;,&apos;OutDated&apos;)+&quot; &quot;+&quot;Validation Outdated&quot;, 
+   IF(AND(NOT(ISBLANK(Last_Validation_Promotion__c)),
+                               (CONTAINS(TEXT(Last_Validation_Promotion__r.Status__c),&apos;error&apos;)) || ISPICKVAL(Last_Validation_Promotion__r.Status__c, &apos;Validation failed&apos;)),
+               IMAGE(&quot;/img/samples/flag_red.gif&quot;,&quot;failed&quot;)+&quot; &quot;+TEXT(Last_Validation_Promotion__r.Status__c),
+               IF(AND(NOT(ISBLANK(Last_Validation_Promotion__c)),
+                               (CONTAINS(TEXT(Last_Validation_Promotion__r.Status__c),&apos;Successfully&apos;)) || ISPICKVAL(Last_Validation_Promotion__r.Status__c, &apos;Validated&apos;)),
+                           IMAGE(&quot;/img/samples/flag_green.gif&quot;,&quot;completed&quot;)+&quot; &quot;+TEXT(Last_Validation_Promotion__r.Status__c),
+                           TEXT(Last_Validation_Promotion__r.Status__c)
+                       )
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Status of the latest validation Promotion for the User Story.</inlineHelpText>
+    <label>Last Validation Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,39 @@
+<aura:component controller="JobExecutionMonitorCtrl" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:attribute name="loading" type="Boolean" default="false" access="private"/>
+    <aura:attribute name="errorMessage" type="String" access="private"/>
+    <aura:attribute name="hasJobs" type="Boolean" default="false" access="private"/>
+    <aura:attribute name="jobExecutionIds" type="List" access="private"/>
+
+    <aura:attribute name="noJobTitle" type="String" access="global"/>
+    <aura:attribute name="noJobMessage" type="String" access="global"/>
+    <aura:attribute name="jobExecutionField" type="String" access="global"/>
+
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.errorMessage}">
+            <span class="slds-notify_alert slds-alert_error">{!v.errorMessage}</span>
+        </aura:if>
+
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="{!$Label.c.LOADING}" size="medium" variant="brand" />
+        </aura:if>
+
+        <aura:if isTrue="{!!v.hasJobs}">
+            <lightning:card>
+                <c:copadocoreIllustrationContainer
+                    imageName="error:not_available_in_lightning"
+                    message="{!v.noJobTitle}"
+                    slotMessage="{!v.noJobMessage}"
+                    size="small"
+                />
+            </lightning:card>
+            <aura:set attribute="else">
+                <aura:iteration items="{!v.jobExecutionIds}" var="jobId">
+                    <c:enhancedResultViewer recordId="{!jobId}" fieldApiName="Id"></c:enhancedResultViewer>
+                </aura:iteration>
+            </aura:set>
+        </aura:if>
+
+    </div>
+</aura:component>

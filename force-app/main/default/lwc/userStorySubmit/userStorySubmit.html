@@ -1,0 +1,99 @@
+<template>
+    <div class="slds-is-relative">
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">{submitUserStoryForPromotionLabel}</h2>
+            </div>
+        </header>
+
+        <div lwc:if={displaySpinner}>
+            <lightning-spinner alternative-text="loading" size="large" variant="brand"> </lightning-spinner>
+        </div>
+
+        <div class="slds-modal__content slds-is-relative slds-var-p-around_medium">
+            <template lwc:if={displayError}>
+                <div class="slds-m-around_small">
+                    <c-copado-scoped-notification message={userStoryCanNotBeSubmittedLabel} variant="error"></c-copado-scoped-notification>
+                </div>
+                <div class="slds-p-horizontal_x-large slds-p-vertical_x-large">
+                    <ul class="slds-list_dotted">
+                        <template for:each={userStoryData.errorList} for:item="error">
+                            <li key={error}>{error}</li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+
+            <template lwc:else>
+                <lightning-layout multiple-rows>
+                    <template lwc:if={reSubmitUserStoryWarning}>
+                        <lightning-layout-item size="12" class="slds-var-m-bottom_large">
+                            <c-copado-scoped-notification
+                                message={label.SUBMIT_USER_STORY_FOR_PROMOTION_WARNING}
+                                variant="warning"
+                            ></c-copado-scoped-notification>
+                        </lightning-layout-item>
+                    </template>
+                    <template lwc:else>
+                        <lightning-layout-item size="12" class="slds-var-m-bottom_large">
+                            <c-copado-scoped-notification variant="info" message={label.SUBMIT_USER_STORY}></c-copado-scoped-notification>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12" class="slds-var-m-bottom_large">
+                            <lightning-formatted-rich-text value={submitUserStoryDeployChangesText}></lightning-formatted-rich-text>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="1" class="slds-var-m-bottom_large"></lightning-layout-item>
+                        <lightning-layout-item size="10" class="slds-var-m-bottom_large">
+                            <div class="slds-path">
+                                <div class="slds-grid slds-path__track">
+                                    <div class="slds-grid slds-path__scroller-container">
+                                        <div class="slds-path__scroller">
+                                            <ul class="slds-path__nav" role="listbox">
+                                                <template for:each={pipelineStages} for:item="stage" for:index="index">
+                                                    <li key={stage.value} class={stage.class} role="presentation">
+                                                        <div class="slds-path__link">
+                                                            <span class="slds-path__title">{stage.label}</span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="1" class="slds-var-m-bottom_large"></lightning-layout-item>
+
+                        <lightning-layout-item size="12" class="slds-var-m-bottom_large">
+                            <lightning-input
+                                lwc:if={canSkipCDRules}
+                                type="checkbox"
+                                label={label.SUBMIT_USER_STORY_SKIP_CONTINUOUS_DELIVERY}
+                                onchange={handleChangeOmit}
+                            ></lightning-input>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+        </div>
+
+        <footer class="slds-modal__footer">
+            <template lwc:if={displayError}>
+                <lightning-button label={label.CLOSE} title={label.CLOSE} variant="neutral" onclick={handleCancel}></lightning-button>
+            </template>
+
+            <template lwc:else>
+                <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleCancel}></lightning-button>
+                <lightning-button
+                    class="slds-m-left_x-small"
+                    label={label.SUBMIT}
+                    title={label.SUBMIT}
+                    variant="brand"
+                    onclick={handleSubmit}
+                    disabled={submitButtonDisabled}
+                ></lightning-button>
+            </template>
+        </footer>
+    </div>
+</template>

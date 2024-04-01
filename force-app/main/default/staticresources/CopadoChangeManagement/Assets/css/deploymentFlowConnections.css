@@ -1,0 +1,158 @@
+.jsEnvBoxWrapper{ position:absolute !important; }
+
+.CIStepWrapper { display: none; }
+
+.CIStep {
+    border:2px solid #aaaaaa !important;
+    background-color: #cccccc !important;
+}
+
+.envBox {
+    margin-top:5px;
+    text-align:center;
+    border:2px solid #aa930a;
+    width:200px;
+    min-width:100px;
+    border-radius: .58em;
+    background-color: #aa930a;
+}
+.envBox h3 {
+    padding: .5em .25em;
+    display: block;
+    font-weight: bold;
+    vertical-align: baseline;
+    margin: 0;
+    overflow: hidden;
+}
+.envBox h3 a.title {
+    color: #fff;
+    float: left;
+    text-decoration: none;
+    cursor: move;
+}
+.envBox ol {
+    display: block;
+    list-style-type: decimal;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+.orgContent {
+    background: #eee;
+    padding: 4px 14px 8px 8px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -moz-border-radius: .33em;
+    border-radius: .33em;
+    border:1px solid #aa930a;
+}
+.clearfix {
+    zoom: 1;
+    cursor: move;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    zoom: 1;
+}
+.envBox ol.rowItems {
+    list-style: none;
+    -moz-border-radius: .33em;
+    border-radius: .33em;
+    background: #eee;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    cursor:pointer;
+    cursor:hand;
+}
+
+.backDeploy.statusBox {
+    opacity:0.9;
+    position:absolute !important;
+    margin-top:5px;
+    text-align:center;
+    border:2px solid #6793b8;
+    min-width:100px;
+    max-width:300px;
+    border-radius: .58em;
+    background-color: #6793b8;
+}
+.backDeploy.statusBox .btn{
+    width:100%;
+}
+.backDeploy.statusBox ul{
+    padding:0px;
+}
+.backDeploy.statusBox li{
+    list-style:none;
+}
+                                    .backDeploy.statusBox.error,
+                                    .backDeploy.content{
+                                        border-color:red;
+                                    }
+                                    .backDeploy.statusBox.success,
+                                    .backDeploy.content{
+                                        border-color:green;
+                                    }
+.backDeploy.content {
+    background: #eee;
+    padding: 4px 14px 8px 8px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -moz-border-radius: .33em;
+    border-radius: .33em;
+    border:1px solid;
+    border-color: inherit;
+}
+.backDeploy.statusBox table td {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.backDeploy.statusBox table {
+    border-collapse:collapse;
+}
+.backDeploy.statusBox table td:nth-child(2){
+    border-right:1px solid #333;
+}
+.backDeploy.content table{
+    text-align:left;
+}
+.backDeploy.inSync,
+.backDeploy.inProgress,
+.backDeploy.content .tdIcons{
+    text-align:center;
+}
+
+
+
+                                .backDeploy.floaterTable{
+                                    border-collapse: collapse;
+                                    border-spacing: 0px;
+                                    width: 100%;
+                                    display: table;
+                                    text-align: left;
+                                }
+                                .backDeploy.floaterTable tr td{
+                                    text-align: left;
+                                }
+                                .backDeploy.floaterTable .col1{
+                                    width: 20px;
+                                }
+                                .backDeploy.floaterTable img{
+                                    width: 16px;
+                                    height: 16px;
+                                }
+table.diff{
+    width: 100%;
+}
+
+.backDeploy.content table a{
+    cursor:pointer;
+    cursor:hand;
+}

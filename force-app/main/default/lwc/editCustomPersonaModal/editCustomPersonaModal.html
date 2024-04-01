@@ -1,0 +1,44 @@
+<template>
+    <c-cds-modal icon-name="utility:user" has-overflow size="small" onmodalclose={handleCancelModal}>
+        <span slot="title">{label.EDIT_CUSTOM_PERSONA_DESCRIPTION}</span>
+        <div slot="modalContent" class="edit-persona-modal-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item lwc:if={showError} size="12">
+                    <div class="slds-p-bottom_medium">
+                        <c-cds-alert message={errorMessage} variant="error"> </c-cds-alert>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="cds-form-component">
+                        <lightning-input class="cds-input" name="name" type="text" label={label.NAME} value={personaName} disabled> </lightning-input>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <div class="cds-form-component">
+                        <lightning-textarea
+                            class="cds-textarea"
+                            field-name="description"
+                            value={description}
+                            label={label.DESCRIPTION}
+                            onchange={handleChange}></lightning-textarea>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <span slot="footer">
+            <lightning-button
+                class="cds-button"
+                label={label.CANCEL}
+                title={label.CANCEL}
+                variant="neutral"
+                onclick={handleCancelModal}></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small cds-button"
+                label={label.SAVE}
+                title={label.SAVE}
+                variant="brand"
+                onclick={handleSaveModal}></lightning-button>
+        </span>
+    </c-cds-modal>
+</template>

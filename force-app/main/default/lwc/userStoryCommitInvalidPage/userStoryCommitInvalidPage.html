@@ -1,0 +1,40 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_large slds-align_absolute-center invalid-page">
+            <lightning-layout multiple-rows class="error-container">
+                <template if:false={validEntryPoint}>
+                    <lightning-layout-item size="12">
+                        <c-copadocore-illustration
+                            name="error:walkthrough_not_available"
+                            size="large"
+                            message={label.COMMIT_CHANGES_PAGE_NOT_ACCESSIBLE_TITLE}
+                        >
+                            <div slot="body">{label.COMMIT_CHANGES_PAGE_NOT_ACCESSIBLE_BODY}</div>
+                        </c-copadocore-illustration>
+                    </lightning-layout-item>
+                </template>
+                <template if:true={validEntryPoint}>
+                    <template if:false={validCommitRequirements}>
+                        <lightning-layout-item size="12" class="slds-var-m-bottom_small">
+                            <c-copado-alert-place-holder communication-id={communicationId}></c-copado-alert-place-holder>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <c-copadocore-illustration name="error:walkthrough_not_available" size="large" message={label.PAGE_NOT_ACCESSIBLE}>
+                                <div slot="body">
+                                    <div>{label.COMMIT_CHANGES_PAGE_WITH_ERRORS}</div>
+                                    <div class="slds-var-m-top_large">
+                                        <lightning-button
+                                            variant="brand"
+                                            label={label.BACK_TO_USER_STORY}
+                                            onclick={handleClickBack}
+                                        ></lightning-button>
+                                    </div>
+                                </div>
+                            </c-copadocore-illustration>
+                        </lightning-layout-item>
+                    </template>
+                </template>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

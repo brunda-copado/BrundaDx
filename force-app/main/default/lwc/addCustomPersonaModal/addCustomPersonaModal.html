@@ -1,0 +1,70 @@
+<template>
+    <c-cds-modal icon-name="utility:adduser" has-overflow size="small" onmodalclose={handleCancelModal}>
+        <span slot="title">{label.NEW_CUSTOM_PERSONA_TITLE}</span>
+        <span slot="tagline">
+            <lightning-formatted-rich-text value={label.NEW_CUSTOM_PERSONA_SUBTITLE}></lightning-formatted-rich-text>
+        </span>
+        <div slot="modalContent" class="add-persona-modal-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item lwc:if={showError} size="12">
+                    <div class="slds-p-bottom_medium">
+                        <c-cds-alert message={errorMessage} variant="error"> </c-cds-alert>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="cds-form-component">
+                        <lightning-input class="cds-input" name="name" type="text" label={label.NAME} value={name} onchange={handleChange} max-length="80" required>
+                        </lightning-input>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="cds-form-component">
+                        <div class="label-with-helptext">
+                            <label class="slds-form-element__label slds-no-flex">
+                                <abbr class="slds-required" title="required">*</abbr>{label.COPY_CONFIGURATION}</label
+                            >
+                            <lightning-helptext icon-name="utility:info_alt" content={label.COPY_CONFIGURATION_HELPTEXT}></lightning-helptext>
+                        </div>
+                        <lightning-combobox
+                            class="cds-combobox"
+                            name="configuration"
+                            variant="label-hidden"
+                            options={configurationOptions}
+                            dropdown-alignment="auto"
+                            onchange={handleChange}
+                            value={copyFrom}
+                            required>
+                        </lightning-combobox>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <div class="cds-form-component">
+                        <lightning-textarea
+                            class="cds-textarea"
+                            name="description"
+                            label={label.DESCRIPTION}
+                            value={description}
+                            onchange={handleChange}
+                            max-length="255" ></lightning-textarea>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <span slot="footer">
+            <lightning-button
+                class="cds-button"
+                label={label.CANCEL}
+                title={label.CANCEL}
+                variant="neutral"
+                onclick={handleCancelModal}></lightning-button>
+            <lightning-button
+                class="slds-var-m-left_x-small cds-button"
+                label={label.SAVE}
+                title={label.SAVE}
+                variant="brand"
+                disabled={saveDisabled}
+                onclick={handleSaveModal}></lightning-button>
+        </span>
+    </c-cds-modal>
+</template>

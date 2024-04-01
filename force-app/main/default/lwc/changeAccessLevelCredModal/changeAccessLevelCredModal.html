@@ -1,0 +1,40 @@
+<template>
+    <c-cds-modal size="x-small">
+        <span slot="title">{label.Change_Access_Level}</span>
+        <div slot="modalContent" class="change-access-content">
+            <div class="persona-access-radio">
+                <div class="label-with-helptext">
+                    <label class="slds-form-element__label slds-no-flex">{label.Access_Level_Input}</label>
+                    <lightning-helptext icon-name="utility:info_alt" content={label.Access_Level_Input_Helptext}> </lightning-helptext>
+                </div>
+                <lightning-radio-group
+                    class="cds-radio-group"
+                    name="accessLevelType"
+                    variant="label-hidden"
+                    options={accessLevelOptions}
+                    required
+                    type="radio"
+                    value={accessLevel}
+                    onchange={handleChangeAccessLevel}
+                >
+                </lightning-radio-group>
+            </div>
+        </div>
+        <span slot="footer">
+            <lightning-button
+                class="cds-button"
+                label={label.Cancel}
+                title={label.Cancel}
+                variant="neutral"
+                onclick={handleClickCancel}
+            ></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small cds-button"
+                label={label.Save}
+                title={label.Save}
+                variant="brand"
+                onclick={handleClickChangeAccessLevel}
+            ></lightning-button>
+        </span>
+    </c-cds-modal>
+</template>

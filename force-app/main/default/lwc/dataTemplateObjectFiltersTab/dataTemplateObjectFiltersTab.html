@@ -1,0 +1,11 @@
+<template>
+    <c-data-template-tab-container record-id={recordId} refresh-detail={refreshDetail} oncredentialcheck={handleCredentialCheck}>
+        <div slot="body">
+            <c-data-template-object-filters
+                record-id={recordId}
+                valid-credential={validCredential}
+                onrefreshdetail={handleRefreshDetail}
+            ></c-data-template-object-filters>
+        </div>
+    </c-data-template-tab-container>
+</template>

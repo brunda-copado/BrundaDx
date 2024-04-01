@@ -1,0 +1,145 @@
+{
+    "recordTypeMap": {},
+    "RecordSetBundles": [
+      {
+        "Records": [
+          {
+            "attributes": {
+              "type": "copado__JobTemplate__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobTemplate__c/a1r09000001HdKWAA0"
+            },
+            "copado__ApiName__c": "MCMockCommit",
+            "Id": "a1r09000001HdKWAA0",
+            "LastReferencedDate": "2022-05-09T12:43:52.000+0000",
+            "LastViewedDate": "2022-05-09T12:43:52.000+0000",
+            "Name": "[MC Mock] Commit",
+            "copado__Type__c": "Custom",
+            "copado__Version__c": 10
+          },
+          {
+            "attributes": {
+              "type": "copado__JobTemplate__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobTemplate__c/a1r09000001HdKbAAK"
+            },
+            "copado__ApiName__c": "MCMockPromotion",
+            "Id": "a1r09000001HdKbAAK",
+            "LastReferencedDate": "2022-05-09T12:44:40.000+0000",
+            "LastViewedDate": "2022-05-09T12:44:40.000+0000",
+            "Name": "[MC Mock] Promotion",
+            "copado__Type__c": "Custom",
+            "copado__Version__c": 1
+          },
+          {
+            "attributes": {
+              "type": "copado__JobTemplate__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobTemplate__c/a1r09000001HdKgAAK"
+            },
+            "copado__ApiName__c": "MCMockDeployment",
+            "Id": "a1r09000001HdKgAAK",
+            "LastReferencedDate": "2022-05-09T12:45:27.000+0000",
+            "LastViewedDate": "2022-05-09T12:45:27.000+0000",
+            "Name": "[MC Mock] Deployment",
+            "copado__Type__c": "Custom",
+            "copado__Version__c": 1
+          },
+          {
+            "attributes": {
+              "type": "copado__JobTemplate__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobTemplate__c/a0t09000007JGzLAAW"
+            },
+            "copado__ApiName__c": "MCMockTestToolTemplate",
+            "Id": "a0t09000007JGzLAAW",
+            "LastReferencedDate": "2022-05-11T09:37:57.000+0000",
+            "LastViewedDate": "2022-05-11T09:37:57.000+0000",
+            "Name": "[MC Mock] Test Tool Template",
+            "copado__Type__c": "Custom",
+            "copado__Version__c": 1
+          }
+        ],
+        "ObjectType": "copado__JobTemplate__c"
+      },
+      {
+        "Records": [
+          {
+            "attributes": {
+              "type": "copado__JobStep__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobStep__c/a1q090000001ewlAAA"
+            },
+            "copado__ApiName__c": "MCMockCommitManualTask",
+            "copado__ConfigJson__c": "{\"instructions\":\"Manual task to emulate a commit process\",\"parameters\":[{\"name\":\"assigneeId\",\"value\":\"0055p00000AafzX\"},{\"name\":\"assigneeName\",\"value\":\"Manuel Moya Ferrer\"}]}",
+            "copado__CustomType__c": "Manual Task",
+            "Id": "a1q090000001ewlAAA",
+            "copado__JobTemplate__c": "a1r09000001HdKWAA0",
+            "Name": "[MC Mock] Manual Task",
+            "copado__Order__c": 1,
+            "copado__Type__c": "Manual"
+          },
+          {
+            "attributes": {
+              "type": "copado__JobStep__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobStep__c/a1q090000001ewmAAA"
+            },
+            "copado__ApiName__c": "MCMockPromotionManualTask",
+            "copado__ConfigJson__c": "{\"instructions\":\"Manual task to emulate a promotion\",\"parameters\":[{\"name\":\"assigneeId\",\"value\":\"0055p00000AafzX\"},{\"name\":\"assigneeName\",\"value\":\"Manuel Moya Ferrer\"}]}",
+            "copado__CustomType__c": "Manual Task",
+            "Id": "a1q090000001ewmAAA",
+            "copado__JobTemplate__c": "a1r09000001HdKbAAK",
+            "Name": "[MC Mock] Manual Task",
+            "copado__Order__c": 1,
+            "copado__Type__c": "Manual"
+          },
+          {
+            "attributes": {
+              "type": "copado__JobStep__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobStep__c/a1q090000001ewqAAA"
+            },
+            "copado__ApiName__c": "MCMockDeploymentManualTask",
+            "copado__ConfigJson__c": "{\"instructions\":\"Manual task to emulate a deployment\",\"parameters\":[{\"name\":\"assigneeId\",\"value\":\"0055p00000AafzX\"},{\"name\":\"assigneeName\",\"value\":\"Manuel Moya Ferrer\"}]}",
+            "copado__CustomType__c": "Manual Task",
+            "Id": "a1q090000001ewqAAA",
+            "copado__JobTemplate__c": "a1r09000001HdKgAAK",
+            "Name": "[MC Mock] Manual Task",
+            "copado__Order__c": 1,
+            "copado__Type__c": "Manual"
+          },
+          {
+            "attributes": {
+              "type": "copado__JobStep__c",
+              "url": "/services/data/v54.0/sobjects/copado__JobStep__c/a0s09000001FIIJAA4"
+            },
+            "copado__ApiName__c": "MCMockTestToolExtensionStep",
+            "copado__ConfigJson__c": "{\"flowName\":\"MCMockTestToolExtensionExecution\",\"parameters\":[{\"name\":\"resultIds\",\"value\":\"{$Context.JobExecution__r.DataJson.resultIds}\"},{\"name\":\"finalResultStatus\",\"value\":\"Success\"},{\"name\":\"consolidatedResultId\",\"value\":\"{$Context.JobExecution__r.DataJson.resultId}\"}]}",
+            "copado__CustomType__c": "Salesforce Flow",
+            "Id": "a0s09000001FIIJAA4",
+            "copado__JobTemplate__c": "a0t09000007JGzLAAW",
+            "Name": "[MC Mock] Test Execution Step",
+            "copado__Order__c": 1,
+            "copado__Type__c": "Flow"
+          }
+        ],
+        "ObjectType": "copado__JobStep__c"
+      },
+      {
+        "Records": [
+          {
+            "attributes": {
+              "type": "copado__ExtensionConfiguration__c",
+              "url": "/services/data/v54.0/sobjects/copado__ExtensionConfiguration__c/a1t09000001UcDNAA0"
+            },
+            "copado__AcceptanceCriteria__c": "{}",
+            "copado__Active__c": true,
+            "copado__ExtensionApplication__c": "Test",
+            "copado__ExtensionTool__c": "MC Mock Tool",
+            "Id": "a1t09000001UcDNAA0",
+            "LastReferencedDate": "2022-05-10T07:11:01.000+0000",
+            "LastViewedDate": "2022-05-10T07:11:01.000+0000",
+            "Name": "Mock MC Test Tool",
+            "copado__Status__c": "Inactive",
+            "copado__TestType__c": "Mock MC Test Type"
+          }
+        ],
+        "ObjectType": "copado__ExtensionConfiguration__c"
+      }
+    ],
+    "blobsByUID": {}
+  }

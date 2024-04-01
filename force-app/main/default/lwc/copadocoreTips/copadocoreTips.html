@@ -1,0 +1,14 @@
+<template>
+    <div class="copado-tips">
+        <p>{title}</p>
+        <ol>
+            <template for:each={tips} for:item="tip">
+                <template if:true={tip}>
+                    <li key={tip}>
+                        <lightning-formatted-rich-text value={tip}></lightning-formatted-rich-text>
+                    </li>
+                </template>
+            </template>
+        </ol>
+    </div>
+</template>

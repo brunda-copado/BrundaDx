@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Execution</fullName>
+    <fields>Name</fields>
+    <fields>Status__c</fields>
+    <fields>Template__c</fields>
+    <fields>Context__c</fields>
+    <label>Job Execution</label>
+</CompactLayout>

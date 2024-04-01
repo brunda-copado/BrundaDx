@@ -1,0 +1,147 @@
+<template>
+    <article class="slds-card slds-card_boundary">
+        <div data-id="CriteriaManagerAccordion" class="slds-section slds-is-open slds-card__header">
+            <h3 class="slds-section__title slds-var-p-bottom_medium">
+                <button class="slds-button slds-section__title-action" onclick={changeExpandableSection}>
+                    <lightning-icon icon-name={switchIconName} size="x-small" alternative-text="switch"></lightning-icon>
+                    <span class="slds-section__title-action slds-truncate" title={label.CCH_CRITERIA_SECTION_TITLE}
+                        >{label.CCH_CRITERIA_SECTION_TITLE}</span
+                    >
+                </button>
+            </h3>
+
+            <div if:true={hasPermissions} class="slds-section__content section__content slds-p-horizontal_large slds-is-relative">
+                <lightning-record-edit-form object-api-name="Compliance_Rule__c" record-id={recordId}>
+                    <lightning-spinner if:true={isLoading} variant="brand" alternative-text="Loading" size="large" class="slds-is-absolute">
+                    </lightning-spinner>
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="8">
+                            <lightning-combobox
+                                label={label.CCH_METADATA_TYPE_PARAMETER}
+                                value={metadataTypeSelected}
+                                options={metadataTypes}
+                                onchange={handleMetadataTypeChange}
+                                placeholder=""
+                                read-only={isMetadataSelected}
+                                required="true"
+                                class="slds-show_inline-block slds-size_2-of-3"
+                            ></lightning-combobox>
+                            <lightning-button
+                                label={label.CCH_RESET}
+                                onclick={resetData}
+                                class="slds-show_inline-block slds-var-p-left_medium"
+                            ></lightning-button>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="8" class="slds-var-p-top_medium">
+                            <table class="slds-table">
+                                <thead>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>{label.CCH_NODE_PARAMETER}</td>
+                                        <td>{label.CCH_FIELD_PARAMETER}</td>
+                                        <td>{label.CCH_OPERATOR_PARAMETER}</td>
+                                        <td>{label.CCH_VALUE_PARAMETER}</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </thead>
+                                <template for:each={criterias} for:item="criteria">
+                                    <tr key={criteria.Id} data-criteria-id={criteria.Id}>
+                                        <td>
+                                            <p class="criteria-id-column">{criteria.Id}</p>
+                                        </td>
+                                        <td>
+                                            <lightning-combobox
+                                                options={nodeList}
+                                                variant="label-hidden"
+                                                value={criteria.node}
+                                                data-criteria-id={criteria.Id}
+                                                onchange={handleNodeChange}
+                                            ></lightning-combobox>
+                                        </td>
+                                        <td>
+                                            <lightning-combobox
+                                                options={criteria.fieldList}
+                                                variant="label-hidden"
+                                                value={criteria.field}
+                                                data-criteria-id={criteria.Id}
+                                                onchange={handleFieldChange}
+                                            ></lightning-combobox>
+                                        </td>
+                                        <td>
+                                            <lightning-combobox
+                                                options={criteria.operatorList}
+                                                variant="label-hidden"
+                                                value={criteria.operator}
+                                                data-criteria-id={criteria.Id}
+                                                onchange={handleOperatorChange}
+                                            ></lightning-combobox>
+                                        </td>
+                                        <td>
+                                            <lightning-input
+                                                if:false={criteria.isBoolean}
+                                                type={criteria.valueBoxType}
+                                                variant="label-hidden"
+                                                value={criteria.value}
+                                                data-criteria-id={criteria.Id}
+                                                onchange={handleValueChange}
+                                            ></lightning-input>
+
+                                            <lightning-input
+                                                if:true={criteria.isBoolean}
+                                                type="checkbox"
+                                                variant="label-hidden"
+                                                value={criteria.value}
+                                                checked={criteria.valueCheckboxValue}
+                                                data-criteria-id={criteria.Id}
+                                                onchange={handleValueChange}
+                                                onclick={preventClick}
+                                            ></lightning-input>
+                                        </td>
+                                        <td>
+                                            <lightning-button-icon
+                                                if:true={canDeleteRows}
+                                                icon-name="utility:delete"
+                                                alternative-text="Delete Row"
+                                                data-criteria-id={criteria.Id}
+                                                onclick={removeCriteria}
+                                            ></lightning-button-icon>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </table>
+
+                            <div class="slds-var-p-top_medium slds-var-p-bottom_medium">
+                                <lightning-button label={label.CCH_NEW_ROW} icon-name="utility:add" onclick={addEmptyCriteria}></lightning-button>
+                            </div>
+
+                            <div class="slds-form-element slds-var-p-bottom_medium">
+                                <label class="slds-form-element__label"><span>{label.CCH_CRITERIA_LOGIC}</span></label>
+                                <div class="slds-form-element__control">
+                                    <input
+                                        class="slds-input slds-text-body_regular"
+                                        type="text"
+                                        value={criteriaLogic}
+                                        onkeyup={handleCriteriaLogicChange}
+                                    />
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-record-edit-form>
+            </div>
+            <div if:false={hasPermissions} class="slds-p-horizontal_large">{label.CCH_SCOPE_HIDDEN_MESSAGE}</div>
+        </div>
+        <div class="slds-docked-form-footer">
+            <div class="slds-var-p-top_x-small slds-var-p-bottom_x-small">
+                <c-copadocore-error-popover
+                    if:true={saveError.isError}
+                    class="slds-show_inline slds-p-right_x-small"
+                    message={saveError.message}
+                ></c-copadocore-error-popover>
+                <button type="button" onclick={toReadMode} class="slds-button slds-button_neutral">{label.CANCEL}</button>
+                <button type="button" onclick={save} class="slds-button slds-button_brand">{label.SAVE}</button>
+            </div>
+        </div>
+    </article>
+</template>

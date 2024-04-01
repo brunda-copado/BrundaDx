@@ -1,0 +1,28 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+    <lightning-datatable if:true={isClassicBundle} key-field={keyField} columns={columns} data={data} hide-checkbox-column> </lightning-datatable>
+    <c-datatable-container if:false={isClassicBundle} icon-name={iconName} has-body rows={rows} columns={columns}>
+        <span slot="title">{title}</span>
+        <span if:true={hasData} slot="titleInfo">{items}</span>
+
+        <span slot="datatable">
+            <div style="height: calc(100vh - 510px)">
+                <lightning-datatable
+                    if:true={hasData}
+                    key-field={keyField}
+                    columns={columns}
+                    data={data}
+                    hide-checkbox-column
+                    enable-infinite-loading
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}
+                    onloadmore={handleLoadMoreData}
+                >
+                </lightning-datatable>
+            </div>
+        </span>
+    </c-datatable-container>
+</template>

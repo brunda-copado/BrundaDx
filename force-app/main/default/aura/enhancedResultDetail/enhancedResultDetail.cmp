@@ -1,0 +1,239 @@
+<aura:component controller="EnhancedResultDetailCtrl" implements="force:hasRecordId" access="global">
+    <aura:handler name="change" value="{!v.recordId}" action="{!c.handleRecordIdChange}" />
+
+    <aura:method name="show" action="{!c.show}">
+        <aura:attribute name="recordId" type="String" />
+        <aura:attribute name="isConsolidated" type="Boolean" default="false" />
+    </aura:method>
+
+    <aura:method name="close" action="{!c.handleClose}"></aura:method>
+
+    <aura:attribute name="showResultModal" type="Boolean" default="false" access="private" />
+    <aura:attribute name="isConsolidatedResult" type="Boolean" default="false" access="private" />
+    <aura:attribute name="loading" type="Boolean" default="false" access="private" />
+    <aura:attribute name="errorMessage" type="String" access="private" />
+
+    <aura:attribute name="resultStatus" type="String" access="private" />
+    <aura:attribute name="viewResultLabel" type="String" access="private" />
+    <aura:attribute name="resultUrl" type="String" access="private" />
+
+    <aura:attribute name="progressStatus" type="String" access="private" />
+    <aura:attribute name="resultExternalLink" type="String" access="private" />
+    <aura:attribute name="resultErrorMessage" type="String" access="private" />
+    <aura:attribute name="resultErrorCode" type="String" access="private" />
+    <aura:attribute name="showErrorFields" type="Boolean" default="false" access="private" />
+
+    <aura:attribute name="columns" type="List" access="private" />
+    <aura:attribute name="subJobSteps" type="Object[]" access="private" />
+    <aura:attribute name="hasSubJob" type="Boolean" default="false" access="private" />
+    <aura:attribute name="stepsTabHeader" type="String" access="private" />
+    <aura:attribute name="stepCount" type="Integer" access="private" />
+
+    <aura:attribute name="bannerClass" type="String" access="private" />
+    <aura:attribute name="iconClass" type="String" access="private" />
+    <aura:attribute name="iconName" type="String" access="private" />
+
+    <aura:attribute name="hasExecutionOutcome" type="Boolean" default="false" access="private" />
+    <aura:attribute name="imageName" type="String" access="private" default="custom:no_events" />
+    <aura:attribute name="illustrationTitle" type="String" access="private" default="{!$Label.c.InProgressIllustrationTitle}" />
+    <aura:attribute name="illustrationBody" type="String" access="private" default="{!$Label.c.InProgressIllustrationBody}" />
+
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="sortDirection" type="String" />
+
+    <aura:if isTrue="{!v.showResultModal}">
+        <c:resultViewerPublishMessage recordId="{!v.recordId}"></c:resultViewerPublishMessage>
+
+        <aura:if isTrue="{!v.errorMessage}">
+            <c:copadoAlert message="{!v.errorMessage}" variant="error" />
+        </aura:if>
+        <aura:if isTrue="{!v.recordId}">
+            <aura:if isTrue="{!v.loading}">
+                <lightning:spinner alternativeText="{!$Label.c.LOADING}" size="medium" variant="brand" />
+            </aura:if>
+
+            <div class="{!v.bannerClass}" role="status">
+                <div class="slds-media__figure">
+                    <lightning:icon class="{!v.iconClass}" iconName="{!v.iconName}" size="small"></lightning:icon>
+                </div>
+
+                <div class="slds-media__body">
+                    <span>{!$Label.c.STATUS}: {!v.resultStatus}</span>
+                    <a href="{!v.resultUrl}">
+                        <span class="slds-float_right clickable">{!v.viewResultLabel}</span>
+                    </a>
+                </div>
+            </div>
+
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem padding="around-small" size="6">
+                    <div class="slds-form-element_readonly">
+                        <label class="slds-form-element__label">{!$Label.c.Progress_Status}</label>
+                        <div class="slds-form-element__icon" style="top: -5px">
+                            <lightning:helptext content="{!$Label.c.ProgressStatusHelp}" iconName="utility:info" alternativeText="Info" />
+                        </div>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{!v.progressStatus}</div>
+                        </div>
+                    </div>
+                </lightning:layoutItem>
+
+                <lightning:layoutItem padding="around-small" size="6">
+                    <div class="slds-form-element_readonly">
+                        <label class="slds-form-element__label">{!$Label.c.External_Result_Link}</label>
+                        <div class="slds-form-element__icon" style="top: -5px">
+                            <lightning:helptext content="{!$Label.c.ExternalLinkHelp}" iconName="utility:info" alternativeText="Info" />
+                        </div>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <a href="{!v.resultExternalLink}" target="_blank">{!v.resultExternalLink}</a>
+                            </div>
+                        </div>
+                    </div>
+                </lightning:layoutItem>
+
+                <aura:if isTrue="{!v.showErrorFields}">
+                    <lightning:layoutItem padding="around-small" size="6">
+                        <div class="slds-form-element_readonly">
+                            <label class="slds-form-element__label">{!$Label.c.ResultErrorMessage}</label>
+                            <div class="slds-form-element__icon" style="top: -5px">
+                                <lightning:helptext content="{!$Label.c.ErrorMessageHelp}" iconName="utility:info" alternativeText="Info" />
+                            </div>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{!v.resultErrorMessage}</div>
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+
+                    <lightning:layoutItem padding="around-small" size="6">
+                        <div class="slds-form-element_readonly">
+                            <label class="slds-form-element__label">{!$Label.c.ErrorCode}</label>
+                            <div class="slds-form-element__icon" style="top: -5px">
+                                <lightning:helptext content="{!$Label.c.ErrorCodeHelp}" iconName="utility:info" alternativeText="Info" />
+                            </div>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{!v.resultErrorCode}</div>
+                            </div>
+                        </div>
+                    </lightning:layoutItem>
+                </aura:if>
+            </lightning:layout>
+
+            <aura:if isTrue="{!!v.hasSubJob}">
+                <lightning:tabset variant="scoped">
+                    <lightning:tab label="{!$Label.c.ExecutionOutcome}" class="tab-property">
+                        <c:dynamicResultViewer recordId="{!v.recordId}" showContent="{!c.setHasContentForResultViewer}" />
+                        <c:dynamicUISectionContainer
+                            recordId="{!v.recordId}"
+                            locationId="AQF.Result.Viewer"
+                            requiredInformation="Test Tool"
+                            showContent="{!c.setHasContentForDynamicUISectionContainer}"
+                        />
+
+                        <aura:if isTrue="{!!v.hasExecutionOutcome}">
+                            <div class="slds-var-p-around_small">
+                                <c:copadocoreIllustrationContainer
+                                    imageName="{!v.imageName}"
+                                    message="{!v.illustrationTitle}"
+                                    slotMessage="{!v.illustrationBody}"
+                                    size="small"
+                                />
+                            </div>
+                        </aura:if>
+                    </lightning:tab>
+
+                    <lightning:tab label="{!$Label.c.Logs}" class="tab-property">
+                        <c:resultLogVisualizer recordId="{!v.recordId}"></c:resultLogVisualizer>
+                    </lightning:tab>
+                </lightning:tabset>
+
+                <aura:set attribute="else">
+                    <lightning:tabset variant="scoped">
+                        <lightning:tab label="{!$Label.c.ExecutionOutcome}" class="tab-property">
+                            <c:dynamicResultViewer recordId="{!v.recordId}" showContent="{!c.setHasContentForResultViewer}" />
+                            <c:dynamicUISectionContainer
+                                recordId="{!v.recordId}"
+                                locationId="AQF.Result.Viewer"
+                                requiredInformation="Test Tool"
+                                showContent="{!c.setHasContentForDynamicUISectionContainer}"
+                            />
+
+                            <aura:if isTrue="{!!v.hasExecutionOutcome}">
+                                <div class="slds-var-p-around_small">
+                                    <c:copadocoreIllustrationContainer
+                                        imageName="{!v.imageName}"
+                                        message="{!v.illustrationTitle}"
+                                        slotMessage="{!v.illustrationBody}"
+                                        size="small"
+                                    />
+                                </div>
+                            </aura:if>
+                        </lightning:tab>
+
+                        <lightning:tab label="{!$Label.c.Logs}" class="tab-property">
+                            <c:resultLogVisualizer recordId="{!v.recordId}"></c:resultLogVisualizer>
+                        </lightning:tab>
+
+                        <lightning:tab label="{!v.stepsTabHeader}" class="tab-property">
+                            <aura:if isTrue="{!v.subJobSteps.length}">
+                                <div class="datatable-container">
+                                    <lightning:card variant="Narrow">
+                                        <div
+                                            class="slds-theme_shade slds-border_bottom slds-var-p-top_small slds-var-p-around_small slds-var-p-right_small"
+                                        >
+                                            <div class="slds-grid">
+                                                <div
+                                                    class="slds-col slds-media slds-media_center slds-has-flexi-truncate slds-var-p-left_small slds-var-p-right_small"
+                                                >
+                                                    <div if:true="standard:custom" class="slds-media__figure">
+                                                        <lightning:icon iconName="standard:custom" size="medium"></lightning:icon>
+                                                    </div>
+                                                    <div class="slds-media__body">
+                                                        <h2 class="slds-card__header-title">{!$Label.c.Job_Steps} ({!v.stepCount})</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col align-right">
+                                                    <div class="slds-var-p-bottom_xx-small">
+                                                        <lightning:buttonIcon
+                                                            iconName="utility:refresh"
+                                                            alternativeText="{!$Label.c.REFRESH}"
+                                                            class="slds-var-m-left_xx-small slds-float_right"
+                                                            onclick="{!c.handleRefresh}"
+                                                            variant="border-filled"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <lightning:datatable
+                                            data="{!v.subJobSteps}"
+                                            columns="{!v.columns}"
+                                            keyField="stepUrl"
+                                            hideCheckboxColumn="true"
+                                            onsort="{!c.handleSort}"
+                                            sortedBy="{!v.sortedBy}"
+                                            sortedDirection="{!v.sortDirection}"
+                                            showRowNumberColumn="true"
+                                            class="slds-scrollable_y"
+                                            wrapTextMaxLines="2"
+                                        />
+                                    </lightning:card>
+                                </div>
+                                <aura:set attribute="else">
+                                    <div class="slds-var-p-around_small">
+                                        <c:copadocoreIllustrationContainer
+                                            imageName="error:walkthrough_not_available"
+                                            message="{!$Label.c.QualityStepNotExecuted}"
+                                            slotMessage="{!v.resultErrorMessage}"
+                                            size="small"
+                                        />
+                                    </div>
+                                </aura:set>
+                            </aura:if>
+                        </lightning:tab>
+                    </lightning:tabset>
+                </aura:set>
+            </aura:if>
+        </aura:if>
+    </aura:if>
+</aura:component>

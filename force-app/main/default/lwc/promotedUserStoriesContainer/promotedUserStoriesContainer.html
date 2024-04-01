@@ -1,0 +1,60 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner lwc:if={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+        <c-promoted-user-stories-removal-modal onpromoteduserstoriesremoved={handleRefresh}> </c-promoted-user-stories-removal-modal>
+        <c-promoted-user-stories-add-user-stories-modal promotion-id={recordId} onadduserstories={handleAddUserStories}>
+        </c-promoted-user-stories-add-user-stories-modal>
+
+        <div data-id="datatable-container">
+            <c-datatable-container
+                icon-name="standard:goals"
+                has-body="true"
+                rows={allRows}
+                columns={columns}
+                enable-default-search
+                onsearch={handleApplySearch}
+                onclearsearch={handleClearSearch}
+            >
+                <span slot="title">{title}</span>
+                <span slot="titleInfo">{subtitle}</span>
+
+                <span slot="actions">
+                    <lightning-button-group>
+                        <lightning-button
+                            disabled={removeSelectedDisabled}
+                            label={label.Remove_User_Stories}
+                            title={label.Remove_User_Stories}
+                            onclick={handleRemovePromotedUserStories}
+                        ></lightning-button>
+                        <lightning-button
+                            label={label.Add_User_Stories}
+                            title={label.Add_User_Stories}
+                            onclick={handleAddPromotedUserStories}
+                        ></lightning-button>
+                    </lightning-button-group>
+                </span>
+
+                <span slot="datatable">
+                    <div style="height: calc(100vh - 500px)">
+                        <lightning-datatable
+                            lwc:if={hasData}
+                            key-field="Id"
+                            data={data}
+                            columns={columns}
+                            enable-infinite-loading
+                            show-row-number-column
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onrowselection={handleRowSelection}
+                            onsort={handleSort}
+                            onloadmore={handleLoadMoreData}
+                        ></lightning-datatable>
+                    </div>
+                </span>
+            </c-datatable-container>
+        </div>
+    </div>
+</template>

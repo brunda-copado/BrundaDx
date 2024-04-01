@@ -1,0 +1,8 @@
+.commit-table .slds-scrollable_y {
+	height: 100%;
+}
+
+.commit-table .slds-docked-form-footer {
+    position: fixed !important;
+    background: rgb(243, 243, 243, 0.7);
+}

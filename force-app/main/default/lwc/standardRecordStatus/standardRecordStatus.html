@@ -1,0 +1,38 @@
+<template>
+    <lightning-spinner if:true={isLoading} alternative-text={label.Loading} size="large"></lightning-spinner>
+
+    <lightning-card if:true={hasStandardResources}>
+        <lightning-layout>
+            <lightning-layout-item size="5">
+
+                <lightning-combobox class="slds-p-horizontal_small" name="Resources" required="true"
+                    label={label.SelectExtension} placeholder={label.SelectExtension} options={resourceOptions}
+                    onchange={handleResourceChange}
+                    field-level-help={label.SetupExtensionInstruction}>
+                </lightning-combobox>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+
+    <lightning-card if:false={hasStandardResources}>
+        <div class="slds-text-align_center slds-text-heading_medium">{label.NoExtension}</div>
+    </lightning-card>
+
+    <lightning-card if:true={hasStandardRecords}>
+        <lightning-datatable data={data} columns={columns} key-field="id" onrowaction={handleRowAction}
+            hide-checkbox-column></lightning-datatable>
+        <div slot="footer">
+            <lightning-button if:true={isAnyRecordDifferent} label={label.GenerateExtension}
+                onclick={updateRecord} variant="brand"></lightning-button>
+        </div>
+    </lightning-card>
+    
+    <lightning-card if:true={hasNoRecords}>
+        <div class="slds-text-heading_large slds-text-align_center">{label.NoExtension}</div>
+    </lightning-card>
+
+    <c-copadocore-modal size="large">
+        <lightning-datatable data={bundleDiff} columns={diffColumns} key-field="id" hide-checkbox-column>
+        </lightning-datatable>
+    </c-copadocore-modal>
+</template>

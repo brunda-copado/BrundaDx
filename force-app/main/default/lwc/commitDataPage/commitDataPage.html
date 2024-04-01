@@ -1,0 +1,139 @@
+<template>
+    <template if:false={validEntryPoint}>
+        <lightning-card>
+            <div class="slds-p-around_large">
+                <c-copadocore-illustration name="error:walkthrough_not_available" size="large" message={label.COMMIT_DATA_NOT_AVAILBALE_TITLE}>
+                    <p slot="body">{label.COMMIT_DATA_NOT_AVAILBALE_BODY}</p>
+                </c-copadocore-illustration>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template if:true={validEntryPoint}>
+    <lightning-spinner if:true={showSpinner} variant="brand" size="large"> </lightning-spinner>
+
+    <div class="slds-page-header slds-m-bottom_medium">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-article" title={headerLabel}>
+                            <span class="slds-avatar">
+                                <image src={headerIcon}></image>
+                            </span>
+                            <span class="slds-assistive-text">{headerLabel}</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span>{headerLabel}</span>
+                                    <span class="slds-page-header__title slds-truncate" title={userStoryName}>{userStoryName}</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <lightning-button-group>
+                            <lightning-button label={label.COMMIT_DATA} disabled={disableInputs} onclick={handleClickCommit}></lightning-button>
+                            <lightning-button label={label.CANCEL} onclick={handleClickCancel}></lightning-button>
+                        </lightning-button-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <lightning-card>
+        <div class="slds-m-left_small slds-m-right_small">
+            <div>
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" class="slds-p-vertical_xxx-small">
+                        <lightning-layout horizontal-align="spread">
+                            <lightning-layout-item size="4">
+                                    <lightning-record-edit-form
+                                        if:true={showDataTemplateConfiguration}
+                                        object-api-name={schema.DATA_SET.objectApiName}
+                                    >
+                                    <lightning-input-field
+                                        field-name={schema.DATA_SET_DATA_TEMPLATE.fieldApiName}
+                                        variant="label-stacked"
+                                        required
+                                        disabled={disableInputs}
+                                        onchange={handleChangeDataTemplate}
+                                    ></lightning-input-field>
+                                </lightning-record-edit-form>
+                                <lightning-record-edit-form
+                                    if:true={showDataSetConfiguration}
+                                    object-api-name={schema.USER_STORY_DATA_COMMIT.objectApiName}
+                                >
+                                    <lightning-input-field
+                                        if:true={showDataSetConfiguration}
+                                        field-name={schema.USER_STORY_DATA_COMMIT_DATA_SET.fieldApiName}
+                                        variant="label-stacked"
+                                        required
+                                        disabled={disableInputs}
+                                        onchange={handleChangeDataSet}
+                                    ></lightning-input-field>
+                                </lightning-record-edit-form>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="8">
+                                <lightning-record-edit-form object-api-name={schema.USER_STORY_DATA_COMMIT.objectApiName}>
+                                    <lightning-input-field
+                                        field-name={schema.USER_STORY_DATA_COMMIT_COMMIT_MESSAGE.fieldApiName}
+                                        variant="label-stacked"
+                                        required
+                                        disabled={disableInputs}
+                                        onchange={handleChangeCommitMessage}
+                                    ></lightning-input-field>
+                                </lightning-record-edit-form>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item
+                        size="4"
+                        flexibility="auto"
+                        if:true={dataTemplateId}
+                        class="slds-p-vertical_xxx-small slds-p-left_x-small"
+                    >
+                        <c-data-template-informations template-id={dataTemplateId}></c-data-template-informations>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-vertical_xxx-small" if:true={showFilterConfiguration}>
+                        <lightning-layout horizontal-align="spread">
+                            <div class="slds-form-element_stacked slds-size_full">
+                                <div class="slds-section slds-is-open">
+                                    <h3 class="slds-section__title slds-theme_shade">
+                                        <span class="slds-truncate slds-p-horizontal_small" title={label.REVIEW_DATA_FILTERS}
+                                            >{label.REVIEW_DATA_FILTERS}</span
+                                        >
+                                    </h3>
+                                    <div class="slds-section__content">
+                                        <lightning-layout horizontal-align="spread">
+                                            <lightning-layout-item size="8" class="slds-p-right_medium">
+                                                <c-data-filters org-credential-id={orgCredentialId}></c-data-filters>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item size="4" class="slds-p-left_medium">
+                                                <c-copadocore-Tips
+                                                    title={label.COPADO_TIPS_TITLE}
+                                                    tip1={label.COPADO_TIPS1}
+                                                    tip2={label.COPADO_TIPS2}
+                                                    tip3={label.COPADO_TIPS3}
+                                                    tip4={label.COPADO_TIPS4}
+                                                ></c-copadocore-Tips>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+    </lightning-card>
+</template></template>

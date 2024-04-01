@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <lightning:tabset variant="scoped">
+        <lightning:tab label="{!$Label.c.SetupExtensionTab}">
+            {!$Label.c.SetupExtensionTab}
+            <c:standardRecordStatus></c:standardRecordStatus>
+        </lightning:tab>
+        <lightning:tab label="{!$Label.c.CreateExtensionTab}">
+            <c:createStandardRecordBundle></c:createStandardRecordBundle>
+        </lightning:tab>
+    </lightning:tabset>
+</aura:component>

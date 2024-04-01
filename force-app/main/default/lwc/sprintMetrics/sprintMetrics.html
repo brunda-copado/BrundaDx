@@ -1,0 +1,25 @@
+<template>
+    <lightning-spinner alternative-text="Loading" variant="brand" size="large" if:true={isLoading}>
+    </lightning-spinner>
+    
+    <lightning-card title={title} icon-name="utility:chart" if:true={isLoaded}>
+        <div slot="actions">
+            <lightning-button if:true={canBeFreeze} icon-name="utility:lock" label="Freeze" onclick={handleFreeze}></lightning-button>
+            <lightning-button-icon if:false={isCollapsed} icon-name="utility:up" alternative-text="Collapse" onclick={handleCollapse}></lightning-button-icon>
+            <lightning-button-icon if:true={isCollapsed} icon-name="utility:down" alternative-text="Un collapse" onclick={handleUncollapse}></lightning-button-icon>
+        </div>
+        <lightning-layout if:false={isCollapsed}>
+            <lightning-layout-item size="6" class="margin-auto">
+                <c-sprint-metrics-burn-up record-id={recordId} object-name={objectName} actual-velocity-field={actualVelocityField} planned-velocity-field={plannedVelocityField} legend-position={legendPosition} title={title} oncomplete={handleBurnUpComplete}></c-sprint-metrics-burn-up>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" class="margin-auto">
+                <c-sprint-metrics-burn-down record-id={recordId} object-name={objectName} actual-velocity-field={actualVelocityField} planned-velocity-field={plannedVelocityField} legend-position={legendPosition} title={title} oncomplete={handleBurnDownComplete}></c-sprint-metrics-burn-down>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    <lightning-card title={title} icon-name="utility:chart" if:true={showEmptyIllustration}>
+        <c-copadocore-illustration name="custom:lake_mountain" size="small" message={labels.SPRINT_CHARTS_CAN_NOT_BE_DISPLAYED}>
+            <p slot="body">{labels.SPRINT_CHARTS_REQUIRE_START_END_END_DATES}</p>
+        </c-copadocore-illustration>
+    </lightning-card>
+</template>

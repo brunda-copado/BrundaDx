@@ -1,0 +1,2329 @@
+[
+    {
+        "templateUUId": "8dc85226-bac3-4af6-a550-89b0719c4e9z",
+        "values": {
+            "dataTemplate": {
+                "templateName": "1-Veeva Person accounts",
+                "templateMainObject": "Account",
+                "templateQueryLimit": 100,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 5,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": true,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Account ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Last Name",
+                        "apiName": "LastName",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "First Name",
+                        "apiName": "FirstName",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Salutation",
+                        "apiName": "Salutation",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Type",
+                        "apiName": "Type",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Street",
+                        "apiName": "BillingStreet",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing City",
+                        "apiName": "BillingCity",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing State/Province",
+                        "apiName": "BillingState",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Zip/Postal Code",
+                        "apiName": "BillingPostalCode",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Country",
+                        "apiName": "BillingCountry",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Latitude",
+                        "apiName": "BillingLatitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Longitude",
+                        "apiName": "BillingLongitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Geocode Accuracy",
+                        "apiName": "BillingGeocodeAccuracy",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Street",
+                        "apiName": "ShippingStreet",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping City",
+                        "apiName": "ShippingCity",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping State/Province",
+                        "apiName": "ShippingState",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Zip/Postal Code",
+                        "apiName": "ShippingPostalCode",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Country",
+                        "apiName": "ShippingCountry",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Latitude",
+                        "apiName": "ShippingLatitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Longitude",
+                        "apiName": "ShippingLongitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Geocode Accuracy",
+                        "apiName": "ShippingGeocodeAccuracy",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Phone",
+                        "apiName": "Phone",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Fax",
+                        "apiName": "Fax",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Number",
+                        "apiName": "AccountNumber",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Website",
+                        "apiName": "Website",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "SIC Code",
+                        "apiName": "Sic",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Industry",
+                        "apiName": "Industry",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Annual Revenue",
+                        "apiName": "AnnualRevenue",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Employees",
+                        "apiName": "NumberOfEmployees",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Ownership",
+                        "apiName": "Ownership",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Ticker Symbol",
+                        "apiName": "TickerSymbol",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Description",
+                        "apiName": "Description",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Rating",
+                        "apiName": "Rating",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Site",
+                        "apiName": "Site",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Currency",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Exclude from territory assignment rules",
+                        "apiName": "IsExcludedFromRealign",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing Street",
+                        "apiName": "PersonMailingStreet",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing City",
+                        "apiName": "PersonMailingCity",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing State/Province",
+                        "apiName": "PersonMailingState",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing Zip/Postal Code",
+                        "apiName": "PersonMailingPostalCode",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing Country",
+                        "apiName": "PersonMailingCountry",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing Latitude",
+                        "apiName": "PersonMailingLatitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing Longitude",
+                        "apiName": "PersonMailingLongitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing Geocode Accuracy",
+                        "apiName": "PersonMailingGeocodeAccuracy",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Street",
+                        "apiName": "PersonOtherStreet",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other City",
+                        "apiName": "PersonOtherCity",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other State/Province",
+                        "apiName": "PersonOtherState",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Zip/Postal Code",
+                        "apiName": "PersonOtherPostalCode",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Country",
+                        "apiName": "PersonOtherCountry",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Latitude",
+                        "apiName": "PersonOtherLatitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Longitude",
+                        "apiName": "PersonOtherLongitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Geocode Accuracy",
+                        "apiName": "PersonOtherGeocodeAccuracy",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile",
+                        "apiName": "PersonMobilePhone",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Home Phone",
+                        "apiName": "PersonHomePhone",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Phone",
+                        "apiName": "PersonOtherPhone",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Asst. Phone",
+                        "apiName": "PersonAssistantPhone",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Email",
+                        "apiName": "PersonEmail",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Title",
+                        "apiName": "PersonTitle",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Department",
+                        "apiName": "PersonDepartment",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Assistant",
+                        "apiName": "PersonAssistantName",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        },
+                        "fieldContentUpdate": "scramble"
+                    },
+                    {
+                        "name": "Lead Source",
+                        "apiName": "PersonLeadSource",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Birthdate",
+                        "apiName": "PersonBirthdate",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Email Opt Out",
+                        "apiName": "PersonHasOptedOutOfEmail",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Fax Opt Out",
+                        "apiName": "PersonHasOptedOutOfFax",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Do Not Call",
+                        "apiName": "PersonDoNotCall",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Source",
+                        "apiName": "AccountSource",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "SIC Description",
+                        "apiName": "SicDesc",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Territory VoD",
+                        "apiName": "Territory_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Territory Test VoD",
+                        "apiName": "Territory_Test_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Gender",
+                        "apiName": "Gender_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Preferred Name",
+                        "apiName": "Preferred_Name_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sample Default",
+                        "apiName": "Sample_Default_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Restricted Products",
+                        "apiName": "Restricted_Products_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Identifier",
+                        "apiName": "Account_Identifier_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Do Not Call?",
+                        "apiName": "Do_Not_Call_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Group (Orders)",
+                        "apiName": "Account_Group_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Middle",
+                        "apiName": "Middle_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Suffix",
+                        "apiName": "Suffix_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Order Status",
+                        "apiName": "No_Orders_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Do Not Create Child Account",
+                        "apiName": "Do_Not_Create_Child_Account_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Order Type",
+                        "apiName": "Order_Type_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Order Type",
+                        "apiName": "Default_Order_Type_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "KOL?",
+                        "apiName": "KOL_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Language",
+                        "apiName": "Language_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Government ID",
+                        "apiName": "CMS_Government_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Primary Parent",
+                        "apiName": "Primary_Parent_vod__c"
+                    }
+                ],
+                "childObjects": [
+                    {
+                        "field": "Account_vod__c",
+                        "relationshipName": "R00NT0000000lj9mMAA__r",
+                        "childSObject": "Account_Territory_Loader_vod__c",
+                        "childSObjectLabel": "Account Territory Loader"
+                    },
+                    {
+                        "field": "Account_vod__c",
+                        "relationshipName": "Address_vod__r",
+                        "childSObject": "Address_vod__c",
+                        "childSObjectLabel": "Address"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "2fdb388d-ea62-4ecb-85fa-4b19c8d1e248",
+                    "relationName": "Primary_Parent_vod__c"
+                },
+                {
+                    "templateUUId": "a154935c-223b-42d6-bc1e-9ceae3b25cc3",
+                    "relationName": "R00NT0000000lj9mMAA__r",
+                    "childSObject": "Account_Territory_Loader_vod__c"
+                },
+                {
+                    "templateUUId": "e9febb05-546c-4491-9a9b-5f64057d2e04",
+                    "relationName": "Address_vod__r",
+                    "childSObject": "Address_vod__c"
+                }
+            ],
+            "filterList": [
+                {
+                    "order": 1,
+                    "operator": "e",
+                    "fieldName": "Custom Filter",
+                    "fieldType": "STRING",
+                    "finalValue": "ispersonaccount=true",
+                    "input": "ispersonaccount=true"
+                }
+            ]
+        }
+    },
+    {
+        "templateUUId": "2fdb388d-ea62-4ecb-85fa-4b19c8d1e248",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Data template - Business accounts",
+                "templateMainObject": "Account",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": true,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Language",
+                        "apiName": "Language_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "z_Approved Email Consent",
+                        "apiName": "Approved_Email_Opt_Type_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "KOL?",
+                        "apiName": "KOL_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Order Type",
+                        "apiName": "Default_Order_Type_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Order Type",
+                        "apiName": "Order_Type_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Do Not Create Child Account",
+                        "apiName": "Do_Not_Create_Child_Account_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Order Status",
+                        "apiName": "No_Orders_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Suffix",
+                        "apiName": "Suffix_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Middle",
+                        "apiName": "Middle_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Group (Orders)",
+                        "apiName": "Account_Group_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Do Not Call?",
+                        "apiName": "Do_Not_Call_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Identifier",
+                        "apiName": "Account_Identifier_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Restricted Products",
+                        "apiName": "Restricted_Products_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sample Default",
+                        "apiName": "Sample_Default_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Preferred Name",
+                        "apiName": "Preferred_Name_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Gender",
+                        "apiName": "Gender_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Territory Test VoD",
+                        "apiName": "Territory_Test_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Territory VoD",
+                        "apiName": "Territory_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Credentials",
+                        "apiName": "Credentials_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "SIC Description",
+                        "apiName": "SicDesc",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Source",
+                        "apiName": "AccountSource",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Do Not Call",
+                        "apiName": "PersonDoNotCall",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Exclude from territory assignment rules",
+                        "apiName": "IsExcludedFromRealign",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Currency",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Site",
+                        "apiName": "Site",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Rating",
+                        "apiName": "Rating",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Description",
+                        "apiName": "Description",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Ticker Symbol",
+                        "apiName": "TickerSymbol",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Ownership",
+                        "apiName": "Ownership",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Employees",
+                        "apiName": "NumberOfEmployees",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Annual Revenue",
+                        "apiName": "AnnualRevenue",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Industry",
+                        "apiName": "Industry",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "SIC Code",
+                        "apiName": "Sic",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Website",
+                        "apiName": "Website",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Number",
+                        "apiName": "AccountNumber",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Fax",
+                        "apiName": "Fax",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Phone",
+                        "apiName": "Phone",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Geocode Accuracy",
+                        "apiName": "ShippingGeocodeAccuracy",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Longitude",
+                        "apiName": "ShippingLongitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Latitude",
+                        "apiName": "ShippingLatitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Country",
+                        "apiName": "ShippingCountry",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Zip/Postal Code",
+                        "apiName": "ShippingPostalCode",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping State/Province",
+                        "apiName": "ShippingState",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping City",
+                        "apiName": "ShippingCity",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping Street",
+                        "apiName": "ShippingStreet",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Geocode Accuracy",
+                        "apiName": "BillingGeocodeAccuracy",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Longitude",
+                        "apiName": "BillingLongitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Latitude",
+                        "apiName": "BillingLatitude",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Country",
+                        "apiName": "BillingCountry",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Zip/Postal Code",
+                        "apiName": "BillingPostalCode",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing State/Province",
+                        "apiName": "BillingState",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing City",
+                        "apiName": "BillingCity",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing Street",
+                        "apiName": "BillingStreet",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Type",
+                        "apiName": "Type",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "Account_vod__c",
+                        "relationshipName": "Address_vod__r",
+                        "childSObject": "Address_vod__c",
+                        "childSObjectLabel": "Address"
+                    },
+                    {
+                        "field": "Account_vod__c",
+                        "relationshipName": "R00NT0000000lj9mMAA__r",
+                        "childSObject": "Account_Territory_Loader_vod__c",
+                        "childSObjectLabel": "Account Territory Loader"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "0313f027-5749-46bf-9b25-597cf30f3cab",
+                    "relationName": "R00NT0000000lj9mMAA__r",
+                    "childSObject": "Account_Territory_Loader_vod__c"
+                },
+                {
+                    "templateUUId": "c37eca58-7a2a-4c9e-b5f3-1408547c328b",
+                    "relationName": "Address_vod__r",
+                    "childSObject": "Address_vod__c"
+                }
+            ],
+            "filterList": [
+                {
+                    "order": 1,
+                    "operator": null,
+                    "fieldName": "--None--",
+                    "fieldType": "STRING",
+                    "finalValue": ""
+                }
+            ]
+        }
+    },
+    {
+        "templateUUId": "a154935c-223b-42d6-bc1e-9ceae3b25cc3",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Account Territory Loader - (Veeva Person Accounts)",
+                "templateMainObject": "Account_Territory_Loader_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Territory to Drop",
+                        "apiName": "Territory_to_Drop_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Territory To Add",
+                        "apiName": "Territory_To_Add_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Territory List",
+                        "apiName": "Territory_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "e9febb05-546c-4491-9a9b-5f64057d2e04",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Address Template - (Person Accounts)",
+                "templateMainObject": "Address_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 20,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Clear GPS Coordinates",
+                        "apiName": "Clear_GPS_Coordinates_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "CDS #",
+                        "apiName": "CDS_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "CDS Expiration Date",
+                        "apiName": "CDS_Expiration_Date_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sample Send Status",
+                        "apiName": "Sample_Send_Status_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "No Address Copy",
+                        "apiName": "No_Address_Copy_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Controlled Address",
+                        "apiName": "Controlled_Address_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Entity Reference Id",
+                        "apiName": "Entity_Reference_Id_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Status",
+                        "apiName": "DEA_Status_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Longitude",
+                        "apiName": "Longitude_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "State",
+                        "apiName": "State_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing",
+                        "apiName": "Mailing_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Home",
+                        "apiName": "Home_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing",
+                        "apiName": "Billing_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Business",
+                        "apiName": "Business_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Schedule",
+                        "apiName": "DEA_Schedule_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Address?",
+                        "apiName": "DEA_Address_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "ASSMCA",
+                        "apiName": "ASSMCA_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Brick",
+                        "apiName": "Brick_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Source",
+                        "apiName": "Source_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Best Times",
+                        "apiName": "Best_Times_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Postal Code",
+                        "apiName": "Zip_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Latitude",
+                        "apiName": "Latitude_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Country",
+                        "apiName": "Country_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Lock",
+                        "apiName": "Lock_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Inactive",
+                        "apiName": "Inactive_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Include in Territory Assignment",
+                        "apiName": "Include_in_Territory_Assignment_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Fax 2",
+                        "apiName": "Fax_2_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Phone 2",
+                        "apiName": "Phone_2_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Zip + 4",
+                        "apiName": "Zip_4_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "License Status",
+                        "apiName": "License_Status_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Office Notes",
+                        "apiName": "Office_Notes_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Appt. Required",
+                        "apiName": "Appt_Required_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Staff notes",
+                        "apiName": "Staff_notes_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "License Expiration Date",
+                        "apiName": "License_Expiration_Date_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "License #",
+                        "apiName": "License_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Primary",
+                        "apiName": "Primary_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping",
+                        "apiName": "Shipping_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Comment",
+                        "apiName": "Comment_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Fax",
+                        "apiName": "Fax_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Phone 1",
+                        "apiName": "Phone_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA License Address",
+                        "apiName": "DEA_License_Address_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Expiration Date",
+                        "apiName": "DEA_Expiration_Date_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA #",
+                        "apiName": "DEA_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "City",
+                        "apiName": "City_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Address line 2",
+                        "apiName": "Address_line_2_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Address line 1",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "c37eca58-7a2a-4c9e-b5f3-1408547c328b",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Address Template - (Business Accounts)",
+                "templateMainObject": "Address_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 20,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Clear GPS Coordinates",
+                        "apiName": "Clear_GPS_Coordinates_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "CDS #",
+                        "apiName": "CDS_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "CDS Expiration Date",
+                        "apiName": "CDS_Expiration_Date_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sample Send Status",
+                        "apiName": "Sample_Send_Status_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "No Address Copy",
+                        "apiName": "No_Address_Copy_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Controlled Address",
+                        "apiName": "Controlled_Address_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Entity Reference Id",
+                        "apiName": "Entity_Reference_Id_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Status",
+                        "apiName": "DEA_Status_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Longitude",
+                        "apiName": "Longitude_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "State",
+                        "apiName": "State_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mailing",
+                        "apiName": "Mailing_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Home",
+                        "apiName": "Home_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Billing",
+                        "apiName": "Billing_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Business",
+                        "apiName": "Business_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Schedule",
+                        "apiName": "DEA_Schedule_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Address?",
+                        "apiName": "DEA_Address_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "ASSMCA",
+                        "apiName": "ASSMCA_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Brick",
+                        "apiName": "Brick_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Source",
+                        "apiName": "Source_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Best Times",
+                        "apiName": "Best_Times_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Postal Code",
+                        "apiName": "Zip_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Latitude",
+                        "apiName": "Latitude_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Country",
+                        "apiName": "Country_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Lock",
+                        "apiName": "Lock_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Inactive",
+                        "apiName": "Inactive_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Include in Territory Assignment",
+                        "apiName": "Include_in_Territory_Assignment_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Fax 2",
+                        "apiName": "Fax_2_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Phone 2",
+                        "apiName": "Phone_2_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Zip + 4",
+                        "apiName": "Zip_4_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "License Status",
+                        "apiName": "License_Status_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Office Notes",
+                        "apiName": "Office_Notes_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Appt. Required",
+                        "apiName": "Appt_Required_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Staff notes",
+                        "apiName": "Staff_notes_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "License Expiration Date",
+                        "apiName": "License_Expiration_Date_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "License #",
+                        "apiName": "License_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Primary",
+                        "apiName": "Primary_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Shipping",
+                        "apiName": "Shipping_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Comment",
+                        "apiName": "Comment_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Fax",
+                        "apiName": "Fax_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Phone 1",
+                        "apiName": "Phone_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA License Address",
+                        "apiName": "DEA_License_Address_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA Expiration Date",
+                        "apiName": "DEA_Expiration_Date_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "DEA #",
+                        "apiName": "DEA_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "City",
+                        "apiName": "City_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Address line 2",
+                        "apiName": "Address_line_2_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Address line 1",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "0313f027-5749-46bf-9b25-597cf30f3cab",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Account Territory Loader - (Veeva Business Accounts)",
+                "templateMainObject": "Account_Territory_Loader_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Territory to Drop",
+                        "apiName": "Territory_to_Drop_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Territory To Add",
+                        "apiName": "Territory_To_Add_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Territory List",
+                        "apiName": "Territory_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

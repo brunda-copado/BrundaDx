@@ -1,0 +1,27 @@
+<template>
+    <c-copadocore-modal size="x-small" hide-close>
+        <span slot="title">{label.COMMIT_NOW}</span>
+        <div class="slds-is-relative">
+            <lightning-spinner if:true={isRunning} variant="brand" alternative-text={label.LOADING} size="medium"> </lightning-spinner>
+            <c-user-story-commit-body></c-user-story-commit-body>
+        </div>
+        <span slot="footer">
+            <c-copadocore-error-popover
+                if:true={showErrorPopover}
+                class="slds-show_inline slds-p-right_x-small"
+                message={errorPopoverMessage}
+            ></c-copadocore-error-popover>
+            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleClickCancel} disabled={isRunning}>
+            </lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.COMMIT}
+                title={label.Commit}
+                variant="brand"
+                onclick={handleClickCommit}
+                disabled={isRunning}
+            >
+            </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

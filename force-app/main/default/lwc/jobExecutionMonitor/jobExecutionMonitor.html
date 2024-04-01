@@ -1,0 +1,14 @@
+<template>
+    <lightning-spinner if:true={isLoading}> </lightning-spinner>
+    <div if:true={errorMessage}><span class="slds-notify_alert slds-alert_error">{errorMessage}</span></div>
+    <lightning-card if:false={hasJobs}>
+        <c-copadocore-illustration name="error:not_available_in_lightning" size="small" message={noJobTitle}>
+            <p slot="body">{noJobMessage}</p>
+        </c-copadocore-illustration>
+    </lightning-card>
+    <template if:true={jobExecutionIds}>
+        <template for:each={jobExecutionIds} for:item="jobId">
+            <c-result-monitor key={jobId} record-id={jobId} field-api-name="Id"></c-result-monitor>
+        </template>
+    </template>
+</template>

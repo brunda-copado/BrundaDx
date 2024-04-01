@@ -1,0 +1,170 @@
+[
+    {
+        "templateUUId": "d251c61a-7187-4166-b29d-5422d968794e",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Policy Exception Management - Policy Exception Template (Start)",
+                "templateMainObject": "LLC_BI__Policy_Exception_Template__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Policy Exception Template Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Code",
+                        "apiName": "LLC_BI__Code__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "End Date",
+                        "apiName": "LLC_BI__End_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Severities",
+                        "apiName": "LLC_BI__Severities__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Start Date",
+                        "apiName": "LLC_BI__Start_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "LLC_BI__Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Policy_Exception_Template__c",
+                        "relationshipName": "LLC_BI__Policy_Exception_Mitigation_Reasons__r",
+                        "childSObject": "LLC_BI__Policy_Exception_Mitigation_Reason__c",
+                        "childSObjectLabel": "Policy Exception Mitigation Reason"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "a9768bf2-7f9b-4e9c-89c4-a6c5f1d63582",
+                    "relationName": "LLC_BI__Policy_Exception_Mitigation_Reasons__r",
+                    "childSObject": "LLC_BI__Policy_Exception_Mitigation_Reason__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "a9768bf2-7f9b-4e9c-89c4-a6c5f1d63582",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Policy Exception Management - Policy Exception Template > Policy Exception",
+                "templateMainObject": "LLC_BI__Policy_Exception_Mitigation_Reason__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": null,
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Comment Required",
+                        "apiName": "LLC_BI__Comment_Required__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Reason",
+                        "apiName": "LLC_BI__Reason__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

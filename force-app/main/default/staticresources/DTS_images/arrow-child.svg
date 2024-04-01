@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="14px" viewBox="0 0 10 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63 (92445) - https://sketch.com -->
+    <title>Icon / Arrow-End</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icon-/-Arrow-End" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0.65,0.0351298305 C1.98333333,3.36846316 3.31666667,6.7017965 4.65,10.0351298 M9.35,0.0351298305 C8.01666667,3.36846316 6.68333333,6.7017965 5.35,10.0351298 M5.00168371,9 C5.00056124,6 4.99943876,3 4.99831629,0" id="Combined-Shape" stroke="#1589EE" stroke-linecap="square" stroke-linejoin="round"></path>
+        <circle id="Oval" stroke="#1589EE" fill="#F9F9F9" cx="5" cy="11.5" r="2"></circle>
+    </g>
+</svg>

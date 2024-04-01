@@ -1,0 +1,31 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+    <lightning-card>
+        <h4 slot="title">
+            {label.FORMULA_CONFIGURATION_TITLE}
+        </h4>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item if:false={isADDEnabled} size="9" class="slds-align_absolute-center">
+                    <c-copadocore-illustration  name="error:no_access" size="large" 
+                        message={label.DATA_DEPLOYER_PERMISSION_ISSUE}>
+                    </c-copadocore-illustration>
+            </lightning-layout-item>
+            <template if:true={isADDEnabled}>
+                <lightning-layout-item if:true={configure} size="9" class="slds-align_absolute-center">
+                    <c-record-matching-formula-configurator credential-valid={credentialValid}
+                            ondisplaymodal={handleDisplayModal}></c-record-matching-formula-configurator>
+                </lightning-layout-item>
+                <lightning-layout-item if:false={configure} size="9">
+                        <c-record-matching-formula-detail  record-id={recordId} credential-valid={credentialValid} oneditformula={handleEditFormula}>
+                        </c-record-matching-formula-detail>
+                </lightning-layout-item>
+                <c-record-matching-formula-modal operation={operation} record-id={recordId}></c-record-matching-formula-modal>
+            </template>
+            <lightning-layout-item size="3" class="slds-p-right_medium">
+                <c-copadocore-tips title={label.TIPS_TITLE} tip1={label.TIP1} tip2={label.TIP2} tip3={label.TIP3}
+                    tip4={label.TIP4}>
+                </c-copadocore-tips>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

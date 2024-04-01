@@ -1,0 +1,58 @@
+<template>
+    <div class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <div>
+                    <h2 class="slds-text-heading_medium slds-hyphenate">
+                        {label.Order_Job_Steps}
+                    </h2>
+                </div>
+            </header>
+
+            <div class="slds-modal__content slds-var-p-around_medium">
+                <lightning-spinner if:true={loading} alternative-text={label.LOADING} size="medium" variant="brand"></lightning-spinner>
+
+                <div>
+                    <c-copado-alert if:true={messageAlert}
+                        message={messageAlert.message}
+                        variant={messageAlert.variant}
+                    ></c-copado-alert>
+                </div>
+
+                <div class="slds-text-heading_medium slds-var-m-top_medium">
+                    {beforeStepTitle} ({beforeStepCount})
+                </div>
+
+                <div class="slds-var-m-top_medium">
+                    <c-copadocore-datatable-extended if:true={beforeSteps}
+                        key-field="id"
+                        source-name="before-steps"
+                        data={beforeSteps}
+                        columns={columns}
+                        hide-checkbox-column
+                    ></c-copadocore-datatable-extended>
+                </div>
+
+                <div if:true={applySequence} class="slds-text-heading_medium slds-var-m-top_medium">
+                    {label.After_Deployment} ({afterStepCount})
+                </div>
+
+                <div if:true={applySequence} class="slds-var-m-top_medium">
+                    <c-copadocore-datatable-extended if:true={afterSteps}
+                        key-field="id"
+                        source-name="after-steps"
+                        data={afterSteps}
+                        columns={columns}
+                        hide-checkbox-column
+                    ></c-copadocore-datatable-extended>
+                </div>
+            </div>
+            
+            <footer class="slds-modal__footer">
+                <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={handleCancel}></lightning-button>
+                <lightning-button class="slds-var-m-left_x-small" label={label.Save} title={label.Save} variant="brand" onclick={handleSave}></lightning-button>
+            </footer>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

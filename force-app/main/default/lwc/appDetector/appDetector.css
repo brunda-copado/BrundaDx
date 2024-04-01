@@ -1,0 +1,7 @@
+:host {
+    --slds-c-button-text-color: black;
+}
+
+.change-application {
+    text-decoration: underline;
+}

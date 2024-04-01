@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Apex Test with Validation</masterLabel>
+        <translation>検証付きのApexテスト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Automation</masterLabel>
+        <translation>自動化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Compliance Check</masterLabel>
+        <translation>コンプライアンスチェック</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manual Approval</masterLabel>
+        <translation>マニュアル承認</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Manual Test</masterLabel>
+        <translation>マニュアルテスト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Pull Request</masterLabel>
+        <translation>プルリクエスト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Selenium Test</masterLabel>
+        <translation>Seleniumテスト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Static Code Analysis</masterLabel>
+        <translation>静的コード解析</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test</masterLabel>
+        <translation>テスト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>URL Callout</masterLabel>
+        <translation>URLコールアウト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Validation</masterLabel>
+        <translation>検証</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

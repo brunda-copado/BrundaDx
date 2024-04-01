@@ -1,0 +1,20 @@
+.git-repo-auth-wrapper{
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+}
+.auth-form-wrap h3{
+    margin: 0.5rem 0;
+    padding: 0.25rem 0;
+}
+.auth-form-wrap-view .slds-form-element__control{
+    padding-top:0.125rem;
+    padding-bottom: 0.125rem;
+}
+.slds-modal__container {
+    display: block;
+}
+.apply_vertical_scroll {
+    overflow-y: auto;
+    max-height: var(--lwc-sizeXLarge, 40rem);
+}

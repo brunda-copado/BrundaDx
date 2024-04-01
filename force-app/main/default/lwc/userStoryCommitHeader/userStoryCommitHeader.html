@@ -1,0 +1,21 @@
+<template>
+    <lightning-spinner if:false={pageLoaded} variant="brand" alternative-text={label.LOADING} size="large"></lightning-spinner>
+    <template if:true={pageLoaded}>
+        <template if:true={isPageValid}>
+            <c-custom-highlight-panel title={label.COMMIT_NOW} variant="related" field-set-name={fieldName}>
+                <div slot="actions">
+                    <lightning-button-group>
+                        <lightning-button label={label.CANCEL} onclick={handleClickCancel}></lightning-button>
+                        <lightning-button label={label.COMMIT_NOW} onclick={handleClickCommit}></lightning-button>
+                    </lightning-button-group>
+                </div>
+            </c-custom-highlight-panel>
+            <c-user-story-commit-changes-modal record-id={recordId}></c-user-story-commit-changes-modal>
+        </template>
+        <c-user-story-commit-invalid-page
+            if:false={isPageValid}
+            record-id={recordId}
+            validation-errors={validationErrors}
+        ></c-user-story-commit-invalid-page>
+    </template>
+</template>

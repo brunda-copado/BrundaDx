@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Selenium_Test_Suite__c</fullName>
+    <externalId>false</externalId>
+    <label>Selenium Test Suite</label>
+    <referenceTo>Selenium_Test_Suite__c</referenceTo>
+    <relationshipLabel>Test Cases</relationshipLabel>
+    <relationshipName>Selenium_Test_Cases_Per_Suite</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>true</writeRequiresMasterRead>
+</CustomField>

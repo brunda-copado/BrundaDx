@@ -1,0 +1,22 @@
+.slds-spinner_container {
+    position: static;
+}
+
+.slds-box {
+    max-height: 16rem;
+    padding-bottom: var(--lwc-varSpacingVerticalXSmall, spacingXSmall);
+}
+
+.slds-modal__content {
+    padding-top: var(--lwc-varSpacingVerticalLarge, spacingLarge);
+}
+
+.steps li {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.steps li .hour {
+    margin-right: 10px;
+    min-width: 140px;
+}

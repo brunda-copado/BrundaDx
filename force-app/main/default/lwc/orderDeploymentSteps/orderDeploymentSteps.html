@@ -1,0 +1,48 @@
+<template>
+    <template lwc:if={loading}>
+        <lightning-spinner alternative-text={label.LOADING} size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <template lwc:if={beforeAndAfterStepsEmpty}>
+        <div class="slds-text-heading_small slds-var-m-top_medium slds-var-m-bottom_medium">{label.No_Deployment_Steps_To_Run}</div>
+    </template>
+    <template lwc:else>
+        <div class="slds-text-heading_small slds-var-m-top_medium slds-card__header-title">{label.Deployment_Steps}: {label.Before_Deployment}</div>
+
+        <template lwc:if={beforeStepsEmpty}>
+            <div class="slds-text-heading_small slds-var-m-top_medium slds-text-align_center">{label.No_Deployment_Steps}</div>
+        </template>
+
+        <template lwc:else>
+            <div class="slds-var-m-top_medium">
+                <c-copadocore-datatable-extended
+                    key-field="Id"
+                    source-name="before-steps"
+                    data={beforeSteps}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column
+                ></c-copadocore-datatable-extended>
+            </div>
+        </template>
+
+        <div class="slds-text-heading_small slds-var-m-top_medium slds-card__header-title">{label.Deployment_Steps}: {label.After_Deployment}</div>
+
+        <template lwc:if={afterStepsEmpty}>
+            <div class="slds-text-heading_small slds-var-m-top_medium slds-text-align_center">{label.No_Deployment_Steps}</div>
+        </template>
+
+        <template lwc:else>
+            <div class="slds-var-m-top_medium">
+                <c-copadocore-datatable-extended
+                    key-field="Id"
+                    source-name="after-steps"
+                    data={afterSteps}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column
+                ></c-copadocore-datatable-extended>
+            </div>
+        </template>
+    </template>
+</template>

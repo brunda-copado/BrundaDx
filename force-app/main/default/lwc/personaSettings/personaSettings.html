@@ -1,0 +1,18 @@
+<template>
+    <div class="persona-section-container">
+        <lightning-tabset class="cds-tabs">
+            <lightning-tab label={label.Persona_Management_Users_Tab} value="users" icon-name="utility:groups">
+                <c-persona-user-settings persona-definition={personaDefinition}></c-persona-user-settings>
+            </lightning-tab>
+            <lightning-tab label={label.Persona_Management_Permissions_Tab} value="permissions" icon-name="utility:shield">
+                <c-persona-permission-settings persona-definition={personaDefinition}></c-persona-permission-settings>
+            </lightning-tab>
+            <lightning-tab label={label.Persona_Management_Licenses_Tab} value="licenses" icon-name="utility:process">
+                <c-persona-License-settings persona-definition={personaDefinition} number-of-users={numberOfUsers}></c-persona-License-settings>
+            </lightning-tab>
+            <lightning-tab label={label.Persona_Management_Credentials_Tab} value="credentials" icon-name="utility:key">
+                <c-persona-credential-settings persona-definition={personaDefinition}></c-persona-credential-settings>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

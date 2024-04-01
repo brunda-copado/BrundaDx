@@ -1,0 +1,1718 @@
+[
+    {
+        "templateUUId": "19466314-6984-4c14-8c9c-567b2d52c2f9",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Collateral Type (Start) - No OA",
+                "templateMainObject": "LLC_BI__Collateral_Type__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Collateral Type Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Advance Rate",
+                        "apiName": "LLC_BI__Advance_Rate__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Collateral Code",
+                        "apiName": "LLC_BI__Collateral_Code__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Condo/PUD",
+                        "apiName": "LLC_BI__Condo_PUD__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Expire Date",
+                        "apiName": "LLC_BI__Expire_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Field Set",
+                        "apiName": "LLC_BI__Field_Set__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Manufactured Home",
+                        "apiName": "LLC_BI__Manufactured_Home__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Regulatory Rate",
+                        "apiName": "LLC_BI__Regulatory_Rate__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Start Date",
+                        "apiName": "LLC_BI__Start_Date__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Subtype",
+                        "apiName": "LLC_BI__Subtype__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "LLC_BI__Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Icon Background Color",
+                        "apiName": "LLC_BI__Icon_Background_Color__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Icon Color",
+                        "apiName": "LLC_BI__Icon_Color__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Icon Type",
+                        "apiName": "LLC_BI__Icon_Type__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Collateral Configuration",
+                        "apiName": "LLC_BI__Collateral_Configuration__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Complex",
+                        "apiName": "LLC_BI__Is_Complex__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Valuation Source",
+                        "apiName": "LLC_BI__Valuation_Source__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Valuation Type",
+                        "apiName": "LLC_BI__Valuation_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Auto-Update Collateral Value",
+                        "apiName": "LLC_BI__Auto_Update_Collateral_Value__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Primary Valuation Sources",
+                        "apiName": "LLC_BI__Primary_Valuation_Sources__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Valuation Field Set",
+                        "apiName": "LLC_BI__Valuation_Field_Set__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "apiName": "LLC_BI__Category__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Group Type",
+                        "apiName": "LLC_BI__Group_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Screen",
+                        "apiName": "LLC_BI__Screen__c"
+                    },
+                    {
+                        "name": "Leasing Screen",
+                        "apiName": "LLC_BI__Leasing_Screen__c"
+                    }
+                ],
+                "childObjects": [
+                    {
+                        "field": "LLC_BI__Collateral_Type__c",
+                        "relationshipName": "LLC_BI__Collateral_Types__r",
+                        "childSObject": "LLC_BI__Product_Collateral_Type__c",
+                        "childSObjectLabel": "Product Collateral Type"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "c5ecf24d-e000-454a-94ba-13ad2ec6cc46",
+                    "relationName": "LLC_BI__Leasing_Screen__c"
+                },
+                {
+                    "templateUUId": "4c1a7857-1258-4fa5-b09e-d0099c92c7d0",
+                    "relationName": "LLC_BI__Screen__c"
+                },
+                {
+                    "templateUUId": "21be4fe4-f1fa-4b78-a7b9-9c85dd9c8c47",
+                    "relationName": "LLC_BI__Collateral_Types__r",
+                    "childSObject": "LLC_BI__Product_Collateral_Type__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "c5ecf24d-e000-454a-94ba-13ad2ec6cc46",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Leasing screen > Screen No OA Template",
+                "templateMainObject": "nFORCE__Screen__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Screen Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Disable Print",
+                        "apiName": "nFORCE__Disable_Print__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Show Context Object Name",
+                        "apiName": "nFORCE__Show_Link_To_Context_Object__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "21be4fe4-f1fa-4b78-a7b9-9c85dd9c8c47",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral > Product Collateral Type No OA Template",
+                "templateMainObject": "LLC_BI__Product_Collateral_Type__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Default",
+                        "apiName": "LLC_BI__Is_Default__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Automate Collateral Pledge",
+                        "apiName": "LLC_BI__Automate_Collateral_Pledge__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Valuation Providers",
+                        "apiName": "LLC_BI__Valuation_Providers__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Filter In-Branch Collateral",
+                        "apiName": "LLC_BI__Filter_In_Branch_Collateral__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Filter In-Branch Leased Asset",
+                        "apiName": "LLC_BI__Filter_In_Branch_Leased_Asset__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Product",
+                        "apiName": "LLC_BI__Product__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "09cb416b-ae15-4880-91a1-a9d407f5d0ca",
+                    "relationName": "LLC_BI__Product__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "4c1a7857-1258-4fa5-b09e-d0099c92c7d0",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral Type > Screen No OA Template",
+                "templateMainObject": "nFORCE__Screen__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Screen Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Disable Print",
+                        "apiName": "nFORCE__Disable_Print__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Show Context Object Name",
+                        "apiName": "nFORCE__Show_Link_To_Context_Object__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "nFORCE__Screen__c",
+                        "relationshipName": "nFORCE__Screen_Sections__r",
+                        "childSObject": "nFORCE__Screen_Section__c",
+                        "childSObjectLabel": "Screen Section"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "6a43f85e-7008-476c-82fd-0cb11e05a870",
+                    "relationName": "nFORCE__Screen_Sections__r",
+                    "childSObject": "nFORCE__Screen_Section__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "6a43f85e-7008-476c-82fd-0cb11e05a870",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral type > Screen > Screen Section No OA Template",
+                "templateMainObject": "nFORCE__Screen_Section__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Screen Section Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Break Page After",
+                        "apiName": "nFORCE__Break_Page_After__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Break Page Before",
+                        "apiName": "nFORCE__Break_Page_Before__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Editable",
+                        "apiName": "nFORCE__Default_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Rendered",
+                        "apiName": "nFORCE__Default_Rendered__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Print",
+                        "apiName": "nFORCE__Disable_Print__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Order",
+                        "apiName": "nFORCE__Display_Order__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Effect",
+                        "apiName": "nFORCE__Display_Toggle_Effect__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Header",
+                        "apiName": "nFORCE__Display_Toggle_Header__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Link",
+                        "apiName": "nFORCE__Display_Toggle_Link__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Headless",
+                        "apiName": "nFORCE__Headless__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Inactive",
+                        "apiName": "nFORCE__Inactive__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Instructions",
+                        "apiName": "nFORCE__Instructions_Text__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Is Editable",
+                        "apiName": "nFORCE__Is_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Section Resource",
+                        "apiName": "nFORCE__Section_Resource__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "sObject Type",
+                        "apiName": "nFORCE__sObject_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Read-Only View",
+                        "apiName": "nFORCE__Disable_Read_Only_View__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Conditional Display Criteria",
+                        "apiName": "nFORCE__Conditional_Display_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Number of Columns",
+                        "apiName": "nFORCE__Number_of_Columns__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Custom Code in Screen Section?",
+                        "apiName": "Custom_Code_in_Screen_Section__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Are Columns Sortable",
+                        "apiName": "nFORCE__Are_Columns_Sortable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Auto Save",
+                        "apiName": "nFORCE__Auto_Save__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Validation Service",
+                        "apiName": "nFORCE__Validation_Service__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Parent Screen Section",
+                        "apiName": "nFORCE__Parent_Screen_Section__c"
+                    }
+                ],
+                "childObjects": [
+                    {
+                        "field": "nFORCE__Screen_Section__c",
+                        "relationshipName": "nFORCE__Section_Configurations__r",
+                        "childSObject": "nFORCE__Section_Configuration__c",
+                        "childSObjectLabel": "Section Configuration"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "81bac3cb-76ef-41bb-8501-a87149cc195f",
+                    "relationName": "nFORCE__Parent_Screen_Section__c"
+                },
+                {
+                    "templateUUId": "991017e6-c685-45bb-98f3-d73919ccc529",
+                    "relationName": "nFORCE__Section_Configurations__r",
+                    "childSObject": "nFORCE__Section_Configuration__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "09cb416b-ae15-4880-91a1-a9d407f5d0ca",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral > Product Collateral type >Product LLC NO OA  Template",
+                "templateMainObject": "LLC_BI__Product__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Product Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Real Estate Type",
+                        "apiName": "LLC_BI__RealEstate_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "LLC_BI__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Classification",
+                        "apiName": "LLC_BI__Classification__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "LLC_BI__Description__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Learn More",
+                        "apiName": "LLC_BI__Learn_More__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Default Application",
+                        "apiName": "LLC_BI__Default_App__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Maintenance App",
+                        "apiName": "LLC_BI__Maintenance_App__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Maximum Funding Amount",
+                        "apiName": "LLC_BI__Maximum_Funding_Amount__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Minimum Funding Amount",
+                        "apiName": "LLC_BI__Minimum_Funding_Amount__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Disable ID Document Save",
+                        "apiName": "LLC_BI__Disable_Id_Document_Save__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Other Disclosures Description",
+                        "apiName": "LLC_BI__Other_Disclosures_Description__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Other Disclosures Received",
+                        "apiName": "LLC_BI__Other_Disclosures_Received__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "991017e6-c685-45bb-98f3-d73919ccc529",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral type > Screen > Screen Section> Section Configuration NO OA Template",
+                "templateMainObject": "nFORCE__Section_Configuration__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Order",
+                        "apiName": "nFORCE__Display_Order__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Field Set",
+                        "apiName": "nFORCE__Field_Set_Key__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Parent Relationship Name",
+                        "apiName": "nFORCE__Parent_Relationship_Name__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Section Header",
+                        "apiName": "nFORCE__Section_Header__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "sObject Type",
+                        "apiName": "nFORCE__sObject_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Filter Criteria",
+                        "apiName": "nFORCE__Filter_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Limit",
+                        "apiName": "nFORCE__Limit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Offset By Limit",
+                        "apiName": "nFORCE__Offset_By_Limit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sort Criteria",
+                        "apiName": "nFORCE__Sort_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Unique",
+                        "apiName": "nFORCE__Unique__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Parent Configuration",
+                        "apiName": "nFORCE__Parent_Configuration__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "a190584c-7969-4fd4-ba88-6bf60a550726",
+                    "relationName": "nFORCE__Parent_Configuration__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "81bac3cb-76ef-41bb-8501-a87149cc195f",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral type > Screen > Screen Section>Screen Section No OA Template",
+                "templateMainObject": "nFORCE__Screen_Section__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Screen Section Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Break Page After",
+                        "apiName": "nFORCE__Break_Page_After__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Break Page Before",
+                        "apiName": "nFORCE__Break_Page_Before__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Editable",
+                        "apiName": "nFORCE__Default_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Rendered",
+                        "apiName": "nFORCE__Default_Rendered__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Print",
+                        "apiName": "nFORCE__Disable_Print__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Order",
+                        "apiName": "nFORCE__Display_Order__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Effect",
+                        "apiName": "nFORCE__Display_Toggle_Effect__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Header",
+                        "apiName": "nFORCE__Display_Toggle_Header__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Link",
+                        "apiName": "nFORCE__Display_Toggle_Link__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Headless",
+                        "apiName": "nFORCE__Headless__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Inactive",
+                        "apiName": "nFORCE__Inactive__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Instructions",
+                        "apiName": "nFORCE__Instructions_Text__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Is Editable",
+                        "apiName": "nFORCE__Is_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Section Resource",
+                        "apiName": "nFORCE__Section_Resource__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "sObject Type",
+                        "apiName": "nFORCE__sObject_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Read-Only View",
+                        "apiName": "nFORCE__Disable_Read_Only_View__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Conditional Display Criteria",
+                        "apiName": "nFORCE__Conditional_Display_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Number of Columns",
+                        "apiName": "nFORCE__Number_of_Columns__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Custom Code in Screen Section?",
+                        "apiName": "Custom_Code_in_Screen_Section__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Are Columns Sortable",
+                        "apiName": "nFORCE__Are_Columns_Sortable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Auto Save",
+                        "apiName": "nFORCE__Auto_Save__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Validation Service",
+                        "apiName": "nFORCE__Validation_Service__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "a190584c-7969-4fd4-ba88-6bf60a550726",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral type > Screen > Screen Section> Section> ParentSection Config NO OA",
+                "templateMainObject": "nFORCE__Section_Configuration__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Order",
+                        "apiName": "nFORCE__Display_Order__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Field Set",
+                        "apiName": "nFORCE__Field_Set_Key__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Parent Relationship Name",
+                        "apiName": "nFORCE__Parent_Relationship_Name__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Section Header",
+                        "apiName": "nFORCE__Section_Header__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "sObject Type",
+                        "apiName": "nFORCE__sObject_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Filter Criteria",
+                        "apiName": "nFORCE__Filter_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Limit",
+                        "apiName": "nFORCE__Limit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Offset By Limit",
+                        "apiName": "nFORCE__Offset_By_Limit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sort Criteria",
+                        "apiName": "nFORCE__Sort_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Unique",
+                        "apiName": "nFORCE__Unique__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Screen Section",
+                        "apiName": "nFORCE__Screen_Section__c"
+                    }
+                ],
+                "childObjects": [
+                    {
+                        "field": "nFORCE__Parent_Configuration__c",
+                        "relationshipName": "nFORCE__Child_Configurations__r",
+                        "childSObject": "nFORCE__Section_Configuration__c",
+                        "childSObjectLabel": "Section Configuration"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "f099c380-f1f2-4d9e-b6dc-ef9534b0ec50",
+                    "relationName": "nFORCE__Screen_Section__c"
+                },
+                {
+                    "templateUUId": "921d0b7c-34a4-407d-9fc9-a4d5b9550251",
+                    "relationName": "nFORCE__Child_Configurations__r",
+                    "childSObject": "nFORCE__Section_Configuration__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "f099c380-f1f2-4d9e-b6dc-ef9534b0ec50",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral Parent Section Config > Screen Section No OA Template",
+                "templateMainObject": "nFORCE__Screen_Section__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Screen Section Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Break Page After",
+                        "apiName": "nFORCE__Break_Page_After__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Break Page Before",
+                        "apiName": "nFORCE__Break_Page_Before__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Editable",
+                        "apiName": "nFORCE__Default_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Default Rendered",
+                        "apiName": "nFORCE__Default_Rendered__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Print",
+                        "apiName": "nFORCE__Disable_Print__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Order",
+                        "apiName": "nFORCE__Display_Order__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Effect",
+                        "apiName": "nFORCE__Display_Toggle_Effect__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Header",
+                        "apiName": "nFORCE__Display_Toggle_Header__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Toggle Link",
+                        "apiName": "nFORCE__Display_Toggle_Link__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Headless",
+                        "apiName": "nFORCE__Headless__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Inactive",
+                        "apiName": "nFORCE__Inactive__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Instructions",
+                        "apiName": "nFORCE__Instructions_Text__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Is Editable",
+                        "apiName": "nFORCE__Is_Editable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Section Resource",
+                        "apiName": "nFORCE__Section_Resource__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "sObject Type",
+                        "apiName": "nFORCE__sObject_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Disable Read-Only View",
+                        "apiName": "nFORCE__Disable_Read_Only_View__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Conditional Display Criteria",
+                        "apiName": "nFORCE__Conditional_Display_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Number of Columns",
+                        "apiName": "nFORCE__Number_of_Columns__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Custom Code in Screen Section?",
+                        "apiName": "Custom_Code_in_Screen_Section__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Are Columns Sortable",
+                        "apiName": "nFORCE__Are_Columns_Sortable__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Auto Save",
+                        "apiName": "nFORCE__Auto_Save__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Validation Service",
+                        "apiName": "nFORCE__Validation_Service__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "921d0b7c-34a4-407d-9fc9-a4d5b9550251",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Collateral Parent Section Config > Section Configuration No OA Template",
+                "templateMainObject": "nFORCE__Section_Configuration__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Display Order",
+                        "apiName": "nFORCE__Display_Order__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Field Set",
+                        "apiName": "nFORCE__Field_Set_Key__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Parent Relationship Name",
+                        "apiName": "nFORCE__Parent_Relationship_Name__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Section Header",
+                        "apiName": "nFORCE__Section_Header__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "sObject Type",
+                        "apiName": "nFORCE__sObject_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Filter Criteria",
+                        "apiName": "nFORCE__Filter_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Limit",
+                        "apiName": "nFORCE__Limit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Offset By Limit",
+                        "apiName": "nFORCE__Offset_By_Limit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Sort Criteria",
+                        "apiName": "nFORCE__Sort_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Unique",
+                        "apiName": "nFORCE__Unique__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

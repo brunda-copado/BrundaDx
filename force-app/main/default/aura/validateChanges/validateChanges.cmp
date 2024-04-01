@@ -1,0 +1,58 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="ValidateChangesCtrl" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="loading" type="Boolean" access="private" default="true" />
+    <aura:attribute name="validationSetting" type="Object" access="private" />
+    <aura:attribute name="showOrderSteps" type="Boolean" access="private" default="true" />
+    <aura:attribute name="isValidation" type="Boolean" access="private" default="true" />
+
+    <lightning:notificationsLibrary aura:id="notifLib" />
+
+    <aura:html tag="style">
+        .cuf-content { padding: 0 0rem !important; } .slds-p-around--medium { padding: 0rem !important; } .slds-modal__content { overflow-y: hidden
+        !important; height: unset !important; max-height: unset !important; } .slds-modal__container{ width: 60% !important; max-width: 60%
+        !important; }
+    </aura:html>
+
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="{!$Label.c.LOADING}" size="medium" variant="brand" />
+        </aura:if>
+
+        <header class="slds-modal__header">
+            <h4 class="slds-text-heading_medium slds-hyphenate">{!$Label.c.ValidateChanges}</h4>
+        </header>
+
+        <aura:if isTrue="{!v.validationSetting}">
+            <div class="slds-modal__content slds-is-relative slds-var-p-around_medium min-height-50-vh">
+                <aura:if isTrue="{!v.validationSetting.validationEnabled}">
+                    <c:copadoAlert message="{!v.validationSetting.title}" variant="info" />
+                    <aura:set attribute="else">
+                        <c:copadoAlert message="{!v.validationSetting.title}" variant="error" />
+                    </aura:set>
+                </aura:if>
+                <div class="slds-grid slds-wrap slds-var-p-around_small">{!v.validationSetting.message}</div>
+                <aura:if isTrue="{!v.validationSetting.validationEnabled}">
+                    <c:orderDeploymentSteps aura:id="orderDeploymentSteps" parentId="{!v.recordId}" isValidation="{!v.isValidation}">
+                    </c:orderDeploymentSteps>
+                </aura:if>
+            </div>
+        </aura:if>
+
+        <footer>
+            <div class="modal-footer slds-modal__footer attach-to-bottom">
+                <aura:if isTrue="{!v.validationSetting.validationEnabled}">
+                    <lightning:button variant="neutral" label="{!$Label.c.Cancel}" title="{!$Label.c.Cancel}" onclick="{!c.close}" />
+                    <lightning:button
+                        variant="brand"
+                        class="slds-var-m-left_x-small"
+                        label="{!$Label.c.ValidateChanges}"
+                        title="{!$Label.c.Save}"
+                        onclick="{!c.validate}" />
+                    <aura:set attribute="else">
+                        <lightning:button variant="neutral" label="{!$Label.c.CLOSE}" title="{!$Label.c.CLOSE}" onclick="{!c.close}" />
+                    </aura:set>
+                </aura:if>
+            </div>
+        </footer>
+    </div>
+</aura:component>

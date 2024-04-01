@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Value_field_against_Operator</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(Operator__c, &apos;All&apos;), NOT(ISBLANK(Value__c)))</errorConditionFormula>
+    <errorDisplayField>Value__c</errorDisplayField>
+    <errorMessage>When the Operator equals &apos;All&apos;, the Value field must be empty.</errorMessage>
+</ValidationRule>

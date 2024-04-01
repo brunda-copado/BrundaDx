@@ -1,0 +1,464 @@
+[
+    {
+        "templateUUId": "3018125b-f9ac-4d35-bf4d-6f13a6c9d429",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Forms (Start)",
+                "templateMainObject": "nFORMS__Form_Template__c",
+                "templateQueryLimit": null,
+                "templateDescription": "Provided by Copado",
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "Insert Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Template Input Type",
+                        "apiName": "nFORMS__Template_Input_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Page Width",
+                        "apiName": "nFORMS__Page_Width__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Page Dimension Unit",
+                        "apiName": "nFORMS__Page_Dimension_Unit__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Document Output Type",
+                        "apiName": "nFORMS__Document_Output_Type__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Enable FLS",
+                        "apiName": "nFORMS__Enable_FLS__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Form Purpose",
+                        "apiName": "nFORMS__Form_Purpose__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORMS__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Save To Docman",
+                        "apiName": "nFORMS__Save_To_Docman__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Enforce Masking",
+                        "apiName": "nFORMS__Enforce_Masking__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Filter",
+                        "apiName": "nFORMS__Filter__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Primary Object",
+                        "apiName": "nFORMS__Primary_Object__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Output Type",
+                        "apiName": "nFORMS__Output_Type__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Active",
+                        "apiName": "nFORMS__Is_Active__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "nFORMS__Description__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Form Template Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "nFORMS__Form_Template__c",
+                        "relationshipName": "nFORMS__Template_Configurations__r",
+                        "childSObject": "nFORMS__Form_Template_Route_Group_Configuration__c",
+                        "childSObjectLabel": "Form Template Route Group Configuration"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "8bc332c2-7442-4fb2-a342-c86df6b79096",
+                    "relationName": "nFORMS__Template_Configurations__r",
+                    "childSObject": "nFORMS__Form_Template_Route_Group_Configuration__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "8bc332c2-7442-4fb2-a342-c86df6b79096",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Form Template Route Group Configuration Template",
+                "templateMainObject": "nFORMS__Form_Template_Route_Group_Configuration__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "Insert Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORMS__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Route Group",
+                        "apiName": "nFORMS__Route_Group__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "75c9580d-ae57-4236-ae63-861f86285d6e",
+                    "relationName": "nFORMS__Route_Group__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "75c9580d-ae57-4236-ae63-861f86285d6e",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Forms > Route Group Template",
+                "templateMainObject": "nFORCE__Route_Group__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Hidden",
+                        "apiName": "nFORCE__Is_Hidden__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Order",
+                        "apiName": "nFORCE__Order__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Conditional Display Criteria Context",
+                        "apiName": "nFORCE__Conditional_Display_Criteria_Context__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Primary Button Text",
+                        "apiName": "nFORCE__Primary_Button_Text__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Has Visibility Criteria",
+                        "apiName": "nFORCE__Has_Visibility_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Default Context",
+                        "apiName": "nFORCE__Is_Default_Context_Child__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Forward Navigation Disabled",
+                        "apiName": "nFORCE__Is_Forward_Navigation_Disabled__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Visibility Criteria",
+                        "apiName": "nFORCE__Visibility_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Conditional Display Criteria",
+                        "apiName": "nFORCE__Conditional_Display_Criteria__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    }
+                ],
+                "parentObjects": [
+                    {
+                        "name": "Group",
+                        "apiName": "nFORCE__Group__c"
+                    }
+                ],
+                "childObjects": []
+            },
+            "relationList": [
+                {
+                    "templateUUId": "1fb09aae-9198-425b-8da3-00c63d75f35e",
+                    "relationName": "nFORCE__Group__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "1fb09aae-9198-425b-8da3-00c63d75f35e",
+        "values": {
+            "dataTemplate": {
+                "templateName": "nCino Forms > Group-UI Template",
+                "templateMainObject": "nFORCE__Group__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": "files"
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Group Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "App",
+                        "apiName": "nFORCE__App__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "lookupKey",
+                        "apiName": "nFORCE__lookupKey__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Default Collapse Parent Navigation",
+                        "apiName": "nFORCE__Default_Collapse_Parent_Navigation__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Archived",
+                        "apiName": "nFORCE__Is_Archived__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Is Questionnaire",
+                        "apiName": "nFORCE__Is_Questionnaire__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Taxonomy ID",
+                        "apiName": "nFORCE__Taxonomy_Id__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Category",
+                        "apiName": "nFORCE__Category__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Answer Context",
+                        "apiName": "nFORCE__Answer_Context__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "Description_Custom__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "nFORCE__Description__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace",
+                            "Scramble Value": "scramble",
+                            "Scramble With Format": "scrambleWithFormat"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

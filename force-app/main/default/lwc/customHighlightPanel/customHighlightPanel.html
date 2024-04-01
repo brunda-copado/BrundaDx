@@ -1,0 +1,82 @@
+<template>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <template if:true={relatedList}>
+                    <lightning-breadcrumbs>
+                        <lightning-breadcrumb label={parentTitle} onclick={handleClickParentTitle}></lightning-breadcrumb>
+                        <lightning-breadcrumb label={recordName} onclick={handleClickRecordName}></lightning-breadcrumb>
+                    </lightning-breadcrumbs>
+                    <div class="slds-media">
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <span class="slds-page-header__title slds-truncate" title={title}>{title}</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={recordHome}>
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name={iconName}></lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <span>{title}</span>
+                                        <span class="slds-page-header__title slds-truncate">{recordName}</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="slds-page-header__col-actions desktop">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <slot name="actions"> </slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-page-header__row slds-page-header__row_gutters">          
+            <div class="slds-page-header__col-details"> 
+                <template if:false={useFieldSet}>
+                    <lightning-record-form
+                        class="slds-page-header__detail-row slds-var-p-around_x-small display-block"
+                        record-id={recordId}
+                        object-api-name={sobjectType}
+                        layout-type="Compact"
+                        columns="7"
+                        mode="readonly"
+                        density = "comfy"
+                    >
+                    </lightning-record-form>
+                </template>
+                <template if:true={useFieldSet}>
+                    <lightning-record-view-form density="comfy" record-id={recordId} object-api-name={sobjectType}>                  
+                        <ul class="slds-page-header__detail-row slds-var-p-around_x-small" >
+                            <template if:true={formFields}>
+                                <template for:each={formFields} for:item="field">                             
+                                    <li key={field.apiFieldName} class="slds-page-header__detail-block" style="max-width: 15%;">
+                                            <lightning-output-field if:false={field.isRecordType} field-class="slds-form-element_vertical slds-truncate" field-name={field.apiFieldName} > </lightning-output-field>        
+                                            <div if:true={field.isRecordType}>
+                                                <p class="slds-form-element__label">{label.RECORDTYPE}</p>
+                                                <p class="slds-form-element_vertical slds-truncate slds-form-element__static">{recordTypeName}</p>
+                                            </div>                                
+                                    </li>                           
+                                </template>
+                            </template>
+                        </ul>                   
+                    </lightning-record-view-form>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

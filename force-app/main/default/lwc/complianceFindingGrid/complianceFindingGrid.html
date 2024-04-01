@@ -1,0 +1,30 @@
+<template>
+    <lightning-spinner if:true={isLoading} variant="brand" size="medium"></lightning-spinner>
+
+    <lightning-card variant="narrow" title={label.CCH_COMPLIANCE_FINDINGS} class="slds-border_bottom">
+        <lightning-input
+            slot="actions"
+            class="slds-m-right_small slds-m-bottom_small"
+            value={searchValue}
+            onchange={onSearchFilter}
+            placeholder={label.Search_this_list}
+            type="search"
+        ></lightning-input>
+    </lightning-card>
+
+    <div class="table-style">
+        <lightning-datatable
+            key-field="id"
+            columns={columns}
+            data={visibleData}
+            hide-checkbox-column
+            sorted-direction={sortDirection}
+            sorted-by={sortedBy}
+            onsort={onHandleSort}
+            onloadmore={onLoadMore}
+            enable-infinite-loading
+            show-row-number-column
+        >
+        </lightning-datatable>
+    </div>
+</template>

@@ -1,0 +1,44 @@
+<template>
+    <c-copadocore-modal size="small" hide-close>
+        <span slot="title">{label.Assign_New_Licenses}</span>
+        <slot class="slds-align_absolute-center">
+            <div class="slds-size_x-large slds-is-relative">
+                <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+                <c-lookup label={label.Search} helptext={label.Users_Search_Helptext} onsearch={handleLookupSearch} onselectionchange={handleLookupSelectionChange} is-multi-entry>
+                </c-lookup>
+
+                <div class="slds-form-element">
+                    <label class="slds-form-element__legend slds-form-element__label">
+                        <abbr title="required" class="slds-required">*</abbr>
+                        {label.ASSIGN_LICENSES}
+                    </label>
+                    <ul class="slds-form-element__control">
+                        <template for:each={licenses} for:item="license">
+                            <li key={license.name}>
+                                <lightning-input
+                                    onchange={handleChange}
+                                    type="checkbox"
+                                    label={license.label}
+                                    name={license.name}
+                                    disabled={license.disabled}>
+                                </lightning-input>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={handleCancel}> </lightning-button>
+            <lightning-button
+                disabled={saveDisabled}
+                class="slds-m-left_x-small"
+                label={label.Save}
+                title={label.Save}
+                variant="brand"
+                onclick={handleSave}>
+        </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

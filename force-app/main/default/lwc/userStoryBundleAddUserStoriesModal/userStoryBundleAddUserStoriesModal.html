@@ -1,0 +1,61 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <c-copadocore-modal size="medium" hide-close>
+        <span slot="title">{label.Add_User_Stories}</span>
+        <slot class="slds-align_absolute-center">
+            <div class="slds-size_xx-large slds-is-relative">
+                <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+                <div class="slds-p-bottom_medium">{label.USB_Add_User_Story_Modal_Info}</div>
+                <div data-id="datatable-container">
+                    <c-datatable-container
+                        has-body="true"
+                        rows={allRows}
+                        columns={columns}
+                        enable-default-search
+                        onsearch={handleApplySearch}
+                        onclearsearch={handleClearSearch} 
+                    >
+                        <span slot="titleInfo">{subtitle}</span>
+
+                        <span slot="additionalOperations">
+                            <lightning-button-icon class="slds-m-right_small" icon-name="utility:refresh"  variant="border-filled" alternative-text={label.Refresh} title={label.Refresh} onclick={resetTable}></lightning-button-icon>
+                        </span>
+        
+                        <span slot="datatable">
+                            <div style="height: 22em">
+                                <lightning-formatted-text class="slds-align_absolute-center" if:false={hasData} title={label.USB_No_User_Story} value={label.USB_No_User_Story} ></lightning-formatted-text>
+                                <lightning-datatable
+                                    if:true={hasData}
+                                    key-field="id"
+                                    data={data}
+                                    columns={columns}
+                                    enable-infinite-loading
+                                    default-sort-direction={defaultSortDirection}
+                                    sorted-direction={sortDirection}
+                                    sorted-by={sortedBy}
+                                    onrowselection={handleRowSelection}
+                                    onsort={handleSort}
+                                    onloadmore={handleLoadMoreData}
+                                ></lightning-datatable>
+                            </div>
+                        </span>
+                    </c-datatable-container>
+                </div>
+            </div>
+        </slot>
+        <span slot="footer">
+
+            <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={handleCancel}> </lightning-button>
+            <lightning-button
+                disabled={saveButtonDisabled}
+                class="slds-var-m-left_x-small"
+                label={label.Add_User_Stories}
+                title={label.Add_User_Stories}
+                variant="brand"
+                onclick={handleSave}
+            >
+            </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

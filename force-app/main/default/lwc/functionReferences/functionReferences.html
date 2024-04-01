@@ -1,0 +1,34 @@
+<template>
+    <lightning-spinner
+        if:true={showSpinner}
+        alternative-text={labels.LOADING}
+        size="large"
+        variant="brand">
+    </lightning-spinner>
+
+    <c-datatable-container
+        rows={rows}
+        columns={columns}
+        icon-name="standard:custom"
+        icon-size="medium"
+        onsearch={handleSearch}
+        onclearsearch={handleClearSearch}
+        has-body
+        enable-default-search>
+
+        <span slot="title">{labels.AUTOMATIONS}</span>
+        <span slot="titleInfo">{filteredRows.length} {labels.ITEMS}</span>
+        
+        <lightning-datatable
+            slot="datatable"
+            key-field="id"
+            data={filteredRows}
+            columns={columns}
+            onsort={handleSort}
+            sorted-direction={sortDirection}
+            sorted-by={sortedBy}
+            hide-checkbox-column
+            show-row-number-column>
+        </lightning-datatable>
+    </c-datatable-container>
+</template>

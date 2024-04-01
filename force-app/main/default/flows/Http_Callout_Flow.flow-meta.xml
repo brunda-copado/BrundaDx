@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Http_Callout_Sample</name>
+        <label>Http Callout Sample</label>
+        <locationX>176</locationX>
+        <locationY>265</locationY>
+        <actionName>CalculateOrgDifferences</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>deploy</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>orgDiffId</name>
+            <value>
+                <stringValue>a0j5p00000nuUrEAAU</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>CalculateOrgDifferences</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>51.0</apiVersion>
+    <interviewLabel>Http_Callout_Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Http_Callout_Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Http_Callout_Sample</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

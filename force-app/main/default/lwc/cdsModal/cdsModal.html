@@ -1,0 +1,43 @@
+<template>
+    <template if:true={showModal}>
+        <div class={modalClasses}>
+            <div class="cds-modal-container slds-modal__container">
+                <header class="cds-modal-header">
+                    <div class="cds-modal-header-left" data-id="titleContainer">
+                        <div if:true={iconName} class="cds-modal-icon-container">
+                            <lightning-icon icon-name={iconName} size={iconSize} class="modal-header-icon"></lightning-icon>
+                        </div>
+                        <div class="cds-modal-title">
+                            <h2 class="cds-modal-heading slds-hyphenate" data-id="title">
+                                <slot name="title" onslotchange={handleTitleChange}></slot>
+                            </h2>
+                            <p class="cds-modal-subheading" data-id="tagline">
+                                <slot name="tagline" onslotchange={handleTaglineChange}></slot>
+                            </p>
+                        </div>
+                    </div>
+                    <lightning-icon
+                        icon-name="utility:close"
+                        class="modal-close"
+                        alternative-text="Close"
+                        size="small"
+                        title="Close"
+                        onclick={handleClose}
+                    >
+                    </lightning-icon>
+                </header>
+                <div class={contentModalClasses}>
+                    <slot name="alert"></slot>
+                    <div class="cds-modal-content-wrap">
+                        <slot name="modalContent" class="cds-modal-content"></slot>
+                    </div>
+                </div>
+
+                <footer class="cds-modal-footer" data-id="footer">
+                    <slot name="footer" onslotchange={handleFooterChange}></slot>
+                </footer>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

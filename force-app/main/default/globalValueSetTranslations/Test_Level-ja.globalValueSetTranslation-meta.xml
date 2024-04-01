@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>No Test Run</masterLabel>
+        <translation>テストランなし</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Run All Tests In Org</masterLabel>
+        <translation>組織内のすべてのテストを実行</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Run Local Tests</masterLabel>
+        <translation>ローカルテストを実行</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Run Specified Tests</masterLabel>
+        <translation>指定されたテストを実行</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

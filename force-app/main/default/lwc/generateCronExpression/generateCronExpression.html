@@ -1,0 +1,73 @@
+<template>
+    <lightning-button variant="base" label={label.GENERATE_CRON_EXPRESSION} onclick={openModal}></lightning-button>
+
+    <c-copadocore-modal size="x-small" has-overflow>
+        <span slot="title">{label.CREATE_CRON_EXPRESSION}</span>
+        <slot>
+            <c-expandable-section label={label.CONFIGURE_PARAMETERS} non-collapsible>
+                <lightning-layout multiple-rows slot="body" class="slds-var-p-around_small">
+                    <lightning-layout-item size="12">
+                        <div style="display: flex">
+                            <label class="slds-form-element__label">{label.REPEAT_EVERY}</label>
+                            <lightning-combobox
+                                class="slds-var-p-right_x-small"
+                                variant="label-hidden"
+                                dropdown-alignment="auto"
+                                value={repeatEvery}
+                                options={repeatEveryOptions}
+                                onchange={handleChangeRepeatEvery}
+                            ></lightning-combobox>
+                            <lightning-combobox
+                                variant="label-hidden"
+                                dropdown-alignment="auto"
+                                value={timeFrame}
+                                options={timeFrameOptions}
+                                onchange={handleChangeTimeFrame}
+                            ></lightning-combobox>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item lwc:if={weeksSelected} size="12" class="slds-p-top_medium">
+                        <lightning-checkbox-group
+                            variant="label-hidden"
+                            value={days}
+                            options={daysOptions}
+                            onchange={handleChangeDays}
+                            required
+                        ></lightning-checkbox-group>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-top_medium">
+                        <div style="display: flex">
+                            <label class="slds-form-element__label">{label.STARTS_AT}</label>
+                            <lightning-combobox
+                                class="slds-var-p-right_x-small"
+                                variant="label-hidden"
+                                dropdown-alignment="auto"
+                                value={hours}
+                                options={hoursOptions}
+                                onchange={handleChangeHours}
+                            ></lightning-combobox>
+                            <lightning-combobox
+                                variant="label-hidden"
+                                dropdown-alignment="auto"
+                                value={minutes}
+                                options={minutesOptions}
+                                onchange={handleChangeMinutes}
+                            ></lightning-combobox>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </c-expandable-section>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.CANCEL} title={label.CANCEL} onclick={handleCancelModal}> </lightning-button>
+            <lightning-button
+                label={label.GENERATE_CRON_EXPRESSION}
+                title={label.GENERATE_CRON_EXPRESSION}
+                variant="brand"
+                class="slds-var-m-left_x-small"
+                onclick={handleSaveModal}
+            >
+            </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

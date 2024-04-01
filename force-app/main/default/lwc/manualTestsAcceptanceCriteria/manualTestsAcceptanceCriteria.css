@@ -1,0 +1,96 @@
+.container {
+    padding: 1rem;
+    min-height: calc(100vh - 350px);
+}
+
+.container .edit-button {
+    display: flex;
+    justify-content: flex-end;
+    height: 2rem;
+}
+
+.container .add-button {
+    padding-bottom: 4rem;
+}
+
+.container .read-only {
+    padding-right: 10px;
+}
+
+.container .read-only .slds-form-element__label {
+    display: block;
+    width: 100%;
+    max-width: unset;
+}
+
+.container .read-only .slds-form-element__control {
+    padding-left: 0;
+    padding-bottom: 0px;
+    margin-bottom: -5px;
+}
+
+.container .read-only .slds-form__item {
+    min-width: unset;
+}
+
+.container .read-only lightning-icon.edit-icon {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.container .read-only .tester-scope {
+    flex-grow: 2;
+    width: 8rem;
+}
+
+.container .read-only .tester {
+    flex-grow: 2;
+    width: 8rem;
+}
+
+.container .read-only .type {
+    flex-grow: 2;
+    width: 8rem;
+}
+
+.container .read-only .minimum-testers {
+    flex-grow: 2;
+    width: 2rem;
+}
+
+.container .acceptance-criteria .list li {
+    display: flex;
+    clear: both;
+    padding: 7px 0;
+}
+
+.container .acceptance-criteria .list li div.slds-form-element {
+    padding-right: 10px;
+}
+
+.container .acceptance-criteria .list li div.slds-form-element.tester-scope {
+    flex-grow: 2;
+    width: 11rem;
+}
+
+.container .acceptance-criteria .list li div.slds-form-element.tester {
+    flex-grow: 2;
+    width: 11rem;
+}
+
+.container .acceptance-criteria .list li div.slds-form-element.type {
+    flex-grow: 2;
+    width: 11rem;
+}
+
+.container .acceptance-criteria .list li div.slds-form-element.minimum-testers {
+    flex-grow: 2;
+    width: 8rem;
+}
+
+.container .acceptance-criteria .list li div.slds-form-element.delete {
+    flex-grow: 1;
+    margin-top: 24px;
+    width: 45px;
+}

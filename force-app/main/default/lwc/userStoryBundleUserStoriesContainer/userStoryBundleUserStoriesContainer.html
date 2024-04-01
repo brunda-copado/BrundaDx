@@ -1,0 +1,58 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+        <c-user-story-bundle-user-stories-removal-modal package-version-id={recordId} onuserstoriesremoved={handleRefresh}> </c-user-story-bundle-user-stories-removal-modal>
+        <c-user-story-bundle-add-user-stories-modal package-version-id={recordId} onadduserstories={handleAddUserStories}> </c-user-story-bundle-add-user-stories-modal>
+
+
+        <div data-id="datatable-container">
+            <c-datatable-container
+                icon-name="standard:goals"
+                has-body="true"
+                rows={allRows}
+                columns={columns}
+                enable-default-search
+                onsearch={handleApplySearch}
+                onclearsearch={handleClearSearch}
+            >
+                <span slot="title">{label.User_Stories_Table_Header}</span>
+                <span slot="titleInfo">{subtitle}</span>
+
+                <span slot="actions">
+                    <lightning-button-group>
+                        <lightning-button
+                        disabled={removeSelectedDisabled}
+                        label={label.Remove_User_Stories}
+                        title={label.Remove_User_Stories}
+                        onclick={handleRemoveUserStoryBundleUserStories}
+                    ></lightning-button>
+                    <lightning-button label={label.Add_User_Stories} disabled={disableAddRowsButton} title={label.Add_User_Stories} onclick={handleAddUserStoryBundleUserStories}></lightning-button>
+                    </lightning-button-group>
+                    
+                </span>
+
+                <span slot="datatable">
+                    <div style="height: calc(100vh - 500px)">
+                        <lightning-datatable
+                            if:true={hasData}
+                            hide-checkbox-column={hideCheckBoxOnLockStatus}
+                            key-field="Id"
+                            data={data}
+                            columns={columns}
+                            enable-infinite-loading
+                            show-row-number-column
+                            default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection}
+                            sorted-by={sortedBy}
+                            onrowselection={handleRowSelection}
+                            onsort={handleSort}
+                            onloadmore={handleLoadMoreData}
+                        ></lightning-datatable>
+                    </div>
+                </span>
+            </c-datatable-container>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,8 @@
+.THIS .min-height-50-vh {
+    min-height: 50vh;
+}
+
+.THIS .no-border {
+    border: none;
+    box-shadow: unset;
+}

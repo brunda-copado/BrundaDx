@@ -1,0 +1,30 @@
+<template>
+    <c-copadocore-modal size="small" onmodalclose={handleClickCancel}>
+        <span slot="title">{label.TEMPLATE_CHANGES}</span>
+        <slot class="slds-align_absolute-center">
+            <div class="slds-size_full slds-is-relative">
+                <ul class="slds-m-around_medium">
+                    <template for:each={addedInfo} for:item="info">
+                        <li key={info.id}>
+                            <div class="slds-border_bottom slds-var-p-vertical_xx-small">
+                                <lightning-icon class="slds-var-m-right_large add" icon-name="utility:new" size="xx-small"></lightning-icon>
+                                {info.message}
+                            </div>
+                        </li>
+                    </template>
+                    <template for:each={removedInfo} for:item="info">
+                        <li key={info.id}>
+                            <div class="slds-border_bottom slds-var-p-vertical_xx-small">
+                                <lightning-icon class="slds-var-m-right_large remove" icon-name="utility:clear" size="xx-small"></lightning-icon>
+                                {info.message}
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.CLOSE} title={label.CLOSE} variant="neutral" onclick={handleClickClose}></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

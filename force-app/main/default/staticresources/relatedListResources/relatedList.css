@@ -1,0 +1,37 @@
+/*Set the component to occupy all the space available*/
+.lightning-card {
+    width: 100%;
+}
+
+/*Add padding and remove margin from the header*/
+.slds-card__header {
+    padding: var(--lwc-varSpacingVerticalSmall, .75rem) var(--lwc-varSpacingHorizontalMedium, 1rem) var(--lwc-varSpacingVerticalSmall, .75rem);
+    margin: 0 0 0;
+}
+
+/*Separate first real column rows from the left of the table*/
+.related-list tbody>tr>th:first-of-type {
+    padding-left: var(--lwc-varSpacingMedium);
+}
+
+/*Add standard-like styling to urls in cells*/
+.related-list th lightning-formatted-url a,
+.related-list td lightning-formatted-url a {
+    border-bottom: 1px dotted;
+}
+
+/*Increase size of arrow icon in button actions menu*/
+lightning-button-menu .slds-button.slds-button_icon-border.slds-button_icon-x-small .slds-button__icon {
+    width: var(--lwc-squareIconXxSmallContent, .875rem);
+    height: var(--lwc-squareIconXxSmallContent, .875rem);
+}
+
+/*To show row actions as link*/
+.related-list td a span {
+    color: var(--lwc-brandTextLinkActive, rgb(0, 95, 178));
+}
+
+/*Remove extra border top from the footer*/
+.no-border-top {
+    border-top: 0;
+}

@@ -1,0 +1,53 @@
+<template>
+    <lightning-record-edit-form object-api-name={schema.USER_STORY} onsubmit={handleSubmit}>
+        <c-copadocore-modal size="small">
+            <span slot="title">{label.EDIT_STORIES}</span>
+            <span slot="alert">
+                <div class="slds-p-top_xxx-small slds-p-right_medium slds-p-left_medium">
+                    <c-copado-alert
+                        message={infoAlert.message}
+                        variant={infoAlert.variant}
+                        dismissible={infoAlert.dismissible}
+                        onclosealert={handleCloseAlert}
+                    ></c-copado-alert>
+                    <c-copado-alert
+                        if:true={alert}
+                        message={alert.message}
+                        variant={alert.variant}
+                        dismissible={alert.dismissible}
+                        onclosealert={handleCloseAlert}
+                    ></c-copado-alert>
+                </div>
+            </span>
+            <slot class="slds-align_absolute-center">
+                <div class="slds-size_x-large slds-is-relative">
+                    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+                    <template for:each={columns} for:item="column" for:index="index">
+                        <lightning-input-field
+                            if:false={column.isCustomLookup}
+                            key={column.fieldName}
+                            field-name={column.fieldName}
+                            value=""
+                            variant="label-stacked"
+                        ></lightning-input-field>
+                        <c-lookup
+                            if:true={column.isCustomLookup}
+                            class="slds-form-element slds-form-element_stacked"
+                            key={column.fieldName}
+                            label={column.label}
+                            onsearch={handleLookupSearch}
+                            onselectionchange={getSelectedId}
+                        >
+                        </c-lookup>
+                    </template>
+                    <div class="slds-form-element"></div>
+                </div>
+            </slot>
+            <span slot="footer">
+                <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleCancel}> </lightning-button>
+                <lightning-button type="submit" class="slds-m-left_x-small" label={label.SAVE} title={label.SAVE} variant="brand"> </lightning-button>
+            </span>
+        </c-copadocore-modal>
+    </lightning-record-edit-form>
+</template>

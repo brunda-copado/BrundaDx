@@ -1,0 +1,90 @@
+/* for use common style from copado design sysyem */
+@import "c/copadoDesignSystem";
+
+.cds-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.custom-persona-button {
+  flex-shrink: 0;
+}
+
+.cds-sidebar-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 2rem;
+  color: var(--cds-semantic-color-text-primary);
+}
+
+.cds-sidebar-wrap .cds-sidebar-list {
+  position: relative;
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li:last-child {
+  margin-bottom: 0;
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li .cds-sidebar-item {
+  padding: 0.5rem 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 6px;
+
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li .cds-sidebar-item .cds-sidebar-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li .cds-sidebar-item .cds-sidebar-item-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li:hover .cds-sidebar-item {
+  border: 1px solid var(--cds-semantic-color-background-lightest);
+  background: var(--cds-semantic-color-background-lightest);
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li.active .cds-sidebar-item {
+  border: 1px solid var(--cds-semantic-color-accent-background);
+  background: var(--cds-semantic-color-accent-background);
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li.active .cds-sidebar-item .cds-sidebar-label {
+  color: var(--cds-semantic-color-accent-primary);
+}
+
+.cds-sidebar-wrap .cds-sidebar-list li.active .cds-sidebar-item .cds-sidebar-item-left .cds-icon {
+  --slds-c-icon-color-foreground-default: var(--cds-semantic-color-accent-primary);
+}
+
+.cds-badge {
+  --slds-c-badge-color-background: var(--cds-semantic-color-info-light);
+  --slds-c-badge-text-color: var(--cds-semantic-color-accent-primary);
+}
+
+.cds-sidebar-item-right {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cds-button-menu {
+  --slds-c-button-color-background: var(--cds-semantic-color-background-light);
+}

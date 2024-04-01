@@ -1,0 +1,27 @@
+<template>
+    <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"> </lightning-spinner>
+
+    <c-datatable-container icon-name={iconName} has-body rows={rows} columns={columns}>
+        <span slot="title">{title}</span>
+        <span lwc:if={hasData} slot="titleInfo">{items}</span>
+
+        <span slot="datatable">
+            <div style="max-height: calc(100vh - 500px)">
+                <lightning-datatable
+                    lwc:if={hasData}
+                    key-field={keyField}
+                    columns={columns}
+                    data={data}
+                    hide-checkbox-column
+                    enable-infinite-loading
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}
+                    onloadmore={handleLoadMoreData}
+                >
+                </lightning-datatable>
+            </div>
+        </span>
+    </c-datatable-container>
+</template>

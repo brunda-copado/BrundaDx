@@ -1,0 +1,11 @@
+.slds-show_inline-block {
+    display: inline-block;
+}
+
+.slds-card {
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.16) !important;
+}
+
+.slds-docked-form-footer {
+    position: static;
+}

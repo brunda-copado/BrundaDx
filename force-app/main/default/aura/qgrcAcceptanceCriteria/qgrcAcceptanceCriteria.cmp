@@ -1,0 +1,29 @@
+<aura:component controller="QgrcAcceptanceCriteriaCtrl" access="global" implements="force:hasRecordId,flexipage:availableForAllPageTypes">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="errorMessage" type="String" access="private" />
+    <aura:attribute name="acceptanceCriteriaFound" type="Boolean" access="private" />
+    <aura:attribute name="loading" type="Boolean" access="private" default="true" />
+
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant="brand" />
+            <aura:set attribute="else">
+                <aura:if isTrue="{!!v.acceptanceCriteriaFound}">
+                    <lightning:card>
+                        <div class="slds-var-p-around_large">
+                            <c:copadocoreIllustrationContainer
+                                message="{!$Label.c.AcceptanceCriteriaNotAvailable}"
+                                slotMessage="{!$Label.c.QgrcDoesNotSupportAcceptanceCriteria}"
+                            />
+                        </div>
+                    </lightning:card>
+
+                    <aura:set attribute="else">
+                        <c:dynamicUISectionContainer locationId="ATF.QGRC.AcceptanceCriteria" requiredInformation="Test Tool" />
+                    </aura:set>
+                </aura:if>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

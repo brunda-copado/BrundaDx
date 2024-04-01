@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scratch_Orgs_Disabled_for_Back_Promoting</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(Back_Promotion__c == true,ISPICKVAL(Destination_Org_Credential__r.Org_Type__c,&apos;Scratch Org&apos;))</errorConditionFormula>
+    <errorMessage>Back Promotions to Scratch Orgs are not allowed</errorMessage>
+</ValidationRule>

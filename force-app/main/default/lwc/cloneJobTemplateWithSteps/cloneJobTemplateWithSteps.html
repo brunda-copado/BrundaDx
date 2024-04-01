@@ -1,0 +1,55 @@
+<template>
+    <lightning-spinner
+        if:true={showSpinner}
+        alternative-text={labels.LOADING}
+        size="large"
+        variant="brand">
+    </lightning-spinner>
+
+    <lightning-quick-action-panel header={labels.CLONE_JOB_TEMPLATE}>
+        <c-copado-alert message={labels.CLONE_JOB_TEMPLATE_HEADER} variant="info"></c-copado-alert>
+        
+        <lightning-record-edit-form
+            object-api-name={objectApiName}
+            record-id={recordId}
+            onsubmit={handleSubmit}>
+            <lightning-layout multiple-rows>
+                <template for:each={fields} for:item="field">
+                    <lightning-layout-item
+                        padding="around-small"
+                        size={field.size}
+                        key={field.fieldName}>
+                            <lightning-input-field field-name={field.fieldName} if:false={field.isOwnerId}>
+                            </lightning-input-field>
+
+                            <!-- Adding seperate form as Owner can't be overridden in record-edit-form -->
+                            <lightning-record-edit-form object-api-name={objectApiName} if:true={field.isOwnerId}>
+                                <lightning-output-field field-name={field.fieldName}></lightning-output-field>
+                            </lightning-record-edit-form>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+            <lightning-button type="submit" class="submit slds-hide"></lightning-button>
+        </lightning-record-edit-form>
+        
+        <div slot="footer" class="slds-align_absolute-center">
+            <c-copadocore-error-popover
+                if:true={error}
+                title={error.title}
+                message={error.message}>
+            </c-copadocore-error-popover>
+            <lightning-button
+                variant="neutral"
+                label={labels.CANCEL}
+                onclick={closeModal}
+                class="slds-m-left_x-small">
+            </lightning-button>
+            <lightning-button
+                variant="brand"
+                label={labels.CLONE_TEMPLATE}
+                onclick={clone}
+                class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

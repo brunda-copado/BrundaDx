@@ -1,0 +1,45 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text={labels.LOADING} size="large" variant="brand"></lightning-spinner>
+
+    <c-copadocore-modal size="x-small" onmodalclose={closeModal}>
+        <span slot="title">{labels.EDIT_NOTIFICATIONS}</span>
+
+        <slot>
+            <lightning-layout multiple-rows>
+                <template for:each={layout} for:item="field">
+                    <lightning-layout-item padding="around-small" size={field.size} key={field.fieldName}>
+
+                        <lightning-input
+                            if:true={field.typeInput}
+                            data-input="subscription"
+                            data-field-name={field.fieldName}
+                            data-api-name={field.apiName}
+                            label={field.label}
+                            value={field.value}
+                            checked={field.value}
+                            read-only={field.readOnly}
+                            type={field.type}>
+                        </lightning-input>
+
+                        <lightning-checkbox-group
+                            if:true={field.typeCheckboxGroup}
+                            data-input="subscription"
+                            data-field-name={field.fieldName}
+                            data-api-name={field.apiName}
+                            label={field.label}
+                            value={field.value}
+                            read-only={field.readOnly}
+                            options={field.options}>
+                        </lightning-checkbox-group>
+
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </slot>
+
+        <span slot="footer">
+            <lightning-button class="slds-m-right_medium" onclick={closeModal} label={labels.CANCEL}></lightning-button>
+            <lightning-button variant="brand" onclick={save} label={labels.SAVE}></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Copado Test Manager</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>User_Story__c</object>
+                <object>Application_Feature__c</object>
+                <object>Application__c</object>
+                <object>Promotion__c</object>
+            </objects>
+            <property
+                name="showNewButton"
+                label="Show New Button"
+                description="It is necessary to show New button on the component"
+                default="true"
+                type="Boolean"
+            />
+            <property
+                name="showRunAllTestButton"
+                label="Show Run All Test Button"
+                description="It is necessary to show Run All Test button on the component"
+                default="false"
+                type="Boolean"
+            />
+            <property
+                name="showRefreshIcon"
+                label="Show Refresh Icon"
+                description="It is necessary to show Refresh icon on the component"
+                default="false"
+                type="Boolean"
+            />
+            <property
+                name="showSearch"
+                label="Show Search"
+                description="It is necessary to show Search on the component"
+                default="false"
+                type="Boolean"
+            />
+            <property
+                name="showFilter"
+                label="Show Filter"
+                description="It is necessary to show Filter on the component"
+                default="false"
+                type="Boolean"
+            />
+            <property
+                name="showRowActions"
+                label="Show Row Actions"
+                description="It is necessary to show row action drop down on the component"
+                default="false"
+                type="Boolean"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -65,11 +65,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>PrimarySic8</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>PrimaryNaics</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Longitude</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FortuneRank</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -119,11 +127,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>PrimarySic8Desc</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>PrimaryNaicsDesc</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Latitude</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>IncludedInSnP500</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -153,6 +169,26 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>SixthSic</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SecondSic8</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ThirdSic8</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FourthSic8</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FifthSic8</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SixthSic8</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -198,6 +234,26 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>SecondSic8Desc</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ThirdSic8Desc</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FourthSic8Desc</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FifthSic8Desc</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SixthSic8Desc</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>SecondNaicsDesc</field>
             </layoutItems>
             <layoutItems>
@@ -239,6 +295,14 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>EmployeeQuantityGrowthRate</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PriorYearEmployees</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>LegalStatus</field>
             </layoutItems>
             <layoutItems>
@@ -273,6 +337,10 @@
                 <behavior>Edit</behavior>
                 <field>MarketingSegmentationCluster</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PremisesMeasureReliability</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -286,6 +354,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>GlobalUltimateTotalEmployees</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>SalesTurnoverGrowthRate</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PriorYearRevenue</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -318,6 +394,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>TradeStyle5</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PremisesMeasure</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PremisesMeasureUnit</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

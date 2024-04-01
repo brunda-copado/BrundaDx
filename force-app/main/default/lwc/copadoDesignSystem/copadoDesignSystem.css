@@ -1,0 +1,104 @@
+:host {
+    /* Color Variables */
+    --cds-semantic-color-accent-primary: #007cbf;
+    --cds-semantic-color-accent-medium: #005786;
+    --cds-semantic-color-text-primary: #111219;
+    --cds-semantic-color-text-secondary: #646b89;
+    --cds-semantic-color-background-light: #eeeff2;
+    --cds-semantic-color-background-lightest: #f6f7f8;
+    --cds-semantic-color-info-light: #cce5f2;
+    --disable-color: #989db0;
+    --border-color: #dddee5;
+    --cds-semantic-color-borders-dark: #babdcb;
+    --button-primary-hover: #005786;
+    --button-secondary-hover: #f6f7f8;
+    --cds-semantic-color-error-primary: #ec563b;
+    --cds-semantic-color-error-light: #fbddd8;
+    --cds-semantic-color-error-medium: #a53c29;
+    --cds-semantic-color-error-contrast: #471a12;
+    --cds-semantic-color-alert-light: #fff5cc;
+    --cds-semantic-color-alert-contrast: #4c3d00;
+    --cds-semantic-color-alert-medium: #b38f00;
+    --cds-semantic-color-success-light: #ccefec;
+    --cds-semantic-color-success-primary: #00b1a0;
+    --cds-semantic-color-success-medium: #007c70;
+    --cds-semantic-color-success-contrast: #004740;
+    --cds-semantic-color-accent-background: #e6f2f9;
+    --cds-semantic-color-info-medium: #005786;
+    --cds-semantic-color-background-contrast: #3a4057;
+    --cds-semantic-color-text-hint: #989db0;
+    --button-secondary-border-hover: --button-primary-hover;
+    --white: #ffffff;
+
+    /* cds-form-components */
+    --slds-c-input-color-border: var(--cds-semantic-color-borders-dark);
+    --slds-c-input-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 5px 4px -4px rgba(0, 0, 0, 0.02);
+    --slds-c-textarea-color-border: var(--cds-semantic-color-borders-dark);
+    --slds-c-textarea-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 5px 4px -4px rgba(0, 0, 0, 0.02);
+    --slds-c-checkbox-color-border: var(--cds-semantic-color-borders-dark);
+    --slds-c-checkbox-color-border-checked: var(--cds-semantic-color-accent-primary);
+    --slds-c-checkbox-color-background-checked: var(--cds-semantic-color-accent-primary);
+    --slds-c-checkbox-mark-color-foreground: var(--white);
+    --slds-c-checkbox-radius-border: 4px;
+    --slds-c-checkbox-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 5px 4px -4px rgba(0, 0, 0, 0.02);
+    --slds-c-radio-color-border: var(--cds-semantic-color-borders-dark);
+    --slds-c-radio-color-border-checked: var(--cds-semantic-color-accent-primary);
+    --slds-c-radio-color-background-checked: var(--cds-semantic-color-accent-primary);
+    --slds-c-radio-mark-color-foreground: var(--white);
+    --slds-c-radio-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 5px 4px -4px rgba(0, 0, 0, 0.02);
+    --slds-c-radio-shadow-focus: 0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 5px 4px -4px rgba(0, 0, 0, 0.02);
+}
+
+/* button */
+.cds-button {
+    --slds-c-button-radius-border: 4px;
+    --slds-c-button-sizing-border: 1px;
+    --slds-c-button-spacing-inline-start: 1rem;
+    --slds-c-button-spacing-inline-end: 1rem;
+    --slds-c-button-text-color: var(--cds-semantic-color-accent-primary);
+    --slds-c-button-text-color-active: var(--cds-semantic-color-accent-medium);
+    --slds-c-button-text-color-hover: var(--cds-semantic-color-accent-medium);
+    --slds-c-button-brand-color-background: var(--cds-semantic-color-accent-primary);
+    --slds-c-button-brand-color-background-active: var(--cds-semantic-color-accent-medium);
+    --slds-c-button-brand-color-background-hover: var(--cds-semantic-color-accent-medium);
+    --slds-c-button-brand-color-border: var(--cds-semantic-color-accent-primary);
+    --slds-c-button-brand-color-border-hover: var(--cds-semantic-color-accent-medium);
+    --slds-c-button-brand-text-color: var(--white);
+    --slds-c-button-brand-text-color-active: var(--white);
+    --slds-c-button-brand-text-color-hover: var(--white);
+    --slds-c-button-neutral-color-background: var(--white);
+    --slds-c-button-neutral-color-background-active: var(--button-secondary-hover);
+    --slds-c-button-neutral-color-background-hover: var(--button-secondary-hover);
+    --slds-c-button-neutral-color-border: var(--cds-semantic-color-accent-primary);
+    --slds-c-button-neutral-color-border-active: var(--cds-semantic-color-accent-medium);
+    --slds-c-button-neutral-color-border-hover: var(--cds-semantic-color-accent-medium);
+}
+
+/* .cds-button {
+    font-size: 0.875rem;
+    font-weight: 600;
+} */
+
+/* tabs */
+.cds-tabs {
+    --slds-c-tabs-item-text-color: var(--cds-semantic-color-text-secondary);
+    --slds-c-tabs-item-text-color-active: var(--cds-semantic-color-text-primary);
+    --slds-c-tabs-item-color-border-active: var(--cds-semantic-color-accent-primary);
+    --slds-c-tabs-item-color-border-hover: var(--cds-semantic-color-accent-primary);
+    --slds-c-tabs-list-sizing-border: 2px;
+    --slds-c-tabs-list-color-border: var(--border-color);
+    --slds-c-tabs-item-spacing-inline-start: 1rem;
+    --slds-c-tabs-item-spacing-inline-end: 1rem;
+    --slds-c-tabs-item-sizing-height: 3.5rem;
+    --slds-c-tabs-item-line-height: 3.45rem;
+}
+
+/* cds-form-components */
+.cds-button-icon {
+    --slds-c-button-color-border: var(--cds-semantic-color-borders-dark);
+}
+
+/* cds-tooltip */
+.cds-tooltip {
+    font-size: initial;
+}

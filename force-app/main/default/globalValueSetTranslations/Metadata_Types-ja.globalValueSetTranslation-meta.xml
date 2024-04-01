@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>ActionLinkGroupTemplate</masterLabel>
+        <translation>アクショングループテンプレート</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AnalyticSnapshot</masterLabel>
+        <translation>分析スナップショット</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexClass</masterLabel>
+        <translation>Apexクラス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexComponent</masterLabel>
+        <translation>Apexコンポーネント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexPage</masterLabel>
+        <translation>Apexページ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexTestSuite</masterLabel>
+        <translation><!-- ApexTestSuite --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexTrigger</masterLabel>
+        <translation>Apexトリガー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AppMenu</masterLabel>
+        <translation>アプリメニュー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApprovalProcess</masterLabel>
+        <translation>承認プロセス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AssignmentRule</masterLabel>
+        <translation>割り当てルール</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AssignmentRules</masterLabel>
+        <translation>割り当てルール</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AuraDefinitionBundle</masterLabel>
+        <translation>Aura定義バンドル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AuthProvider</masterLabel>
+        <translation>Authプロバイダー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AutoResponseRule</masterLabel>
+        <translation>自動応答ルール</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AutoResponseRules</masterLabel>
+        <translation>自動応答ルール</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BrandingSet</masterLabel>
+        <translation><!-- BrandingSet --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BusinessProcess</masterLabel>
+        <translation>ビジネスプロセス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CallCenter</masterLabel>
+        <translation>コールセンター</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CaseSubjectParticle</masterLabel>
+        <translation><!-- CaseSubjectParticle --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Certificate</masterLabel>
+        <translation>証明書</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ChannelLayout</masterLabel>
+        <translation>チャネルレイアウト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ChatterExtension</masterLabel>
+        <translation><!-- ChatterExtension --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CleanDataService</masterLabel>
+        <translation><!-- CleanDataService --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Community</masterLabel>
+        <translation>コミュニティー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CompactLayout</masterLabel>
+        <translation>コンパクトレイアウト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ConnectedApp</masterLabel>
+        <translation>接続済みアプリ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ContentAsset</masterLabel>
+        <translation><!-- ContentAsset --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CorsWhitelistOrigin</masterLabel>
+        <translation>CORSホワイトリストオリジン</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CspTrustedSite</masterLabel>
+        <translation><!-- CspTrustedSite --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomApplication</masterLabel>
+        <translation>カスタムアプリケーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomApplicationComponent</masterLabel>
+        <translation><!-- CustomApplicationComponent --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomFeedFilter</masterLabel>
+        <translation><!-- CustomFeedFilter --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomField</masterLabel>
+        <translation>カスタム項目</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomLabel</masterLabel>
+        <translation>カスタムラベル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomLabels</masterLabel>
+        <translation><!-- CustomLabels --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomMetadata</masterLabel>
+        <translation><!-- CustomMetadata --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomObject</masterLabel>
+        <translation><!-- CustomObject --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomObjectTranslation</masterLabel>
+        <translation><!-- CustomObjectTranslation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomPageWebLink</masterLabel>
+        <translation><!-- CustomPageWebLink --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomPermission</masterLabel>
+        <translation><!-- CustomPermission --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomSite</masterLabel>
+        <translation><!-- CustomSite --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CustomTab</masterLabel>
+        <translation><!-- CustomTab --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Dashboard</masterLabel>
+        <translation><!-- Dashboard --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DataCategoryGroup</masterLabel>
+        <translation><!-- DataCategoryGroup --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DelegateGroup</masterLabel>
+        <translation><!-- DelegateGroup --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Document</masterLabel>
+        <translation>ドキュメント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>DuplicateRule</masterLabel>
+        <translation><!-- DuplicateRule --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EclairGeoData</masterLabel>
+        <translation><!-- EclairGeoData --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EmailServicesFunction</masterLabel>
+        <translation><!-- EmailServicesFunction --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EmailTemplate</masterLabel>
+        <translation><!-- EmailTemplate --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EmbeddedServiceBranding</masterLabel>
+        <translation><!-- EmbeddedServiceBranding --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EmbeddedServiceConfig</masterLabel>
+        <translation><!-- EmbeddedServiceConfig --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EscalationRule</masterLabel>
+        <translation><!-- EscalationRule --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EscalationRules</masterLabel>
+        <translation><!-- EscalationRules --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EventDelivery</masterLabel>
+        <translation><!-- EventDelivery --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>EventSubscription</masterLabel>
+        <translation><!-- EventSubscription --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ExternalDataSource</masterLabel>
+        <translation><!-- ExternalDataSource --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ExternalServiceRegistration</masterLabel>
+        <translation><!-- ExternalServiceRegistration --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FieldSet</masterLabel>
+        <translation><!-- FieldSet --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FlexiPage</masterLabel>
+        <translation><!-- FlexiPage --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Flow</masterLabel>
+        <translation>フロー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FlowCategory</masterLabel>
+        <translation><!-- FlowCategory --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>FlowDefinition</masterLabel>
+        <translation><!-- FlowDefinition --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>GlobalValueSet</masterLabel>
+        <translation><!-- GlobalValueSet --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>GlobalValueSetTranslation</masterLabel>
+        <translation><!-- GlobalValueSetTranslation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Group</masterLabel>
+        <translation>グループ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HomePageComponent</masterLabel>
+        <translation><!-- HomePageComponent --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HomePageLayout</masterLabel>
+        <translation><!-- HomePageLayout --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Index</masterLabel>
+        <translation>インデックス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>InstalledPackage</masterLabel>
+        <translation><!-- InstalledPackage --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Layout</masterLabel>
+        <translation>レイアウト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LeadConvertSettings</masterLabel>
+        <translation><!-- LeadConvertSettings --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Letterhead</masterLabel>
+        <translation><!-- Letterhead --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LightningBolt</masterLabel>
+        <translation><!-- LightningBolt --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LightningComponentBundle</masterLabel>
+        <translation><!-- LightningComponentBundle --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LightningExperienceTheme</masterLabel>
+        <translation><!-- LightningExperienceTheme --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ListView</masterLabel>
+        <translation><!-- ListView --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MatchingRule</masterLabel>
+        <translation><!-- MatchingRule --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MatchingRules</masterLabel>
+        <translation><!-- MatchingRules --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NamedCredential</masterLabel>
+        <translation><!-- NamedCredential --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>NetworkBranding</masterLabel>
+        <translation><!-- NetworkBranding --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PathAssistant</masterLabel>
+        <translation><!-- PathAssistant --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PermissionSet</masterLabel>
+        <translation>権限セット</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PlatformCachePartition</masterLabel>
+        <translation><!-- PlatformCachePartition --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>PostTemplate</masterLabel>
+        <translation><!-- PostTemplate --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Profile</masterLabel>
+        <translation>プロファイル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ProfilePasswordPolicy</masterLabel>
+        <translation><!-- ProfilePasswordPolicy --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ProfileSessionSetting</masterLabel>
+        <translation><!-- ProfileSessionSetting --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Queue</masterLabel>
+        <translation><!-- Queue --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>QuickAction</masterLabel>
+        <translation><!-- QuickAction --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RecordType</masterLabel>
+        <translation><!-- RecordType --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>RemoteSiteSettingReport</masterLabel>
+        <translation><!-- RemoteSiteSettingReport --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Report</masterLabel>
+        <translation><!-- Report --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ReportType</masterLabel>
+        <translation><!-- ReportType --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Role</masterLabel>
+        <translation>ロール</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SamlSsoConfig</masterLabel>
+        <translation><!-- SamlSsoConfig --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Scontrol</masterLabel>
+        <translation><!-- Scontrol --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Settings</masterLabel>
+        <translation>設定</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SharingCriteriaRule</masterLabel>
+        <translation><!-- SharingCriteriaRule --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SharingOwnerRule</masterLabel>
+        <translation><!-- SharingOwnerRule --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SharingReason</masterLabel>
+        <translation><!-- SharingReason --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SharingRules</masterLabel>
+        <translation><!-- SharingRules --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SharingSet</masterLabel>
+        <translation><!-- SharingSet --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SiteDotCom</masterLabel>
+        <translation><!-- SiteDotCom --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>StandardValueSet</masterLabel>
+        <translation><!-- StandardValueSet --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>StandardValueSetTranslation</masterLabel>
+        <translation><!-- StandardValueSetTranslation --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>StaticResource</masterLabel>
+        <translation><!-- StaticResource --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SynonymDictionary</masterLabel>
+        <translation><!-- SynonymDictionary --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TopicsForObjects</masterLabel>
+        <translation><!-- TopicsForObjects --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Translations</masterLabel>
+        <translation>翻訳</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ValidationRule</masterLabel>
+        <translation><!-- ValidationRule --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WebLink</masterLabel>
+        <translation><!-- WebLink --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Workflow</masterLabel>
+        <translation><!-- Workflow --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WorkflowAlert</masterLabel>
+        <translation><!-- WorkflowAlert --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WorkflowFieldUpdate</masterLabel>
+        <translation><!-- WorkflowFieldUpdate --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WorkflowKnowledgePublish</masterLabel>
+        <translation><!-- WorkflowKnowledgePublish --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WorkflowOutboundMessage</masterLabel>
+        <translation><!-- WorkflowOutboundMessage --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WorkflowRule</masterLabel>
+        <translation><!-- WorkflowRule --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WorkflowSend</masterLabel>
+        <translation><!-- WorkflowSend --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WorkflowTask</masterLabel>
+        <translation><!-- WorkflowTask --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

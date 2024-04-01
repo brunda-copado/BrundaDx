@@ -1,0 +1,51 @@
+.timeline-container {
+    position: relative;
+}
+
+.timeline-container ul {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    max-height: 350px;
+}
+
+.timeline-container .gradient-mask {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    height: 1.1rem;
+    width: calc(100% - 15px);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+/* Timeline list scrollbar */
+
+/* Firefox */
+.timeline-container ul {
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 transparent;
+}
+
+/* Webkit / Blink */
+.timeline-container ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.timeline-container ul::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 9999px;
+}
+
+.timeline-container ul::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.content-overflow {
+    overflow-wrap: break-word;
+}
+
+.job-summary-padding {
+    padding-left: 36px;
+}

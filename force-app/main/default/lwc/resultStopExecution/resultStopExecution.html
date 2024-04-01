@@ -1,0 +1,31 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text={labels.Loading} size="large" variant="brand"></lightning-spinner>
+
+    <c-copadocore-modal size="small" onmodalclose={closeModal}>
+        <span slot="title">{stopExecutionData.title}</span>
+        
+        <c-copado-alert
+        if:false={showInnerSpinner}
+        message={stopExecutionData.info}
+        variant={stopExecutionData.variant}
+        ></c-copado-alert>
+        
+        <div class="innerHolder" if:true={showInnerSpinner}>
+            <lightning-spinner alternative-text={labels.Loading} size="large"></lightning-spinner>
+        </div>
+        <div class="slds-align_absolute-center slds-p-around_large" if:true={showInnerSpinner}>
+            {labels.SendingCallout}
+        </div>
+
+        <slot>
+            <div class="slds-text-heading_medium slds-p-around_large" if:false={showInnerSpinner}>
+                {stopExecutionData.message}
+            </div>
+        </slot>
+
+        <span slot="footer">
+            <lightning-button onclick={closeModal} label={labels.Close}></lightning-button>
+            <lightning-button if:true={stopExecutionData.button} class="slds-m-left_medium" variant="brand" onclick={stopExecution} label={labels.StopExecution}></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

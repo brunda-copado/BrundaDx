@@ -1,0 +1,54 @@
+<template>
+    <div class="cds-datatable-wrapper">
+        <div class="cds-datatable-header">
+            <div slot="title" class="cds-datatable-header-left">
+                <slot name="headerIcon">
+                    <div if:true={iconName} class="cds-icon-container">
+                        <lightning-icon icon-name={iconName} size={iconSize} class="cds-icon"></lightning-icon>
+                    </div>
+                    <div class="cds-title-container">
+                        <h2 class="cds-datatable-title">
+                            <slot name="title"></slot>
+                            <span if:true={headingTooltip} slot="titleTooltip">
+                                <slot name="titleTooltip"></slot>
+                            </span>
+                        </h2>
+
+                        <p class="cds-datatable-subtitle">
+                            <slot name="subtitle"></slot>
+                        </p>
+                    </div>
+                </slot>
+            </div>
+            <div slot="actions" class="cds-datatable-header-right">
+                <div class="cds-datatable-search">
+                    <slot name="search">
+                        <template if:true={enableDefaultSearch}>
+                            <span onkeyup={handleSearch}>
+                                <lightning-input
+                                    class="textInp"
+                                    data-field="searchInput"
+                                    name="column-search-text"
+                                    placeholder={label.Search}
+                                    value={searchValue}
+                                    type="search"
+                                    variant="label-hidden"
+                                    title={label.Search}
+                                    onchange={handleClearSearch}></lightning-input>
+                            </span>
+                        </template>
+                    </slot>
+                </div>
+                <div class="cds-datatable-actions">
+                    <slot name="actions"></slot>
+                </div>
+            </div>
+        </div>
+        <div class="cds-datatable" if:true={hasBody}>
+            <slot name="datatable"></slot>
+        </div>
+        <div if:true={hasFooter} slot="footer">
+            <slot name="footer"></slot>
+        </div>
+    </div>
+</template>

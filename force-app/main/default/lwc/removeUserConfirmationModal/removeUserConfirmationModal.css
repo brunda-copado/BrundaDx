@@ -1,0 +1,14 @@
+@import "c/copadoDesignSystem";
+
+.remove-modal-content {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-modal-content p {
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--cds-semantic-color-text-secondary);
+}

@@ -1,0 +1,49 @@
+<aura:component controller="TestDefinitionCtrl" access="global" implements="force:hasRecordId,flexipage:availableForAllPageTypes">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="activeSections" type="List" />
+    <aura:attribute name="generalSettingsFound" type="Boolean" access="private" />
+    <aura:attribute name="acceptanceCriteriaFound" type="Boolean" access="private" />
+    <aura:attribute name="errorMessage" type="String" access="private" />
+    <aura:attribute name="loading" type="Boolean" access="private" default="true" />
+
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="Loading" size="medium" variant="brand" />
+        </aura:if>
+        <lightning:accordion allowMultipleSectionsOpen="true" activeSectionName="{!v.activeSections}">
+            <lightning:accordionSection name="generalSettings" label="General Settings">
+                <aura:if isTrue="{!!v.generalSettingsFound}">
+                    <lightning:card>
+                        <div class="slds-var-p-around_large">
+                            <c:copadocoreIllustrationContainer
+                                message="{!$Label.c.GeneralSettingsNotAvailable}"
+                                slotMessage="{!$Label.c.TestDoesNotSupportGeneralSettings}"
+                            />
+                        </div>
+                    </lightning:card>
+
+                    <aura:set attribute="else">
+                        <c:dynamicUISectionContainer locationId="CCM.Test.TestDefinition" requiredInformation="Test Tool" />
+                    </aura:set>
+                </aura:if>
+            </lightning:accordionSection>
+
+            <lightning:accordionSection name="acceptanceCriteria" label="Acceptance Criteria">
+                <aura:if isTrue="{!!v.acceptanceCriteriaFound}">
+                    <lightning:card>
+                        <div class="slds-var-p-around_large">
+                            <c:copadocoreIllustrationContainer
+                                message="{!$Label.c.AcceptanceCriteriaNotAvailable}"
+                                slotMessage="{!$Label.c.TestDoesNotSupportAcceptanceCriteria}"
+                            />
+                        </div>
+                    </lightning:card>
+                    <aura:set attribute="else">
+                        <c:dynamicUISectionContainer locationId="ATF.Test.AcceptanceCriteria" requiredInformation="Test Tool" />
+                    </aura:set>
+                </aura:if>
+            </lightning:accordionSection>
+        </lightning:accordion>
+    </div>
+</aura:component>

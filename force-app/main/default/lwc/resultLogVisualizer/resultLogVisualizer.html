@@ -1,0 +1,39 @@
+<template>
+    <lightning-spinner lwc:if={showSpinner}></lightning-spinner>
+    <lightning-card title={labels.EXECUTION_LOG} icon-name="standard:apex">
+        <lightning-button
+            slot="actions"
+            lwc:if={showLogs}
+            label={labels.DOWNLOAD}
+            title={labels.DOWNLOAD}
+            icon-name="utility:download"
+            icon-position="right"
+            onclick={handleDownload}>
+        </lightning-button>
+
+        <c-copadocore-illustration
+            lwc:if={illustration}
+            name={illustration.name}
+            size="large"
+            message={illustration.title}
+            class="slds-var-p-around_large slds-var-m-around_large">
+            <p slot="body">{illustration.body}</p>
+        </c-copadocore-illustration>
+
+        <div lwc:if={showMessage} class="container">
+            <p class="text">{labels.LARGE_FILE_SIZE_MESSAGE}</p>
+            <lightning-button
+                class="button"
+                label={labels.DOWNLOAD}
+                title={labels.DOWNLOAD}
+                icon-name="utility:download"
+                icon-position="right"
+                onclick={handleDownload}>
+            </lightning-button>
+          </div>
+
+        <div lwc:if={showLogs} class="log">
+            <c-copado-code-mirror code={logData} show-line-number wrap-line> </c-copado-code-mirror>
+        </div>
+    </lightning-card>
+</template>

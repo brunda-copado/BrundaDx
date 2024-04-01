@@ -1,0 +1,19 @@
+<template>
+    <template if:true={readOnlyData}>
+        <div class="slds-form-element slds-form-element_readonly">
+            <span class="slds-form-element__label">{label.CRT_AUTOMATION}</span>
+            <div class="slds-form-element__control">
+                <div class="slds-form-element__static">{previousValue.testName}</div>
+            </div>
+        </div>
+    </template>
+    <template if:false={readOnlyData}>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_6-of-12">
+                <c-lookup selection={initialSelection} label={label.SELECT_CRT_AUTOMATION} onsearch={handleLookupSearch}
+                    onselectionchange={getSelectedId} required>
+                </c-lookup>
+            </div>
+        </div>
+    </template>
+</template>

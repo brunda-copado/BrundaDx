@@ -1,0 +1,197 @@
+<template>
+    <a if:true={displayLink} onclick={handleClickRecordMatchingFormula}>
+        <span class="slds-text-link">{formulaName}</span>
+    </a>
+    <c-copadocore-modal size={modalSize} has-overflow onmodalclose={handleModalClose}>
+        <span slot="title">{labels.CONFIGURE_RECORDMATCHING_FORMULA}</span>
+        <slot class="slds-align_absolute-center">
+            <div class="slds-size_full slds-is-relative slds-p-horizontal_x-small">
+                <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <c-copado-alert if:false={hasCredentialAccess} message={labels.CREDENTIAL_ACCESS_MESSAGE} variant="warning"> </c-copado-alert> 
+                        <c-copado-alert if:true={isEditAndCredAccess}  message={labels.UNIQUE_INFO} variant="info"> </c-copado-alert>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-align_absolute-center slds-var-m-top_large" size="12">
+                        {labels.RECORD_MATCHING_FORMULA_DESCRIPTION}
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-top_x-large" size="6" padding="horizontal-small">
+                        <lightning-record-edit-form object-api-name={schema.RECORD_MATCHING_FORMULA.objectApiName} record-id={recordId}>
+                            <lightning-input-field
+                                field-name={schema.CONFIGURATION_SOURCE_ORG.fieldApiName}
+                                variant="label-stacked"
+                                disabled
+                                value={sourceOrg}
+                            >
+                            </lightning-input-field>
+                        </lightning-record-edit-form>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-top_x-large" size="6" padding="horizontal-small">
+                        <lightning-record-edit-form object-api-name={schema.RECORD_MATCHING_FORMULA.objectApiName}>
+                            <lightning-input-field
+                                field-name={schema.OBJECT.fieldApiName}
+                                variant="label-stacked"
+                                disabled
+                                value={mainObjectDisplayValue}
+                            >
+                            </lightning-input-field>                            
+                        </lightning-record-edit-form>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="8" flexibility="no-grow" padding="horizontal-small">
+                        <lightning-record-edit-form object-api-name={schema.RECORD_MATCHING_FORMULA.objectApiName}>
+                            <lightning-input-field
+                                field-name={schema.HASH_FORMULA.fieldApiName}
+                                onchange={handleHashChange}
+                                value={hashFormula}
+                                disabled={disableInputs}
+                            ></lightning-input-field>
+                        </lightning-record-edit-form>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-layout>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-combobox
+                                    data-id="field1"
+                                    value={selectedField1}
+                                    required
+                                    label={labels.FIELD_1}
+                                    placeholder={labels.SELECT_FIELD}
+                                    dropdown-alignment="auto"
+                                    options={mainObjectFields}
+                                    onchange={handleChangeField}
+                                    variant="label-stacked"
+                                    disabled={disableInputs}
+                                ></lightning-combobox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="5" padding="horizontal-small">
+                                <lightning-combobox
+                                    if:false={disablesecondaryOptions1}
+                                    label={labels.RELATED_FIELD}
+                                    data-id="secondaryField1"
+                                    value={selectedField1Secondary}
+                                    placeholder={labels.SELECT_FIELD}
+                                    dropdown-alignment="auto"
+                                    options={secondaryOptions1}
+                                    onchange={handleChangeField}
+                                    variant="label-stacked"
+                                    field-level-help={labels.RELATED_FIELD_HELP_TEXT}
+                                ></lightning-combobox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="1" class="slds-m-top_large" padding="horizontal-small">
+                                <lightning-button-icon
+                                    data-id="deleteField1"
+                                    icon-name="utility:delete"
+                                    variant="border-filled"
+                                    alternative-text={labels.DELETE}
+                                    title={labels.DELETE}
+                                    disabled={disableInputs}
+                                    onclick={handleRemoveField}
+                                ></lightning-button-icon>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-layout>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-combobox
+                                    data-id="field2"
+                                    value={selectedField2}
+                                    label={labels.FIELD_2}
+                                    placeholder={labels.SELECT_FIELD}
+                                    dropdown-alignment="bottom-left"
+                                    options={mainObjectFields}
+                                    onchange={handleChangeField}
+                                    variant="label-stacked"
+                                    disabled={disableInputs}
+                                ></lightning-combobox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="5" padding="horizontal-small">
+                                <lightning-combobox
+                                    if:false={disablesecondaryOptions2}
+                                    label={labels.RELATED_FIELD}
+                                    data-id="secondaryField2"
+                                    value={selectedField2Secondary}
+                                    placeholder={labels.SELECT_FIELD}
+                                    dropdown-alignment="bottom-left"
+                                    options={secondaryOptions2}
+                                    onchange={handleChangeField}
+                                    variant="label-stacked"
+                                    field-level-help={labels.RELATED_FIELD_HELP_TEXT}
+                                ></lightning-combobox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="1" class="slds-m-top_large" padding="horizontal-small">
+                                <lightning-button-icon
+                                    data-id="deleteField2"
+                                    icon-name="utility:delete"
+                                    variant="border-filled"
+                                    alternative-text={labels.DELETE}
+                                    title={labels.DELETE}
+                                    disabled={disableInputs}
+                                    onclick={handleRemoveField}
+                                ></lightning-button-icon>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-layout>
+                            <lightning-layout-item size="6" padding="horizontal-small">
+                                <lightning-combobox
+                                    data-id="field3"
+                                    value={selectedField3}
+                                    label={labels.FIELD_3}
+                                    placeholder={labels.SELECT_FIELD}
+                                    dropdown-alignment="bottom-left"
+                                    options={mainObjectFields}
+                                    onchange={handleChangeField}
+                                    variant="label-stacked"
+                                    disabled={disableInputs}
+                                ></lightning-combobox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="5" padding="horizontal-small">
+                                <lightning-combobox
+                                    if:false={disablesecondaryOptions3}
+                                    label={labels.RELATED_FIELD}
+                                    data-id="secondaryField3"
+                                    value={selectedField3Secondary}
+                                    placeholder={labels.SELECT_FIELD}
+                                    dropdown-alignment="bottom-left"
+                                    options={secondaryOptions3}
+                                    onchange={handleChangeField}
+                                    variant="label-stacked"
+                                    field-level-help={labels.RELATED_FIELD_HELP_TEXT}
+                                ></lightning-combobox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="1" class="slds-m-top_large" padding="horizontal-small">
+                                <lightning-button-icon
+                                    data-id="deleteField3"
+                                    icon-name="utility:delete"
+                                    variant="border-filled"
+                                    alternative-text={labels.DELETE}
+                                    title={labels.DELETE}
+                                    disabled={disableInputs}
+                                    onclick={handleRemoveField}
+                                ></lightning-button-icon>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </slot>
+        <span slot="footer">
+            <c-copadocore-error-popover
+                if:false={validInputs}
+                class="slds-show_inline slds-p-right_x-small"
+                message={labels.COMPLETE_THIS_FIELD}
+            ></c-copadocore-error-popover>
+            <lightning-button label={labels.CANCEL} title={labels.CANCEL} variant="neutral" onclick={handleClickCancel}></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={labels.SAVE}
+                title={labels.SAVE}
+                variant="brand"
+                onclick={handleClickSave}
+                disabled={disableInputs}
+            ></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

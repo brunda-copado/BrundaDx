@@ -1,0 +1,171 @@
+{
+  "recordTypeMap": {},
+  "RecordSetBundles": [
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__JobTemplate__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobTemplate__c/a1r5p00000HTMa8AAH"
+          },
+          "copado__ApiName__c": "IssueJob_1",
+          "copado__Type__c": "Custom",
+          "copado__Version__c": 1,
+          "Id": "a1r5p00000HTMa8AAH",
+          "LastReferencedDate": "2023-07-03T09:26:54.000+0000",
+          "LastViewedDate": "2023-07-03T09:26:54.000+0000",
+          "Name": "IssueJob"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobTemplate__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobTemplate__c/a1r5p00000M0YPNAA3"
+          },
+          "copado__ApiName__c": "SOA Test Template_1",
+          "copado__Type__c": "Custom",
+          "copado__Version__c": 1,
+          "Id": "a1r5p00000M0YPNAA3",
+          "LastReferencedDate": "2023-07-03T09:25:29.000+0000",
+          "LastViewedDate": "2023-07-03T09:25:29.000+0000",
+          "Name": "SOA Test Template"
+        }
+      ],
+      "ObjectType": "copado__JobTemplate__c"
+    },
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobStep__c/a1q5p000004gTtCAAU"
+          },
+          "copado__ApiName__c": "IssueJob_Issue",
+          "copado__ConfigJson__c": "{\"functionName\":\"Issue_2\",\"parameters\":[{\"name\":\"name1\",\"value\":\"1\"},{\"name\":\"name2\",\"value\":\"2\"},{\"name\":\"FF2\",\"value\":\"GA\"}]}",
+          "copado__CustomType__c": "Function",
+          "copado__IsSkipped__c": false,
+          "copado__JobTemplate__c": "a1r5p00000HTMa8AAH",
+          "copado__Order__c": 1,
+          "copado__Type__c": "Function",
+          "Id": "a1q5p000004gTtCAAU",
+          "Name": "Issue"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobStep__c/a1q5p00000ASBOAAA5"
+          },
+          "copado__ApiName__c": "SOA Test Template_1_Decode_1",
+          "copado__ConfigJson__c": "{\"instructions\":\"Task\",\"parameters\":[{\"name\":\"assigneeId\",\"value\":\"0055p00000AzZjiAAF\"},{\"name\":\"assigneeName\",\"value\":\"Manav Parasrampuria\"}],\"sharedResource\":\"{User.Name}\"}",
+          "copado__CustomType__c": "Manual Task",
+          "copado__IsSkipped__c": false,
+          "copado__JobTemplate__c": "a1r5p00000M0YPNAA3",
+          "copado__Order__c": 1,
+          "copado__Resource_Observations__c": "Local branch ready",
+          "copado__Type__c": "Manual",
+          "Id": "a1q5p00000ASBOAAA5",
+          "Name": "Decode"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobStep__c/a1q5p00000ASBOBAA5"
+          },
+          "copado__ApiName__c": "SOA Test Template_1_Unicorn_2",
+          "copado__ConfigJson__c": "{\"instructions\":\"Task\",\"parameters\":[{\"name\":\"assigneeId\",\"value\":\"0055p00000AzZjiAAF\"},{\"name\":\"assigneeName\",\"value\":\"Manav Parasrampuria\"}]}",
+          "copado__CustomType__c": "Manual Task",
+          "copado__IsSkipped__c": false,
+          "copado__JobTemplate__c": "a1r5p00000M0YPNAA3",
+          "copado__Order__c": 2,
+          "copado__Resource_Observations__c": "Local branch ready",
+          "copado__Type__c": "Manual",
+          "Id": "a1q5p00000ASBOBAA5",
+          "Name": "Unicorn"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobStep__c/a1q5p00000ASBOFAA5"
+          },
+          "copado__ApiName__c": "SOA Test Template_1_Cheesecake_3",
+          "copado__ConfigJson__c": "{\"instructions\":\"hello\",\"parameters\":[{\"name\":\"assigneeId\",\"value\":\"0055p00000AzZjiAAF\"},{\"name\":\"assigneeName\",\"value\":\"Manav Parasrampuria\"}]}",
+          "copado__CustomType__c": "Manual Task",
+          "copado__IsSkipped__c": false,
+          "copado__JobTemplate__c": "a1r5p00000M0YPNAA3",
+          "copado__Order__c": 3,
+          "copado__Type__c": "Manual",
+          "Id": "a1q5p00000ASBOFAA5",
+          "Name": "Cheesecake"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobStep__c/a1q5p00000AUAv9AAH"
+          },
+          "copado__ApiName__c": "SOA Test Template_1_Func_4",
+          "copado__ConfigJson__c": "{\"functionName\":\"NonReqFunc\",\"parameters\":[{\"name\":\"name\",\"value\":\"Kar_Kar\"},{\"name\":\"city\",\"value\":\"PGR\"}]}",
+          "copado__CustomType__c": "Function",
+          "copado__IsSkipped__c": false,
+          "copado__JobTemplate__c": "a1r5p00000M0YPNAA3",
+          "copado__Order__c": 4,
+          "copado__Type__c": "Function",
+          "Id": "a1q5p00000AUAv9AAH",
+          "Name": "Func"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v58.0/sobjects/copado__JobStep__c/a1q5p00000AUAvJAAX"
+          },
+          "copado__ApiName__c": "IssueJob_1_function_2",
+          "copado__ConfigJson__c": "{\"functionName\":\"NonReqFunc\",\"parameters\":[{\"name\":\"name\",\"value\":\"Sakshi\"},{\"name\":\"city\",\"value\":\"PGR\"}]}",
+          "copado__CustomType__c": "Function",
+          "copado__IsSkipped__c": false,
+          "copado__JobTemplate__c": "a1r5p00000HTMa8AAH",
+          "copado__Order__c": 2,
+          "copado__Type__c": "Function",
+          "Id": "a1q5p00000AUAvJAAX",
+          "Name": "function"
+        }
+      ],
+      "ObjectType": "copado__JobStep__c"
+    },
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__Function__c",
+            "url": "/services/data/v58.0/sobjects/copado__Function__c/a1h5p000008HKxaAAG"
+          },
+          "copado__API_Name__c": "Issue_2",
+          "copado__Image_Name__c": "copado-function-core:v1",
+          "copado__Options__c": "[ ]",
+          "copado__Parameters__c": "[ {\n  \"name\" : \"name1\",\n  \"defaultValue\" : \"Hi\"\n}, {\n  \"name\" : \"name2\",\n  \"defaultValue\" : \"Hello\"\n}, {\n  \"name\" : \"FF2\",\n  \"defaultValue\" : \"GA\"\n} ]",
+          "copado__Script__c": "echo $name1\nsleep 10\necho $name2\necho $FF2",
+          "copado__Type__c": "Custom",
+          "copado__Worker_Size__c": "S",
+          "Id": "a1h5p000008HKxaAAG",
+          "LastReferencedDate": "2023-06-29T10:49:11.000+0000",
+          "LastViewedDate": "2023-06-29T10:49:11.000+0000",
+          "Name": "Issue_2"
+        },
+        {
+          "attributes": {
+            "type": "copado__Function__c",
+            "url": "/services/data/v58.0/sobjects/copado__Function__c/a1h5p000008Ha2vAAC"
+          },
+          "copado__API_Name__c": "NonReqFunc",
+          "copado__Image_Name__c": "copado-multicloud-dx:v1",
+          "copado__Options__c": "[ ]",
+          "copado__Parameters__c": "[ {\n  \"name\" : \"name\",\n  \"defaultValue\" : \"Kar_Kar\"\n}, {\n  \"name\" : \"city\",\n  \"defaultValue\" : \"PGR\"\n} ]",
+          "copado__Script__c": "echo $name\necho $city",
+          "copado__Type__c": "Custom",
+          "copado__Worker_Size__c": "S",
+          "Id": "a1h5p000008Ha2vAAC",
+          "Name": "NonReqFunc"
+        }
+      ],
+      "ObjectType": "copado__Function__c"
+    }
+  ],
+  "blobsByUID": {}
+}

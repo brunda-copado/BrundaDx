@@ -1,0 +1,84 @@
+<template>
+    <lightning-layout horizontal-align="spread">
+        <lightning-layout-item if:true={readOnlyMode} flexibility="auto">
+            <a onclick={handleClickDataTemplate}>
+                <span class="slds-text-link">{dataTemplateName}</span>
+            </a>
+        </lightning-layout-item>
+        <lightning-layout-item if:false={readOnlyMode} flexibility="auto">
+            <lightning-combobox
+                variant="label-hidden"
+                placeholder={label.SELECT_TEMPLATE}
+                value={deploymentTemplateId}
+                options={options}
+                onchange={handleChangeDataTemplate}
+                required={requiredFlag}
+                message-when-value-missing={label.TEMPLATE_MANDATORY_MESSAGE}
+                data-id="dataTemplateName"
+            ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={linkVisible} flexibility="auto" class="slds-m-left_xx-small">
+            <lightning-button label={label.DATA_TEMPLATE} onclick={handleClickDataTemplate}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item if:false={readOnlyMode} flexibility="auto" class="slds-m-left_xx-small">
+            <lightning-button label={label.NEW} onclick={handleClickNewDataTemplate}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <c-copadocore-modal size="small" onmodalclose={handleModalClose}>
+        <span slot="title">{label.NEW_TEMPLATE}</span>
+        <slot class="slds-align_absolute-center">
+            <div class="slds-size_full slds-is-relative">
+                <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <c-copado-alert
+                            if:true={displayInfo}
+                            message={label.QUICK_CREATE_TEMPLATE_INFO}
+                            variant="info"
+                            dismissible
+                            onclosealert={handleCloseInfoAlert}
+                        >
+                        </c-copado-alert>
+                        <c-copado-alert
+                            if:true={hasDuplicateName}
+                            message={label.DUPLICATE_TEMPLATE_NAME}
+                            variant="error"
+                            dismissible
+                            onclosealert={handleCloseDuplicateNameAlert}
+                        ></c-copado-alert>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-top_large slds-align_absolute-center" size="12">
+                        {label.QUICK_CREATE_TEMPLATE_MESSAGE}
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-top_large" size="12">
+                        <lightning-record-edit-form object-api-name={schema.DATA_TEMPLATE_OBJECT.objectApiName}>
+                            <lightning-input-field
+                                data-id="templatename"
+                                field-name={schema.NAME.fieldApiName}
+                                value={templateName}
+                                required
+                                variant="label-stacked"
+                                onchange={handleNameChange}
+                            >
+                            </lightning-input-field>
+                        </lightning-record-edit-form>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </slot>
+        <span slot="footer">
+            <c-copadocore-error-popover if:false={validInput} class="slds-show_inline slds-p-right_x-small" message={label.COMPLETE_THIS_FIELD}>
+            </c-copadocore-error-popover>
+            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleClickCancel}></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.SAVE}
+                title={label.SAVE}
+                variant="brand"
+                onclick={handleClickSave}
+                disabled={saveDisabled}
+            ></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

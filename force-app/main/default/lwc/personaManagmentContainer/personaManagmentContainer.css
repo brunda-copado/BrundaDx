@@ -1,0 +1,44 @@
+/* for use common style from copado design sysyem */
+@import "c/copadoDesignSystem";
+
+.persona-management-wrapper {
+    background: #fcfcfc;
+    margin: -22px -12px -12px -12px;
+    min-height: calc(100vh - 6rem);
+}
+
+.empty-state-wrapper {
+    min-height: 62vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.persona-management-wrap {
+    position: relative;
+}
+
+.persona-management-sidebar {
+    width: 20rem;
+    position: absolute;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    background: var(--white);
+    min-height: calc(100vh - 11.5rem);
+    height: 100%;
+    box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.08), 0px 0px 2px 0px rgba(0, 0, 0, 0.04);
+    border-right: 1px solid var(--border-color);
+    transition: left 0.3s ease;
+}
+
+.persona-management-main {
+    margin-left: 20rem;
+    padding: 1rem;
+    min-height: calc(100vh - 11.5rem);
+    height: 100%;
+    transition: margin-left 0.3s ease;
+}

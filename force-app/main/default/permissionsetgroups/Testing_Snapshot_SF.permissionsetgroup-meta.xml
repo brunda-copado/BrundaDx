@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>US-0049421 - Snapshot for Source Format Pipeline</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Testing Snapshot SF</label>
+    <mutingPermissionSets>Testing_Snapshot_SF_Muted</mutingPermissionSets>
+    <permissionSets>copado__Configure_Snapshot</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

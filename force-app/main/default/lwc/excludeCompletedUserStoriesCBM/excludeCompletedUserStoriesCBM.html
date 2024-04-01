@@ -1,0 +1,32 @@
+<template>
+    <c-datatable-container 
+        icon-name="custom:custom63"
+        has-body="true"
+        rows={allRows}
+        columns={columns}
+        has-footer="true"
+        >
+        <span slot="title">{title}</span>
+        <div slot="actions">
+            <lightning-button-group>
+                <lightning-button id="saveButton" label={label.SAVE} onclick={save}></lightning-button>
+                <lightning-button id="cancelButton" label={label.CANCEL} onclick={cancel}></lightning-button>
+            </lightning-button-group>
+        </div>
+        <span slot="datatable">
+            <div style="height: calc(100vh - 510px)">
+                <template if:true={isLoading}>
+                    <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                    </lightning-spinner>
+               </template>
+                <template if:false={isLoading}>
+                    <lightning-datatable 
+                        key-field="Name"
+                        data={data}
+                        columns={columns}>
+                    </lightning-datatable>
+                </template>
+            </div>
+        </span>
+    </c-datatable-container>
+</template>

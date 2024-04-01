@@ -1,0 +1,12 @@
+.slds-form-element_compound .slds-form-element__row {
+    margin-bottom: 0 !important;
+}
+
+.custom-filter-input .textarea-container {
+    display: flex !important;
+}
+
+lightning-datepicker,
+lightning-timepicker {
+    flex-grow: 1;
+}

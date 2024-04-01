@@ -1,0 +1,83 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+    <c-related-list-delete-popup if:false={customHandleRowActionEnabled} onrefreshdata={handleRefresh}> </c-related-list-delete-popup>
+
+    <lightning-layout class={lightningLayoutClasses}>
+        <article class="slds-card lightning-card">
+            <div if:false={hideHeader} class="slds-card__header slds-grid slds-grid_vertical slds-theme_shade slds-border_bottom slds-border_bottom">
+                <header if:false={hideTitle} class={headerClasses}>
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name={iconName} size="medium"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <a class="slds-card__header-link" onclick={handleGoToRelatedList}>{title}</a>
+                        </h2>
+                    </div>
+                    <div class="slds-no-flex">
+                        <lightning-button if:false={hideNewAction} label={label.NEW} title={label.NEW} onclick={handleCreateRecord}>
+                        </lightning-button>
+                        <slot name="buttonActions"></slot>
+                    </div>
+                </header>
+                <div class={subheaderClasses}>
+                    <div class="slds-col slds-align-bottom">
+                        <span if:true={showSubtitle}>{subtitle}</span>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-input
+                            if:true={showSearch}
+                            label={label.Search}
+                            variant="label-hidden"
+                            onchange={handleSearch}
+                            min-length="2"
+                            message-when-too-short={label.Message_when_too_short}
+                            placeholder={label.Search_this_list}
+                            type="search"
+                        >
+                        </lightning-input>
+                        <slot name="listActions"></slot>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <c-copadocore-dynamic-datatable
+                    data-instance={instance}
+                    class="related-list"
+                    table-info={tableInfo}
+                    record-id={recordId}
+                    related-list={relatedList}
+                    fieldset={fieldset}
+                    look-up-object-api={relationshipField}
+                    order-by={orderBy}
+                    record-size={recordSize}
+                    height-style={height}
+                    actions={actions}
+                    show-row-number-column={showRowNumberColumn}
+                    hide-checkbox-column={hideCheckboxColumn}
+                    resize-column-disabled={resizeColumnDisabled}
+                    enable-infinite-loading={enableInfiniteLoading}
+                    hide-default-columns-actions={hideDefaultColumnsActions}
+                    searchable={showSearch}
+                    sortable={sortable}
+                    enable-inline-editing={enableInlineEditing}
+                    implements-drag-and-drop={implementsDragAndDrop}
+                    custom-handle-save={customHandleSave}
+                    onrowaction={handleRowAction}
+                    onretrievedrows={handleRetrievedRows}
+                    ondroprow={handleDropRow}
+                    oninlineeditsave={handleInlineEditSave}
+                    onrecordsupdated={handleRecordsUpdated}
+                    onrowselection={handleRowSelection}
+                    onheaderaction={handleHeaderAction}
+                    onsearchapplied={handleSearchApplied}
+                >
+                </c-copadocore-dynamic-datatable>
+            </div>
+            <footer if:false={hideFooter} class={footerClasses}>
+                <a onclick={handleGoToRelatedList}>{label.View_All}</a>
+            </footer>
+        </article>
+    </lightning-layout>
+</template>

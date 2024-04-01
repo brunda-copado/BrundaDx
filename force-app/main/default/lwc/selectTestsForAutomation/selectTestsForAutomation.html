@@ -1,0 +1,33 @@
+<template>
+    <lightning-card>
+        <span slot="title" class="slds-p-horizontal_small">{label.SELECT_TESTS}</span>
+
+        <slot>
+            <div class="slds-size_x-large slds-is-relative slds-p-horizontal_small">
+                <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+                <c-lookup
+                    label={label.SELECT_ACTIVE_COPADO_ROBOTIC_TESTING_TESTS}
+                    helptext={label.SELECT_ACTIVE_COPADO_ROBOTIC_TESTING_TESTS_HELPTEXT}
+                    onsearch={handleLookupSearch}
+                    data-id="multipleTests"
+                    onselectionchange={handleLookupSelectionChange}
+                    scroll-after-n-items="5"
+                    is-multi-entry
+                >
+                </c-lookup>
+            </div>
+        </slot>
+
+        <span slot="footer">
+            <lightning-button
+                disabled={saveDisabled}
+                class="slds-var-m-left_x-small"
+                label={label.SAVE}
+                title={label.SAVE}
+                variant="brand"
+                onclick={handleSave}
+            >
+            </lightning-button>
+        </span>
+    </lightning-card>
+</template>

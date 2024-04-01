@@ -1,0 +1,7 @@
+.alert-container:only-child {
+    margin-bottom: 0;
+}
+
+.alert-container:not(:last-child) {
+    margin-bottom: var(--lwc-spacingSmall);
+}

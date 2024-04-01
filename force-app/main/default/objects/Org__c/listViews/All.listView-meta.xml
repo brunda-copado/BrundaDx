@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Org_Type__c</columns>
+    <columns>Username__c</columns>
+    <columns>SFDC_Org_ID__c</columns>
+    <columns>Test_Frequency__c</columns>
+    <columns>Validated_Date__c</columns>
+    <columns>Validated_Status__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Last_Git_Backup_Status__c</columns>
+    <columns>Last_Apex_Tests_Status__c</columns>
+    <columns>is_Developer_Hub_Org__c</columns>
+    <columns>Platform__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Validated_Status__c</field>
+        <operation>equals</operation>
+        <value>Yes</value>
+    </filters>
+    <label>All</label>
+</ListView>

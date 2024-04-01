@@ -1,0 +1,42 @@
+<template>
+    <header class="slds-modal__header">
+        <div>
+            <h2 class="slds-text-heading_medium slds-hyphenate">{label.Open_Pull_Request}</h2>
+        </div>
+    </header>
+
+    <div class="slds-is-relative slds-modal__content slds-var-p-around_medium">
+        <lightning-spinner if:true={showSpinner}> </lightning-spinner>
+        <template if:true={errorMessage}>
+            <div class="slds-var-m-bottom_large">
+                <c-copado-alert message={label.ERROR_TITLE} variant="error"></c-copado-alert>
+            </div>
+            <div>{errorMessage}</div>
+        </template>
+
+        <template if:false={errorMessage}>
+            <div>
+                <c-copado-alert message={label.GIT_REPOSITORY_REDIRECT} variant="info"></c-copado-alert>
+            </div>
+            <div class="slds-grid slds-wrap slds-var-p-around_medium">
+                <div class="slds-col slds-var-p-horizontal_medium">
+                    <div>{label.Promotion_Branch_PR_Button}</div>
+                    <div>promotion/{promotionName}</div>
+                </div>
+                <div class="slds-col slds-var-p-horizontal_medium">
+                    <div>{label.Destination_Branch}</div>
+                    <div>{destinationBranch}</div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <footer class="slds-modal__footer">
+        <template if:false={errorMessage}>
+            <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={closeAction}> </lightning-button>
+            <lightning-button variant="brand" label={label.VIEW_IN_GIT} class="slds-var-p-left_small" onclick={openPullRequest}></lightning-button>
+        </template>
+        <template if:true={errorMessage}>
+            <lightning-button label={label.CLOSE} title={label.CLOSE} variant="neutral" onclick={closeAction}> </lightning-button>
+        </template>
+    </footer>
+</template>

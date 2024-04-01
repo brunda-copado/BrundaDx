@@ -1,0 +1,11 @@
+<template>
+    <c-copado-alert if:true={isWrongContext} message={message} variant="warning">
+        <lightning-button
+            slot="additionalMessage"
+            variant="base"
+            label={label.ChangeApplication}
+            onclick={changeApp}
+            class="change-application slds-var-m-left_xx-small"
+        ></lightning-button>
+    </c-copado-alert>
+</template>

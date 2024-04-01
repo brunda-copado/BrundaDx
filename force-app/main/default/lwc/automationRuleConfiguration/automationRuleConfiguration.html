@@ -1,0 +1,214 @@
+<template>
+    <lightning-card>
+        <lightning-spinner lwc:if={isLoading} size="medium"></lightning-spinner>
+
+        <div slot="title">{labels.AUTOMATION}</div>
+        <lightning-card if:false={isAccessible}>
+            <c-copadocore-illustration name="error:no_access" size="small" message="">
+                <p slot="body">{labels.INSUFFICIENT_PERMISSION}</p>
+            </c-copadocore-illustration>
+        </lightning-card>
+
+        <template lwc:if={isEditable}>
+            <template lwc:if={readOnly}>
+                <lightning-button if:false={active} label={labels.CONFIGURE} slot="actions" onclick={configure}></lightning-button>
+            </template>
+        </template>
+
+        <div lwc:if={isAccessible} class="slds-var-m-around_medium">
+            <lightning-record-edit-form
+                if:false={readOnly}
+                object-api-name={objectApiName}
+                record-id={recordId}
+                onsubmit={handleSubmit}
+                onsuccess={close}
+                onerror={displayError}>
+                <c-expandable-section label={labels.TRIGGER}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-input-field
+                                class="slds-var-m-top_x-small"
+                                field-name={schema.AUTOMATION_RULE_SOURCE_ACTION}
+                                value={sourceAction}
+                                onchange={handleChange}
+                                disabled={isContinuousDeliveryRule}></lightning-input-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-input-field
+                                field-name={schema.AUTOMATION_RULE_SOURCE_ACTION_STATUS}
+                                onchange={handleChange}
+                                disabled={isContinuousDeliveryRule}></lightning-input-field>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+                {labels.AUTOMATED_ACTION}
+                <c-expandable-section label={labels.AUTOMATED_ACTION}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-combobox
+                                label={automationConnectorLabel}
+                                field-level-help={automationConnectorHelpText}
+                                value={automationConnector}
+                                options={automationConnectorValues}
+                                onchange={automationConnectorChange}
+                                disabled={isAutomationConnectorDisabled}
+                                class="slds-var-p-horizontal_xx-small slds-var-m-vertical_x-small"></lightning-combobox>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12">
+                            <lightning-input-field
+                                field-name={schema.AUTOMATION_RULE_AUTOMATION_CONNECTOR}
+                                value={automationConnector}
+                                disabled={isContinuousDeliveryRule}
+                                class="slds-hide"></lightning-input-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-input-field
+                                field-name={schema.AUTOMATION_RULE_CUSTOM_AUTOMATION_CONNECTOR}
+                                lwc:if={isCustomConnector}
+                                value={customAutomationConnector}
+                                disabled={isContinuousDeliveryRule}
+                                onchange={handleChange}></lightning-input-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-input-field
+                                field-name={schema.AUTOMATION_RULE_AUTOMATED_ACTION}
+                                value={automatedAction}
+                                disabled="true"></lightning-input-field>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+
+                <c-expandable-section label={labels.EXECUTION}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-input-field
+                                class="slds-var-m-top_x-small"
+                                field-name={schema.AUTOMATION_RULE_EXECUTION}
+                                value={execution}
+                                onchange={handleChange}></lightning-input-field>
+                        </lightning-layout-item>
+                        <template lwc:if={isScheduled}>
+                            <lightning-layout-item size="12">
+                                <lightning-input-field
+                                    field-name={schema.AUTOMATION_RULE_CRON_EXPRESSION}
+                                    value={cronExpression}></lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12">
+                                <div class="slds-var-p-left_xx-small">
+                                    <c-generate-cron-expression ongenerate={handleGenerateCronExpression}></c-generate-cron-expression>
+                                </div>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </c-expandable-section>
+
+                <c-expandable-section label={labels.POST_AUTOMATION}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-input-field
+                                class="slds-var-m-top_x-small"
+                                field-name={schema.AUTOMATION_RULE_AUTOMATED_ACTION_CALLBACK}></lightning-input-field>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+
+                <div if:false={readOnly} class="slds-var-m-top_medium slds-align_absolute-center">
+                    <lightning-button onclick={cancel} label={labels.CANCEL}></lightning-button>
+                    <lightning-button variant="brand" type="submit" label={labels.SAVE} class="slds-var-m-left_x-small"></lightning-button>
+                </div>
+            </lightning-record-edit-form>
+
+            <lightning-record-view-form lwc:if={readOnly} object-api-name={objectApiName} record-id={recordId}>
+                <c-expandable-section label={labels.TRIGGER}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-output-field
+                                class="slds-border_bottom slds-var-m-top_x-small"
+                                field-name={schema.AUTOMATION_RULE_SOURCE_ACTION}></lightning-output-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-output-field
+                                class="slds-border_bottom"
+                                field-name={schema.AUTOMATION_RULE_SOURCE_ACTION_STATUS}></lightning-output-field>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+
+                <c-expandable-section label={labels.AUTOMATED_ACTION}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-input
+                                label={automationConnectorLabel}
+                                field-level-help={automationConnectorHelpText}
+                                value={automationConnectorValueLabel}
+                                class="slds-border_bottom slds-var-p-horizontal_xx-small slds-var-m-vertical_x-small"
+                                read-only="true"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-output-field
+                                class="slds-border_bottom"
+                                field-name={schema.AUTOMATION_RULE_CUSTOM_AUTOMATION_CONNECTOR}
+                                lwc:if={isCustomConnector}></lightning-output-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-output-field
+                                class="slds-border_bottom"
+                                field-name={schema.AUTOMATION_RULE_AUTOMATED_ACTION}></lightning-output-field>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+
+                <c-expandable-section label={labels.EXECUTION}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-output-field
+                                class="slds-border_bottom slds-var-m-top_x-small"
+                                field-name={schema.AUTOMATION_RULE_EXECUTION}></lightning-output-field>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-output-field
+                                class="slds-border_bottom"
+                                field-name={schema.AUTOMATION_RULE_CRON_EXPRESSION}
+                                lwc:if={isScheduled}></lightning-output-field>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+
+                <c-expandable-section label={labels.POST_AUTOMATION}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-p-horizontal_small">
+                        <lightning-layout-item size="12">
+                            <lightning-output-field
+                                class="slds-border_bottom slds-var-m-top_x-small"
+                                field-name={schema.AUTOMATION_RULE_AUTOMATED_ACTION_CALLBACK}></lightning-output-field>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+            </lightning-record-view-form>
+        </div>
+    </lightning-card>
+
+    <c-copadocore-modal size="x-small" hide-close>
+        <span slot="title">{labels.EDIT_AUTOMATION}</span>
+        <slot>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12">
+                    <c-copado-scoped-notification variant="warning" message={labels.EDIT_AUTOMATION_WARNING_ALERT}></c-copado-scoped-notification>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="slds-var-p-top_medium">
+                    <lightning-formatted-rich-text
+                        lwc:if={targetActionUpdatedFromBackPromotion}
+                        value={labels.AUTOMATION_SCOPE_RESET}></lightning-formatted-rich-text>
+                    <lightning-formatted-rich-text
+                        if:false={sourceActionMatchFilterCriteriaObject}
+                        value={labels.EDIT_AUTOMATION_BODY_MESSAGE}></lightning-formatted-rich-text>
+                </lightning-layout-item>
+            </lightning-layout>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={labels.CANCEL} title={labels.CANCEL} onclick={handleCancelModal}> </lightning-button>
+            <lightning-button label={labels.SAVE} title={labels.SAVE} variant="brand" class="slds-var-m-left_x-small" onclick={handleSaveModal}>
+            </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

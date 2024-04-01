@@ -1,0 +1,21 @@
+<template>
+    <lightning-quick-action-panel header={labels.HEADER}>
+        <div class="slds-is-relative">
+            <lightning-spinner
+                if:true={showSpinner}
+                alternative-text="loading"
+                size="large"
+                variant="brand">
+            </lightning-spinner>
+
+            <c-copado-alert if:true={errorMessage} message={labels.BANNER_ERROR} variant="error"></c-copado-alert>
+            <div if:true={errorMessage} class="slds-p-around_medium">{errorMessage}</div>
+            <div if:false={errorMessage} class="slds-p-around_medium">{labels.BODY}</div>
+        </div>
+
+        <div slot="footer">
+            <lightning-button variant="neutral" label={labels.CANCEL} onclick={closeQuickAction} disabled={showSpinner}></lightning-button>
+            <lightning-button if:false={errorMessage} variant="brand" label={labels.DEACTIVATE} onclick={deactivate} disabled={showSpinner} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

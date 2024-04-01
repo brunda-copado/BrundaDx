@@ -1,0 +1,66 @@
+.slds-form__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0rem;
+    margin-right: 0rem;
+}
+
+.slds-card__body {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    
+}
+
+.slds-form-element__label {
+    display: block;
+    width: 100%;
+    max-width: unset;
+}
+
+.slds-form-element__control {
+    padding-left: 0;
+    padding-bottom: 0px;
+    margin-bottom: -5px;
+}
+
+.slds-form__item {
+    min-width: unset;
+}
+
+.step {
+    flex-grow: 1;
+    max-width: 8rem;
+}
+
+.script {
+    flex-grow: 1;
+    max-width: 10rem;
+}
+
+.scriptFontSize {
+    font-size: 0.85rem;
+}
+
+.description {
+    flex-grow: 1;
+    flex-shrink: 3;
+    min-width: 10rem;
+}
+
+.expectedResult {
+    flex-grow: 1;
+    flex-shrink: 3;
+    min-width: 9rem;
+}
+
+.actualResult {
+    flex-grow: 1;
+    flex-shrink: 3;
+    width: 10rem;
+}
+
+.runTestsBody {
+    height: 550px;
+    overflow-y: auto;
+    padding-top: 0px !important;
+}

@@ -1,0 +1,658 @@
+[
+    {
+        "templateUUId": "5fac58f8-65ac-4978-a0dc-4be0faa4d441",
+        "values": {
+            "dataTemplate": {
+                "templateName": "2-Veeva Account Plans",
+                "templateMainObject": "Account_Plan_vod__c",
+                "templateQueryLimit": 200,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "% Complete",
+                        "apiName": "Percent_Complete_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Active",
+                        "apiName": "Active_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "Description_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Account Plan Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "Account_Plan_vod__c",
+                        "relationshipName": "SWOTs_vod__r",
+                        "childSObject": "SWOT_vod__c",
+                        "childSObjectLabel": "SWOT"
+                    },
+                    {
+                        "field": "Account_Plan_vod__c",
+                        "relationshipName": "Key_Stakeholder_vod__r",
+                        "childSObject": "Key_Stakeholder_vod__c",
+                        "childSObjectLabel": "Key Stakeholder"
+                    },
+                    {
+                        "field": "Account_Plan_vod__c",
+                        "relationshipName": "Account_Team_Members__r",
+                        "childSObject": "Account_Team_Member_vod__c",
+                        "childSObjectLabel": "Account Team Member"
+                    },
+                    {
+                        "field": "Account_Plan_vod__c",
+                        "relationshipName": "Account_Tactic_vod__r",
+                        "childSObject": "Account_Tactic_vod__c",
+                        "childSObjectLabel": "Account Goal"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "487ca507-d642-4b5e-88ad-9fd105d2b969",
+                    "relationName": "Account_Tactic_vod__r",
+                    "childSObject": "Account_Tactic_vod__c"
+                },
+                {
+                    "templateUUId": "fa213297-4e4e-4599-92d3-db89392ba6c8",
+                    "relationName": "Account_Team_Members__r",
+                    "childSObject": "Account_Team_Member_vod__c"
+                },
+                {
+                    "templateUUId": "8657a2c2-0e9a-4263-814f-a8aecfeaac4d",
+                    "relationName": "Key_Stakeholder_vod__r",
+                    "childSObject": "Key_Stakeholder_vod__c"
+                },
+                {
+                    "templateUUId": "791977d2-7cca-4a52-b95b-aa6a1b94cc2f",
+                    "relationName": "SWOTs_vod__r",
+                    "childSObject": "SWOT_vod__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "791977d2-7cca-4a52-b95b-aa6a1b94cc2f",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva SWOT Template",
+                "templateMainObject": "SWOT_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Weaknesses",
+                        "apiName": "Weaknesses_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Threats",
+                        "apiName": "Threats_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Strengths",
+                        "apiName": "Strengths_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Opportunities",
+                        "apiName": "Opportunities_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "487ca507-d642-4b5e-88ad-9fd105d2b969",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Account Goal",
+                "templateMainObject": "Account_Tactic_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Description",
+                        "apiName": "Description_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Type",
+                        "apiName": "Type_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": [
+                    {
+                        "field": "CMS_Account_Goal__c",
+                        "relationshipName": "Key_Decision_Makers__r",
+                        "childSObject": "CMS_Key_Decision_Maker__c",
+                        "childSObjectLabel": "Key Decision Maker"
+                    },
+                    {
+                        "field": "CMS_Account_tactic_vod__c",
+                        "relationshipName": "Project_Initiatives__r",
+                        "childSObject": "CMS_Project_Initiative__c",
+                        "childSObjectLabel": "Project Initiative"
+                    },
+                    {
+                        "field": "Account_Goal_coe__c",
+                        "relationshipName": "Key_Tactical_Activities__r",
+                        "childSObject": "Key_Tactical_Activity_coe__c",
+                        "childSObjectLabel": "Key Tactical Activity"
+                    }
+                ]
+            },
+            "relationList": [
+                {
+                    "templateUUId": "099b68d9-4f8d-4b40-ae83-942b523ef43e",
+                    "relationName": "Key_Decision_Makers__r",
+                    "childSObject": "CMS_Key_Decision_Maker__c"
+                },
+                {
+                    "templateUUId": "5dc3ea1b-a12a-438e-983a-26a81e007cbb",
+                    "relationName": "Project_Initiatives__r",
+                    "childSObject": "CMS_Project_Initiative__c"
+                },
+                {
+                    "templateUUId": "0fb68ff1-50e7-44cc-b87f-c93ab62b721d",
+                    "relationName": "Key_Tactical_Activities__r",
+                    "childSObject": "Key_Tactical_Activity_coe__c"
+                }
+            ],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "fa213297-4e4e-4599-92d3-db89392ba6c8",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Account Team Member",
+                "templateMainObject": "Account_Team_Member_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    },
+                    {
+                        "name": "Role",
+                        "apiName": "Role_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Team Member Name",
+                        "apiName": "Team_Member_Name_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Access",
+                        "apiName": "Access_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "8657a2c2-0e9a-4263-814f-a8aecfeaac4d",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Key Stakeholder",
+                "templateMainObject": "Key_Stakeholder_vod__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        }
+                    },
+                    {
+                        "name": "Stakeholder Owner Name",
+                        "apiName": "Stakeholder_Owner_Name_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Role",
+                        "apiName": "Role_vod__c",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Key Stakeholder Name",
+                        "apiName": "Key_Stakeholder_Name_vod__c",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "External ID",
+                        "apiName": "External_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "0fb68ff1-50e7-44cc-b87f-c93ab62b721d",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Key Tactical Activity",
+                "templateMainObject": "Key_Tactical_Activity_coe__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Key Activity Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "5dc3ea1b-a12a-438e-983a-26a81e007cbb",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Project Initiative Template",
+                "templateMainObject": "CMS_Project_Initiative__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Project Name",
+                        "apiName": "Name",
+                        "contentValueUpdateValues": {
+                            "Scramble With Format": "scrambleWithFormat",
+                            "Scramble Value": "scramble",
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    },
+    {
+        "templateUUId": "099b68d9-4f8d-4b40-ae83-942b523ef43e",
+        "values": {
+            "dataTemplate": {
+                "templateName": "Veeva Key Decision Maker",
+                "templateMainObject": "CMS_Key_Decision_Maker__c",
+                "templateQueryLimit": null,
+                "templateDescription": null,
+                "templateFilterLogic": "1",
+                "templateAttachmentOptions": "No Attachments",
+                "templateBatchSize": 200,
+                "templateMatchOwners": false,
+                "templateMatchRecordTypes": false,
+                "templateContinueOnError": "Continue deployment until blocker issue",
+                "templateActive": true,
+                "templateAttachmentType": null
+            },
+            "content": {
+                "objectFields": [
+                    {
+                        "name": "Mobile ID",
+                        "apiName": "Mobile_ID_vod__c",
+                        "useAsExternalId": true,
+                        "contentValueUpdateValues": {
+                            "Auto Generate For Empty Values": "recordMatching"
+                        },
+                        "fieldContentUpdate": "recordMatching"
+                    },
+                    {
+                        "name": "Currency ISO Code",
+                        "apiName": "CurrencyIsoCode",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    },
+                    {
+                        "name": "Record ID",
+                        "apiName": "Id",
+                        "contentValueUpdateValues": {
+                            "Replace Value": "replace"
+                        }
+                    }
+                ],
+                "parentObjects": [],
+                "childObjects": []
+            },
+            "relationList": [],
+            "filterList": []
+        }
+    }
+]

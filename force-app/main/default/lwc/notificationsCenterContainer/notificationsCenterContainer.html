@@ -1,0 +1,13 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text={label.LOADING} size="large" variant="brand"></lightning-spinner>
+
+    <div class="slds-card slds-p-around_medium">
+        <lightning-tabset>
+            <template for:each={tabs} for:item="tab">
+                <lightning-tab if:true={tab.isVisible} key={tab.type} label={tab.label}>
+                    <c-notifications-center tab={tab.value} all-channels={allChannels}></c-notifications-center>
+                </lightning-tab>
+            </template>
+        </lightning-tabset>
+    </div>
+</template>

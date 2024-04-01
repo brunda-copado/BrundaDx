@@ -1,0 +1,16 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+    <template if:true={hasRows}>
+        <c-sprint-wall-user-stories
+            rows={rows}
+            columns={columns}
+            fieldset={fieldset}
+            record-limit={recordLimit}
+            query-config={queryConfig}
+            record-id={recordId}
+            child-object-api-name={schema.USER_STORY}
+            related-list-config={relatedListConfig}
+            onrefreshdata={handleRefreshData}
+        ></c-sprint-wall-user-stories>
+    </template>
+</template>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>ApexClass</masterLabel>
+        <translation>Apexクラス</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexComponent</masterLabel>
+        <translation>Apexコンポーネント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexPage</masterLabel>
+        <translation>Apexページ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ApexTrigger</masterLabel>
+        <translation>Apexトリガー</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>AuraDefinitionBundle</masterLabel>
+        <translation>Aura定義バンドル</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Layout</masterLabel>
+        <translation>レイアウト</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LightningComponentBundle</masterLabel>
+        <translation><!-- LightningComponentBundle --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

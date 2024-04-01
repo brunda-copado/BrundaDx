@@ -1,0 +1,28 @@
+{
+  "recordTypeMap": {},
+  "RecordSetBundles": [
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__Function__c",
+            "url": "/services/data/v55.0/sobjects/copado__Function__c/a1h5p0000083MM7AAM"
+          },
+          "copado__API_Name__c": "PrivateRepo",
+          "copado__Image_Name__c": "copado-multicloud-git-utils:v1",
+          "copado__Options__c": "[ ]",
+          "copado__Parameters__c": "[ {\n  \"required\" : false,\n  \"name\" : \"git_json\",\n  \"defaultValue\" : \"{$Context.Repository.Credential}\"\n}, {\n  \"name\" : \"branchName\",\n  \"defaultValue\" : \"main\"\n} ]",
+          "copado__Script__c": "# 1 - Clone Git Branch\ncopado --progress \"Cloning the repository\"\ncopado-git-get -d . \"$branchName\"\n\n# 2 - Run Git Sizer Library\ncopado --progress \"Running git-sizer\"\ngit-sizer --verbose > git-sizer.txt\ngit-sizer --json > git-sizer.json\n\n# 3 - Attach Output Files in the Copado Result record\ncopado --progress \"Attaching results\"\ncopado --u git-sizer.txt\ncopado --u git-sizer.json",
+          "copado__Type__c": "Custom",
+          "Id": "a1h5p0000083MM7AAM",
+          "LastReferencedDate": "2022-06-28T09:52:33.000+0000",
+          "LastViewedDate": "2022-06-28T09:52:33.000+0000",
+          "Name": "PrivateRepo",
+          "copado__Worker_Size__c": "S"
+        }
+      ],
+      "ObjectType": "copado__Function__c"
+    }
+  ],
+  "blobsByUID": {}
+}

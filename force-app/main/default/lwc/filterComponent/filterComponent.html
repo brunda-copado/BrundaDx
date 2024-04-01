@@ -1,0 +1,211 @@
+<template>
+    <lightning-button-icon
+        icon-name="utility:filterList"
+        alternative-text="filterList"
+        title="filterList"
+        class="slds-m-left_x-small"
+        variant="border-filled"
+        onclick={showFilters}
+    ></lightning-button-icon>
+
+    <div class="collapsible-filter collapsed">
+        <div class="filter-container">
+            <div class="slds-panel__header panel-header">
+                <template if:true={showCancelAndSave}>
+                    <lightning-button label="Cancel" title="Cancel" onclick={showFilters} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button variant="brand" label="Save" title="Save" onclick={saveFilter} class="slds-m-left_x-small"></lightning-button>
+                </template>
+                <template if:false={showCancelAndSave}>
+                    <lightning-formatted-text value="Filters" class="slds-m-left_x-small"></lightning-formatted-text>
+                    <lightning-icon
+                    icon-name="utility:close"
+                    alternative-text="Close"
+                    title="Close"
+                    class="closeX-icon slds-m-left_x-small"
+                    size="xx-small"
+                    onclick={showFilters}
+                ></lightning-icon>                    
+                </template>
+               <!--
+                <lightning-button label="Cancel" title="Cancel" onclick={showFilters} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand" label="Save" title="Save" onclick={saveFilter} class="slds-m-left_x-small"></lightning-button>
+               -->
+            </div>
+
+            <div class="slds-panel__body panel-body">
+                <ul>
+                    <li>
+                        <div class="filter-panel" onclick={toggleOwner}>
+                            <span>
+                                <div class="filter-label">Filter by Owner</div>
+                                <span class="current-scope-label">{ownerValue}</span>
+                            </span>
+                        </div>
+                    </li>
+                    <template if:true={showOwnerFilter}>
+                        <section class="vsm-popover slds-popover slds-box slds-nubbin_right" role="dialog">
+                            <div class="slds-popover__body content">
+                                <div class="slds-m-vertical_medium">
+                                    <div class="slds-form-element">
+                                        <lightning-radio-group
+                                            name="radioGroup"
+                                            label="Filter By Owner"
+                                            options={ownerOptions}
+                                            value={ownerValue}
+                                            onchange={handleChangeOwner}
+                                            type="radio"
+                                        >
+                                        </lightning-radio-group>
+                                    </div>
+                                    <div class="button-container">
+                                        <lightning-button
+                                            label="Close"
+                                            title="Close"
+                                            onclick={handleOwnerClose}
+                                            class="slds-m-left_x-small"
+                                        ></lightning-button>
+                                        <lightning-button
+                                            label="Done"
+                                            title="Non-primary action"
+                                            onclick={handleOwnerDone}
+                                            class="slds-m-left_x-small"
+                                        ></lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </template>
+                </ul>
+
+                <h3 class="body-title">Matching all of these filters</h3>
+
+                <ul>
+                    <template for:each={filters} for:item="filter" for:index="index">
+                        <li data-filterid={filter.id} key={filter.id} class="filter">
+                            <div key={filter.id} class="filter-panel-criterion" data-filterid={filter.id} onclick={togglePopover}>
+                                <div class="wrapper has-been-edited">
+                                    <template if:true={filter.isEmpty}>
+                                        <span class="filter-info-wrapper-empty">
+                                            <div class="field-label">
+                                                New Filter
+                                                <span>*</span>
+                                            </div>
+                                        </span>
+                                    </template>
+                                    <span class="filter-info-wrapper" id={filter.id}>
+                                        <div class="filter-label">{filter.fieldLabelSelected}</div>
+                                        <span class="current-scope-label">{filter.operatorLabelSelected} {filter.fieldValue} {filter.fieldSelectedValues} </span>
+                                    </span>
+                                    <lightning-icon
+                                        icon-name="utility:close"
+                                        alternative-text="Close"
+                                        data-filterid={filter.id}
+                                        title="Close"
+                                        class="closeX-icon"
+                                        size="xx-small"
+                                        onclick={removeFilter}
+                                    ></lightning-icon>
+                                </div>
+                            </div>
+
+                            <template if:true={filter.showPopover}>
+                                <section id={filter.id} class="vsm-popover slds-popover slds-box slds-nubbin_right" role="dialog">
+                                    <div class="slds-popover__body content">
+                                        <div class="slds-m-vertical_medium">
+                                            <div class="slds-form-element">
+                                                <lightning-combobox
+                                                    name="progress"
+                                                    label="Field"
+                                                    value={fieldSelected}
+                                                    placeholder="Select Field"
+                                                    options={fieldRelatedToUserStory}
+                                                    onchange={handleChangeField}
+                                                >
+                                                </lightning-combobox>
+                                            </div>
+                                            <div class="slds-form-element">
+                                                <lightning-combobox
+                                                    name="progress"
+                                                    label="Operator"
+                                                    value={operatorSelected}
+                                                    placeholder="Select Progress"
+                                                    options={options}
+                                                    onchange={handleChangeOperator}
+                                                >
+                                                </lightning-combobox>
+                                            </div>
+                                            <div class="slds-form-element">
+                                                <template if:true={isText}>
+                                                    <lightning-input
+                                                        type="text"
+                                                        label="Value"
+                                                        onchange={handleChangeValue}
+                                                        value={valueSelected}
+                                                    ></lightning-input>
+                                                </template>
+
+                                                <template if:true={isPicklist}>
+                                                    <c-multi-select-picklist
+                                                        label="Status"
+                                                        options={picklistOption}
+                                                        onvaluechange={handleValueChange}
+                                                        values-selected={valuesSelected}
+                                                    ></c-multi-select-picklist>
+                                                </template>
+
+                                                <template if:true={isCheckbox}>
+                                                    <lightning-radio-group
+                                                        name="radioGroup"
+                                                        label="Value"
+                                                        options={checkboxOptions}
+                                                        value={checkSelected}
+                                                        required="true"
+                                                        onchange={handleChangeValue}
+                                                        type="radio"
+                                                    ></lightning-radio-group>
+                                                </template>
+                                            </div>
+                                            <div class="button-container">
+                                                <lightning-button
+                                                    label="Close"
+                                                    title="Close"
+                                                    data-filterid={filter.id}
+                                                    onclick={handleClose}
+                                                    class="slds-m-left_x-small"
+                                                ></lightning-button>
+                                                <lightning-button
+                                                    label="Done"
+                                                    title="Done"
+                                                    data-filterid={filter.id}
+                                                    onclick={handleDone}
+                                                    class="slds-m-left_x-small"
+                                                ></lightning-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </template>
+                        </li>
+                    </template>
+                </ul>
+
+                <div class="add-filter-remove-all">
+                    <lightning-button
+                        variant="base"
+                        label="Add Filter"
+                        title="Add Filter"
+                        onclick={addFilter}
+                        class="slds-m-left_x-small"
+                    ></lightning-button>
+                    <lightning-button
+                        variant="base"
+                        label="Remove All"
+                        title="Remove All"
+                        onclick={removeAllFilters}
+                        class="slds-m-left_x-small"
+                    ></lightning-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

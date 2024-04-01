@@ -1,0 +1,10 @@
+<template>
+    <template if:true={hasErrorAlert}>
+        <c-copado-alert
+            message={errorAlert.message}
+            variant={errorAlert.variant}
+            dismissible={errorAlert.dismissible}
+            onclosealert={handleCloseAlert}
+        ></c-copado-alert>
+    </template>
+</template>

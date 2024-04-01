@@ -1,0 +1,85 @@
+<template>
+    <article>
+        <div data-id="CriteriaManagerAccordion" class="slds-section slds-is-open slds-card__header">
+            <h3 class="slds-section__title slds-var-p-bottom_medium">
+                <button class="slds-button slds-section__title-action" onclick={changeExpandableSection}>
+                    <lightning-icon icon-name={switchIconName} size="x-small" alternative-text="switch"></lightning-icon>
+                    <span class="slds-section__title-action slds-truncate" title={label.CCH_CRITERIA_SECTION_TITLE}
+                        >{label.CCH_CRITERIA_SECTION_TITLE}</span
+                    >
+                </button>
+            </h3>
+
+            <div
+                if:true={hasPermissions}
+                class="slds-section__content section__content slds-p-horizontal_large slds-is-relative"
+                onturnedit={toEditMode}
+                ondblclick={toEditMode}
+            >
+                <lightning-record-edit-form object-api-name="Compliance_Rule__c" record-id={recordId}>
+                    <lightning-spinner if:true={isLoading} variant="brand" alternative-text="Loading" size="large" class="slds-is-absolute">
+                    </lightning-spinner>
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="8">
+                            <c-copadocore-read-mode-field
+                                label={label.CCH_METADATA_TYPE_PARAMETER}
+                                value={metadataTypeSelected}
+                            ></c-copadocore-read-mode-field>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="8" class="slds-var-p-top_medium">
+                            <table class="slds-table">
+                                <thead>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>{label.CCH_NODE_PARAMETER}</td>
+                                        <td>{label.CCH_FIELD_PARAMETER}</td>
+                                        <td>{label.CCH_OPERATOR_PARAMETER}</td>
+                                        <td>{label.CCH_VALUE_PARAMETER}</td>
+                                    </tr>
+                                </thead>
+                                <template for:each={criterias} for:item="criteria">
+                                    <tr key={criteria.Id}>
+                                        <td>
+                                            <p>{criteria.Id}</p>
+                                        </td>
+                                        <td>
+                                            <c-copadocore-read-mode-field value={criteria.node}></c-copadocore-read-mode-field>
+                                        </td>
+                                        <td>
+                                            <c-copadocore-read-mode-field value={criteria.field}></c-copadocore-read-mode-field>
+                                        </td>
+                                        <td>
+                                            <c-copadocore-read-mode-field value={criteria.operator}></c-copadocore-read-mode-field>
+                                        </td>
+                                        <td>
+                                            <div if:false={criteria.isBoolean}>
+                                                <c-copadocore-read-mode-field value={criteria.value}></c-copadocore-read-mode-field>
+                                            </div>
+                                            <lightning-input
+                                                if:true={criteria.isBoolean}
+                                                type="checkbox"
+                                                variant="label-hidden"
+                                                value={criteria.value}
+                                                checked={criteria.valueCheckboxValue}
+                                                onclick={preventClick}
+                                            ></lightning-input>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </table>
+
+                            <div class="slds-form-element slds-var-p-top_medium">
+                                <label class="slds-form-element__label"><span>{label.CCH_CRITERIA_LOGIC}</span></label>
+                                <div class="slds-form-element__control">
+                                    <c-copadocore-read-mode-field value={criteriaLogic}></c-copadocore-read-mode-field>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-record-edit-form>
+            </div>
+            <div if:false={hasPermissions} class="slds-p-horizontal_large">{label.CCH_SCOPE_HIDDEN_MESSAGE}</div>
+        </div>
+    </article>
+</template>

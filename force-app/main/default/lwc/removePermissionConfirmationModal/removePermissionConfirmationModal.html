@@ -1,0 +1,47 @@
+<template>
+    <c-cds-modal size="x-small">
+        <span slot="title">{removePermissionTitle}</span>
+
+        <template lwc:if={deletionAllowed}>
+            <div slot="modalContent" class="remove-modal-content">
+                <p>{removePermissionMessage}</p>
+            </div>
+        </template>
+        <template lwc:else>
+            <div slot="modalContent" class="remove-modal-content">
+                <lightning-layout>
+                    <lightning-layout-item size="12">
+                        <div class="slds-var-p-bottom_medium">
+                            <c-cds-alert message={label.Persona_Permission_Remove_Error} variant="error"> </c-cds-alert>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
+        <span slot="footer">
+            <template lwc:if={deletionAllowed}>
+                <lightning-button
+                    class="cds-button"
+                    label={label.Cancel}
+                    title={label.Cancel}
+                    variant="neutral"
+                    onclick={handleClickCancel}></lightning-button>
+
+                <lightning-button
+                    class="slds-m-left_x-small cds-button"
+                    label={label.Remove}
+                    title={label.Remove}
+                    variant="brand"
+                    onclick={handleClickRemove}></lightning-button>
+            </template>
+            <template lwc:else>
+                <lightning-button
+                    class="cds-button"
+                    label={label.Ok}
+                    title={label.Ok}
+                    variant="neutral"
+                    onclick={handleClickCancel}></lightning-button>
+            </template>
+        </span>
+    </c-cds-modal>
+</template>

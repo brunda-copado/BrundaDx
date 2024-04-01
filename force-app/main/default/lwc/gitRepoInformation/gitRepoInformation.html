@@ -1,0 +1,45 @@
+<template>
+    <lightning-card class="slds-card__body_inner">
+    <c-expandable-section label="Information">
+        <template if:true={showEditField}>
+            <lightning-record-edit-form record-id={recordId} slot="body" object-api-name={objectApiName} onsuccess={handleSuccess}>
+                <lightning-messages></lightning-messages>
+                <lightning-input-field field-name={nameField}></lightning-input-field>
+                <lightning-input-field field-name={tunnelField}></lightning-input-field>
+                <!-- Add more input fields as needed -->
+                <div class="button-group">
+                    <lightning-button label="Save" variant="brand" type="submit" class="slds-button"></lightning-button>
+                    <lightning-button label="Cancel" onclick={handleCancel} class="slds-button"></lightning-button>
+                </div>
+            </lightning-record-edit-form>
+        </template>
+        <template if:false={showEditField}>
+            <lightning-record-edit-form record-id={recordId} object-api-name={objectApiName} slot="body">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_11-of-12 slds-form-element_readonly slds-m-top_medium">
+                        <lightning-output-field field-name={nameField}>
+                        </lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-12 slds-form-element_readonly inlined-edit">
+                        <lightning-button-icon icon-name="utility:edit" variant="bare" onclick={handleEdit}>
+                        </lightning-button-icon>
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_11-of-12 slds-form-element_readonly slds-m-top_medium">
+                        <lightning-output-field field-name={tunnelField}></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-12 slds-form-element_readonly inlined-edit">
+                        <lightning-button-icon icon-name="utility:edit" variant="bare" alternative-text="Edit"
+                            onclick={handleEdit}>
+                        </lightning-button-icon>
+                    </div>
+                </div>
+                <!-- Add more fields in a similar manner -->
+            </lightning-record-edit-form>
+        </template>
+    </c-expandable-section>
+    <!--<h3 class="label slds-p-around_xx-small slds-section__title slds-theme_shade slds-truncate">Information</h3>-->
+    </lightning-card>
+    
+</template>

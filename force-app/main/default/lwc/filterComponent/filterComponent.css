@@ -1,0 +1,151 @@
+.collapsible-filter {
+    position: absolute;
+    right: 0;
+    top: 89px;
+    height: calc(100% - 89px);
+    background-color: #ffffff;
+    border-left: 1px solid #ecebea;
+    border-radius: 0 5px 5px 0;
+    box-shadow: var(--lwc-shadowDrag, -2px 0px 5px 0 rgba(0, 0, 0, 0.4));
+}
+
+.collapsible-filter.expanded {
+    width: 321px;
+    z-index: 50;
+}
+
+.collapsible-filter.collapsed {
+    width: 0px;
+    display: none;
+}
+
+.collapsible-filter .filter-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: unset;
+}
+
+.collapsible-filter .filter-container .panel-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible-filter .filter-container .panel-header lightning-button {
+    margin-left: 0;
+}
+
+.collapsible-filter .filter-container .panel-body li {
+    list-style-type: none;
+    margin: 0.75rem 0 0.75rem 0;
+}
+
+.collapsible-filter .filter-container .filter-panel {
+    border: rgb(221, 219, 218) 1px solid;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.collapsible-filter .filter-container .filter-panel:hover {
+    background-color: rgb(243, 242, 242);
+}
+
+.collapsible-filter .filter-container .body-title {
+    color: rgb(62, 62, 60);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    padding: 0.5rem 0;
+}
+
+.collapsible-filter .filter-panel-criterion {
+    cursor: pointer;
+}
+
+..collapsible-filter .filter-panel-criterion .filter-info-wrapper-empty .filter-label,
+.collapsible-filter .filter-panel-criterion .filter-info-wrapper .filter-label {
+    color: rgb(62, 62, 60);
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.collapsible-filter .filter-panel-criterion .filter-info-wrapper-empty .current-scope-label,
+.collapsible-filter .filter-panel-criterion .filter-info-wrapper .current-scope-label {
+    color: rgb(8, 7, 7);
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+.collapsible-filter .filter-panel-criterion .wrapper:hover {
+    background-color: rgb(243, 242, 242);
+}
+
+.collapsible-filter .filter-panel-criterion .wrapper {
+    border: rgb(221, 219, 218) 1px solid;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+}
+
+.collapsible-filter .filter-panel-criterion .filter-info-wrapper {
+    display: inline-block;
+}
+
+.collapsible-filter .filter-panel-criterion .field-label {
+    color: rgb(62, 62, 60);
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.collapsible-filter .filter-panel-criterion .has-been-edited {
+    background-color: rgb(250, 255, 189);
+    min-height: 60px;
+    position: relative;
+}
+
+.collapsible-filter .filter-panel-criterion lightning-icon {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+}
+
+.collapsible-filter .filter-container .add-filter-remove-all {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.collapsible-filter .filter-container .add-filter-remove-all lightning-button {
+    margin-left: 0px;
+}
+
+/* Popover*/
+.vsm-popover {
+    position: absolute;
+    background-color: white;
+    left: -360px;
+    width: 350px;
+    padding: 0;
+}
+
+.vsm-popover .content {
+    padding: 1rem;
+    height: auto;
+    font-size: 12px;
+    color: #363839;
+}
+
+.vsm-popover .content .slds-form-element {
+    margin-bottom: 20px;
+}
+
+.vsm-popover .button-container {
+    text-align: right;
+}
+
+.vsm-popover .confirm-button lightning-button {
+    margin-left: 0;
+}

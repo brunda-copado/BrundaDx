@@ -1,0 +1,11 @@
+<template>
+    <div class="slds-align_absolute-center">
+        <c-copadocore-illustration name="custom:setup" size="medium" message={label.CONFIGURATION_MISSING}>
+            <lightning-layout multiple-rows slot="body">
+                <lightning-layout-item size="12">
+                    <lightning-button label={label.CONFIGURE_FORMULA} disabled={disableConfigureButton} variant="brand" onclick={handleClickConfigureFormula} ></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </c-copadocore-illustration>
+    </div>
+</template>

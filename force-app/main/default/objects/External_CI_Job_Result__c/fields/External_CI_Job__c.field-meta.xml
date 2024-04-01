@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>External_CI_Job__c</fullName>
+    <externalId>false</externalId>
+    <label>External CI Job</label>
+    <referenceTo>External_CI_Job__c</referenceTo>
+    <relationshipLabel>External CI Job Results</relationshipLabel>
+    <relationshipName>External_CI_Job_Results</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

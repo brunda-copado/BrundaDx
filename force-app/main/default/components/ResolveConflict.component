@@ -1,0 +1,814 @@
+<!--
+ - Created by COPADO\ucan on 7/2/19.
+ -->
+<apex:component id="ResolveConflict" controller="ResolveConflictsController" allowDML="true">
+    <apex:attribute name="preDefAtt" type="String" assignTo="{!preDefinedAttSource}" required="false" description="Predefined attachment body which will be used by DSW page"
+    />
+    <apex:attribute name="preDefAttTarget" type="String" assignTo="{!preDefinedAttTarget}" required="false" description="Predefined attachment body which will be used by DSW page"
+    />
+    <apex:attribute name="showPromoHeader" type="Boolean" assignTo="{!showHeader}" required="false" default="true" description="To be able to hide the section which has There is no promotion Id specified in the URL. message when the component is not promotion id driven"
+    />
+
+    <head>
+        <style>
+            .CodeMirror-merge-copybuttons-left>.CodeMirror-merge-copy {
+                height: 20px !important;
+                width: 20px !important;
+                background-image: url({!URLFOR($Resource.RightArrow)
+            }
+
+            ) !important;
+            }
+
+            .CodeMirror-merge-copybuttons-right>.CodeMirror-merge-copy {
+                height: 20px !important;
+                width: 20px !important;
+                background-image: url({!URLFOR($Resource.LeftArrow)
+            }
+
+            ) !important;
+            }
+
+            /* CSS for Disabled Auto-Resolve button tooltip*/
+
+            .informationIcon {
+                color: #3593c6;
+            }
+
+            .toolTipTopHeight {
+                top: 30px;
+            }
+
+            .tooltiptext {
+                visibility: hidden;
+                width: auto;
+                max-width: 21rem;
+                background: #16325c;
+                border: 0;
+                position: absolute;
+                top: -70px;
+                left: -90px;
+                text-align: center;
+                padding: 10px 5px 10px 5px;
+                font-family: Salesforce Sans, Arial, sans-serif;
+                border-radius: .25rem;
+                line-height: normal;
+            }
+
+            .tooltiptextbody {
+                width: 20rem;
+                min-height: 2rem;
+                z-index: 6000;
+                color: #fff;
+                display: inline-block;
+            }
+
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+            }
+
+            .tooltiptext:before {
+                width: 1rem;
+                height: 1rem;
+                position: absolute;
+                transform: rotate(45deg);
+                content: "";
+                background-color: inherit;
+                left: 50%;
+                bottom: -.5rem;
+                margin-left: -.5rem;
+            }
+        </style>
+        <title>{!$ObjectType.Promotion__c.Label} {!$Label.CONFLICT_RESOLUTION}</title>
+        <c:GAnalytics />
+
+        <c:IncludeStaticsResourceComponent addJQuery="true" addJSzipjs="true" />
+        <apex:stylesheet value="{!$Resource.ResolveConflict_css}" />
+        <apex:includeScript value="{!$Resource.ResolveConflict_js}" />
+        <apex:stylesheet value="{!URLFOR($Resource.CopadoLightningCSS)}" />
+        <apex:includeScript value="{!URLFOR($Resource.YamlMinJS, 'js-yaml/dist/js-yaml.min.js')}" />
+
+        <c:IncludeCodeMirrorResourceComponent addFoldjs="true" addFoldcss="true" addMSjs="true" addJSjs="true" addPANjs="true" addFSjs="true"
+            addHMjs="true" addMERGEcss="true" addMERGEjs="true" addCCSjs="true" addCMjs="true" addXmljs="true" addSimpleScrollBarsjs="true"
+            addSearchjs="true" addSearchCursorjs="true" addMatchHighlighterjs="true" addClikejs="true" addActiveLinejs="true"
+            addAutoRefreshjs="true" addCommentjs="true" addAnnotateScrollBarjs="true" addJumpToLinejs="true" addDialogjs="true"
+            addOverlayjs="true" addCMcss="true" addSimpleScrollBarscss="true" addEclipsecss="true" addDialogcss="true" addMatchesOnScrollBarcss="true"
+        />
+        <apex:includeScript value="{!URLFOR($Resource.utils)}" />
+        <c:IncludeConnectionJsComponent />
+        <apex:includeScript value="{!URLFOR($Resource.diff_match_patch)}" />
+    </head>
+    <div id="screenLockerLightning" class="slds-screenlocker" style="display:none;">
+        <div>
+            <img style="width: 100px;" src="{!URLFOR($Resource.SLDS,'/assets/images/spinners/slds_spinner_brand.gif')}" />
+        </div>
+    </div>
+
+    <body class="slds-scope" style="height:100%;">
+
+        <apex:outputPanel layout="block" styleClass="copado-lightning-container" rendered="{!showHeader}">
+
+            <div style="padding: 15px 20px 10px 20px;">
+                <!--a onclick="goBack();return false;">⬅ {!$Label.BacktoPromotion}</a-->
+                <apex:outputPanel layout="block" id="globalPageMessages">
+                    <apex:pagemessages id="pmessage" />
+                </apex:outputPanel>
+                <div class="slds-page-header">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <a onclick="goBack();return false;">{!$ObjectType.Promotion__c.Label} </a>>
+                            <a onclick="goBack();return false;"> {!promotion.Name}</a>
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h1>
+                                                <span class="slds-page-header__title slds-truncate">{!$Label.copado__CONFLICT_RESOLUTION}</span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__col-actions desktop">
+                            <div class="slds-page-header__controls">
+                                <div class="slds-page-header__control">
+                                    <div class="slds-button-group" role="group">
+                                        <apex:outputPanel layout="none" rendered="{!AND(promotion!=null,promotion.Platform__c!=null,promotion.Platform__c=='Salesforce')}">
+                                            <button class="slds-button slds-button_neutral" onclick="isDeployReady();">{!$Label.copado__CREATE_DEPLOYMENT}</button>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!AND(promotion!=null,promotion.Platform__c!=null,promotion.Platform__c!='Salesforce')}">
+                                            <button class="slds-button slds-button_neutral slds-button_brand" onclick="redirectToPromotion();">{!$Label.copado__Continue_Promotion}</button>
+                                        </apex:outputPanel>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__row slds-page-header__row_gutters">
+                        <div class="slds-page-header__col-details">
+                            <apex:outputPanel layout="block" style="background: white;" id="headerFields1">
+                                <ul class="slds-grid slds-page-header__detail-row" style="margin-left: -12px;">
+                                    <apex:variable value="{!1}" var="rowNum" />
+                                    <apex:repeat value="{!$ObjectType.Promotion__c.FieldSets.Copado_Header_Fields}" var="f">
+                                        <apex:outputPanel layout="block" rendered="{!AND(rowNum < 8, promotion != null)}">
+                                            <li class="slds-page-header__detail-block slds-truncate" style="padding-right: 2em; padding-left: 2em;">
+                                                <c:LightningReadyOutputFields dividerBottom="false" SObject="{!promotion}" Field="{!f}" />
+                                            </li>
+                                        </apex:outputPanel>
+                                        <apex:variable var="rowNum" value="{!rowNum + 1}" />
+                                    </apex:repeat>
+                                </ul>
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="attachmentPanel" style="width:98%;" layout="block" styleClass="copado-lightning-container copado-lightning-radius"
+            rendered="{!showHeader}">
+
+            <!-- CONFLICT MARKUP HELP SECTION -->
+            <c:CopadoHelp styleAttributes="margin-left:1%;margin-top: 2%;" sectionText="{!$Label.copado__CONFLICT_RESOLUTION_HELP}" sectionLink="https://docs.copado.com/articles/#!copado-ci-cd-publication/online-conflict-resolution"
+            />
+            <!-- / CONFLICT MARKUP HELP SECTION -->
+
+            <apex:form id="attForm">
+                <apex:outputPanel id="attPanel" layout="block">
+                    <apex:variable value="0" var="attIndex" />
+                    <div style="padding: 15px 20px 10px 20px;">
+                        <div class="slds-page-header">
+                            <div class="slds-page-header__row">
+                                <div class="slds-page-header__col-title">
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-file" title="{!$ObjectType.Promotion__c.Label}">
+                                                <svg class="slds-icon" aria-hidden="true">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS,'/assets/icons/standard-sprite/svg/symbols.svg#file')}"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <div class="slds-page-header__name">
+                                                <div class="slds-page-header__name-title">
+                                                    <h1>
+                                                        <span class="slds-page-header__title slds-truncate">{!$Label.Files_With_Conflict}</span>
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-page-header__col-actions desktop">
+                                    <div class="slds-page-header__controls">
+                                        <div class="slds-page-header__control">
+                                            <div class="slds-button-group" role="group">
+                                                <button class="slds-button slds-button_neutral" id="globalAutoResolveBtn" onclick="saveAutoResolveSelectedFiles(); modalOperations.toogleLocker(true); return false;" disabled="true">{!$Label.AUTO_RESOLVED_CONFLICTS}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding-top: 15px;">
+                            <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols"
+                                role="grid" aria-label="">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="slds-text-align_right slds-cell_action-mode" scope="col" style="width:3.25rem">
+                                            <div class="slds-th__action slds-th__action_form">
+                                                <div class="slds-checkbox">
+                                                    <input type="checkbox" name="options" id="checkbox-unique-id-305" value="checkbox-unique-id-305" onClick="selectAllConflictItems(this)" onchange="enableAutoResolveBtn()" tabindex="0" aria-labelledby="check-select-all-label column-group-header"
+                                                    />
+                                                    <label class="slds-checkbox__label" for="checkbox-unique-id-305" id="check-select-all-label">
+                                                        <span class="slds-checkbox_faux"></span>
+                                                        <span class="slds-form-element__label slds-assistive-text">Select All</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th aria-label="User Story" aria-sort="none" class="slds-cell_action-mode" scope="col" style="width:7rem">
+                                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate slds-p-left_x-small">
+                                                <span class="slds-truncate" title="User Story">{!$Label.USER_STORY}</span>
+                                            </div>
+                                        </th>
+                                        <th aria-label="Commit Content" aria-sort="none" class="slds-cell_action-mode" scope="col" style="width: 12rem;">
+                                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate slds-p-left_x-small">
+                                                <span class="slds-truncate" title="Commit Content">{!$Label.Commit_Content}</span>
+                                            </div>
+                                        </th>
+                                        <th aria-label="Metadata Type" aria-sort="none" class="slds-cell_action-mode" scope="col" style="width: 12rem;">
+                                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate slds-p-left_x-small">
+                                                <span class="slds-truncate" title="Metadata Type">{!$Label.CCH_METADATA_TYPE}</span>
+                                            </div>
+                                        </th>
+                                        <th aria-label="Metadata Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+                                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate slds-p-left_x-small">
+                                                <span class="slds-truncate" title="Metadata Name">{!$Label.Metadata_Name}</span>
+                                            </div>
+                                        </th>
+                                        <th aria-label="Merge Resolution Strategy" aria-sort="none" class="slds-cell_action-mode" scope="col" style="width: 30rem;">
+                                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate slds-p-left_x-small">
+                                                <span class="slds-truncate" title="Merge Resolution Strategy">{!$Label.Merge_Resolution_Strategy}</span>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <apex:repeat value="{!attachments}" var="att">
+                                    <tbody>
+                                        <tr aria-selected="false" class="slds-hint-parent rectangle">
+                                            <td class="slds-text-align_right slds-cell_action-mode" role="gridcell">
+                                                <div class="slds-checkbox">
+                                                    <input type="checkbox" name="options" id="{!att.attachmentId}" value="checkbox-01" onchange="enableAutoResolveBtn();" tabindex="0" aria-labelledby="check-button-label-01 column-group-header"
+                                                    />
+                                                    <label class="slds-checkbox__label" for="{!att.attachmentId}" id="check-button-label-01">
+                                                        <span class="slds-checkbox_faux"></span>
+                                                        <span class="slds-form-element__label slds-assistive-text">{!att.attachmentId}</span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <th class="slds-cell_action-mode" scope="row">
+                                                <div class="slds-truncate">
+                                                    {!att.userStory}
+                                                </div>
+                                            </th>
+                                            <td class="slds-cell_action-mode" role="gridcell">
+                                                <div class="slds-truncate" title="">
+                                                    <!--apex:outputPanel layout="none" rendered="{!BEGINS(HTMLENCODE(att.Name), 'SMART_ONLINE')}">
+                                                        <a href="{!att.commitContent}" tabindex="0">View Feature Branch</a>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="none" rendered="{!!BEGINS(HTMLENCODE(att.Name), 'SMART_ONLINE')}">
+                                                        {!att.commitContent}
+                                                    </apex:outputPanel-->
+                                                    <a tabindex="0" onclick="openBranchURL('{!att.commitContent}')" id="viewFtrBranch">View Feature Branch</a>
+                                                </div>
+                                            </td>
+                                            <td class="slds-cell_action-mode" role="gridcell">
+                                                <div class="slds-truncate" title="">{!att.metadataType}</div>
+                                            </td>
+                                            <td class="slds-cell_action-mode" role="gridcell">
+                                                <div class="slds-truncate slds-p-left_x-small" title="">{!att.metadataName}</div>
+                                            </td>
+                                            <td class="slds-cell_action-mode" role="gridcell">
+                                                <div class="slds-no-flex" style="float: right;">
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-radio_button-group">
+                                                            <span class="slds-button slds-radio_button">
+                                                                <apex:outputPanel layout="none" rendered="{!BEGINS(HTMLENCODE(att.Name), 'SMART_ONLINE')}">
+                                                                    <input type="radio" name="radio-{!attIndex}" id="resolveButton-{!attIndex}" value="on" onclick="modalOperations.toogleLocker(true);openAttachment('{!attIndex}');"
+                                                                        checked="true" />
+                                                                    <label class="slds-radio_button__label slds-button slds-button_neutral" for="resolveButton-{!attIndex}">
+                                                                        <span class="slds-radio_faux">{!$Label.SMART_RESOLVED}</span>
+                                                                    </label>
+                                                                </apex:outputPanel>
+                                                            </span>
+
+                                                            <span class="slds-button slds-radio_button {!IF(AND(disableAutoResolve, !BEGINS(HTMLENCODE(att.Name), 'AUTO RESOLVED')), 'tooltip', '')}">
+                                                                <apex:outputPanel layout="none" rendered="{!BEGINS(HTMLENCODE(att.Name), 'AUTO RESOLVED')}">
+                                                                    <input type="radio" name="radio-{!attIndex}" id="autoResolveButton-{!attIndex}" value="on" checked="true" onclick="saveAutoResolveAttachment('{!attIndex}');modalOperations.toogleLocker(true);saveAutoResolve('{!attIndex}');"
+                                                                    />
+                                                                </apex:outputPanel>
+                                                                <!-- disableAutoResolve (Personal_Settings__c.Disable_Auto_Resolve__c) is the custom (hierarchy) setting field which enables/disables Auto-Resolve for users or profiles -->
+                                                                <apex:outputPanel layout="none" rendered="{!!BEGINS(HTMLENCODE(att.Name), 'AUTO RESOLVED')}">
+                                                                    <apex:outputPanel layout="none" rendered="{!!disableAutoResolve}">
+                                                                        <input type="radio" name="radio-{!attIndex}" id="autoResolveButton-{!attIndex}" value="on" onclick="saveAutoResolveAttachment('{!attIndex}');modalOperations.toogleLocker(true);saveAutoResolve('{!attIndex}');"
+                                                                        />
+                                                                    </apex:outputPanel>
+                                                                    <apex:outputPanel layout="none" rendered="{!disableAutoResolve}">
+                                                                        <input type="radio" name="radio-{!attIndex}" id="autoResolveButton-{!attIndex}" value="on" onclick="saveAutoResolveAttachment('{!attIndex}');modalOperations.toogleLocker(true);saveAutoResolve('{!attIndex}');"
+                                                                            disabled="true" />
+                                                                    </apex:outputPanel>
+                                                                </apex:outputPanel>
+                                                                <label class="slds-radio_button__label slds-button slds-button_neutral" for="autoResolveButton-{!attIndex}">
+                                                                    <span class="slds-radio_faux">
+                                                                        {!$Label.copado__AUTO_RESOLVE}
+                                                                    </span>
+                                                                </label>
+                                                                <div class="tooltiptext">
+                                                                    <div class="tooltiptextbody">
+                                                                        {!$Label.copado__Disable_Auto_Resolve_Tooltip}
+                                                                    </div>
+                                                                </div>
+                                                            </span>
+                                                            <span class="slds-button slds-radio_button">
+                                                                <apex:outputPanel layout="none" rendered="{!BEGINS(HTMLENCODE(att.Name), 'RESOLVED')}">
+                                                                    <input type="radio" name="radio-{!attIndex}" id="resolveButton-{!attIndex}" value="on" onclick="modalOperations.toogleLocker(true);openAttachment('{!attIndex}');"
+                                                                        checked="true" />
+                                                                </apex:outputPanel>
+                                                                <apex:outputPanel layout="none" rendered="{!!BEGINS(HTMLENCODE(att.Name), 'RESOLVED')}">
+                                                                    <input type="radio" name="radio-{!attIndex}" id="resolveButton-{!attIndex}" value="on" onclick="openAttachment('{!attIndex}');modalOperations.toogleLocker(true);"
+                                                                    />
+                                                                </apex:outputPanel>
+                                                                <label class="slds-radio_button__label slds-button slds-button_neutral" for="resolveButton-{!attIndex}">
+                                                                    <span class="slds-radio_faux">{!$Label.RESOLVE}</span>
+                                                                </label>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <div class="slds-card__body"></div>
+                                    <footer class="slds-card__footer"></footer>
+                                    <apex:variable var="attIndex" value="{!VALUE(attIndex) + 1}" />
+                                </apex:repeat>
+                            </table>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+
+                <apex:actionFunction name="saveAutoResolve" action="{!saveAutoResolveAttachment}" reRender="attPanel, pmessage" onComplete="modalOperations.toogleLocker(false);setTimeout(clearMessage, 3000);">
+                    <apex:param id="aIndex" name="attIndex" value="" />
+                </apex:actionFunction>
+                <apex:actionFunction name="saveResolve" action="{!saveResolvedAttachment}" reRender="attPanel, pmessage" onComplete="setTimeout(clearMessage, 3000);"
+                />
+                <apex:actionFunction name="saveAutoResolveSelected" action="{!openAttachmentSelected}" reRender="attHidden" onComplete="modalOperations.saveSelectedAutoResolveAttachment();">
+                <apex:param id="aID" name="attIDsList" value="" /></apex:actionFunction>
+                <apex:actionFunction name="saveAutoResolveAll" action="{!saveAutoResolveAttachment}" reRender="attPanel, pmessage" onComplete="modalOperations.toogleLocker(false);setTimeout(clearMessage, 3000);">
+                    <apex:param id="aID1" name="attIDsList" value="" />
+                </apex:actionFunction>
+
+                <apex:actionFunction name="saveAutoResolveAttachment" action="{!openAttachment}" reRender="attPanel, attHidden" onComplete="modalOperations.saveAutoResolveAttachment();">
+                    <apex:param id="aIndex3" name="attIndex" value="" />
+                </apex:actionFunction>
+
+                <apex:actionFunction name="openAttachment" action="{!openAttachment}" reRender="attHidden" onComplete="modalOperations.openModal();">
+                    <apex:param id="aIndex2" name="attIndex" value="" />
+                </apex:actionFunction>
+
+                <apex:actionFunction name="isDeployReady" reRender="globalPageMessages,promoteScriptPanel" action="{!isCreateDeployReady}" onComplete="doDeployment();"/>
+                <apex:actionFunction name="createDeployment" reRender="globalPageMessages,promoteScriptPanel" action="{!createDeployment}"
+                    onComplete="overridePageMessages();goToPromotion();" />
+                
+                <apex:actionFunction name="redirectToPromotion" action="{!redirectToPromotion}" />
+
+                <apex:actionFunction name="reloadAttachments" reRender="attPanel" />
+
+
+            </apex:form>
+        </apex:outputPanel>
+
+        <div id="operationModal">
+            <section role="dialog" tabindex="-1" id="modal" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1"
+                class="slds-modal slds-modal_large">
+                <div class="slds-modal__container" style="width: 99% !important;">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{!$Label.CLOSE}" onclick="modalOperations.closeFileModal();reloadAttachments();">
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDS,'/assets/icons/utility-sprite/svg/symbols.svg#close')}">
+                                </use>
+                            </svg>
+                            <span class="slds-assistive-text">{!$Label.CLOSE}</span>
+                        </button>
+                    </header>
+                </div>
+            </section>
+        </div>
+
+        <!-- FILE CONFLICT RESOLUTION MODAL -->
+        <div id="fileResolveModal">
+            <section role="dialog" tabindex="-1" id="fileModal" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1"
+                class="slds-modal slds-modal_large">
+                <div class="slds-modal__container" style="width: 100% !important;height: 100%;padding-top: 0px;padding-bottom: 0px;">
+                    <header class="slds-modal__header" id="fileModalHeader" style="height:50px;">
+                        <span class="files-to-compare">{!$Label.Files2Compare}</span>
+                        <div class="slds-button-group" id="grp" role="group" style="float:right;{!IF(ISBLANK(preDefinedAttSource),'','display:none;')}">
+                            <button class="slds-button slds-button_neutral" panel="1" onclick="panelFunctions.classSetValue(this);">{!$Label.X1_Panel}</button>
+                            <button class="slds-button slds-button_neutral" panel="2" onclick="panelFunctions.classSetValue(this);">{!$Label.X2_Panels}</button>
+                            <button class="slds-button slds-button_neutral" panel="3" onclick="panelFunctions.classSetValue(this);">{!$Label.X3_Panels}</button>
+                        </div>
+
+                        <div class="slds-button-group" id="xmlJson" role="group" style="float:right;display:none;{!IF(ISBLANK(preDefinedAttSource),'margin-right:2%;','')}">
+                            <button class="slds-button slds-button_neutral slds-button_brand" cType="xml" onclick="panelFunctions.setPreValue(panes,this);">{!$Label.XMLview}</button>
+                            <button class="slds-button slds-button_neutral" cType="json" onclick="panelFunctions.setPreValue(panes,this);">{!$Label.YAMLview}</button>
+                        </div>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="min-height: 84%;">
+                        <span id="errorMessage" style="color:red;font-weight: bold;"></span>
+                        <div id="view" style="height:100%;"></div>
+                        <textarea id="sourceArea" style="display:none;"></textarea>
+                    </div>
+
+                    <footer class="slds-modal__footer">
+                        <center id="footerCenter">
+                            <button id="backBtn4bundle" class="slds-button slds-button_neutral" style="display:none;" onclick="modalOperations.backButtonOperation();">{!$Label.Close}</button>
+                            <button id="closeFileModalbtn" class="slds-button slds-button_neutral" onclick="{!IF(ISBLANK(preDefinedAttSource),'reloadAttachments();','')}modalOperations.closeFileModal(); return false;">{!IF(showHeader,$Label.Close,$Label.Back2Select)}</button>
+                            <button style="{!IF(ISBLANK(preDefinedAttSource),'','display:none;')}" class="slds-button slds-button_neutral slds-button_brand"
+                                onclick="saveResolvedAttachment();">{!$Label.Save}</button>
+                        </center>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop" id="fileBackdrop"></div>
+        </div>
+        <!-- / FILE CONFLICT RESOLUTION MODAL -->
+        <apex:outputPanel id="attHidden">
+            <input id="attHiddenInp" type="hidden" value="{!attachmentToResolve}" />
+            <input id="attHiddenAttachName" type="hidden" value="{!attachmentName}" />
+            <input id="attsHiddenInp" type="hidden" value="{!jsonStr}" />
+        </apex:outputPanel>
+
+        <!--decide promotion-->
+        <apex:outputPanel id="promoteScriptPanel">
+            <script>
+                var goToPromotion = function () {
+                if ({!goToPromotion} === true) {
+                    if ((typeof sforce != 'undefined') && sforce && (!!sforce.one)) {
+                        sforce.one.navigateToURL('/apex/' + '{!JSENCODE(namespace)}' + 'PromoteChanges?id={!IF(promotion!=null,promotion.Id,'')}&createDeployment=true');
+                    } else {
+                        window.location = '/apex/' + '{!JSENCODE(namespace)}' + 'PromoteChanges?id={!IF(promotion!=null,promotion.Id,'')}&createDeployment=true';
+                    }
+                }
+            }
+            function selectAllConflictItems(source) {
+                var enableButton = false;
+                checkboxes = document.getElementsByName('options');
+                checkboxes.forEach( row => {
+                    row.disabled = (row.getAttribute('Id') === '') ? true : false;
+                    row.checked = row.disabled ? false : source.checked;
+                    enableButton = true;
+                });
+
+            }
+
+            window.onload = function(){
+                checkboxes = document.getElementsByName('options');
+                checkboxes.forEach( row => {
+                    row.disabled = (row.getAttribute('Id') === '') ? true : false;
+                });
+            }
+
+            function enableAutoResolveBtn() {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+                document.getElementById('globalAutoResolveBtn').disabled = checkedOne ? false : true;
+                
+            }
+
+            function saveAutoResolveSelectedFiles() {
+                checkboxes = document.getElementsByName('options');
+                const attIdList = [];
+                checkboxes.forEach( row => {
+                    if(row.checked === true && row.getAttribute('Id') !== 'checkbox-unique-id-305'){
+                        attIdList.push(row.getAttribute('Id'));
+                    }
+                });
+                saveAutoResolveSelected(JSON.stringify(attIdList));
+                saveAutoResolveAll(JSON.stringify(attIdList));
+            }
+
+            function openBranchURL(source){
+                !source.includes("Not in Promotion Metadata") ? window.open(source, '_blank') : alert(source);
+            }
+
+            /**
+            * For all unresolved conflict items which are unrelated to the user story on a promotion
+            * record's merge conflict page, this method auto-resolves and performs createDeployment.
+            */
+            function doDeployment() {
+                const promoID = '{!promotion.Id}';
+                const attIdList = [];
+                let errMsg = document.getElementsByClassName('messageText');
+
+                if(errMsg.length === 0) {
+                    const result = sforce.connection.query("Select Id, Name, ParentId From Attachment WHERE ParentId = '"+promoID+"'");
+                    const records = result.getArray("records");
+                    for (var i=0; i<records.length; i++) {
+                        let record = records[i];
+                        if(record.Name.startsWith("US-")) {
+                            attIdList.push(record.Id);
+                        } else {
+                            continue;
+                        }
+                    }
+                    if(attIdList.length !== 0) {
+                        saveAutoResolveSelected(JSON.stringify(attIdList));
+                        saveAutoResolveAll(JSON.stringify(attIdList));
+                    }
+                    createDeployment();
+                } else {
+                    return;
+                }
+            }
+            </script>
+        </apex:outputPanel>
+        <script>
+
+            var jsCookies = {
+                get: function (c_name) {
+                    if (document.cookie.length > 0) {
+                        var c_start = document.cookie.indexOf(c_name + "=");
+                        if (c_start != -1) {
+                            c_start = c_start + c_name.length + 1;
+                            var c_end = document.cookie.indexOf(";", c_start);
+                            if (c_end == -1) {
+                                c_end = document.cookie.length;
+                            }
+                            return unescape(document.cookie.substring(c_start, c_end));
+                        }
+                    }
+                    return '';
+                },
+                set: function (c_name, value, expiredays) {
+                    var exdate = new Date();
+                    exdate.setDate(exdate.getDate() + expiredays);
+                    document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? '' : '; expires=' + exdate.toUTCString());
+                }
+            },
+                // TO HIGHLIGHT GIVEN KEYWORD
+                keyword = '<<<<<<< HEAD',
+                cursor,
+                repWord = 'XXXXX__',
+                editor,
+                editor2,
+                attSource,
+                attTarget,
+                featureBranch = '{!JSENCODE($Label.Feature_Branch)}',
+                featureToolTip = '{!JSENCODE($Label.FEATURE_TOOLTIP)}',
+                target = '{!JSENCODE($Label.TARGET)}: ',
+                resolution = '{!JSENCODE($Label.RESOLUTION)}',
+                resolutionToolTip2panel = '{!JSENCODE($Label.RESOLUTION_TOOLTIP_2PANEL)}',
+                resolutionToolTip3panel = '{!JSENCODE($Label.RESOLUTION_TOOLTIP_3PANEL)}',
+                source = '{!JSENCODE($Label.Source)}: ',
+                promotionBranch = '{!JSENCODE($Label.Promotion_Branch)}',
+                promotionToolTip = '{!JSENCODE($Label.PROMOTION_TOOLTIP)}',
+                resolutionToolTip = '{!JSENCODE($Label.RESOLUTION_TOOLTIP_2PANEL)}',
+                files2Compare = '{!$Label.Files2Compare}',
+                viewDifferences = '{!JSENCODE($Label.ViewDifferences)}',
+                viewFile = '{!JSENCODE($Label.ViewFile)}',
+                confSelection = jsCookies.get('merge.conflict.selection'),
+                currentMode = jsCookies.get('merge.conflict.format'),
+                panes = (confSelection ? parseInt(confSelection) : 3),
+                directValue = false,
+                val2Check,
+                config = {
+                    parentId: '{!promotion.Id}',
+                    saveWarningLabel: '{!JSENCODE($Label.CONFLICT_RESOLUTION_CONFIRM)}',
+                    ns: '{!JSENCODE(namespace)}',
+                    hasError: false,
+                    alreadyChecked: false,
+                    errorLines: []
+                },
+                usName,
+                pMode,
+                isConflictFile,
+                firstRow,
+                cssTop,
+                formatFlag = false,
+                att2Res,
+                preSource = [],
+                preTarget = [],
+                preFlag = false,
+                bundleFlag = false,
+                returnFlag = false,
+                bundleSource,
+                bundleTarget,
+
+                initEditor2 = function () {
+                    editor2 = CodeMirror.fromTextArea(document.getElementById('sourceArea'), {
+                        mode: 'highlightSearch',
+                        lineNumbers: true,
+                        autoRefresh: true,
+                        lineWrapping: false,
+                        styleActiveLine: true,
+                        scrollbarStyle: 'simple'
+                    });
+
+                    cursor = editor2.getSearchCursor('<<<<<<< HEAD', CodeMirror.Pos(editor2.firstLine(), 0), { caseFold: true, multiline: true });
+                    $copado('.CodeMirror-simplescroll').before('<div id="toLineDiv"><a onclick="prev();" class="previous" href="#">{!JSENCODE($Label.Previous)}</a>&nbsp;|&nbsp;<a onclick="next();" class="next" href="#">{!JSENCODE($Label.Next)}</a></div>')
+                },
+                findPrev = function (boolParam) {
+                    if (cursor.find(boolParam)) { //move to that position
+                        editor2.setSelection(cursor.from(), cursor.to());
+                        editor2.scrollIntoView({ from: cursor.from(), to: cursor.to() }, 20);
+                    }
+                },
+                prev = function () {
+                    findPrev(true);
+                },
+                next = function () {
+                    findPrev(false);
+                },
+                setGlobalErrorMessage = function (message, lineNo) {
+                    var elt = $copado('#errorMessage');
+                    elt.text(message);
+                    elt.data('line', lineNo);
+                },
+                conflictMarkup = function () {
+                    val2Check = directValue ? editor2.getValue() : editor.edit.doc.getValue();
+                    if (currentMode == 'json') {
+                        var hasError = jsonValidation.parseYaml();
+                        if (!hasError) val2Check = parseOperations.convertJSON2formattedXml(JSON.stringify(jsyaml.load(val2Check)));
+                        return hasError;
+                    }
+                    return val2Check.match(/(<{4,}|={4,}|>{4,})/g);
+                },
+                saveResolvedAttachment = function () {
+                    config.hasError = (conflictMarkup() != null);
+                    if (config.attachName != null) {
+                        var newAttachName = config.attachName;
+                        if (config.attachName.startsWith('AUTO RESOLVED')) {
+                            newAttachName = config.attachName.replace('AUTO RESOLVED', 'RESOLVED')
+                        } else if (config.attachName.startsWith('RESOLVED') == false) {
+                            newAttachName = 'RESOLVED ' + config.attachName;
+                        }
+
+                        saveAttachment(newAttachName, '');
+                    } else {
+                        console.log('Error updating attachment: attachment name not found');
+                    }
+                },
+                saveAttachment = function (newAttachName, autoResolveBody) {
+                    if (config.hasError) {
+                        var errorMessageClass = 'slds-notify slds-notify--alert slds-theme--error customMessage slds-theme--alert-texture';
+                        if (currentMode != 'json' && confirm(config.saveWarningLabel)) {
+                            modalOperations.toogleLocker(true);
+                            if (autoResolveBody) {
+                                val2Check = autoResolveBody;
+                            }
+                            try {
+                                dw.u.upsertAttach(config.parentId, config.attachName, val2Check, false, newAttachName);
+                                config.attachName = newAttachName;
+                                saveResolve();
+                                modalOperations.closeFileModal();
+                            } catch (e) {
+                                $copado('[Id$="pageMessages"]').text(e).addClass(errorMessageClass);
+                            }
+                            modalOperations.hideLocker();
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        modalOperations.toogleLocker(true);
+                        var attachmentType;
+                        try {
+                            if(panelFunctions.attList.length > 0){
+                                panelFunctions.attList.forEach( element => {
+                                    autoResolveBody = element.Body;
+                                    if (autoResolveBody) {
+                                        val2Check = autoResolveBody;
+                                    }
+                                    dw.u.upsertAttach(config.parentId, element.oldName, val2Check, false, element.Name, element.Id);
+                                });
+                                modalOperations.closeFileModal();
+                            } else{
+                                if (autoResolveBody) {
+                                    val2Check = autoResolveBody;
+                                }
+                                dw.u.upsertAttach(config.parentId, config.attachName, val2Check, false, newAttachName);
+                                config.attachName = newAttachName;
+                                if (!autoResolveBody) {
+                                    saveResolve();
+                                    modalOperations.closeFileModal();
+                                }
+                            }
+                        } catch (e) {
+                            $copado('[Id$="pageMessages"]').text(e).addClass(errorMessageClass);
+                        }
+                        modalOperations.hideLocker();
+                    }
+                },
+
+                getAttachmentById = function (parentId, attachmentId) {
+                    attachmentId = ((attachmentId != null) ? attachmentId : '');
+
+                    let gitRepoId = "Select Id, " + config.ns + "Project__r." + config.ns + "Deployment_Flow__r." + config.ns + "Git_Repository__c FROM " + config.ns + "Promotion__c WHERE Id = '" + parentId + "'";
+                    getGitRepoId = sforce.connection.query(gitRepoId),
+                        gitRepoRecords = getGitRepoId.getArray("records");
+                    var q = "Select Id, Body, LastModifiedDate, Name, ParentId From Attachment where Id = '" + attachmentId + "' AND ParentId = '" + parentId + "' order by LastModifiedDate DESC limit 1",
+                        result = sforce.connection.query(q),
+                        records = result.getArray("records");
+
+                    project = config.ns + 'Project__r';
+                    flow = config.ns + 'Deployment_Flow__r';
+                    gitRepo = config.ns + 'Git_Repository__c';
+                    var getParentId = (records.length > 0 && !(records[0].Name).includes('.conflict')) ? parentId : (gitRepoRecords.length > 0) ? gitRepoRecords[0].get(project).get(flow).get(gitRepo) : '';
+                    q = "Select Id, Body, LastModifiedDate, Name, ParentId From Attachment where Id = '" + attachmentId + "' AND ParentId = '" + getParentId + "' order by LastModifiedDate DESC limit 1",
+                        result = sforce.connection.query(q),
+                        records = result.getArray("records");
+
+                    return records[0];
+                },
+
+                getMetadataType = function (metadataName) {
+                    metadataName = ((metadataName != null) ? '%' + metadataName : '');
+                    var q = "Select Id, Name, " + config.ns + "Metadata_API_Name__c from " + config.ns + "User_Story_Metadata__c where " + config.ns + "Metadata_API_Name__c LIKE '" + metadataName + "' order by CreatedDate DESC limit 1",
+                        result = sforce.connection.query(q),
+                        records = result.getArray("records");
+
+                    return records[0];
+                },
+
+                clearMessage = function () {
+                    Array.from(document.getElementsByClassName('message')).forEach(function (element) {
+                        if (element.innerText.includes('Success')) {
+                            element.style.display = 'none'
+                        }
+                    });
+                },
+
+                overridePageMessages = function () {
+                    textureEffect = 'slds-theme--alert-texture';
+
+                    $copado('.warningM3').addClass('slds-notify slds-notify--toast slds-theme--warning customMessage ' + textureEffect);
+                    $copado('.confirmM3').addClass('slds-notify slds-notify--alert slds-theme--success  customMessage ' + textureEffect);
+                    $copado('.errorM3').addClass('slds-notify slds-notify--alert slds-theme--error customMessage ' + textureEffect);
+
+                    $copado('.infoM3').addClass('slds-notify slds-notify--toast customMessage ' + textureEffect);
+                    $copado('.errorM3').removeClass('errorM3');
+                    $copado('.confirmM3').removeClass('confirmM3');
+                    $copado('.infoM3').removeClass('infoM3');
+                    $copado('.warningM3').removeClass('warningM3');
+
+                    $copado('.message').css('font-size', '11pt');
+                    $copado('.message').css('width', '100%');
+                    $copado('.messageText').css('font-weight', '500');
+                    $copado('.slds-theme--error').css('color', 'white');
+                    $copado('.slds-theme--info').css('color', 'white');
+                    $copado('.slds-theme--success').css('color', 'white');
+                },
+                goBack = function () {
+                    if ((typeof sforce != 'undefined') && sforce && (!!sforce.one)) {
+                        sforce.one.navigateToURL('/{!promotion.Id}');
+                    } else {
+                        location.href = '/{!promotion.Id}';
+                    }
+                },
+                init = function () {
+                    // makes sure init is called only once.
+                    if(init.done) return;
+                    ga('send', 'pageview', {
+                        'page': '/ResolveConflicts',
+                        'title': 'Resolve Conflicts'
+                    });
+                    overridePageMessages();
+                    initEditor2();
+                    attSource = '{!JSENCODE(preDefinedAttSource)}';
+                    attTarget = '{!JSENCODE(preDefinedAttTarget)}';
+                    if (attSource.length > 0 && attTarget.length > 0 || window.preSourceRollback) {
+                        if (panes !== 2) panes = 2;
+                        modalOperations.openModal();
+                    }
+                    if (panes === 3) {
+                        resolutionToolTip = '{!JSENCODE($Label.RESOLUTION_TOOLTIP_3PANEL)}';
+                    }
+                    $copado('[panel="' + panes + '"]').addClass('slds-button_brand');
+                    config.saveAttachment = function (val1, val2) {
+                        saveAttachment(val1, val2);
+                    }
+                    init.done = true;
+                };
+
+            String.prototype.replaceAll = function (search, replacement) {
+                var target = this;
+                return target.replace(new RegExp(search, 'g'), replacement);
+            };
+
+            $copado(document).ready(function () {
+                init();
+            });
+        </script>
+    </body>
+</apex:component>

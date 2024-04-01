@@ -1,0 +1,51 @@
+/* for use common style from copado design sysyem */
+@import "c/copadoDesignSystem";
+
+.cds-empty-state-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 40rem;
+}
+
+.cds-empty-state-icon {
+    padding-bottom: 1rem;
+}
+
+.cds-icon-container {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cds-semantic-color-accent-background);
+    flex-shrink: 0;
+}
+
+.cds-icon {
+    --slds-c-icon-color-foreground-default: var(--cds-semantic-color-accent-primary);
+}
+
+.cds-empty-state-title {
+    font-size: 1.15rem;
+    color: var(--cds-semantic-color-text-primary);
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.cds-empty-state-body {
+    font-size: 0.875rem;
+    color: var(--cds-semantic-color-text-secondary);
+    text-align: center;
+}
+
+.cds-empty-state-body p {
+    font-size: 0.875rem;
+    color: var(--cds-semantic-color-text-secondary);
+}
+
+.cds-empty-state-action {
+    padding-top: 1rem;
+}

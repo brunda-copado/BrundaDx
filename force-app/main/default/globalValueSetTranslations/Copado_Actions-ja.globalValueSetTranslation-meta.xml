@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Commit</masterLabel>
+        <translation>コミット</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Create Package</masterLabel>
+        <translation>パッケージを作成</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Create Package Version</masterLabel>
+        <translation>パッケージバージョンを作成</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Import Package</masterLabel>
+        <translation>パッケージをインポート</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion</masterLabel>
+        <translation>プロモーション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotion Deployment</masterLabel>
+        <translation>プロモーションデプロイメント</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Publish Package Version</masterLabel>
+        <translation>パッケージバージョンのパブリッシュ</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Submit User Stories</masterLabel>
+        <translation>ユーザーストーリーの提出</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Take Snapshot</masterLabel>
+        <translation>スナップショットを取得</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

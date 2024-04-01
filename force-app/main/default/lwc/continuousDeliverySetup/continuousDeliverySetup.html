@@ -1,0 +1,23 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={showSpinner}> </lightning-spinner>
+
+        <c-continuous-delivery-setup-preview if:true={isConfigurationPreviewStep} summary-data={summaryData} onstopspinner={stopSpinner} ongetnextstep={handleNext} onclosemodal={handleCancel}></c-continuous-delivery-setup-preview>
+    
+        <c-continuous-delivery-setup-start if:true={isStartConfigurationStep} onstopspinner={stopSpinner} ongetnextstep={handleNext}></c-continuous-delivery-setup-start>
+
+        <c-continuous-delivery-setup-promotion-configuration if:true={isPromotionConfigurationStep} configuration={configuration} is-back-promotion={isBackPromotionConfiguration} record-id={recordId} onstopspinner={stopSpinner} ongetnextstep={handleNext} ongetprevstep={handlePrev} onskipthisstep={handleSkipStep}></c-continuous-delivery-setup-promotion-configuration>
+
+        <c-continuous-delivery-setup-environment-selections if:true={isPromotionEnvironmentSelectionStep} configuration={configuration} selected-stage={selectedStage} pipeline-stages={pipelineStages} is-back-promotion={isBackPromotionConfiguration} record-id={recordId} onstopspinner={stopSpinner} ongetnextstep={handleNext} ongetprevstep={handlePrev}></c-continuous-delivery-setup-environment-selections>
+        
+        <c-continuous-delivery-setup-promotion-configuration if:true={isBackPromotionConfigurationStep} configuration={configuration} is-back-promotion={isBackPromotionConfiguration} record-id={recordId} onstopspinner={stopSpinner} ongetnextstep={handleNext} ongetprevstep={handlePrev} onskipthisstep={handleSkipStep}></c-continuous-delivery-setup-promotion-configuration>
+
+        <c-continuous-delivery-setup-environment-selections if:true={isBackPromotionEnvironmentSelectionStep} configuration={configuration} selected-stage={selectedStage} pipeline-stages={pipelineStages} is-back-promotion={isBackPromotionConfiguration} record-id={recordId} onstopspinner={stopSpinner} ongetnextstep={handleNext} ongetprevstep={handlePrev}></c-continuous-delivery-setup-environment-selections>
+
+        <c-continuous-delivery-setup-duplicated-rule if:true={isDuplicatedRuleCheckStep} configuration={configuration} record-id={recordId} pipeline-stages={pipelineStages} onshowspinner={enableSpinner} onstopspinner={stopSpinner} ongetprevstep={handlePrev} onclosemodal={handleCancel} ongetnextstep={handleNext}></c-continuous-delivery-setup-duplicated-rule>
+
+        <c-continuous-delivery-setup-summary if:true={isConfigurationSummaryStep} configuration={configuration} summary-data={summaryData} record-id={recordId} pipeline-stages={pipelineStages} onshowspinner={enableSpinner} onstopspinner={stopSpinner} ongetprevstep={handlePrev} onupdatejsonfield={handleCancel} onclosemodal={handleCancel}></c-continuous-delivery-setup-summary>
+    
+        <c-continuous-delivery-setup-error if:true={isConfigurationErrorStep} messages={errorMessage} onstopspinner={stopSpinner} onclosemodal={handleCancel}></c-continuous-delivery-setup-error>
+    </div>
+</template>

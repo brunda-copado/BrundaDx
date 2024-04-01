@@ -1,0 +1,31 @@
+<template>
+        <lightning-layout multiple-rows >
+            <lightning-layout-item size="12" class="slds-p-right_x-small">
+                <div class="title-format">
+                    <span class="word-wrap" title={nameAndMainObjectInfo}>{nameAndMainObjectInfo}</span>
+                    <a class="slds-p-horizontal_x-small" href={templatePageUrl} title={labels.TEMPLATE_DETAILS} target="_blank" style="display: flex; justify-content: center;">
+                        <img class="image" src={images.TEMPLATE_DETAIL} />
+                    </a>
+                    <a href={erdDiagramUrl} target="_blank" title={labels.RELATIONSHIP_DIAGRAM}>
+                        <img class="image" src={images.RELATION_DIAGRAM} />
+                    </a>
+                </div>  
+            </lightning-layout-item>
+            <lightning-layout-item size="6" class="slds-p-right_x-small word-wrap" >
+                <span class="label-format">{labels.TEMPLATE_SOURCE_ORG}:</span>
+                <span class="value-format slds-p-left_xx-small" title={templateSourceOrg}>{templateSourceOrg}</span>
+            </lightning-layout-item>
+            <lightning-layout-item size="6">
+                <span class="label-format">{labels.TEMPLATE_MAX_RECORDS}:</span>
+                <span class="value-format slds-p-left_xx-small"> {maximumRecordLimit} </span>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" class="slds-p-right_x-small">
+                <span class="label-format">{labels.TEMPLATE_RELATED_OBJECTS}:</span>
+                <span class="value-format slds-p-left_xx-small"> {templateTotalRelatedObjects} </span>
+            </lightning-layout-item>
+            <lightning-layout-item size="6">
+                <span class="label-format">{labels.TEMPLATE_BATCH_SIZE}:</span>
+                <span class="value-format slds-p-left_xx-small"> {templateBatchSize} </span>
+            </lightning-layout-item>
+        </lightning-layout>
+</template>

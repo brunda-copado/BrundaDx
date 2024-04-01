@@ -1,0 +1,59 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-spinner
+        lwc:if={isLoading}
+        variant="brand"
+        data-message={spinnerMessage}
+        alternative-text={spinnerMessage}
+        size="large"
+        class="spinner-message">
+    </lightning-spinner>
+    <div lwc:if={infoAlert} class="slds-var-m-bottom_medium">
+        <div class="slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light" role="status">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <p>{label.DeleteBranchesWarning}</p>
+            </div>
+        </div>
+    </div>
+    <c-datatable-container
+        icon-name={iconName}
+        has-body="true"
+        enable-default-search={showSearch}
+        enable-quick-filter={showFilter}
+        rows={data}
+        columns={columns}
+        onsearch={refreshSearchedData}
+        onclearsearch={handleClearSearch}
+        onfilter={refreshSearchedData}
+        onclearfilter={handleClearSearch}>
+        <span slot="title">{label.Branches}</span>
+        <span slot="titleInfo">{items}</span>
+
+        <span slot="actions">
+            <lightning-button-group>
+                <lightning-button if:true={showRefresh} label={label.Refresh} onclick={handleRefreshBranches}> </lightning-button>
+                <lightning-button if:true={showDeleteBranches} label={label.DeleteSelectedBranches} onclick={handleDeleteBranches}> </lightning-button
+            ></lightning-button-group>
+        </span>
+
+        <span slot="datatable">
+            <div style={tableHeight}>
+                <lightning-datatable
+                    key-field="id"
+                    columns={columns}
+                    data={filteredData}
+                    default-sort-direction="asc"
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}
+                    enable-infinite-loading
+                    onloadmore={handleLoadMoreData}>
+                </lightning-datatable>
+                <div lwc:if={hasNoData} class="slds-text-align_center slds-var-m-around_x-large">{label.NoDataToDisplay}</div>
+            </div>
+        </span>
+    </c-datatable-container>
+</template>

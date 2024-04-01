@@ -1,0 +1,114 @@
+<template>
+    <ul if:true={hasParameters}>
+        <li if:true={fullEditMode}>
+            <lightning-layout horizontal-align="spread">
+                <lightning-layout-item size="4" class="slds-var-m-right_small">
+                    <label class="slds-form-element__label slds-no-flex">
+                        <abbr class="slds-required" title={label.Required}>* </abbr>{label.Name}
+                    </label>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-var-m-right_small">
+                    <label class="slds-form-element__label slds-no-flex">{label.Value}</label>
+                </lightning-layout-item>
+                <lightning-layout-item if:true={enableRequiredInput} size="1" class="slds-align_absolute-center">
+                    <label class="slds-form-element__label slds-no-flex">{label.Required}</label>
+                </lightning-layout-item>
+                <lightning-layout-item size="2">
+                </lightning-layout-item>
+            </lightning-layout>
+        </li>
+        <template for:each={parameters} for:item="parameter">
+            <li key={uniqueKey} if:true={fullEditMode} class="slds-var-m-bottom_medium">
+                <lightning-layout horizontal-align="spread">
+                    <lightning-layout-item size="4" class="slds-var-m-right_small">
+                        <lightning-input 
+                            type="text"
+                            variant="label-hidden"
+                            name="name"
+                            value={parameter.name}
+                            placeholder={label.Name_Placeholder} 
+                            data-id={parameter.id}
+                            required="true"
+                            onchange={handleChange}
+                        ></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4" class="slds-var-m-right_small">
+                        <lightning-input 
+                            type="text"
+                            variant="label-hidden"
+                            name="value"
+                            value={parameter.value}
+                            placeholder={label.Value_Placeholder} 
+                            data-id={parameter.id}
+                            onchange={handleChange}
+                        ></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item if:true={enableRequiredInput} size="1" class="slds-align_absolute-center">
+                        <lightning-input
+                            type="checkbox"
+                            variant="label-hidden"
+                            name="required"
+                            data-id={parameter.id}
+                            checked={parameter.required}
+                            onchange={handleChange}
+                        ></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2">
+                        <lightning-button-icon
+                            icon-name="utility:delete" 
+                            alternative-text={label.DELETE}
+                            title={label.DELETE} 
+                            data-id={parameter.id} 
+                            onclick={handleDelete}
+                        ></lightning-button-icon>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </li>
+            <li key={uniqueKey} if:false={readOnly}>
+                <lightning-layout if:true={editValuesOnly}>
+                    <lightning-layout-item size="12">
+                        <label class="slds-form-element__label slds-no-flex">
+                            <abbr if:true={parameter.required} class="slds-required" title="required">*</abbr>
+                            {parameter.name}
+                        </label>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout if:true={editValuesOnly} class="slds-var-p-bottom_medium">
+                    <lightning-layout-item size="12">
+                        <lightning-input
+                            type="text"
+                            name="value"
+                            variant="label-hidden"
+                            label={parameter.name}
+                            value={parameter.value}
+                            placeholder={label.Parameter_Value_Placeholder}
+                            data-id={parameter.id}
+                            onchange={handleChange}
+                        ></lightning-input>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </li>
+            <li key={uniqueKey} if:true={readOnly}>
+                <lightning-layout class="slds-var-p-bottom_small">
+                    <lightning-layout-item size="12">
+                        <div class="slds-form-element slds-form-element_readonly">
+                            <span class="slds-form-element__label">{parameter.name}</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{parameter.value}</div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </li>
+        </template>
+    </ul>
+    
+    <div if:true={enableAddParameters} class="slds-var-m-top_medium">
+        <lightning-button 
+            label={label.Add_new_parameter} 
+            title={label.Add_new_parameter}
+            icon-name="utility:add" 
+            onclick={handleAdd}
+        ></lightning-button>
+    </div>
+</template>

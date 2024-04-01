@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Function Parameters</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>Function__c</object>
+            </objects>
+            <property name="canAddParameters" type="Boolean"/>
+            <property name="enableRequiredInput" type="Boolean"/>
+        </targetConfig>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="recordId" type="String"/>
+            <property name="target" type="String"/>
+            <property name="contextId" type="String"/>
+            <property name="overwriteParameters" type="String"/>
+            <property name="editValuesOnly" type="Boolean"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

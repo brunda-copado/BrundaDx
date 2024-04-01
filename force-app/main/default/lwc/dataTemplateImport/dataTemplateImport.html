@@ -1,0 +1,175 @@
+<template>
+        <div lwc:if={displayOptions} class="import-options">
+            <c-data-template-import-options onselectimportoption={handleSelectImportOption}></c-data-template-import-options>
+        </div>
+        <div lwc:elseif={displayMainSection} class="main-section">
+            <lightning-card>
+                <div class="slds-align_absolute-center slds-text-heading_medium slds-m-bottom_large">{label.IMPORT_TEMPLATE}</div>
+                <div class="slds-border_top">
+                    <div class="slds-m-top_small slds-m-horizontal_small">
+                        <c-copado-alert-place-holder communication-id={communicationId}></c-copado-alert-place-holder>
+                    </div>
+                    <template lwc:if={displayFileUpload}>
+                        <div class="slds-is-relative slds-align_absolute-center slds-m-vertical_xx-large">
+                            <template lwc:if={isLoading}>
+                                <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                                </lightning-spinner>
+                            </template>
+                            <lightning-input
+                            type="file"
+                            label={label.IMPORT_TEMPLATE}
+                            name="fileUploader"
+                            accept={acceptedFormats}
+                            record-id={recordId}
+                            onchange={handleUploadFinished}
+                            multiple
+                        >
+                        </lightning-input>
+                        </div>
+                    </template>
+                    <template lwc:elseif={displayTemplateInformation}>
+                            <div class="slds-is-relative">
+                                <template lwc:if={isLoading}>
+                                    <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                                    </lightning-spinner>
+                                </template>
+                                    <div class="slds-m-vertical_medium slds-m-horizontal_small">
+                                        <div class="slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light" role="status">
+                                            <div class="slds-media__figure">
+                                                <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <p>{infoAlert}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <lightning-layout multiple-rows>
+                                            <lightning-layout-item size="12">
+                                                <div class="slds-scrollable template-information">
+                                                        <lightning-accordion lwc:if={templateInformations}> 
+                                                            <template for:each={templateInformations} for:item="information">
+                                                                <lightning-accordion-section key={information.groupNumber} name={information.mainTemplateName} label={information.mainTemplateInfo}> 
+                                                                    <div slot="actions">
+                                                                        <lightning-layout vertical-align="center">
+                                                                            <template if:true={information.displayValidationResult}>
+                                                                                <template if:false={information.hasSystemError}>
+                                                                                    <template if:true={information.allValid}>
+                                                                                        <lightning-layout-item flexibility="auto" padding="around-small">
+                                                                                            <lightning-badge label="All Validated" class="slds-theme_success"> </lightning-badge>
+                                                                                        </lightning-layout-item>
+                                                                                    </template>
+                                                                                    <template if:false={information.allValid}>
+                                                                                        <lightning-layout-item flexibility="auto" padding="around-small">
+                                                                                            <lightning-badge  label={information.numberOfErrors} class="slds-theme_error"> </lightning-badge>
+                                                                                        </lightning-layout-item>
+                                                                                    </template>
+                                                                                </template>
+                                                                                <template if:true={information.hasSystemError}>
+                                                                                    <lightning-layout-item flexibility="auto" padding="around-small">
+                                                                                        <lightning-badge label="System Error. Please contact your admin" class="slds-theme_warning"> </lightning-badge>
+                                                                                    </lightning-layout-item>
+                                                                                </template>
+                                                                            </template>
+                                                                            <lightning-layout-item flexibility="auto" padding="around-small">
+                                                                                <lightning-input data-id={information.groupNumber} type="checkbox" label="Select Template" variant="label-hidden" checked={information.selected} disabled={information.disableSelection} onchange={handleChange}> </lightning-input>
+                                                                            </lightning-layout-item>
+                                                                        </lightning-layout>
+                                                                    </div>
+                                                                    <template for:each={information.templates} for:item="currentInfo">
+                                                                        <div key={currentInfo.values.dataTemplate.templateName} class="slds-grid slds-gutters slds-p-horizontal_x-large">
+                                                                            <div class="slds-col slds-size_6-of-12">
+                                                                                {currentInfo.values.dataTemplate.templateName}    
+                                                                            </div>
+                                                                            <div class="slds-col slds-size_5-of-12">
+                                                                                {currentInfo.values.relationListSize} {label.RELATED_DATA_TEMPLATES}
+                                                                            </div>
+                                                                            <div class="slds-col slds-size_1-of-12">
+                                                                                <template if:true={currentInfo.isCheck}>
+                                                                                    <lightning-icon icon-name="utility:success" alternative-text={label.OBJECT_FOUND} variant="success"
+                                                                                    title={label.OBJECT_FOUND} size="small"></lightning-icon>
+                                                                                </template>
+                                                                                <template if:true={currentInfo.isCross}>
+                                                                                    <lightning-icon icon-name="utility:clear" alternative-text={label.OBJECT_NOT_FOUND} variant="error"
+                                                                                    title={label.OBJECT_NOT_FOUND} size="small"></lightning-icon>
+                                                                                </template>
+                                                                                <template if:true={currentInfo.isWarning}>
+                                                                                    <lightning-icon icon-name="utility:warning" alternative-text={label.DUPLICATE_TEMPLATE_NAME} variant="warning"
+                                                                                    title={label.DUPLICATE_TEMPLATE_NAME} size="small"></lightning-icon>
+                                                                                </template>
+                                                                            </div>
+                                                                        </div>
+                                                                    </template>
+                                                                </lightning-accordion-section>
+                                                            </template>
+                                                        </lightning-accordion>
+                                                </div>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item size="12">
+                                                <lightning-record-edit-form object-api-name={objectAPIName}>
+                                                    <div class="slds-grid">
+                                                        <div class="slds-col slds-size_1-of-2 slds-p-around_x-small" style="z-index: 1;">
+                                                            <lightning-input-field
+                                                                data-id="sourceOrg"
+                                                                field-name={sourceOrgFieldAPIName}
+                                                                variant="label-stacked"
+                                                                value={sourceOrg}
+                                                                onchange={handleChangeSourceOrg}
+                                                                required
+                                                                disabled={validationInitiated}
+                                                            ></lightning-input-field>
+                                                        </div>
+                                                        <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                            <lightning-input-field
+                                                                data-id="active"
+                                                                field-name={activeFieldAPIName}
+                                                                variant="label-stacked"
+                                                                value={activateTemplate}
+                                                                onchange={handleActivation}
+                                                            ></lightning-input-field>
+                                                        </div>
+                                                    </div>
+                                                </lightning-record-edit-form>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                            </div>        
+                                    <div class="slds-border_top slds-p-top_small slds-clearfix">
+                                        <div class="slds-float_right">
+                                            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleCancel}></lightning-button>
+                                                <template lwc:if={displayValidation}>
+                                                    <lightning-button
+                                                    class="slds-m-horizontal_x-small"
+                                                    label={label.VALIDATE_TEMPLATES}
+                                                    title={label.VALIDATE_TEMPLATES}
+                                                    variant="brand"
+                                                    onclick={handleValidation}
+                                                    disabled={disableValidation}
+                                                    ></lightning-button>
+                                                </template>
+                                                <template lwc:elseif={displayImport}>
+                                                    <lightning-button
+                                                    class="slds-m-horizontal_x-small"
+                                                    label={label.IMPORT_TEMPLATE}
+                                                    title={label.IMPORT_TEMPLATE}
+                                                    variant="brand"
+                                                    onclick={handleImport}
+                                                    disabled={disableImport}
+                                                    ></lightning-button>
+                                                </template>
+                                        </div>
+                                        <div lwc:if={displayCounterBadge} class="slds-float_left slds-m-horizontal_x-small slds-m-top_xx-small">
+                                            <lightning-badge label={counterInfo} icon-name="utility:hourglass" class="pending-badge"></lightning-badge>
+                                        </div>
+                                    </div>
+                    </template>
+                    <template lwc:else>
+                        <div class="slds-border_top slds-p-top_small slds-m-top_small slds-clearfix">
+                            <div class="slds-float_right">
+                                <lightning-button class="slds-m-horizontal_x-small" label={label.CLOSE_AND_RETURN} title={label.CLOSE_AND_RETURN} variant="brand" onclick={handleCancel}></lightning-button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </div>
+
+</template>

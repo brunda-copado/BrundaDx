@@ -1,0 +1,5 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" size="large"> </lightning-spinner>
+
+    <lightning-datatable key-field="Id" columns={columns} data={data} hide-checkbox-column resize-column-disabled></lightning-datatable>
+</template>

@@ -1,0 +1,66 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text={label.LOADING} size="medium"> </lightning-spinner>
+
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-input
+                type="text"
+                name="commitMessage"
+                label={label.Commit_Message}
+                placeholder={label.TypeCommitMessage}
+                value={commitMessage}
+                onchange={handleInputChange}
+                required
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={reCreateFeatureBranchAvailable} size="12" padding="around-small">
+            <div class="input-wrapper">
+                <div class="slds-text-align_left label">
+                    {label.ReCreateFeatureBranch}
+                    <lightning-helptext content={label.ReCreateFeatureHelpText}></lightning-helptext>
+                </div>
+                <div class="slds-text-align_center">
+                    <lightning-input
+                        type="toggle"
+                        name="reCreate"
+                        message-toggle-active={label.Yes}
+                        message-toggle-inactive={label.No}
+                        value={reCreate}
+                        onchange={handleCheckBoxChange}
+                    >
+                    </lightning-input>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={editBaseBranchAvailable} size="12" padding="around-small">
+            <div class="input-wrapper">
+                <div class="slds-text-align_left label">{label.ChangeBaseBranch}</div>
+                <div class="slds-text-align_center">
+                    <lightning-input
+                        type="toggle"
+                        name="changeBaseBranch"
+                        message-toggle-active={label.Yes}
+                        message-toggle-inactive={label.No}
+                        value={changeBaseBranch}
+                        onchange={handleCheckBoxChange}
+                    >
+                    </lightning-input>
+                </div>
+                <template if:true={changeBaseBranch}>
+                    <div class="branch-input">
+                        <lightning-input
+                            type="text"
+                            name="baseBranch"
+                            label={label.SelectBaseBranch}
+                            placeholder={label.SearchBranches}
+                            value={baseBranch}
+                            onchange={handleInputChange}
+                            required
+                        ></lightning-input>
+                        <lightning-helptext class="select-branch-help-text" content={label.SelectBranchHelpText}></lightning-helptext>
+                    </div>
+                </template>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

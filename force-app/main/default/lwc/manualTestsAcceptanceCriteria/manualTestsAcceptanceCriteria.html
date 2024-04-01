@@ -1,0 +1,240 @@
+<template>
+    <div class="container">
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container" title={labels.ACCEPTANCE_CRITERIA_HEADER_TITLE}>
+                            <lightning-icon icon-name="standard:calibration"></lightning-icon>
+                            <span class="slds-assistive-text">{labels.ACCEPTANCE_CRITERIA_HEADER_TITLE}</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">{labels.ACCEPTANCE_CRITERIA_HEADER_TITLE}</h2>
+                    </div>
+                    <lightning-button
+                        if:false={editableMode}
+                        label={labels.EDIT}
+                        onclick={editMetrics}
+                        variant="neutral"
+                        class="slds-m-left_x-small slds-no-flex edit-button"
+                    ></lightning-button>
+                </header>
+            </div>
+
+            <lightning-spinner if:true={isLoading} alternative-text="Loading" variant="brand" size="large"> </lightning-spinner>
+
+            <template if:false={isLoading}>
+                <template if:false={editableMode}>
+                    <div class="slds-form read-only" role="list">
+                        <template for:each={metricList} for:item="item">
+                            <div class="slds-form__row" key={item.id}>
+                                <!-- Tester Scope -->
+                                <div class="slds-form__item tester-scope" role="listitem">
+                                    <div
+                                        class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent"
+                                    >
+                                        <span class="slds-form-element__label">{labels.TESTER_SCOPE}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static slds-truncate">{item.testerScope}</div>
+                                            <lightning-icon
+                                                icon-name="utility:edit"
+                                                size="xx-small"
+                                                class="edit-icon"
+                                                alternative-text={labels.EDIT}
+                                                title={labels.EDIT}
+                                                onclick={editMetrics}
+                                            ></lightning-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tester -->
+                                <div class="slds-form__item tester" role="listitem">
+                                    <div
+                                        class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent"
+                                    >
+                                        <span class="slds-form-element__label">{labels.TESTER}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static slds-truncate">{item.tester.title}</div>
+                                            <lightning-icon
+                                                icon-name="utility:edit"
+                                                size="xx-small"
+                                                class="edit-icon"
+                                                alternative-text={labels.EDIT}
+                                                title={labels.EDIT}
+                                                onclick={editMetrics}
+                                            ></lightning-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Type -->
+                                <div class="slds-form__item type" role="listitem">
+                                    <div
+                                        class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent"
+                                    >
+                                        <span class="slds-form-element__label">{labels.TYPE}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static slds-truncate">{item.type}</div>
+                                            <lightning-icon
+                                                icon-name="utility:edit"
+                                                size="xx-small"
+                                                class="edit-icon"
+                                                alternative-text={labels.EDIT}
+                                                title={labels.EDIT}
+                                                onclick={editMetrics}
+                                            ></lightning-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Minimum Testers -->
+                                <div class="slds-form__item minimum-testers" role="listitem">
+                                    <div
+                                        class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal slds-hint-parent"
+                                    >
+                                        <span class="slds-form-element__label">{labels.MINIMUM_TESTERS}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static slds-truncate">{item.minimumTesters}</div>
+                                            <lightning-icon
+                                                icon-name="utility:edit"
+                                                size="xx-small"
+                                                class="edit-icon"
+                                                alternative-text={labels.EDIT}
+                                                title={labels.EDIT}
+                                                onclick={editMetrics}
+                                            ></lightning-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template if:true={editableMode}>
+                    <lightning-layout class="acceptance-criteria">
+                        <lightning-layout-item size="12" padding="around-small">
+                            <ul class="list">
+                                <template for:each={metricList} for:item="item">
+                                    <li class="item" key={item.id}>
+                                        <!-- Tester Scope -->
+                                        <div class="slds-form-element tester-scope">
+                                            <lightning-combobox
+                                                label={labels.TESTER_SCOPE}
+                                                name="testerScope"
+                                                value={item.testerScope}
+                                                options={testerScopeOptions}
+                                                onchange={testerScopeFieldChangeHandler}
+                                                class="validValue"
+                                                data-metricid={item.id}
+                                                dropdown-alignment="auto"
+                                                required
+                                            >
+                                            </lightning-combobox>
+                                        </div>
+
+                                        <!-- Testers -->
+                                        <div class="slds-form-element tester">
+                                            <c-lookup
+                                                label={labels.TESTER}
+                                                onsearch={handleLookupSearch}
+                                                onselectionchange={testerFieldChangeHandler}
+                                                data-metricid={item.id}
+                                                scroll-after-n-items="5"
+                                                required
+                                            >
+                                            </c-lookup>
+                                        </div>
+
+                                        <!-- Type -->
+                                        <div class="slds-form-element type">
+                                            <lightning-combobox
+                                                name="type"
+                                                label={labels.TYPE}
+                                                value={item.type}
+                                                options={typeOptions}
+                                                data-metricid={item.id}
+                                                onchange={typeFieldChangeHandler}
+                                                class="validValue"
+                                                dropdown-alignment="auto"
+                                                required
+                                            ></lightning-combobox>
+                                        </div>
+
+                                        <!-- Minimum Testers -->
+                                        <div class="slds-form-element minimum-testers">
+                                            <template if:true={item.editableTesters}>
+                                                <lightning-input
+                                                    name="minimumTesters"
+                                                    label={labels.MINIMUM_TESTERS}
+                                                    value={item.minimumTesters}
+                                                    data-metricid={item.id}
+                                                    onchange={minimumTestersFieldChangeHandler}
+                                                    class="validValue"
+                                                    type="number"
+                                                ></lightning-input>
+                                            </template>
+                                            <template if:false={item.editableTesters}>
+                                                <lightning-input
+                                                    name="minimumTesters"
+                                                    label={labels.MINIMUM_TESTERS}
+                                                    value="1"
+                                                    data-metricid={item.id}
+                                                    onchange={minimumTestersFieldChangeHandler}
+                                                    class="validValue"
+                                                    type="number"
+                                                    disabled
+                                                ></lightning-input>
+                                            </template>
+                                        </div>
+
+                                        <!-- Delete Metric -->
+                                        <div class="slds-form-element delete">
+                                            <lightning-button-icon
+                                                if:true={editableMode}
+                                                icon-name="utility:delete"
+                                                class="slds-m-left_xx-small"
+                                                title={labels.DELETE}
+                                                name="deleteMetric"
+                                                data-metricid={item.id}
+                                                onclick={deleteMetric}
+                                            ></lightning-button-icon>
+                                        </div>
+                                    </li>
+                                </template>
+                            </ul>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+
+                <template if:true={isMetricListEmpty}>
+                    <lightning-card>
+                        <div class="slds-p-around_large">
+                            <c-copadocore-illustration name="misc:no_content" size="medium" message={labels.EMPTY_ACCEPTANCE_CRITERIA_TITLE}>
+                                <p slot="body">{labels.EMPTY_ACCEPTANCE_CRITERIA_BODY}</p>
+                            </c-copadocore-illustration>
+                        </div>
+                    </lightning-card>
+                </template>
+
+                <lightning-button
+                    if:true={editableMode}
+                    label={labels.ADD_ACCEPTANCE_CRITERIA_TESTERS}
+                    onclick={addMetric}
+                    variant="neutral"
+                    icon-name="utility:add"
+                    class="slds-m-left_x-small add-button"
+                ></lightning-button>
+            </template>
+        </article>
+    </div>
+
+    <template if:true={editableMode}>
+        <div class="slds-docked-form-footer">
+            <lightning-button label={labels.CANCEL} onclick={handleEditCancel} variant="neutral" class="slds-m-left_x-small"></lightning-button>
+            <lightning-button label={labels.SAVE} onclick={validateData} variant="brand" class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </template>
+</template>

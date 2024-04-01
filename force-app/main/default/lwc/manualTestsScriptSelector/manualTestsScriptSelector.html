@@ -1,0 +1,305 @@
+<template>
+    <template if:false={isModalOpen}>
+        <template if:false={isScriptListEmpty}>
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate slds-p-top_small">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container" title={labels.MANUAL_TESTS_SCRIPTS_TITLE}>
+                            <lightning-icon icon-name="standard:all"></lightning-icon>
+                            <span class="slds-assistive-text">{labels.MANUAL_TESTS_SCRIPTS_TITLE}</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">{labels.MANUAL_TESTS_SCRIPTS_TITLE}</h2>
+                    </div>
+                    <lightning-button
+                        if:false={isModalOpen}
+                        label={labels.EDIT}
+                        onclick={openModal}
+                        variant="neutral"
+                        class="slds-m-left_x-small slds-no-flex edit-button"
+                    ></lightning-button>
+                </header>
+            </div>
+            <div class="slds-form read-only" role="list">
+                <template for:each={testScriptsBackup} for:item="testScript">
+                    <lightning-card data-name="test-script-card" title={testScript.testTitle} key={testScript.testReference}>
+                        <div class="content slds-p-left_small slds-p-bottom_small">
+                            <div class="slds-form__row">
+                                <div class="slds-form__item scriptData" role="listitem">
+                                    <div
+                                        class="
+                                            slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                            slds-hint-parent
+                                        "
+                                    >
+                                        <span class="slds-form-element__label">{labels.TEST_REFERENCE}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static">
+                                                <lightning-formatted-url
+                                                    label={testScript.testReference}
+                                                    value={testScript.scriptRecordUrl}
+                                                ></lightning-formatted-url>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form__item scriptData" role="listitem">
+                                    <div
+                                        class="
+                                            slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                            slds-hint-parent
+                                        "
+                                    >
+                                        <span class="slds-form-element__label">{labels.TEST_TITLE}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static">
+                                                <lightning-formatted-rich-text value={testScript.testTitle}></lightning-formatted-rich-text>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-form__row">
+                                <div class="slds-form__item scriptData" role="listitem">
+                                    <div
+                                        class="
+                                            slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                            slds-hint-parent
+                                        "
+                                    >
+                                        <span class="slds-form-element__label">{labels.TEST_PREREQUISITES}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static">
+                                                <lightning-formatted-rich-text value={testScript.testPrerequisites}></lightning-formatted-rich-text>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form__item scriptData" role="listitem">
+                                    <div
+                                        class="
+                                            slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                            slds-hint-parent
+                                        "
+                                    >
+                                        <span class="slds-form-element__label">{labels.TEST_EXPECTED_RESULT}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static">
+                                                <lightning-formatted-rich-text value={testScript.testExpectedResult}></lightning-formatted-rich-text>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-form__row">
+                                <div class="slds-form__item scriptData" role="listitem">
+                                    <div
+                                        class="
+                                            slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                            slds-hint-parent
+                                        "
+                                    >
+                                        <span class="slds-form-element__label">{labels.TEST_SCRIPT_RISK}</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static">
+                                                <lightning-formatted-rich-text value={testScript.testRisk}></lightning-formatted-rich-text>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form__item scriptData" role="listitem"></div>
+                            </div>
+
+                            <h2 class="content slds-card__header-title slds-p-top_medium script-steps-title">{labels.STEPS}</h2>
+
+                            <lightning-formatted-rich-text
+                                if:false={testScript.steps.length}
+                                class="slds-align_absolute-center"
+                                value={labels.NO_STEPS_TO_DISPLAY}
+                            ></lightning-formatted-rich-text>
+
+                            <template for:each={testScript.steps} for:item="step">
+                                <div class="slds-form__row" key={step.stepReference}>
+                                    <div class="slds-form__item stepReference" role="listitem">
+                                        <div
+                                            class="
+                                                slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                                slds-hint-parent
+                                            "
+                                        >
+                                            <span class="slds-form-element__label">{labels.STEP_REFERENCE}</span>
+                                            <lightning-formatted-url label={step.stepReference} value={step.url}></lightning-formatted-url>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form__item action" role="listitem">
+                                        <div
+                                            class="
+                                                slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                                slds-hint-parent
+                                            "
+                                        >
+                                            <span class="slds-form-element__label">{labels.ACTION_DESCRIPTION}</span>
+                                            <lightning-formatted-rich-text value={step.action}></lightning-formatted-rich-text>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form__item expectedResult" role="listitem">
+                                        <div
+                                            class="
+                                                slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                                slds-hint-parent
+                                            "
+                                        >
+                                            <span class="slds-form-element__label">{labels.EXPECTED_RESULT}</span>
+                                            <lightning-formatted-rich-text value={step.expectedResult}></lightning-formatted-rich-text>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form__item guidanceNotes" role="listitem">
+                                        <div
+                                            class="
+                                                slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_horizontal
+                                                slds-hint-parent
+                                            "
+                                        >
+                                            <span class="slds-form-element__label">{labels.GUIDANCE_NOTES}</span>
+                                            <lightning-formatted-rich-text value={step.guidanceNotes}></lightning-formatted-rich-text>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-card>
+                </template>
+            </div>
+        </template>
+        <template if:true={isScriptListEmpty}>
+            <lightning-card>
+                <div class="slds-p-around_large">
+                    <c-copadocore-illustration name="custom:setup" size="medium" message="">
+                        <p slot="body">{labels.NOT_SELECTED_TEST_SCRIPTS}</p>
+                    </c-copadocore-illustration>
+
+                    <lightning-button
+                        class="slds-align_absolute-center"
+                        label={labels.SELECT_SCRIPTS}
+                        onclick={openModal}
+                        variant="brand"
+                    ></lightning-button>
+                </div>
+            </lightning-card>
+        </template>
+    </template>
+
+    <template if:true={modalOpen}>
+        <div class="modalsection-only scriptSelector" style="modalheight">
+            <section
+                role="dialog"
+                tabindex="-1"
+                aria-labelledby="modal-headmanuelTestsScriptSelectoring-01"
+                aria-modal="true"
+                aria-describedby="modal-content-id-1"
+                class="slds-modal slds-fade-in-open"
+            >
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" size="medium"> </lightning-icon>
+                            <span class="slds-assistive-text">{labels.CLOSE}</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{labels.TEST_SCRIPTS_SELECTION}</h2>
+                    </header>
+
+                    <div
+                        class="slds-p-around_small slds-wrap slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light"
+                        role="status"
+                    >
+                        <h3 id="modal-heading-02" class="slds-text-heading_medium">{labels.TEST_SCRIPTS_DETAILS}</h3>
+                    </div>
+
+                    <div class="slds-modal__content slds-p-around_medium slds-is-relative" id="modal-content-id-1">
+                        <lightning-spinner if:true={isLoading} size="medium" variant="brand"> </lightning-spinner>
+
+                        <div class="slds-scoped-notification slds-media slds-media_center" role="status">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <p>{labels.WARNING_ORDER}</p>
+                            </div>
+                        </div>
+
+                        <lightning-layout class="test-scripts-selection">
+                            <lightning-layout-item size="12" padding="around-small">
+                                <ul class="list">
+                                    <template for:each={testScripts} for:item="item">
+                                        <li class="item" key={item.id}>
+                                            <div class="slds-form-element script">
+                                                <c-lookup
+                                                    variant="label-stacked"
+                                                    label={labels.TEST_SCRIPT_HEADING}
+                                                    placeholder={labels.SELECT}
+                                                    data-scriptid={item.id}
+                                                    onsearch={handleLookupSearch}
+                                                    onselectionchange={handleChangeTestScript}
+                                                    scroll-after-n-items="5"
+                                                    required
+                                                >
+                                                </c-lookup>
+                                            </div>
+
+                                            <div class={item.cssClass}>
+                                                <span class="slds-form-element__label">{labels.TEST_TITLE}</span>
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-rich-text value={item.testTitle}></lightning-formatted-rich-text>
+                                                </div>
+                                            </div>
+
+                                            <div class={item.cssClass}>
+                                                <span class="slds-form-element__label">{labels.PROJECT}</span>
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-rich-text value={item.project}></lightning-formatted-rich-text>
+                                                </div>
+                                            </div>
+
+                                            <div class={item.cssClass}>
+                                                <span class="slds-form-element__label">{labels.STEPS}</span>
+                                                <lightning-formatted-rich-text value={item.steps.length}></lightning-formatted-rich-text>
+                                            </div>
+
+                                            <div class="deleteButton">
+                                                <lightning-button-icon
+                                                    icon-name="utility:delete"
+                                                    alternative-text={labels.DELETE}
+                                                    class="slds-m-left_xx-small"
+                                                    title="Delete test script"
+                                                    name="deleteTestScript"
+                                                    data-scriptid={item.id}
+                                                    onclick={deleteScript}
+                                                ></lightning-button-icon>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </lightning-layout-item>
+                        </lightning-layout>
+
+                        <lightning-button
+                            label={labels.ADD_TEST_SCRIPT}
+                            onclick={addScript}
+                            variant="neutral"
+                            icon-name="utility:add"
+                            class="slds-m-left_x-small add-button"
+                        ></lightning-button>
+                    </div>
+
+                    <footer class="slds-modal__footer">
+                        <lightning-button label={labels.CANCEL} variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <lightning-button variant="brand" type="submit" name={labels.SAVE} label={labels.SAVE} onclick={validateData}>
+                        </lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,36 @@
+<template>
+    <c-cds-modal size="x-small" onmodalclose={handleCancel}>
+        <span slot="title">{label.DELETE_CUSTOM_PERSONA}</span>
+        <div slot="modalContent" class="remove-modal-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item lwc:if={showError} size="12">
+                    <div class="slds-p-bottom_medium">
+                        <c-cds-alert message={errorMessage} variant="error"> </c-cds-alert>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <p>
+                        <lightning-formatted-rich-text value={label.DELETE_CUSTOM_PERSONA_CONFIRMATION}></lightning-formatted-rich-text>
+                    </p>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <span slot="footer">
+            <lightning-button
+                class="cds-button"
+                label={label.CANCEL}
+                title={label.CANCEL}
+                variant="neutral"
+                onclick={handleCancel}
+            ></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small cds-button"
+                label={label.DELETE}
+                title={label.DELETE}
+                variant="brand"
+                onclick={handleDeletePersona}
+            ></lightning-button>
+        </span>
+    </c-cds-modal>
+</template>

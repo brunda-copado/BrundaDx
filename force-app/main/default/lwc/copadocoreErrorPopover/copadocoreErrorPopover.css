@@ -1,0 +1,12 @@
+.slds-popover {
+    position: absolute;
+    display: none;
+}
+
+.slds-popover__body {
+    white-space: pre-wrap;
+}
+
+.slds-media__body {
+    flex: unset;
+}

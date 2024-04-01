@@ -1,0 +1,92 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={showSpinner}> </lightning-spinner>
+
+        <header if:false={isNotActionButton} class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">{label.Update_Manual_Task}</h2>
+            </div>
+        </header>
+
+        <div class={containerClass}>
+            <c-copado-alert-place-holder if:false={jobStepHasResult} communication-id={modalCommunicationId}></c-copado-alert-place-holder>
+
+            <template if:true={jobStepHasResult}>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item class="slds-var-p-bottom_medium" size="12">
+                        <c-copado-alert message={label.Complete_Manual_Task_Info} variant="info"></c-copado-alert>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                        <div class="slds-form-element">
+                            <span class="slds-form-element__label">{label.Task_Current_Status}</span>
+                            <div class="slds-form-element__control slds-grow">{currentStatus}</div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <lightning-combobox
+                                    name="status"
+                                    label={label.Task_New_Status}
+                                    value={statusValue}
+                                    variant="label-stacked"
+                                    dropdown-alignment="auto"
+                                    required
+                                    options={statusOptions}
+                                    onchange={handleStatusChange}
+                                >
+                                </lightning-combobox>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <c-expandable-section id="manualTaskDetails" label={label.Manual_Task_Details}>
+                    <lightning-layout multiple-rows slot="body">
+                        <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                            <div class="slds-form-element">
+                                <span class="slds-form-element__label">{label.Complete_In_Source_Environment}</span>
+                                <div class="slds-form-element__control slds-grow">{completeInSourceEnvironment}</div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="6">
+                            <div class="slds-form-element">
+                                <span class="slds-form-element__label">{label.Complete_In_Destination_Environment}</span>
+                                <div class="slds-form-element__control slds-grow">{completeInDestinationEnvironment}</div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-var-p-top_medium" size="12">
+                            <div class="slds-form-element">
+                                <span class="slds-form-element__label">{label.Task_Description}</span>
+                                <div class="slds-form-element__control slds-grow">{taskDescription}</div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-var-p-top_medium" size="12">
+                            <lightning-textarea
+                                name="commentsInput"
+                                label={label.Comment}
+                                value={commentsValue}
+                                placeholder={label.Manual_Task_Comments}
+                                onchange={handleTextChange}
+                            >
+                            </lightning-textarea>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+            </template>
+        </div>
+
+        <footer if:false={isNotActionButton} class="slds-modal__footer">
+            <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={hideModal}></lightning-button>
+            <lightning-button
+                if:true={jobStepHasResult}
+                class="slds-var-m-left_x-small"
+                label={label.UPDATE_BUTTON}
+                title={label.UPDATE_BUTTON}
+                variant="brand"
+                onclick={updateManualTaskStatusFromActionScreen}
+            >
+            </lightning-button>
+        </footer>
+    </div>
+</template>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EndDate_Should_be_Greater_than_StartDate</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( AND(OR(ISCHANGED(End_Date__c),ISCHANGED(Start_Date__c)), End_Date__c &lt;= Start_Date__c), true, false)</errorConditionFormula>
+    <errorMessage>You must introduce an End Date greater than the Start Date.</errorMessage>
+</ValidationRule>

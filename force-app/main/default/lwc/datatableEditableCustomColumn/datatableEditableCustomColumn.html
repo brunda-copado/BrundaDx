@@ -1,0 +1,54 @@
+<template>
+    <lightning-layout
+        horizontal-align="spread"
+        class="editable-column slds-var-p-vertical_xx-small slds-var-p-horizontal_x-small slds-var-m-around_xxx-small"
+        style={cellStyle}
+    >
+        <lightning-layout-item size="12">
+            <template if:true={readOnlyMode}>
+                <div class="slds-grid slds-grid_align-spread">
+                    <lightning-formatted-text class="slds-truncate" value={value}></lightning-formatted-text>
+                    <lightning-icon
+                        class="edit-button slds-button slds-button_icon slds-cell-edit__button slds-var-m-left_x-small"
+                        icon-name="utility:edit"
+                        size="xx-small"
+                        onclick={handleClickEdit}
+                    ></lightning-icon>
+                </div>
+            </template>
+            <template if:false={readOnlyMode}>
+                <template if:true={multiEdit}>
+                    <div class="slds-popover slds-popover_edit">
+                        <div class="inline-edit-form-start"></div>
+                        <div class="slds-popover__body">
+                            <div class="slds-var-p-left_xx-small">
+                                <slot name="body"></slot>
+                            </div>
+                            <div>
+                                <lightning-input
+                                    type="checkbox"
+                                    label={updateSelectedItemsLabel}
+                                    data-element="update-selected-checkbox"
+                                ></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-popover__footer">
+                            <div class="slds-grid slds-grid_align-end">
+                                <lightning-button label={label.CANCEL} onclick={handleClickCancel}></lightning-button>
+                                <lightning-button
+                                    variant="brand"
+                                    label={label.APPLY}
+                                    onclick={handleClickApply}
+                                    class="slds-var-m-left_x-small"
+                                ></lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template if:false={multiEdit}>
+                    <slot name="body"></slot>
+                </template>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

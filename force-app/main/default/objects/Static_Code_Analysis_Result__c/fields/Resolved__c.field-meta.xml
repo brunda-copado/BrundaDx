@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Resolved__c</fullName>
+    <externalId>false</externalId>
+    <label>Resolved</label>
+    <summaryFilterItems>
+        <field>Static_Code_Analysis_Violation__c.Status__c</field>
+        <operation>equals</operation>
+        <value>Resolved</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Static_Code_Analysis_Violation__c.Static_Code_Analysis_Result__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

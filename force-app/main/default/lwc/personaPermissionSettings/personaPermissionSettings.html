@@ -1,0 +1,143 @@
+<template>
+    <div class="persona-card">
+        <div class="permission-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <template lwc:if={isEmpty}>
+                <div class="empty-state-wrapper">
+                    <c-cds-empty-state icon-name="utility:info_alt" message={label.No_Permissions_Assigned} has-body has-action>
+                        <p slot="body">{label.Start_Adding_Permissions}</p>
+                        <div slot="action">
+                            <lightning-button
+                                label={label.Add_Permission_Set_Group}
+                                title={label.Add_Permission_Set_Group}
+                                variant="brand"
+                                icon-name="utility:new"
+                                class="cds-button"
+                                onclick={handleAddNewPermission}></lightning-button>
+                        </div>
+                    </c-cds-empty-state>
+                </div>
+            </template>
+            <template lwc:else>
+                <c-cds-datatable-container
+                    icon-name="utility:shield"
+                    rows={personaPermissions}
+                    columns={personaPermissionColumns}
+                    has-body
+                    enable-default-search
+                    onsearch={handleSearchPersonaPermissions}
+                    onclearsearch={handleClearSearchPersonaPermissions}>
+                    <span slot="title">{permissionsTitle}</span>
+                    <span slot="subtitle">{label.Persona_Permissions_Subtitle}</span>
+                    <span slot="actions">
+                        <lightning-button
+                            label={label.Add_Permission_Set_Group}
+                            title={label.Add_Permission_Set_Group}
+                            variant="brand"
+                            icon-name="utility:new"
+                            class="cds-button"
+                            onclick={handleAddNewPermission}></lightning-button>
+                    </span>
+                    <div slot="datatable" style="height: 550px">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={availablePersonaPermissions}
+                            columns={personaPermissionColumns}
+                            default-sort-direction={defaultSortDirectionPersonaPermissions}
+                            onsort={handleSortPersonaPermissions}
+                            sorted-direction={sortDirectionPersonaPermissions}
+                            sorted-by={sortedByPersonaPermissions}
+                            hide-checkbox-column
+                            onrowaction={handleRowAction}>
+                        </lightning-datatable>
+                    </div>
+                </c-cds-datatable-container>
+            </template>
+        </div>
+    </div>
+    <c-cds-modal icon-name="utility:shield" size="medium" onmodalclose={handleCancelModal}>
+        <span slot="title">{label.Add_Permission_Set_Group}</span>
+        <span slot="tagline">{label.Add_Permission_Tagline}</span>
+        <div slot="modalContent" class="add-permission-modal-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <template lwc:if={availableAllPermissions}>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item lwc:if={showError} size="12">
+                        <div class="slds-p-bottom_medium">
+                            <c-cds-alert message={errorMessage} variant="error"> </c-cds-alert>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <div class="slds-p-bottom_medium">
+                            <c-cds-alert message={label.Add_Permission_Info_Message} variant="info" hasdetail>
+                                <div slot="details">
+                                    <a href="/lightning/setup/PermSetGroups/home" target="_blank" class="cds-link">{label.Setup}</a>
+                                </div>
+                            </c-cds-alert>
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item>
+                        <c-cds-datatable-container
+                            data-id="allPermissionsTableContainer"
+                            rows={allPermissions}
+                            columns={allPermissionColumns}
+                            has-body
+                            enable-default-search
+                            onsearch={handleSearchAllPermissions}
+                            onclearsearch={handleClearSearchAllPermissions}>
+                            <span slot="actions">
+                                <lightning-button-icon
+                                    icon-name="utility:refresh"
+                                    size="medium"
+                                    alternative-text={label.Refresh}
+                                    class="cds-button-icon"
+                                    onclick={handleRefreshAllPermissionsTable}></lightning-button-icon>
+                            </span>
+                            <div slot="datatable" style="height: 400px">
+                                <lightning-datatable
+                                    data-id="allPermissionsTable"
+                                    key-field="Id"
+                                    data={availableAllPermissions}
+                                    columns={allPermissionColumns}
+                                    default-sort-direction={defaultSortDirectionAllPermissions}
+                                    onsort={handleSortAllPermissions}
+                                    sorted-direction={sortDirectionAllPermissions}
+                                    sorted-by={sortedByAllPermissions}>
+                                </lightning-datatable>
+                            </div>
+                        </c-cds-datatable-container>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+            <template lwc:else>
+                <div class="empty-state-wrapper">
+                    <c-cds-empty-state icon-name="utility:info_alt" message={label.No_Permission_Set_Groups_Title} has-body has-action>
+                        <p slot="body">
+                            <lightning-formatted-rich-text value={label.No_Permission_Set_Groups_Subtitle}></lightning-formatted-rich-text>
+                        </p>
+                        <div slot="action">
+                            <a href="/lightning/setup/PermSetGroups/home" target="_blank" class="cds-link">{label.Setup}</a>
+                        </div>
+                    </c-cds-empty-state>
+                </div>
+            </template>
+        </div>
+        <span slot="footer">
+            <lightning-button
+                label={label.Cancel}
+                title={label.Cancel}
+                variant="neutral"
+                onclick={handleCancelModal}
+                class="cds-button"></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small cds-button"
+                label={label.Save}
+                title={label.Save}
+                variant="brand"
+                onclick={handleSaveAddPermissions}
+                disabled={saveDisabled}></lightning-button>
+        </span>
+    </c-cds-modal>
+    <c-remove-permission-confirmation-modal onremovedpermission={refreshPersonaPermissionRows}></c-remove-permission-confirmation-modal>
+</template>

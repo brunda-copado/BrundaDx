@@ -1,0 +1,68 @@
+<template>
+  <div class="slds-is-relative">
+    <lightning-spinner
+      if:true={showSpinner}
+      variant="brand"
+      alternative-text="Loading"
+      size="large"
+    >
+    </lightning-spinner>
+
+    <c-manage-environment-variable-popup onsavelicenses={handleSave}>
+    </c-manage-environment-variable-popup>
+
+    <c-copadocore-modal>
+      <span slot="title">{title}</span>
+      <slot class="slds-align_absolute-center"> {body} </slot>
+      <span slot="footer">
+        <lightning-button
+          label={label.Cancel}
+          title={label.Cancel}
+          variant="neutral"
+          onclick={handleCancel}
+        >
+        </lightning-button>
+        <lightning-button
+          class="slds-m-left_x-small"
+          label={label.DELETE}
+          title={label.DELETE}
+          variant="brand"
+          onclick={handleDelete}
+        ></lightning-button>
+      </span>
+    </c-copadocore-modal>
+
+    <c-datatable-container
+      icon-name="standard:calibration"
+      has-body="true"
+      rows={allRows}
+      columns={columns}
+    >
+      <span slot="title">{labelPlural}</span>
+
+      <template if:true={isPipeline}>
+        <span slot="actions">
+          <lightning-button
+            label={label.NEW}
+            title={label.NEW}
+            class="slds-var-m-right_xx-small"
+            onclick={handleNew}
+          ></lightning-button>
+        </span>
+      </template>
+
+      <span slot="datatable">
+        <lightning-datatable
+          key-field="id"
+          data={allRows}
+          columns={columns}
+          show-row-number-column
+          hide-checkbox-column
+          sorted-direction="asc"
+          sorted-by="LastModifiedDate"
+          onrowaction={handleRowAction}
+        ></lightning-datatable>
+      </span>
+    </c-datatable-container>
+  </div>
+</template>

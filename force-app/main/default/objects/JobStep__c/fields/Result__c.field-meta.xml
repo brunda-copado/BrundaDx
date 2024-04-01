@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Result__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The latest result associated with the job step.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The latest result associated with the job step.</inlineHelpText>
+    <label>Last Result</label>
+    <referenceTo>Result__c</referenceTo>
+    <relationshipLabel>Job Steps</relationshipLabel>
+    <relationshipName>JobSteps</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

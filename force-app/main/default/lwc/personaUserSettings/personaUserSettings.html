@@ -1,0 +1,133 @@
+<template>
+    <div class="persona-card">
+        <div class="users-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <template lwc:if={isEmpty}>
+                <div class="empty-state-wrapper">
+                    <c-cds-empty-state icon-name="utility:info_alt" message={label.No_Users_for_Persona} has-body has-action>
+                        <p slot="body">{label.Start_Adding_Users_Now}</p>
+                        <div slot="action">
+                            <lightning-button
+                                class="cds-button"
+                                label={label.Add_User}
+                                title={label.Add_User}
+                                icon-name="utility:new"
+                                variant="brand"
+                                onclick={handleClickAddUsers}></lightning-button>
+                        </div>
+                    </c-cds-empty-state>
+                </div>
+            </template>
+            <template lwc:else>
+                <c-cds-datatable-container
+                    rows={personaUsers}
+                    columns={personaUserColumns}
+                    icon-name="utility:groups"
+                    has-body
+                    heading-tooltip
+                    enable-default-search
+                    onsearch={handleSearchPersonaUsers}
+                    onclearsearch={handleClearSearchPersonaUsers}>
+                    <span slot="title">{usersAssignedLabel}</span>
+                    <span slot="titleTooltip">
+                        <lightning-helptext class="cds-tooltip" content={personaDescription}></lightning-helptext>
+                    </span>
+                    <span slot="subtitle">{label.User_Settings_Subtitle}</span>
+                    <span slot="actions">
+                        <lightning-button-group>
+                            <lightning-button
+                                label={label.Add_User}
+                                title={label.Add_User}
+                                variant="brand"
+                                icon-name="utility:new"
+                                class="cds-button"
+                                onclick={handleClickAddUsers}></lightning-button>
+                            <lightning-button-menu menu-alignment="right" variant="border-inverse" class="cds-button-menu">
+                                <lightning-menu-item
+                                    value="create_new_user"
+                                    prefix-icon-name="utility:adduser"
+                                    icon-name="utility:high_velocity_sales"
+                                    label={label.Create_New_User_in_this_Org}
+                                    onclick={handleClickCreateUser}></lightning-menu-item>
+                            </lightning-button-menu>
+                        </lightning-button-group>
+                    </span>
+                    <div slot="datatable" style="height: 550px">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={availablePersonaUsers}
+                            columns={personaUserColumns}
+                            default-sort-direction={defaultSortDirectionPersonaUsers}
+                            onsort={handleSortPersonaUsers}
+                            sorted-direction={sortDirectionPersonaUsers}
+                            sorted-by={sortedByPersonaUsers}
+                            hide-checkbox-column
+                            onrowaction={handleRowAction}>
+                        </lightning-datatable>
+                    </div>
+                </c-cds-datatable-container>
+            </template>
+        </div>
+    </div>
+    <c-cds-modal icon-name="utility:groups" size="medium" onmodalclose={handleCancelModal}>
+        <span slot="title">{addUsersToPersonaTitle}</span>
+        <span slot="tagline">{label.Add_Users_to_Persona_Subtitle}</span>
+        <div slot="modalContent" class="add-user-modal-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item lwc:if={showError} size="12">
+                    <div class="slds-p-bottom_medium">
+                        <c-cds-alert message={errorMessage} variant="error"> </c-cds-alert>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <c-cds-datatable-container
+                        data-id="allUsersTableContainer"
+                        rows={allUsers}
+                        columns={allUserColumns}
+                        has-body
+                        enable-default-search
+                        onsearch={handleSearchAllUsers}
+                        onclearsearch={handleClearSearchAllUsers}>
+                        <span slot="actions">
+                            <lightning-button-icon
+                                icon-name="utility:refresh"
+                                size="medium"
+                                alternative-text={label.Refresh}
+                                class="cds-button-icon"
+                                onclick={handleRefreshAllUsersTable}></lightning-button-icon>
+                        </span>
+                        <div slot="datatable" style="height: 400px">
+                            <lightning-datatable
+                                data-id="allUsersTable"
+                                key-field="Id"
+                                data={availableAllUsers}
+                                columns={allUserColumns}
+                                default-sort-direction={defaultSortDirectionAllUsers}
+                                onsort={handleSortAllUsers}
+                                sorted-direction={sortDirectionAllUsers}
+                                sorted-by={sortedByAllUsers}>
+                            </lightning-datatable>
+                        </div>
+                    </c-cds-datatable-container>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <span slot="footer">
+            <lightning-button
+                label={label.Cancel}
+                title={label.Cancel}
+                variant="neutral"
+                onclick={handleCancelModal}
+                class="cds-button"></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small cds-button"
+                label={addUserLabel}
+                title={addUserLabel}
+                variant="brand"
+                onclick={handleSaveAddUsers}
+                disabled={saveDisabled}></lightning-button>
+        </span>
+    </c-cds-modal>
+    <c-remove-user-confirmation-modal onremoveduser={refreshPersonaUserRows}> </c-remove-user-confirmation-modal>
+</template>

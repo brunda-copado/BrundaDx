@@ -1,0 +1,264 @@
+.queryBuilder-selected{ background:grey; }
+
+			.fixedMsg{
+				position: fixed; 
+				top: 10px;
+				left:40%;
+				z-index:10000;
+			}
+			
+			ul.breadcrumbs { display: block; text-align:center; }
+			ul.breadcrumbs li { display: inline-block; 
+				margin: 3px;
+				list-style-type: none;
+			}
+			.step{
+				padding: 10px 33px 10px 10px;
+				border-radius: 0px 21px 21px 0px;
+			}
+			.step-pending{
+				background: #ccc;
+			}
+			.step-done{
+				background: #F4F7BA;
+			}
+			.step-current{
+				background: #CDF7BA;
+			}
+
+			.row{
+				clear: both;
+				width: 100%;
+				margin-top:10px;
+			}
+			.co-info-panel{
+				width: 50% !important;
+			}
+			.action{
+				text-align: center;
+				margin-bottom: 15px;
+			}
+			.action input{
+				margin-right: 10px; 
+
+			}
+			.name{
+				font-weight: bold;
+				font-size: 2em;
+			}
+			.orgIcon{
+				width: 20px;
+				height: 20px;
+				margin-right: 10px;
+			}
+			.orgIconBox{
+				/*float: left;*/
+				margin-left: 170px;
+				margin-top: -20px;
+			}
+			.orgIconAction{
+				float: right;
+				margin-top: 0;
+				margin-left: 30px;
+			}
+
+			.js-row, .iconAction{
+				cursor: pointer;
+			}
+			.iconDrag{
+				cursor: move;
+			}
+
+			#screenLocker{
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    height: 100%;
+			    width: 100%;
+			    z-index: 1000;
+			    background-color:rgba(33,33,33,0.2);
+
+			  }
+			 #screenLocker p{
+			 	position: absolute;
+		        top: 50%;
+		        left: 50%;
+		        margin-right: -50%;
+		        transform: translate(-50%, -50%);
+		        padding-top: 15px;
+
+				border: 1px solid grey;
+				padding: 30px;
+				border-radius: 10px;
+				background-color: #fff;
+			 } 
+			 .lock{
+			 	z-index: 100;
+			    background-color:rgba(33,33,33,0.2);
+			 }
+
+			 .co-lockerBlock{
+			 	position:absolute;
+			 	top: 0;
+			 	left: 0;
+			 	width: 100%;
+			 	height: 100%;
+			 	display:none;
+			 }
+
+			 /* job block*/
+			 .jobIcon{
+			 	display: block;
+			 	width: 20px;
+			 	height: 20px;
+			 	cursor: pointer;
+			 }
+			 .jobIconText{
+			 	padding-left:22px;
+			 	display: none;
+			 	text-decoration: underline;
+			 }
+			 .jobIcon:hover .jobIconText{
+			 	display: block;	
+			 }
+
+			 .job-in-progress{
+			 	background: url(/img/loading.gif) center center no-repeat;
+			 }
+			 .job-success{
+			 	background: url(/img/samples/flag_green.gif) center center no-repeat;
+			 }
+			 .job-partial{
+			 	background: url(/img/samples/flag_yellow.gif) center center no-repeat;
+			 }
+			 .job-failed{
+			 	background: url(/img/samples/flag_red.gif) center center no-repeat;
+			 }
+			 .job-cancelled{
+			 	background: url(/img/func_icons/remove12.gif) center center no-repeat;
+			 }
+
+			 .js-col-name{
+			 	min-width: 200px;
+			 }
+
+			 .co-ico-saveStep{
+			 	/*background: url(}) center center no-repeat;*/
+			 	border: 1px solid red;
+			 	background: pink;
+			 	border-radius: 2px;
+
+			 }
+			 .co-ico-viewStep{
+			 	/*background: url({!URLFOR($Resource.Statics,'img/icons/view.png')}) center center no-repeat;*/
+			 }	
+
+			 
+
+			 .empty-msg{
+			 	border: #f90 1px solid;
+				border-radius: 5px;
+				background: #ffc;
+				text-align: center;
+				padding: 5px;
+				margin:10px;
+				display: inline-block;
+			 }
+			 .co-preCell{
+			 	/*overflow:auto; */
+			 	word-wrap:break-word;
+			 	padding: 5px;
+			 }
+			 .co-stepResultTitle{
+				padding: 20px;
+				text-align: center;
+				width: 100%;
+			 }
+			 .co-SelectedStep{
+			 	background: #ffc;
+			 }
+
+
+			/* tabs block */
+
+			.etabs { margin: 0; padding: 0; 
+				font-family: Arial, Helvetica, sans-serif;
+    		}
+			.tab { width:48%;display: inline-block; zoom:1; *display:inline; background: #eee; border: solid 1px #999; border-bottom: none; -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; }
+			.tab a { font-size: 13px; line-height: 2em; display: block; padding: 0 10px; outline: none; }
+			.tab a:hover { text-decoration: underline; }
+			.tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #666; }
+			.tab a.active { font-weight: bold; }
+			.tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }
+
+			/* end tabs block*/
+
+			/* tunning grid */
+
+			  .jqx-widget{
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			  }
+			  .jqx-grid-column-header{
+			  	 font-weight: bold;
+			  	 font-family: Arial, Helvetica, sans-serif;
+			     font-size: 11px;
+			     background: rgb(242, 243, 243);
+			  }
+			  .jqx-widget-header{
+			  	 font-family: Arial, Helvetica, sans-serif;
+			     font-size: 11px;
+			     background: rgb(242, 243, 243);
+			  }
+			  .jqx-grid-cell{
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			  } 
+
+			/* end tunning grid */
+
+			/* sortable */
+			body.dragging, body.dragging * {
+			  cursor: move !important;
+			}
+			.dragged {
+			  position: absolute;
+			  opacity: 0.5;
+			  z-index: 2000;
+			}
+
+			#tSteps tr.placeholder {
+			  position: relative;
+			  /** More li styles **/
+			}
+			#tSteps tr.placeholder:before {
+			  position: absolute;
+			  /** Define arrowhead **/
+			}
+
+			/* fix ugly sf behaivor*/
+			tr.dataRow:hover td {background:#e3f3ff}
+
+
+			.jobDiv:hover .jobIconText{
+			 	display: block;	
+			 }
+		 /*.jobDiv .jobIconText{
+		 	display: block;	
+		 }*/
+
+		 .co-lockerBlock{
+		 	position:absolute;
+		 	top: 0;
+		 	left: 0;
+		 	width: 100%;
+		 	height: 100%;
+		 	display:none;
+		 	z-index: 100;
+		    background-color:rgba(33,33,33,0.2);
+		 }
+
+		 #removeCache{
+		 	text-decoration: underline;
+		 	cursor: pointer
+		 }

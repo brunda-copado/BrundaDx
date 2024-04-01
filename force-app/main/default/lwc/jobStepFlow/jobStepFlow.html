@@ -1,0 +1,55 @@
+<template>
+    <div class="slds-page-header slds-text-heading_small slds-var-m-bottom_small slds-var-p-around_x-small">
+        {label.Flow_Configuration}
+    </div>
+    <lightning-layout>
+        <lightning-layout-item class="slds-var-p-right_medium" size="6">
+            <lightning-combobox
+                if:false={isReadOnly}
+                class="validValue"
+                name="selectedFlow"
+                label={label.SALESFORCE_FLOW}
+                value={selectedFlow}
+                placeholder={label.Salesforce_Flow_Placeholder}
+                options={flowOptions}
+                onchange={handleFlowChange}
+                required={fullEditMode}
+            ></lightning-combobox>
+            <div if:true={isReadOnly} class="slds-form-element slds-form-element_readonly">
+                <span class="slds-form-element__label">{label.SALESFORCE_FLOW}</span>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{selectedFlow}</div>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-var-p-left_small" size="6">
+            <lightning-input if:false={isReadOnly} type="text" label={label.Result_Viewer_Component} value={selectedViewerComponent} field-level-help={label.ResultViewerCmpHelpText} onchange={handleViewerComponentChange}></lightning-input>
+            <div if:true={isReadOnly} class="slds-form-element slds-form-element_readonly">
+                <span class="slds-form-element__label">{label.Result_Viewer_Component}</span>
+                <lightning-helptext content={label.ResultViewerCmpHelpText}></lightning-helptext>
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__static">{selectedViewerComponent}</div>
+                </div>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+    <div class="slds-page-header slds-text-heading_small slds-var-m-top_medium slds-var-p-around_x-small">
+        {label.Flow_Variables} ({parameterCount})
+    </div>
+    <lightning-layout class="slds-var-m-top_small" pull-to-boundary="large">
+        <lightning-layout-item size="6" padding="horizontal-large">
+            <c-parameter-editor
+                parameters={parameters}
+                read-only={isReadOnly}
+                edit-values-only={editParameterValuesOnly}
+                can-add-parameters={canAddParameters}
+                onaddparameter={handleAddParameter}
+                ondeleteparameter={handleDeleteParameter}
+                onupdateparameter={handleUpdateParameter}
+            ></c-parameter-editor>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={hasParameters} size="6" padding="horizontal-large">
+            <c-dynamic-expression-helper if:false={isReadOnly}></c-dynamic-expression-helper>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

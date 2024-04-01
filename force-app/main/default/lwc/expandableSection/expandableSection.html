@@ -1,0 +1,23 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class={statusClass} data-id={id}>
+        <h3 class={collapsibleClass}>
+            <template lwc:if={collapsible}>
+                <button type="button" class="slds-button slds-section__title-action" onclick={toggleSection}>
+                    <lightning-icon
+                        icon-name="utility:switch"
+                        size="x-small"
+                        class="slds-section__title-action-icon slds-button__icon_left"
+                    ></lightning-icon>
+                    <span class="slds-truncate slds-p-around_xx-small" title={label}>{label}</span>
+                </button>
+            </template>
+            <template lwc:else>
+                <span class="slds-truncate slds-p-around_xx-small" title={label}>{label}</span>
+            </template>
+        </h3>
+        <div class="slds-section__content">
+            <slot name="body"></slot>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,48 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:availableForFlowScreens" access="global">
+    <aura:attribute name="fieldApiName" type="String" access="global" />
+    <aura:attribute name="noJobTitle" type="String" access="global" />
+    <aura:attribute name="noJobMessage" type="String" access="global" />
+
+    <aura:attribute name="modalTitle" type="String" access="private" />
+    <aura:attribute name="isVisible" type="Boolean" default="false" access="private" />
+
+    <c:resultMonitor
+        recordId="{!v.recordId}"
+        fieldApiName="{!v.fieldApiName}"
+        noJobTitle="{!v.noJobTitle}"
+        noJobMessage="{!v.noJobMessage}"
+        onviewdetail="{!c.showDetail}"
+    >
+    </c:resultMonitor>
+
+    <aura:if isTrue="{!v.isVisible}">
+        <div class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon
+                        class="slds-modal__close"
+                        iconName="utility:close"
+                        alternativeText="{!$Label.c.CLOSE}"
+                        variant="bare-inverse"
+                        onclick="{!c.handleClose}"
+                        size="large"
+                    >
+                    </lightning:buttonIcon>
+                    <div data-id="titleContainer">
+                        <h2 class="slds-text-heading_medium slds-hyphenate" data-id="title">{!v.modalTitle}</h2>
+                    </div>
+                </header>
+
+                <div class="slds-modal__content slds-is-relative slds-var-p-around_small min-height-50-vh">
+                    <c:enhancedResultDetail aura:id="enhancedResultDetail"></c:enhancedResultDetail>
+                </div>
+
+                <footer class="slds-modal__footer" data-id="footer">
+                    <lightning:button variant="neutral" label="{!$Label.c.CLOSE}" title="{!$Label.c.CLOSE}" onclick="{!c.handleClose}">
+                    </lightning:button>
+                </footer>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open" id="backdrop"></div>
+    </aura:if>
+</aura:component>

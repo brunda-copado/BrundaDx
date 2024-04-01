@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Metadata_Group__c</fullName>
+    <description>The parent metadata group this item belongs to</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The parent metadata group this item belongs to</inlineHelpText>
+    <label>Parent Group</label>
+    <referenceTo>Metadata_Group__c</referenceTo>
+    <relationshipLabel>Metadata Items</relationshipLabel>
+    <relationshipName>Metadata_Group_Items</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

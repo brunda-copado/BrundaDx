@@ -1,0 +1,39 @@
+<template>
+    <lightning-layout multiple-rows >
+        <lightning-layout-item size="12" padding="horizontal-medium" >
+            <div class="slds-float_right">
+                <lightning-button label={labels.EDIT} name={labels.EDIT} disabled={disableEdit} onclick={handleEditClick}></lightning-button>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <c-record-matching-formula-field label={labels.OBJECT_LABEL} help-text={objectHelpText} value={objectValue}></c-record-matching-formula-field>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <div class="slds-border_bottom">
+            <lightning-record-view-form
+                record-id={recordId}
+                object-api-name={schema.RECORD_MATCHING_FORMULA.objectApiName}>
+                <lightning-output-field field-name= {schema.HASH_FORMULA.fieldApiName} ></lightning-output-field>
+            </lightning-record-view-form>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <c-record-matching-formula-field label={labels.FIELD_1} value={field1Value}></c-record-matching-formula-field>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <c-record-matching-formula-field if:true={parentField1} label={labels.RELATED_FIELD} value={parentField1}></c-record-matching-formula-field>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <c-record-matching-formula-field label={labels.FIELD_2} value={field2Value}></c-record-matching-formula-field>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+           <c-record-matching-formula-field if:true={parentField2} label={labels.RELATED_FIELD} value={parentField2}></c-record-matching-formula-field>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <c-record-matching-formula-field label={labels.FIELD_3} value={field3Value}></c-record-matching-formula-field>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <c-record-matching-formula-field if:true={parentField3} label={labels.RELATED_FIELD} value={parentField3}></c-record-matching-formula-field>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

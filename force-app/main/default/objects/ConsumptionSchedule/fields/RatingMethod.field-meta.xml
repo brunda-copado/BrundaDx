@@ -2,5 +2,6 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>RatingMethod</fullName>
     <inlineHelpText>Choose a specific use case to rate usage against this schedule. This is a controlling picklist for the Type field.</inlineHelpText>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
 </CustomField>

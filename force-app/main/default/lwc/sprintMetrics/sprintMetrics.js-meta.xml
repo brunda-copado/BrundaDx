@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Sprint Metrics</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property
+                name="title"
+                label="Title"
+                description="Define the chart title"
+                required="false"
+                default="Sprint Metrics"
+                placeholder="Chart title"
+                type="String"
+            />
+            <property
+                name="legendPosition"
+                label="Legend Position"
+                description="Define where the legend will be displayed"
+                required="false"
+                default="top"
+                placeholder="top"
+                type="String"
+                datasource="top,bottom,right,left"
+            />
+        
+            <property
+                name="actualVelocityField"
+                label="Actual velocity"
+                description="Field that contains the Story points spend so far"
+                required="true"
+                default=""
+                type="String"
+                datasource="apex://SprintChartNumberFieldsPicklist"
+            />
+
+            <property
+                name="plannedVelocityField"
+                label="Planned velocity"
+                description="Field that contains the Story points planned in this Sprint"
+                required="true"
+                default=""
+                type="String"
+                datasource="apex://SprintChartNumberFieldsPicklist"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

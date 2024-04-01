@@ -1,0 +1,147 @@
+<template>
+    <lightning-spinner if:true={isLoading} size="medium"></lightning-spinner>
+
+    <lightning-card if:false={isAccessible}>
+        <c-copadocore-illustration name="error:no_access" size="small" message="">
+            <p slot="body">{label.INSUFFICIENT_PERMISSION}</p>
+        </c-copadocore-illustration>
+    </lightning-card>
+
+    <div if:true={isAccessible} class="slds-var-m-top_small">
+        <lightning-card icon-name="standard:filter">
+            <div slot="title">{label.TRIGGER_SCOPE}</div>
+
+            <div slot="actions">
+                <lightning-button if:true={showEditButton} label={label.EDIT} slot="actions" onclick={handleEdit}></lightning-button>
+                <lightning-button if:true={isEditMode} label={label.CLEAR_ALL} onclick={handleClickClear}></lightning-button>
+            </div>
+
+            <div>
+                <c-copadocore-illustration if:true={showIllustration} name="custom:lake_mountain" size="large" message={label.NO_SCOPE_DEFINED}>
+                    <div slot="body">
+                        <div>{label.NO_SCOPE_DEFINED_BODY}</div>
+                        <div class="slds-var-m-top_large">
+                            <lightning-button
+                                if:true={showConfigureScopeButton}
+                                variant="neutral"
+                                label={label.CONFIGURE_SCOPE}
+                                onclick={handleEdit}
+                            ></lightning-button>
+                        </div>
+                    </div>
+                </c-copadocore-illustration>
+
+                <lightning-layout if:true={showCurrentConfiguration}>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <template if:true={isStageScopeMode}>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label slds-m-bottom_none">{stageLabel} </label>
+                                <lightning-helptext content={stageHelpText} class="slds-var-m-left_x-small"></lightning-helptext>
+                                <div class="slds-form-element__control slds-border_bottom">
+                                    <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">{currentStageNames}</p>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:false={isStageScopeMode}>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label slds-m-bottom_none">{environmentLabel} </label>
+                                <lightning-helptext content={environmentHelpText} class="slds-var-m-left_x-small"></lightning-helptext>
+                                <div class="slds-form-element__control slds-border_bottom">
+                                    <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">
+                                        {currentEnvironmentNames}
+                                    </p>
+                                </div>
+                            </div>
+                        </template>
+                    </lightning-layout-item>
+                    <lightning-layout-item if:true={isStageScopeMode} size="6" padding="around-small">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label slds-m-bottom_none">{excludedEnvironmentsLabel} </label>
+                            <lightning-helptext content={excludedEnvironmentsHelpText} class="slds-var-m-left_x-small"></lightning-helptext>
+                            <div class="slds-form-element__control slds-border_bottom">
+                                <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">
+                                    {currentExcludedEnvironmentNames}
+                                </p>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <lightning-layout if:true={isEditMode} multiple-rows="true">
+                    <lightning-layout-item size="12" padding="around-small"> {triggerScopeLabel} </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto, no-grow" padding="around-small">
+                        <lightning-combobox
+                            name="scopeMode"
+                            label={label.SCOPE_MODE}
+                            field-level-help={label.SCOPE_MODE_HELPTEXT}
+                            value={scopeMode}
+                            options={scopeModeOptions}
+                            onchange={handleChangeScopeMode}
+                        ></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item if:true={isScopeSelected} size="12">
+                        <lightning-layout>
+                            <lightning-layout-item if:true={isStageScopeMode} size="6" padding="around-small">
+                                <lightning-dual-listbox
+                                    name="stages"
+                                    label={label.STAGES}
+                                    source-label={label.EXCLUDED}
+                                    selected-label={label.SELECTED}
+                                    field-level-help={stageHelpText}
+                                    message-when-range-overflow={label.MAXIMUM_SELECTED_STAGES}
+                                    options={stageOptions}
+                                    max="10"
+                                    disable-reordering
+                                    value={selectedStageOptions}
+                                    onchange={handleChangeSelectedStages}
+                                ></lightning-dual-listbox>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" padding="around-small">
+                                <lightning-dual-listbox
+                                    name="stages"
+                                    label={label.ENVIRONMENTS}
+                                    source-label={label.EXCLUDED}
+                                    selected-label={label.SELECTED}
+                                    field-level-help={environmentHelpText}
+                                    message-when-range-underflow={label.MAXIMUM_EXCLUDED_ENVIRONMENTS}
+                                    message-when-range-overflow={label.MAXIMUM_SELECTED_ENVIRONMENTS}
+                                    options={environmentOptions}
+                                    min={minimumSelectedEnvironments}
+                                    max={maximumSelectedEnvironments}
+                                    disable-reordering
+                                    value={selectedEnvironmentOptions}
+                                    onchange={handleChangeSelectedEnvironments}
+                                    disabled={environmentDisabled}
+                                ></lightning-dual-listbox>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <template if:true={isEditMode}>
+                    <div slot="footer" class="slds-var-m-top_medium slds-align_absolute-center">
+                        <lightning-button label={label.CANCEL} onclick={handleCancel}></lightning-button>
+                        <lightning-button variant="brand" label={label.SAVE} onclick={handleSave} class="slds-var-m-left_x-small"></lightning-button>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+
+    <c-copadocore-modal size="small" hide-close>
+        <span slot="title">{label.CONFIGURE_SCOPE}</span>
+        <slot>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12">
+                    <c-copado-scoped-notification variant="error" message={label.SCOPE_CANNNOT_BE_CONFIGURED}></c-copado-scoped-notification>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="slds-p-top_medium">
+                    <div>{label.SCOPE_ERROR_BODY}</div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.CLOSE} title={label.CLOSE} onclick={handleCloseModal}> </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

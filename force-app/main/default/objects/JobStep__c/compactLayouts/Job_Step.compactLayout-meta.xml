@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Step</fullName>
+    <fields>Name</fields>
+    <fields>Status__c</fields>
+    <fields>JobExecution__c</fields>
+    <fields>JobTemplate__c</fields>
+    <fields>CustomType__c</fields>
+    <fields>Order__c</fields>
+    <label>Job Step</label>
+</CompactLayout>

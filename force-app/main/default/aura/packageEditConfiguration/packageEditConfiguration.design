@@ -1,0 +1,5 @@
+<design:component label="Package Edit Configuration">
+    <sfdc:objects>
+        <sfdc:object>Artifact__c</sfdc:object>
+    </sfdc:objects>
+</design:component>

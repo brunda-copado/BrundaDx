@@ -1,0 +1,15 @@
+lightning-layout-item .centered {
+    display: flex;
+    justify-content: end;
+    text-align: end;
+    align-items: center;
+}
+
+.read-only-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hide-null-value {
+    text-indent: -9999px; /* sends the text off-screen */
+}

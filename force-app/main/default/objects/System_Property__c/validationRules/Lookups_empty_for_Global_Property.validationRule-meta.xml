@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lookups_empty_for_Global_Property</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+Is_Global__c = True,
+OR(
+NOT(ISBLANK(User__c)),
+NOT(ISBLANK(Pipeline__c)),
+NOT(ISBLANK(Environment__c))
+))</errorConditionFormula>
+    <errorMessage>The environment, pipeline, and user lookups must be empty if the &apos;Is Global&apos; checkbox is selected.</errorMessage>
+</ValidationRule>

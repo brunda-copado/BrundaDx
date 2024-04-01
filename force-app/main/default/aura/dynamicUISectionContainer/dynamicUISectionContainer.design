@@ -1,0 +1,20 @@
+<design:component>
+    <design:attribute
+        name="locationId"
+        label="Component Location Identifier"
+        description="Location__c field value of a UISection__mdt records. This will be used to retrieve the name of the component that should be rendered dynamically"
+    />
+    <design:attribute
+        name="requiredInformation"
+        label="Required Information"
+        description="Can be either 'Platform' or 'Test Tool', by default 'Platform'"
+        datasource="Platform,Test Tool"
+        default="Platform"
+    />
+    <design:attribute
+        name="locationOnly"
+        label="No Platform and Test Tool dependency"
+        description="Mark true if the location id is enough for the rendered to be component"
+        default="false"
+    />
+</design:component>

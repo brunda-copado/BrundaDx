@@ -1,0 +1,27 @@
+.title-format {
+    font-weight: 500;
+    font-size: 14px;
+    display: flex; 
+    align-items: center;
+}
+
+.value-format {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.label-format{
+    font-size: 11px;
+}
+
+.image {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+}
+
+.word-wrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

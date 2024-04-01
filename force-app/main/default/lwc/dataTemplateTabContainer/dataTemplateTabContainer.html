@@ -1,0 +1,32 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner variant="brand" size="large"></lightning-spinner>
+    </template>
+    <template if:false={showSpinner}>
+        <template if:true={pageAccessible}>
+            <template if:true={isADDEnabled}>
+                <template if:false={dataSourceDefined}>
+                    <div class="slds-align_absolute-center container">
+                        <c-data-template-define-data-source record-id={recordId}></c-data-template-define-data-source>
+                    </div>
+                </template>
+                <template if:true={dataSourceDefined}>
+                    <slot name="body"></slot>
+                </template>
+            </template>
+            <template if:false={isADDEnabled}>
+                <lightning-card>
+                    <div class="slds-p-around_large">
+                        <c-copadocore-illustration name="error:no_access" size="large" message={label.DATA_DEPLOYER_PERMISSION_ISSUE}>
+                        </c-copadocore-illustration>
+                    </div>
+                </lightning-card>
+            </template>
+        </template>
+    </template>
+    <c-data-template-refresh-detail-modal
+        if:true={displayRefreshModal}
+        refresh-detail={refreshedInfo}
+        oncloserefreshmodal={handleCloseRefreshModal}
+    ></c-data-template-refresh-detail-modal>
+</template>

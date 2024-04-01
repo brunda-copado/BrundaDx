@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Execution_Sequence_Required</fullName>
+    <active>true</active>
+    <description>Execution Sequence is required for Deployment steps</description>
+    <errorConditionFormula>AND( UserStory__c &lt;&gt; null, ISPICKVAL(ExecutionSequence__c, &quot;&quot;))</errorConditionFormula>
+    <errorDisplayField>ExecutionSequence__c</errorDisplayField>
+    <errorMessage>Execution Sequence is required for Deployment steps</errorMessage>
+</ValidationRule>

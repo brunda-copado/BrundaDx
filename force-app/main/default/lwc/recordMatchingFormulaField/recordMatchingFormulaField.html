@@ -1,0 +1,17 @@
+<template>
+      <div class="slds-form" role="list">
+          <div class="slds-form__row">
+              <div class="slds-form__item" role="listitem">
+                  <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                    <span class="slds-form-element__label">{label}</span>
+                    <div if:true={helpText} class="slds-form-element__icon">
+                      <lightning-helptext class="iconposition" content={helpText}></lightning-helptext>
+                    </div>
+                    <div class="slds-form-element__control">
+                      <div class="slds-form-element__static slds-var-p-bottom_xx-small">{value}</div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+</template>

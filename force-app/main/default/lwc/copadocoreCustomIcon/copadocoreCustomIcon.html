@@ -1,0 +1,6 @@
+<template>
+    <svg class={computedClass} focusable="false" data-key={name} aria-hidden="true" style={personalizedColor}>
+        <use xlink:href={href}></use>
+    </svg>
+    <span if:true={alternativeText} class="slds-assistive-text">{alternativeText}</span>
+</template>

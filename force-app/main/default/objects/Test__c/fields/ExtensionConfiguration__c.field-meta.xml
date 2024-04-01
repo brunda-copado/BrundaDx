@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ExtensionConfiguration__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>The displayed values are based on the active Extension Configuration records available in your org.</inlineHelpText>
+    <label>Tool Configuration</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1</booleanFilter>
+        <errorMessage>Make sure the selected Extension Configuration is valid and active.</errorMessage>
+        <filterItems>
+            <field>ExtensionConfiguration__c.Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>ExtensionConfiguration__c</referenceTo>
+    <relationshipLabel>Tests</relationshipLabel>
+    <relationshipName>ChildTests</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

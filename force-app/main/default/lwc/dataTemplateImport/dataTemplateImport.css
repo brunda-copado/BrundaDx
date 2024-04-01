@@ -1,0 +1,32 @@
+.spinner {
+    height: 100vh;
+}
+
+.slds-size_full {
+    width: 100%;
+}
+
+.upload-template {
+    height: 100vh;
+}
+
+.import-options {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 200px;
+
+}
+
+.main-section {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 70px;
+}
+
+.template-information{
+    height: 40vh;
+}
+
+.pending-badge {
+    --slds-c-badge-color-background: orange;
+}

@@ -1,0 +1,7 @@
+.slds-modal__content {
+    overflow-y: visible;
+}
+
+.slds-modal__content.overflow {
+    overflow: visible;
+}

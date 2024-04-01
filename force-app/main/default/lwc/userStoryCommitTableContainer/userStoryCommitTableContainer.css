@@ -1,0 +1,18 @@
+.toggle-element {
+    display: flex;
+    padding-left: 1rem;
+}
+
+.toggle-element label {
+    width: 100%;
+}
+
+.toggle-element lightning-helptext {
+    margin-right: 5px;
+}
+
+@media (max-width: 1052px) { 
+    .toggle-element label {
+        width: 5rem;
+    }
+}

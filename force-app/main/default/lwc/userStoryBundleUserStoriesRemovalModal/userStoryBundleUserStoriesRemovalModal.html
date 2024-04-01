@@ -1,0 +1,20 @@
+<template>
+        <c-copadocore-modal>
+            <span slot="title">{label.Remove_USB_User_Stories}</span>
+            <slot class="slds-align_absolute-center slds-is-relative">
+                <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+                {body}
+            </slot>
+            <span slot="footer">
+                <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={handleCancel}> </lightning-button>
+                <lightning-button
+                    class="slds-var-m-left_x-small"
+                    label={label.Confirm}
+                    title={label.Confirm}
+                    variant="brand"
+                    onclick={handleConfirm}
+                ></lightning-button>
+            </span>
+        </c-copadocore-modal>
+    
+</template>

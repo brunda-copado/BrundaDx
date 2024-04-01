@@ -1,0 +1,29 @@
+<aura:component controller="PipelineInitialiserCtrl" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="loading" type="Boolean" default="false" access="private" />
+    <aura:attribute name="errorMessage" type="String" access="private" />
+    <aura:attribute name="componentNameNotFound" type="Boolean" default="false" access="private" />
+
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.errorMessage}">
+            <span class="slds-notify_alert slds-alert_error">{!v.errorMessage}</span>
+        </aura:if>
+
+        <aura:if isTrue="{!v.loading}">
+            <lightning:spinner alternativeText="{!$Label.c.LOADING}" size="medium" variant="brand" />
+        </aura:if>
+
+        <aura:if isTrue="{!v.componentNameNotFound}">
+            <lightning:card>
+                <c:copadocoreIllustrationContainer
+                    imageName="error:not_available_in_lightning"
+                    message="{!$Label.c.PipelineUnavailableForInitialization}"
+                    slotMessage="{!$Label.c.PipelineUnavailableForInitializationMessage}"
+                    size="large"
+                />
+            </lightning:card>
+        </aura:if>
+        {! v.body }
+    </div>
+</aura:component>

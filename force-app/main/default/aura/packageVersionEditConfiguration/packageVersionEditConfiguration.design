@@ -1,0 +1,5 @@
+<design:component label="Package Version Edit Configuration">
+    <sfdc:objects>
+        <sfdc:object>Artifact_Version__c</sfdc:object>
+    </sfdc:objects>
+</design:component>

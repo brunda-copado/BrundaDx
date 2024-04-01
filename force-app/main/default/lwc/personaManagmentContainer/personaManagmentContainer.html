@@ -1,0 +1,77 @@
+<template>
+    <div class="persona-management-wrapper">
+        <c-cds-page-header icon-name="utility:people">
+            <div slot="title">{label.COPADO_PERSONA_MANAGEMENT_TITLE}</div>
+            <div slot="subtitle">{label.COPADO_PERSONA_MANAGEMENT_SUBTITLE}</div>
+        </c-cds-page-header>
+        <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"> </lightning-spinner>
+
+        <div class="persona-management-container">
+            <template lwc:if={userHasPermission}>
+                <template lwc:if={isUpdate}>
+                    <div class="empty-state-wrapper">
+                        <c-cds-empty-state icon-name="utility:info_alt" message={label.UPDATE_STANDARD_PERSONAS_TITLE} has-body has-action>
+                            <p slot="body">
+                                <lightning-formatted-rich-text value={label.UPDATE_STANDARD_PERSONAS_BODY}></lightning-formatted-rich-text>
+                            </p>
+                            <div slot="action">
+                                <lightning-button
+                                    class="cds-button"
+                                    label={label.UPDATE_STANDARD_PERSONAS}
+                                    title={label.UPDATE_STANDARD_PERSONAS}
+                                    variant="brand"
+                                    onclick={handleUpdate}
+                                ></lightning-button>
+                            </div>
+                        </c-cds-empty-state>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <template lwc:if={isActivation}>
+                        <div class="empty-state-wrapper">
+                            <c-cds-empty-state icon-name="utility:info_alt" message={label.GET_STARTED_WITH_PERSONA_MANAGEMENT} has-body has-action>
+                                <p slot="body">{label.GET_STARTED_WITH_PERSONA_MANAGEMENT_BODY}</p>
+                                <div slot="action">
+                                    <lightning-button
+                                        class="cds-button"
+                                        label={label.START_NOW}
+                                        title={label.START_NOW}
+                                        variant="brand"
+                                        onclick={handleStartNow}
+                                    ></lightning-button>
+                                </div>
+                            </c-cds-empty-state>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <div class="persona-management-wrap">
+                            <div class="persona-management-sidebar">
+                                <c-persona-sidebar
+                                    onmenuclick={handleNavClick}
+                                    personas={personaDefinitions}
+                                    onrefreshpersona={refreshPersonaDefinitions}
+                                ></c-persona-sidebar>
+                            </div>
+                            <div class="persona-management-main">
+                                <c-persona-settings
+                                    persona-definition={selectedPersona}
+                                    number-of-users={numberOfUsers}
+                                    onrefreshpersona={refreshPersonaDefinitions}
+                                ></c-persona-settings>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+            </template>
+            <template lwc:else>
+                <div class="empty-state-wrapper" style="text-align: unset">
+                    <c-cds-empty-state icon-name="utility:info_alt" message={label.PERSONA_NOT_ENOUGH_PERMISSIONS_ERROR_TITLE} has-body>
+                        <p slot="body">
+                            <lightning-formatted-rich-text value={label.PERSONA_NOT_ENOUGH_PERMISSIONS_ERROR_BODY}></lightning-formatted-rich-text>
+                        </p>
+                    </c-cds-empty-state>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

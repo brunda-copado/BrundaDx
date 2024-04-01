@@ -1,0 +1,137 @@
+<template>
+    <div class="persona-card">
+        <div class="license-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <template lwc:if={isEmpty}>
+                <div class="empty-state-wrapper">
+                    <c-cds-empty-state icon-name="utility:info_alt" message={label.Persona_Does_Not_Require_Licenses} has-body has-action>
+                        <p slot="body">{label.Start_Adding_Licenses_Now}</p>
+                        <div slot="action">
+                            <lightning-button
+                                label={label.Edit_Required_Licenses}
+                                title={label.Edit_Required_Licenses}
+                                variant="neutral"
+                                icon-name="utility:edit"
+                                class="cds-button"
+                                onclick={handleEditLicense}></lightning-button>
+                        </div>
+                    </c-cds-empty-state>
+                </div>
+            </template>
+            <template lwc:else>
+                <c-cds-datatable-container icon-name="utility:process" has-body>
+                    <span slot="title">{label.Copado_Licenses}</span>
+                    <span slot="subtitle">{label.Copado_Licenses_Subtitle}</span>
+                    <span slot="actions">
+                        <lightning-button
+                            label={label.Edit_Required_Licenses}
+                            title={label.Edit_Required_Licenses}
+                            variant="neutral"
+                            icon-name="utility:edit"
+                            class="cds-button"
+                            onclick={handleEditLicense}></lightning-button>
+                    </span>
+                    <div slot="datatable" style="height: 550px">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={availablePersonaLicenses}
+                            columns={personaLicenseColumns}
+                            default-sort-direction={defaultSortDirectionPersonaLicenses}
+                            onsort={handleSortPersonaLicenses}
+                            sorted-direction={sortDirectionPersonaLicenses}
+                            sorted-by={sortedByPersonaLicenses}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+                    </div>
+                </c-cds-datatable-container>
+            </template>
+        </div>
+    </div>
+    <c-cds-modal icon-name="utility:process" size="small" onmodalclose={handleCancelModal}>
+        <span slot="title">{label.Edit_License_Assignment}</span>
+        <template lwc:if={isLicenseSummary}>
+            <span slot="tagline">{label.License_Summary_Tagline}</span>
+        </template>
+        <template lwc:else>
+            <span slot="tagline">{label.Edit_License_Assignment_Tagline}</span>
+        </template>
+        <div slot="modalContent" class="edit-license-modal-content" style="min-height: 12rem">
+            <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <template lwc:if={isLicenseSummary}>
+                <div class="license-summary-wrap">
+                    <h4>{label.Summary_of_Changes}</h4>
+                    <ul>
+                        <template for:each={summaryMessages} for:item="message">
+                            <li key={message}>{message}</li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+            <template lwc:else>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <div class="slds-p-bottom_medium">
+                            <c-cds-alert message={assignedUsersLabel} variant="info"> </c-cds-alert>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item lwc:if={showNotAvailableLicensesError} size="12">
+                        <div class="slds-p-bottom_medium">
+                            <c-cds-alert message={label.Not_Enough_Licenses_Available} variant="error" hasdetail>
+                                <div slot="additionalMessage">{label.Assign_Licenses_using_License_Manager}</div>
+                                <div slot="details">
+                                    <a href="/lightning/n/License_Manager" target="_blank" class="cds-link">{label.License_Manager}</a>
+                                </div>
+                            </c-cds-alert>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item lwc:if={showError} size="12">
+                        <div class="slds-p-bottom_medium">
+                            <c-cds-alert message={errorMessage} variant="error"> </c-cds-alert>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <div class="license-list">
+                            <template for:each={allLicenses} for:item="license">
+                                <div key={license.name} class="license-list-item">
+                                    <lightning-input
+                                        data-id="options"
+                                        class="cds-checkbox"
+                                        type="checkbox"
+                                        label={license.optionLabel}
+                                        name={license.name}
+                                        checked={license.selected}
+                                        disabled={license.disabled}></lightning-input>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+        </div>
+        <span slot="footer">
+            <template lwc:if={isLicenseSummary}>
+                <lightning-button
+                    class="cds-button"
+                    label={label.Close}
+                    title={label.Close}
+                    variant="neutral"
+                    onclick={handleCloseSummary}></lightning-button>
+            </template>
+            <template lwc:else>
+                <lightning-button
+                    class="cds-button"
+                    label={label.Cancel}
+                    title={label.Cancel}
+                    variant="neutral"
+                    onclick={handleCancelModal}></lightning-button>
+                <lightning-button
+                    class="slds-m-left_x-small cds-button"
+                    label={label.Save}
+                    title={label.Save}
+                    variant="brand"
+                    onclick={handleSaveModal}
+                    disabled={saveDisabled}></lightning-button>
+            </template>
+        </span>
+    </c-cds-modal>
+</template>

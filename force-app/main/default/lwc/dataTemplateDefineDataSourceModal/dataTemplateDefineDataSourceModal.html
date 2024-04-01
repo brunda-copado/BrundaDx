@@ -1,0 +1,62 @@
+<template>
+    <c-copadocore-modal size={modalSize} has-overflow onmodalclose={handleClickCancel}>
+        <span slot="title">{label.DEFINE_DATA_SOURCE}</span>
+
+        <slot class="slds-align_absolute-center">
+            <div class="slds-size_full slds-is-relative slds-p-horizontal_x-small">
+                <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <c-copado-alert-place-holder communication-id={communicationId}></c-copado-alert-place-holder>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-record-edit-form object-api-name={schema.DATA_TEMPLATE.objectApiName}>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                    <lightning-input-field
+                                        data-id="sourceOrg"
+                                        field-name={schema.SOURCE_ORG_FIELD.fieldApiName}
+                                        variant="label-stacked"
+                                        value={sourceOrg}
+                                        onchange={handleChangeSourceOrg}
+                                        required
+                                    ></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                    <c-lookup
+                                        label={label.MAIN_OBJECT}
+                                        variant="label-stacked"
+                                        helptext={label.MAIN_OBJECT_HELP_TEXT}
+                                        placeholder={label.MAIN_OBJECT}
+                                        onsearch={handleSearchMainObject}
+                                        onselectionchange={handleChangeMainObject}
+                                        errors={mainObjectErrors}
+                                        scrollafternitems=5
+                                        required
+                                    >
+                                    </c-lookup>
+                                </div>
+                            </div>
+                        </lightning-record-edit-form>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </slot>
+        <span slot="footer">
+            <c-copadocore-error-popover
+                if:false={validInputs}
+                class="slds-show_inline slds-p-right_x-small"
+                message={label.COMPLETE_ALL_FIELDS}
+            ></c-copadocore-error-popover>
+            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleClickCancel}></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.SAVE}
+                title={label.SAVE}
+                variant="brand"
+                onclick={handleClickSave}
+                disabled={saveDisabled}
+            ></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

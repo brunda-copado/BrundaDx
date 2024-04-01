@@ -1,0 +1,171 @@
+<aura:component
+    controller="CustomJobStepController"
+    implements="force:lightningQuickAction,force:hasRecordId,lightning:actionOverride,lightning:isUrlAddressable,flexipage:availableForRecordHome"
+    access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:registerEvent name="closeModal" type="c:closeModalEvent" />
+
+    <aura:attribute name="readOnly" type="Boolean" access="global" />
+    <aura:attribute name="parentId" type="Id" access="public" />
+    <aura:attribute name="parentApiName" type="String" access="public" />
+    <aura:attribute name="modalTitle" type="String" access="private" />
+    <aura:attribute name="namespace" type="String" access="private" />
+    <aura:attribute name="stepName" type="String" access="private" />
+    <aura:attribute name="stepCustomType" type="String" access="private" />
+    <aura:attribute name="stepType" type="String" access="private" />
+    <aura:attribute name="resourceObservations" type="String" access="private" />
+    <aura:attribute name="executionSequence" type="String" access="private" />
+    <aura:attribute name="runOnValidationDeployment" type="Boolean" access="private" />
+    <aura:attribute name="sharedResource" type="String" access="private" />
+    <aura:attribute name="skipCondition" type="String" access="private" />
+    <aura:attribute name="showObservations" type="Boolean" access="private" />
+    <aura:attribute name="disableObservations" type="Boolean" access="private" />
+    <aura:attribute name="showSequence" type="Boolean" access="private" />
+    <aura:attribute name="showValidationCheckbox" type="Boolean" access="private" />
+    <aura:attribute name="configJson" type="Object" access="private" />
+    <aura:attribute name="resultViewerComponent" type="String" access="private" />
+    <aura:attribute name="typeOptions" type="Map" access="private" />
+    <aura:attribute name="observationOptions" type="Map" access="private" />
+    <aura:attribute name="sequenceOptions" type="Map" access="private" />
+    <aura:attribute name="componentsByType" type="Map" access="private" />
+    <aura:attribute name="step" type="JobStep__c" default="{ 'sobjectType' : 'JobStep__c' }" access="private" />
+    <aura:attribute name="componentBody" type="Aura.Component" access="private" />
+    <aura:attribute name="loading" type="Boolean" default="false" access="private" />
+    <aura:attribute name="errorMessage" type="String" access="private" />
+
+    <lightning:navigation aura:id="navService" />
+
+    <aura:if isTrue="{!!v.readOnly}">
+        <div class="slds-modal slds-fade-in-open slds-modal_medium">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <div data-id="titleContainer">
+                        <h2 class="slds-text-heading_medium slds-hyphenate" data-id="title">{!v.modalTitle}</h2>
+                    </div>
+                </header>
+
+                <div class="slds-modal__content slds-is-relative slds-var-p-around_medium min-height-50-vh">
+                    <aura:if isTrue="{!v.loading}">
+                        <lightning:spinner alternativeText="{!$Label.c.LOADING}" size="medium" variant="brand" />
+                    </aura:if>
+
+                    <aura:if isTrue="{!v.errorMessage}">
+                        <c:copadoAlert message="{!v.errorMessage}" variant="error" />
+                    </aura:if>
+
+                    <div class="slds-page-header slds-text-heading_small slds-var-p-around_x-small no-border">{!$Label.c.DETAILS}</div>
+
+                    <lightning:layout multipleRows="true">
+                        <lightning:layoutItem padding="around-small" size="6">
+                            <lightning:input aura:id="step-name" required="true" label="{!$Label.c.NAME}" value="{!v.stepName}" />
+                        </lightning:layoutItem>
+
+                        <lightning:layoutItem padding="around-small" size="6">
+                            <lightning:combobox
+                                required="true"
+                                label="{!$Label.c.TYPE}"
+                                value="{!v.stepCustomType}"
+                                options="{!v.typeOptions}"
+                                onchange="{!c.switchView}"
+                                disabled="{!v.recordId}" />
+                        </lightning:layoutItem>
+
+                        <aura:if isTrue="{!v.showSequence}">
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <lightning:combobox
+                                    required="true"
+                                    label="{!$Label.c.Execution_Sequence}"
+                                    fieldLevelHelp="{!$Label.c.Execution_Sequence_Helptext}"
+                                    value="{!v.executionSequence}"
+                                    options="{!v.sequenceOptions}" />
+                            </lightning:layoutItem>
+                        </aura:if>
+
+                        <aura:if isTrue="{!v.showValidationCheckbox}">
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <lightning:input
+                                    type="checkbox"
+                                    label="{!$Label.c.Run_on_validation_deployments}"
+                                    fieldLevelHelp="{!$Label.c.Run_on_validation_deployments_helptext}"
+                                    checked="{!v.runOnValidationDeployment}"></lightning:input>
+                            </lightning:layoutItem>
+                        </aura:if>
+                    </lightning:layout>
+
+                    <div class="slds-section slds-is-close" aura:id="advancedConfiguration">
+                        <h3 class="slds-section__title">
+                            <button class="slds-button slds-section__title-action" onclick="{!c.toggleSection}" data-aura-id="advancedConfiguration">
+                                <lightning:icon
+                                    iconName="utility:switch"
+                                    size="x-small"
+                                    class="slds-section__title-action-icon slds-button__icon_left" />
+                                <span class="slds-truncate" title="{!$Label.c.AdvancedConfiguration}">{!$Label.c.AdvancedConfiguration}</span>
+                            </button>
+                        </h3>
+                        <div class="slds-section__content">
+                            <lightning:layout multipleRows="true">
+                                <lightning:layoutItem padding="around-small" size="6">
+                                    <lightning:layout multipleRows="true">
+                                        <lightning:layoutItem size="12">
+                                            <lightning:input
+                                                aura:id="execution-category"
+                                                required="false"
+                                                label="{!$Label.c.SharedResource}"
+                                                value="{!v.sharedResource}"
+                                                fieldLevelHelp="{!$Label.c.SharedResourceHelp}" />
+                                        </lightning:layoutItem>
+                                        <lightning:layoutItem class="slds-var-p-vertical_small" size="12">
+                                            <lightning:input
+                                                aura:id="skip-condition"
+                                                required="false"
+                                                label="{!$Label.c.SkipStepCondition}"
+                                                value="{!v.skipCondition}"
+                                                fieldLevelHelp="{!$Label.c.SkipStepConditionHelp}" />
+                                        </lightning:layoutItem>
+                                        <aura:if isTrue="{!v.showObservations}">
+                                            <lightning:layoutItem size="12">
+                                                <lightning:combobox
+                                                    label="{!$Label.c.Resource_Observations}"
+                                                    value="{!v.resourceObservations}"
+                                                    options="{!v.observationOptions}"
+                                                    disabled="{!v.disableObservations}"
+                                                    fieldLevelHelp="{!$Label.c.ResourceObservationHelp}"/>
+                                            </lightning:layoutItem>
+                                        </aura:if>
+                                    </lightning:layout>
+                                </lightning:layoutItem>
+                                <lightning:layoutItem padding="around-small" size="6">
+                                    <c:dynamicExpressionHelper></c:dynamicExpressionHelper>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div>
+                    </div>
+
+                    <lightning:layout multipleRows="true">
+                        <lightning:layoutItem size="12">
+                            <lightning:card> {!v.componentBody} </lightning:card>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </div>
+
+                <footer class="slds-modal__footer" data-id="footer">
+                    <lightning:button variant="neutral" label="{!$Label.c.Cancel}" title="{!$Label.c.Cancel}" onclick="{!c.handleCancel}">
+                    </lightning:button>
+                    <lightning:button
+                        variant="brand"
+                        class="slds-var-m-left_x-small"
+                        label="{!$Label.c.Save}"
+                        title="{!$Label.c.Save}"
+                        onclick="{!c.handleSave}">
+                    </lightning:button>
+                </footer>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+        <aura:set attribute="else">
+            <lightning:card> {!v.componentBody} </lightning:card>
+        </aura:set>
+    </aura:if>
+</aura:component>

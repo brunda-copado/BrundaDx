@@ -1,0 +1,11 @@
+.auth-spinner
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 0.5rem;
+    margin-left: 0.5rem;
+}
+.auth-spinner .slds-spinner_container{
+    position: relative;
+}

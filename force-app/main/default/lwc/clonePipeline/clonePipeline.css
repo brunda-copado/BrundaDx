@@ -1,0 +1,13 @@
+.environment-name {
+    margin-right: 1em;
+}
+
+.main-container {
+    max-height: 370px;
+    overflow-y: auto;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}

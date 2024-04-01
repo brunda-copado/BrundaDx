@@ -1,0 +1,40 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-spinner if:true={loading} alternative-text={label.LOADING} size="medium" variant="brand"></lightning-spinner>
+    
+    <c-order-steps 
+        if:true={showOrderSteps}
+        apply-sequence={isParentUserStory}
+        parent-id={parentId}
+        oncloseordermodal={closeOrderSteps}
+    ></c-order-steps>
+
+    <c-datatable-container
+        icon-name="standard:custom"
+        has-body="true"
+        rows={records}
+        columns={columns}
+    >
+        <span slot="title">{title} ({stepCount})</span>
+
+        <span slot="actions">
+            <lightning-button label={label.NEW} title={label.NEW} class="slds-var-m-right_xx-small" onclick={handleNew}></lightning-button>
+            <template lwc:if={isNotCompleted}>
+                <lightning-button label={label.ORDER} title={label.ORDER} onclick={handleOrderSteps}></lightning-button>
+            </template>
+        </span>
+
+        <span slot="datatable">
+            <lightning-datatable
+                key-field="id"
+                data={records}
+                columns={columns}
+                show-row-number-column	
+                hide-checkbox-column
+                sorted-direction="asc"
+                sorted-by="Order__c"
+                onrowaction={handleRowAction}
+            ></lightning-datatable>
+        </span>
+    </c-datatable-container>
+</template>

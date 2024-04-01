@@ -1,0 +1,145 @@
+<template>
+    <c-copadocore-modal size="medium">
+        <span slot="title">{title}</span>
+        <slot>
+            <div class="slds-section slds-is-open">
+                <h3 class="slds-section__title slds-theme_shade">
+                    <button aria-controls="expand-info" aria-expanded="true" class="slds-button slds-section__title-action">
+                        <lightning-icon icon-name="utility:switch" title="Image" size="x-small"></lightning-icon>
+                        <span class="slds-truncate slds-p-horizontal_small" title={label.INFORMATION}>{label.INFORMATION}</span>
+                    </button>                  
+                </h3>
+                <div class="slds-section__content" aria-hidden="false" id="expand-info">
+                    <lightning-layout multiple-rows="true">
+                        <lightning-layout-item size="12" class="slds-p-vertical_xxx-small">
+                            <lightning-layout horizontal-align="spread">
+                                <lightning-layout-item size="6" padding="around-small">
+                                    <lightning-input type="text" label={label.VarName} value={variableName} onchange={handleVariableChange} required>
+                                    </lightning-input>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        
+                        <lightning-layout-item size="12" class="slds-p-vertical_xxx-small">
+                            <lightning-layout horizontal-align="spread">
+                                <lightning-layout-item size="6" padding="around-small">
+                                    <div class="slds-grid slds-wrap">
+                                        <div class="slds-size_2-of-3">
+                                            <template if:true={isEnvironment}>
+                                                <lightning-radio-group name="scope" 
+                                                label={label.DEFINE_SCOPE} 
+                                                options={options} 
+                                                value={value} 
+                                                required
+                                                variant="label-stacked" 
+                                                type="radio" 
+                                                onchange={handleScopeChange}
+                                                disabled>
+                                                </lightning-radio-group>
+                                            </template>
+                                            <template if:false={isEnvironment}>
+                                                <lightning-radio-group name="scope" 
+                                                label={label.DEFINE_SCOPE} 
+                                                options={options} 
+                                                value={value} 
+                                                required
+                                                variant="label-stacked" 
+                                                type="radio" 
+                                                onchange={handleScopeChange}>
+                                                </lightning-radio-group>
+                                            </template>                   
+                                        </div>
+                                        <div class="slds-size_1-of-3 scope-radio-helptext">
+                                            <lightning-helptext content={label.Define_Scope_Helptext}></lightning-helptext>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </lightning-layout-item>
+                                <template if:true={isSpecificMetadata}>
+                                    <lightning-layout-item size="6" padding="around-small">
+                                        <lightning-textarea name="metadataType" required value={metadataType} onchange={handleMetadataChange} field-level-help={label.Metadata_and_Type_Helptext} label={label.Metadata_and_Types} read-only={isEnvironment}>
+                                        </lightning-textarea>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </lightning-layout-item>
+
+                    </lightning-layout>
+                </div>
+            </div>
+
+            <div class="slds-section slds-is-open">
+                <h3 class="slds-section__title slds-theme_shade">
+                    <button aria-controls="expand-values" aria-expanded="true" class="slds-button slds-section__title-action">
+                        <lightning-icon icon-name="utility:switch" title="Image" size="x-small"></lightning-icon>
+                        <span class="slds-truncate slds-p-horizontal_small" title={label.Values}>{label.Values}</span>
+                    </button>                  
+                </h3>
+                <div class="slds-section__content" aria-hidden="false" id="expand-values">
+                    <lightning-layout multiple-rows="true">
+                        <lightning-layout-item size="12" class="slds-p-vertical_xxx-small">
+                            <lightning-layout>
+                                <lightning-layout-item size="5" padding="around-small">
+                                    <lightning-input type="text" label={label.Default_Value} onchange={handleDefaultValue} field-level-help={label.Default_Value_Helptext}></lightning-input>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="2" padding="around-small">
+                                    <div class="slds-p-top_large">
+                                        <lightning-button label={label.Apply} title={label.Apply} variant="neutral" onclick={handleApply}>
+                                        </lightning-button>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12">
+                            <div class="slds-float_right" onkeyup={handleSearch}>
+                                <lightning-input
+                                    name="column-search"
+                                    placeholder={label.Search}
+                                    value={searchValue}
+                                    type="search"
+                                    variant="label-hidden"
+                                    title={label.Search}
+                                ></lightning-input>
+                            </div>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12" class="slds-p-vertical_xxx-small">
+                            <lightning-layout horizontal-align="spread"> 
+                                <lightning-layout-item padding="around-small">
+                                    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+                                    <lightning-datatable
+                                        key-field="id"
+                                        data={allRows}
+                                        columns={columns}                                      	
+                                        hide-checkbox-column
+                                        suppress-bottom-bar
+                                        default-sort-direction={defaultSortDirection}
+                                        sorted-direction={sortDirection}
+                                        sorted-by={sortedBy}
+                                        onsort={handleSort}
+                                        oncellchange={cellValueChange}
+                                        draft-values={draftValues}
+                                    ></lightning-datatable>
+                                </lightning-layout-item>                                
+                            </lightning-layout>
+                        </lightning-layout-item>
+
+                    </lightning-layout>
+                </div>
+            </div>
+        </slot>
+        <span slot="footer">
+            <c-copadocore-error-popover
+                if:true={showErrorPopover}
+                class="slds-show_inline slds-p-right_x-small"
+                message={errorPopoverMessage}
+            ></c-copadocore-error-popover>
+            <lightning-button class="slds-float_left" label={label.Cancel} title={label.Cancel} variant="neutral" onclick={handleCancel}>
+            </lightning-button>
+            <lightning-button class="slds-m-left_x-small" label={label.SAVE} title={label.SAVE} variant="brand"
+                onclick={handleSave}></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

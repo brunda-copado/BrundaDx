@@ -1,0 +1,15 @@
+<template>
+    <c-data-template-content-update
+        if:true={typeAttributes.isSelected}
+        read-only-mode={typeAttributes.readOnlyMode}
+        field-name={typeAttributes.fieldName}
+        field-type={typeAttributes.fieldType}
+        content-value-update-values={typeAttributes.contentValueUpdateValues}
+        field-content-update={typeAttributes.fieldContentUpdate}
+        replace-value={typeAttributes.replaceValue}
+        replace-value-number={typeAttributes.replaceValueNumber}
+        replace-value-date={typeAttributes.replaceValueDate}
+        replace-value-datetime={typeAttributes.replaceValueDatetime}
+        record-id={typeAttributes.recordId}
+    ></c-data-template-content-update>
+</template>

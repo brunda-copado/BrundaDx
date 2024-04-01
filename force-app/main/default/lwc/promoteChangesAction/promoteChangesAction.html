@@ -1,0 +1,40 @@
+<template>
+    <c-platform-event-subscriber channel={stepChannelName} onmessage={handleEvent}></c-platform-event-subscriber>
+
+    <lightning-quick-action-panel header={label.Merge_changes}>
+        <div class="slds-is-relative">
+            <lightning-spinner lwc:if={showSpinner} variant="brand"></lightning-spinner>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" class="slds-var-m-bottom_large">
+                    <c-copado-alert-place-holder communication-id={modalCommunicationId}></c-copado-alert-place-holder>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="slds-var-m-bottom_large">
+                    <div>{modalBodyMessage}</div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <div slot="footer">
+            <lightning-button disabled={showSpinner} label={cancelButtonLabel} title={cancelButtonLabel} variant="neutral" onclick={closeModal}>
+            </lightning-button>
+            <lightning-button
+                lwc:if={showActionButtons}
+                disabled={showSpinner}
+                label={label.Create_Job_Execution_only}
+                title={label.Create_Job_Execution_only}
+                class="slds-var-m-left_x-small"
+                variant="neutral"
+                onclick={createJobExecutionOnly}
+            >
+            </lightning-button>
+            <lightning-button
+                lwc:if={showActionButtons}
+                disabled={showSpinner}
+                class="slds-var-m-left_x-small"
+                label={label.Merge}
+                title={label.Merge}
+                variant="brand"
+                onclick={merge}
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

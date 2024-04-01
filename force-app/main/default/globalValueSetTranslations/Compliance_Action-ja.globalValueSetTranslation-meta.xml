@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Abort Process</masterLabel>
+        <translation>プロセスを中止</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Continue with alert</masterLabel>
+        <translation>アラート付きで続ける</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Document Only</masterLabel>
+        <translation>ドキュメントのみ</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

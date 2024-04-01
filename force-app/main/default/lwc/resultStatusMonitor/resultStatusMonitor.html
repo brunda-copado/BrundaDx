@@ -1,0 +1,62 @@
+<template>
+    <lightning-card>
+        <div slot="title">{label.PROGRESS}</div>
+        <div slot="actions">
+            <template lwc:if={allowStopExecution}>
+                <lightning-button label={label.STOP_EXECUTION} onclick={stopExecution}></lightning-button>
+            </template>
+            <template if:true={showDetailLink}>
+                <lightning-button
+                    label={label.VIEWRESULT}
+                    icon-position="right"
+                    icon-name="utility:new_window"
+                    onclick={navigateToResult}
+                    variant="base"
+                ></lightning-button>
+            </template>
+        </div>
+
+        <template lwc:if={record}>
+            <template lwc:if={noHistoryRecord}>
+                <div class="slds-box slds-theme_shade slds-var-m-horizontal_small">{label.NO_FIELD_HISTORY}</div>
+            </template>
+
+            <template lwc:if={hasHistoricalMessage}>
+                <div class="slds-box slds-theme_shade slds-scrollable slds-var-m-horizontal_small">
+                    <ul class="steps">
+                        <template for:each={historicalMessages} for:item="record">
+                            <li key={record.id}>
+                                <span class="hour slds-var-m-right_medium">
+                                    <lightning-formatted-date-time
+                                        value={record.createdDate}
+                                        if:true={record.createdDate}
+                                        year="2-digit"
+                                        month="numeric"
+                                        day="numeric"
+                                        hour="2-digit"
+                                        minute="2-digit"
+                                        second="2-digit"
+                                    >
+                                    </lightning-formatted-date-time>
+                                </span>
+                                <span class="description slds-truncate" title={record.message}> {record.message} </span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+
+            <template lwc:elseif={showSpinner}>
+                <div class="slds-modal__content">
+                    <lightning-spinner alternative-text={label.LOADING} size="small" variant="brand"></lightning-spinner>
+                </div>
+            </template>
+        </template>
+
+        <template lwc:else>
+            <c-copadocore-illustration name="error:not_available_in_lightning" size="small" message={label.NO_RECORD_FOUND}>
+            </c-copadocore-illustration>
+        </template>
+    </lightning-card>
+    <c-result-stop-execution oncancelling={hideStopExecution} oncancelled={getRecord}></c-result-stop-execution>
+</template>

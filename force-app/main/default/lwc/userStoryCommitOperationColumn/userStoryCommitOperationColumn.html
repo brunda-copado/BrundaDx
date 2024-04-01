@@ -1,0 +1,21 @@
+<template>
+    <c-datatable-editable-custom-column
+        row-id={rowId}
+        property={property}
+        value={operation}
+        read-only-mode={readOnlyMode}
+        selected-count={selectedCount}
+        onapplymultiedit={handleApplyMultiEdit}
+    >
+        <div slot="body">
+            <lightning-combobox
+                if:false={readOnlyMode}
+                variant="label-hidden"
+                value={value}
+                options={options}
+                onchange={handleChangeOption}
+                dropdown-alignment="auto"
+            ></lightning-combobox>
+        </div>
+    </c-datatable-editable-custom-column>
+</template>

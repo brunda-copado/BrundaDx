@@ -1,0 +1,23 @@
+.page {
+    min-height: 100%;
+}
+.panel {
+    border: 1px solid;
+    width: 60%;
+}
+.panel-block {
+    height: 30rem;
+}
+.panel-block::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 4px;
+}
+.panel-block::-webkit-scrollbar {
+    width: 4px;
+}
+.left-panel {
+    align-items: initial;
+}
+.right-panel {
+    border-left: 2px solid;
+}

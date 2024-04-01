@@ -1,0 +1,37 @@
+.copado-helper-content{
+    padding:0.5rem 1rem;
+}
+.copado-helper-info-title{
+    padding-bottom: 1rem;
+}
+.copado-helper-info-title h4{
+    font-size: 0.8125rem;
+    font-weight: bold;
+}
+.copado-helper-content p{
+    margin: 0.5rem 0;
+}
+/* style for ordered list */
+.copado-helper-content ol{
+    list-style-type: decimal;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+}
+.copado-helper-content ol li{
+    margin-bottom: 0.5rem;
+}
+/* style for unordered list */
+.copado-helper-content ul{
+    list-style-type: disc;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+}
+.copado-helper-content ul li{
+    margin-bottom: 0.5rem;
+}
+.copado-helper-content a{
+    color: #006DCC;
+}
+.copado-helper-content a:hover{
+    text-decoration: underline;
+}

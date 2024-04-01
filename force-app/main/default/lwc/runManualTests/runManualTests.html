@@ -1,0 +1,169 @@
+<template>
+    <div data-name="runModal" class="slds-var-p-around_medium runTestsBody">
+        <div if:false={isTestScriptWithoutSteps}>
+            <div class="slds-var-m-bottom_small slds-scoped-notification slds-media slds-scoped-notification_light" role="status">
+                <div class="slds-media__figure">
+                    <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                    <p>{labels.TEST_EXECUTION_RESULT_MESSAGE}</p>
+                </div>
+            </div>
+
+            <div class="slds-var-p-around_small slds-wrap slds-scoped-notification slds-scoped-notification_light" role="status">
+                <h2 id="modal-heading-02">{labels.MANUAL_TEST_EXECUTION_RESULTS}</h2>
+            </div>
+
+            <article class="slds-card">
+                <lightning-spinner if:true={isLoading} alternative-text="Loading" variant="brand" size="large"> </lightning-spinner>
+                <template if:false={isLoading}>
+                    <div class="slds-form" role="list">
+                        <template for:each={testScripts} for:item="item">
+                            <div class="slds-form__row" key={item.id}>
+                                <div class="slds-form__item script" role="listitem">
+                                    <div class="slds-form-element">
+                                        <span class="slds-form-element__label slds-card__header-title scriptFontSize">{item.name}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <template for:each={item.testRunSteps} for:item="step">
+                                <div class="slds-form__row" key={step.stepId}>
+                                    <div class="slds-form__item step" role="listitem">
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">{labels.STEP_REFERENCE}</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-icon
+                                                        icon-name="standard:entitlement"
+                                                        alternative-text="New note"
+                                                        title="New note"
+                                                        size="small"
+                                                        class="slds-var-m-right_xx-small"
+                                                    >
+                                                    </lightning-icon>
+                                                    <lightning-formatted-url
+                                                        label={step.stepName}
+                                                        value={step.url}
+                                                        target="_blank"
+                                                    ></lightning-formatted-url>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-form__item description" role="listitem">
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">{labels.ACTION_DESCRIPTION}</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <p title={step.actionDescription} class="slds-truncate">
+                                                        <lightning-formatted-text value={step.actionDescription} linkify></lightning-formatted-text>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-form__item expectedResult" role="listitem">
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">{labels.EXPECTED_RESULT}</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <p title={step.expectedResult} class="slds-truncate">
+                                                        <lightning-formatted-text value={step.expectedResult} linkify></lightning-formatted-text>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-form__item expectedResult" role="listitem">
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">{labels.GUIDANCE_NOTES}</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <p title={step.guidanceNotes} class="slds-truncate">
+                                                        <lightning-formatted-text value={step.guidanceNotes} linkify></lightning-formatted-text>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-form__item" role="listitem">
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">{labels.STATUS}</span>
+                                            <div class="slds-form-element__control">
+                                                <lightning-button-group>
+                                                    <lightning-button
+                                                        label={labels.PASSED}
+                                                        variant={step.passedStatusVariant}
+                                                        onclick={statusFieldChangeHandler}
+                                                        data-scriptid={item.id}
+                                                        data-stepid={step.stepId}
+                                                    ></lightning-button>
+                                                    <lightning-button
+                                                        label={labels.FAILED}
+                                                        variant={step.failedStatusVariant}
+                                                        onclick={statusFieldChangeHandler}
+                                                        data-scriptid={item.id}
+                                                        data-stepid={step.stepId}
+                                                    ></lightning-button>
+                                                </lightning-button-group>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-form-element actualResult">
+                                        <lightning-textarea
+                                            name="actualResult"
+                                            label={labels.ACTUAL_RESULT}
+                                            value={step.actualResult}
+                                            data-scriptid={item.id}
+                                            data-stepid={step.stepId}
+                                            onchange={actualResultFieldChangeHandler}
+                                            maxlength={resultLength}
+                                            message-when-too-long={labels.ACTUAL_RESULT_MAXIMUM_LENGTH_MESSAGE}
+                                        >
+                                        </lightning-textarea>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+
+                    <template if:true={isScriptListEmpty}>
+                        <lightning-card>
+                            <div class="slds-var-p-around_large">
+                                <c-copadocore-illustration name="misc:no_content" size="medium" message={labels.NO_MANUAL_TEST_SCRIPTS}>
+                                    <p slot="body">{labels.NO_MANUAL_TEST_SCRIPTS_BODY}</p>
+                                </c-copadocore-illustration>
+                            </div>
+                        </lightning-card>
+                    </template>
+                </template>
+            </article>
+        </div>
+
+        <div if:true={isTestScriptWithoutSteps}>
+            <c-copado-alert variant="error" message={labels.MANUAL_TEST_NOT_RUNNABLE_TITLE}></c-copado-alert>
+            <lightning-formatted-rich-text
+                class="slds-p-around_small slds-is-absolute"
+                value={labels.MANUAL_TEST_NOT_RUNNABLE_DETAILS}
+            ></lightning-formatted-rich-text>
+        </div>
+    </div>
+
+    <div class="slds-modal__footer">
+        <lightning-button variant="neutral" class="slds-var-m-left_x-small" label={labels.CANCEL} onclick={handleCancel}></lightning-button>
+        <lightning-button
+            variant="brand"
+            class="slds-var-m-left_x-small"
+            label={labels.SAVE}
+            type="submit"
+            onclick={handleSubmit}
+            disabled={saveDisabled}
+        ></lightning-button>
+    </div>
+</template>

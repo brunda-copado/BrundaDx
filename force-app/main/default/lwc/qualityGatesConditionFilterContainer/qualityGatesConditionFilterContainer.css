@@ -1,0 +1,149 @@
+.container {
+    padding: 0 1rem 1rem 1rem;
+}
+
+.container .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20rem;
+}
+
+.container .edit-button {
+    display: flex;
+    justify-content: flex-end;
+    height: 2rem;
+}
+
+.container .add-button {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.container .label .group-label {
+    font-weight: 700;
+    padding-right: 0.25rem;
+}
+
+.container .add-button.empty {
+    justify-content: center;
+}
+
+.container .read-only .slds-form__row {
+    padding-bottom: 0.5rem;
+}
+
+.container .read-only .filter-logic .slds-form-element_horizontal {
+    padding: unset;
+}
+
+.container .read-only .slds-form-element__label {
+    display: block;
+    width: 100%;
+    max-width: unset;
+}
+
+.container .read-only .slds-form-element__control {
+    padding-left: 0;
+    padding-bottom: 0px;
+    margin-bottom: -5px;
+}
+
+.container .read-only .slds-form-element__control div.filter-logic {
+    padding-bottom: 5px;
+}
+
+.container .read-only .slds-form__item {
+    min-width: unset;
+}
+
+.container .read-only lightning-icon.edit-icon {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.container .read-only .order {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    max-width: 6rem;
+}
+
+.container .read-only .order legend {
+    width: unset;
+}
+
+.container .read-only .property {
+    flex-grow: 1;
+    width: 8rem;
+}
+
+.container .read-only .property lightning-helptext {
+    margin-left: 5px;
+    position: absolute;
+    top: 0;
+}
+
+.container .read-only .operator {
+    flex-grow: 1;
+    width: 8rem;
+}
+
+.container .read-only .value {
+    flex-grow: 2;
+    flex-shrink: 3;
+    width: 10rem;
+}
+
+.container .quality-gates .list li {
+    padding-bottom: 1rem;
+}
+
+.container .quality-gates .list li fieldset {
+    display: flex;
+    clear: both;
+}
+
+.container .quality-gates .list li div.slds-form-element {
+    padding-right: 10px;
+}
+
+.container .quality-gates .list li div.slds-form-element.order {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    max-width: 6rem;
+}
+
+.container .quality-gates .list li div.slds-form-element.order legend {
+    width: unset;
+}
+
+.container .quality-gates .list li div.slds-form-element.property {
+    flex-grow: 1;
+    width: 8rem;
+}
+
+.container .quality-gates .list li div.slds-form-element.property .slds-form-element__label {
+    margin-bottom: 0;
+}
+
+.container .quality-gates .list li div.slds-form-element.property lightning-helptext {
+    margin-left: 5px;
+}
+
+.container .quality-gates .list li div.slds-form-element.operator {
+    flex-grow: 1;
+    width: 8rem;
+}
+
+.container .quality-gates .list li div.slds-form-element.value {
+    flex-grow: 2;
+    flex-shrink: 3;
+    width: 10rem;
+}
+
+.container .quality-gates .list li div.slds-form-element.delete {
+    margin-top: 24px;
+}

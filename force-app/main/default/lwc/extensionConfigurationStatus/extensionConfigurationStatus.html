@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title={label.extensionConfigurationStatusTitle}>
+        <div class="slds-m-around_medium">
+            <lightning-icon
+                icon-name={icon.name}
+                alternative-text={message}
+                size="small"
+                variant={icon.variant}
+                onmouseover={toggleTooltip}
+                onmouseout={toggleTooltip}
+                >
+            </lightning-icon>
+            <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left slds-hide" role="tooltip">
+                <div class="slds-popover__body">{message}</div>
+            </div>
+            <b class="slds-text-color_weak slds-m-left_small">{message}</b>
+        </div>
+    </lightning-card>
+</template>

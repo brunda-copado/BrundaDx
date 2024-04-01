@@ -1,0 +1,53 @@
+<template>
+    <div class="slds-is-relative modal-height">
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">
+                    {label.Setup_Continuous_Delivery}
+                </h2>
+            </div>
+        </header>
+
+        <div class="slds-modal__content slds-p-around_medium slds-text-align_center">
+            <h3 class="slds-text-heading_large slds-p-bottom_large slds-p-top_large">
+                {environmentSelectionData.header}
+            </h3>  
+
+            <p class="slds-text-color_weak slds-p-bottom_large slds-p-left_large slds-p-right_large">
+                {environmentSelectionData.body}
+            </p>  
+
+            <div class="narrow-dual-listbox">
+                <lightning-dual-listbox 
+                    source-label={environmentSelectionData.sourceLabel}
+                    selected-label={environmentSelectionData.selectedLabel}
+                    disable-reordering
+                    options={environments}
+                    value={selectedEnvironments}
+                    onchange={handleEnvironmentsSelected}
+                    min="1"
+                    max="13"
+                    size="4">
+                </lightning-dual-listbox>
+            </div>
+        </div>
+
+        <footer class="slds-modal__footer modal-footer">
+            <lightning-button label={label.Back} variant="neutral" onclick={handlePrev} class="slds-float_left"> </lightning-button>
+            <c-copadocore-error-popover
+                if:true={error}
+                title={error.title}
+                message={error.message}
+                class="slds-show_inline slds-p-right_x-small"
+                popover-position="right">
+            </c-copadocore-error-popover>
+
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.Next}
+                variant="brand"
+                onclick={handleNext}
+            ></lightning-button>
+        </footer>
+    </div>
+</template>

@@ -1,0 +1,82 @@
+<template>
+    <div class="datatable-container">
+        <lightning-card variant="Narrow">
+            <div class="corner slds-theme_shade slds-border_bottom slds-p-top_small slds-p-right_small">
+                <div class="slds-grid">
+                    <div class="slds-col slds-media slds-media_center slds-has-flexi-truncate slds-p-left_small slds-p-right_small" slot="title">
+                        <slot name="headerIcon">
+                            <div if:true={iconName} class="slds-media__figure">
+                                <lightning-icon icon-name={iconName} size={iconSize}></lightning-icon>
+                            </div>
+                        </slot>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <slot name="title"></slot>
+                            </h2>
+                            <p class="slds-page-header__name-meta"><slot name="subtitle"></slot></p>
+                        </div>
+                    </div>
+                    <div slot="actions" class="slds-col align-right">
+                        <div class="slds-p-bottom_xx-small"><slot name="actions"></slot></div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-m-bottom_x-small">
+                    <div class="slds-col slds-size_1-of-3 slds-p-left_small">
+                        <div class="slds-p-top_small"><slot name="titleInfo"></slot></div>
+                    </div>
+                    <div class="slds-col">
+                        <div class="slds-grid slds-float_right">
+                            <div class="slds-col">
+                                <slot name="additionalOperations"></slot>
+                            </div>
+                            <div class="slds-col">
+                                <slot name="search">
+                                    <template if:true={enableDefaultSearch}>
+                                        <span onkeyup={handleSearch}>
+                                            <lightning-input
+                                                class="textInp"
+                                                data-field="searchInput"
+                                                name="column-search-text"
+                                                placeholder={label.Search}
+                                                value={searchValue}
+                                                type="search"
+                                                variant="label-hidden"
+                                                title={label.Search}
+                                                onchange={handleClearSearch}
+                                            ></lightning-input>
+                                        </span>
+                                    </template>
+                                </slot>
+                            </div>
+                            <div class="slds-col">
+                                <slot name="tableActions"></slot>
+                            </div>
+                            <div class="slds-col">
+                                <slot name="filter">
+                                    <template if:true={enableQuickFilter}>
+                                        <template if:true={rows}>
+                                            <c-datatable-filter
+                                                rows={rows}
+                                                columns={columns}
+                                                onfilter={handleApplyFilter}
+                                                onclearfilter={handleClearFilter}
+                                            >
+                                            </c-datatable-filter>
+                                        </template>
+                                    </template>
+                                </slot>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div if:true={hasBody}>
+                <slot name="datatable"></slot>
+            </div>
+            <div if:true={hasFooter} slot="footer">
+                <slot name="footer"></slot>
+            </div>
+        </lightning-card>
+    </div>
+</template>

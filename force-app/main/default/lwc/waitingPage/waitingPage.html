@@ -1,0 +1,52 @@
+<template>
+    <div class="slds-card slds-p-around_large page">
+        <div class="slds-grid slds-p-around_large slds-m-top_large slds-align_absolute-center panel">
+            <div
+                class="slds-col slds-size_1-of-2 slds-p-around_large slds-m-around_large slds-align_absolute-center slds-scrollable_y slds-m-right_none panel-block left-panel"
+            >
+                <lightning-record-view-form record-id={storyId} object-api-name={schema.USER_STORY_OBJECT}>
+                    <lightning-output-field field-name={schema.NAME_FIELD}></lightning-output-field>
+                    <template for:each={fields} for:item="field">
+                        <lightning-output-field key={field} field-name={field} id={field}></lightning-output-field>
+                    </template>
+                </lightning-record-view-form>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-p-around_large slds-m-around_small slds-scrollable_y panel-block right-panel slds-is-relative">
+                <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+                <div>
+                    <template for:each={previousUpdates} for:item="update">
+                        <div class="slds-p-bottom_large slds-grid" key={update}>
+                            <lightning-icon icon-name={update.icon} size="small"></lightning-icon>
+                            <div class="slds-p-left_x-small">{update.message}</div>
+                        </div>
+                    </template>
+                </div>
+                <div>
+                    <template for:each={updates} for:item="update">
+                        <div class="slds-p-bottom_large slds-grid" key={update.message}>
+                            <div if:false={update.icon} class="slds-m-right_medium slds-is-relative">
+                                <div class="slds-spinner_container">
+                                    <div class="slds-spinner slds-spinner_small slds-spinner_brand">
+                                        <span class="slds-assistive-text">{constants.LOADING}</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <lightning-icon if:true={update.icon} icon-name={update.icon} size="small"></lightning-icon>
+                            <div class="slds-p-left_x-small">{update.message}</div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="slds-align_absolute-center slds-p-top_large">
+            <c-copadocore-error-popover
+                if:true={submitError.isError}
+                class="slds-p-right_x-small"
+                message={submitError.message}
+            ></c-copadocore-error-popover>
+            <lightning-button variant="brand" label={constants.USB_GO_BACK_USER_STORY} onclick={navigateToRecordViewPage}></lightning-button>
+        </div>
+    </div>
+</template>

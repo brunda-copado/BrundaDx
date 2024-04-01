@@ -1,0 +1,25 @@
+<template>
+    <div class="custom-nav-content-wrapper">
+        <template if:true={releaseManagerSection}>
+            <div class="persona-section-container">
+                <p>Release Manager Details</p>
+            </div>
+        </template>
+
+        <template if:true={developerSection}>
+            <c-persona-settings></c-persona-settings>
+        </template>
+
+        <template if:true={qualityEngineerSection}>
+            <div class="persona-section-container">
+                <p>Quality Engineer Details</p>
+            </div>
+        </template>
+
+        <template if:true={customPersonaSection}>
+            <div class="persona-section-container">
+                <p>Custom Persona Details</p>
+            </div>
+        </template>
+    </div>
+</template>

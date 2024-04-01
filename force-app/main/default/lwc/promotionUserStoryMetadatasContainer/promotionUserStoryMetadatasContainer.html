@@ -1,0 +1,50 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner lwc:if={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+        <c-promotion-user-story-metadatas-removal-modal record-id={recordId} onchangesremoved={handleRefresh}>
+        </c-promotion-user-story-metadatas-removal-modal>
+
+        <c-datatable-container
+            icon-name="standard:calibration"
+            has-body="true"
+            has-footer={hasData}
+            rows={allRows}
+            columns={columns}
+            enable-default-search
+            onsearch={handleApplySearch}
+            onclearsearch={handleClearSearch}>
+            <span slot="title">{title}</span>
+            <span slot="titleInfo">{items}</span>
+
+            <span slot="actions">
+                <lightning-button-group>
+                    <lightning-button label={label.REVIEW_CONFLICTS} title={label.REVIEW_CONFLICTS} onclick={handleReviewConflict}></lightning-button>
+                    <lightning-button
+                        disabled={removeSelectedDisabled}
+                        label={label.Remove_Selection_Button}
+                        title={label.Remove_Selection_Button}
+                        onclick={handleRemoveChanges}></lightning-button>
+                </lightning-button-group>
+            </span>
+
+            <span slot="datatable">
+                <div style="height: calc(100vh - 500px)">
+                    <lightning-datatable
+                        lwc:if={hasData}
+                        key-field={keyField}
+                        data={data}
+                        columns={columns}
+                        enable-infinite-loading
+                        show-row-number-column
+                        default-sort-direction={defaultSortDirection}
+                        sorted-direction={sortDirection}
+                        onrowselection={handleRowSelection}
+                        sorted-by={sortedBy}
+                        onsort={handleSort}
+                        onloadmore={handleLoadMoreData}>
+                    </lightning-datatable>
+                </div>
+            </span>
+        </c-datatable-container>
+    </div>
+</template>

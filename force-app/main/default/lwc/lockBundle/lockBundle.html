@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-hide body slds-is-relative">
+        <header if:false={error} class="slds-modal__header slds-text-heading--medium">{label.LOCK_BUNDLE}</header>
+        <header if:true={error} class="slds-modal__header slds-text-heading--medium slds-theme_warning slds-theme_alert-texture">
+            {label.CANNOT_LOCK_BUNDLE}
+        </header>
+
+        <div class="slds-is-relative slds-p-around_medium">
+            <lightning-spinner if:true={isLoading} variant="brand" alternative-text={label.LOADING} class></lightning-spinner>
+            <lightning-formatted-text if:true={error} value={error}></lightning-formatted-text>
+            <lightning-record-edit-form
+                if:false={error}
+                record-id={storyId}
+                object-api-name={objectName}
+                onsubmit={handleSubmit}
+                onload={handleOnLoad}
+            >
+                <lightning-layout multiple-rows>
+                    <template for:each={displayFields} for:item="field">
+                        <lightning-layout-item key={field.fieldName} class="slds-p-around_xx-small" size="6">
+                            <lightning-input-field
+                                field-name={field.fieldName}
+                                id={field.fieldName}
+                                disabled={field.readOnly}
+                                required={field.required}
+                            ></lightning-input-field>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+                <lightning-button type="submit" class="slds-hide"></lightning-button>
+            </lightning-record-edit-form>
+        </div>
+
+        <footer class="slds-align_absolute-center slds-modal__footer">
+            <c-copadocore-error-popover
+                if:true={submitError.isError}
+                class="slds-p-right_x-small"
+                message={submitError.message}
+            ></c-copadocore-error-popover>
+            <lightning-button class="slds-m-right_medium" onclick={closeModal} label={label.CANCEL}></lightning-button>
+            <lightning-button if:false={error} disabled={isLoading} variant="brand" onclick={saveForm} label={label.LOCK_BUNDLE}></lightning-button>
+        </footer>
+    </div>
+</template>

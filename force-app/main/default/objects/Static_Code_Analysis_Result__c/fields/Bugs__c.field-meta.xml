@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bugs__c</fullName>
+    <description>CodeScan Bugs in violations</description>
+    <externalId>false</externalId>
+    <label>Bugs</label>
+    <summaryFilterItems>
+        <field>Static_Code_Analysis_Violation__c.Type__c</field>
+        <operation>equals</operation>
+        <value>Bug</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Static_Code_Analysis_Violation__c.Status__c</field>
+        <operation>notEqual</operation>
+        <value>Resolved, Closed</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Static_Code_Analysis_Violation__c.Static_Code_Analysis_Result__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

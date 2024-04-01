@@ -15,12 +15,8 @@
                 <field>InvoiceLineStartDate</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>InvoiceLineEndDate</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
-                <field>ReferenceEntityItemId</field>
+                <field>ReferenceEntityItemType</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -37,8 +33,8 @@
                 <field>InvoiceId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>ReferenceEntityItemType</field>
+                <behavior>Required</behavior>
+                <field>InvoiceLineEndDate</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -78,6 +74,10 @@
                 <field>AdjustmentAmount</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>LineAmount</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>TaxAmount</field>
             </layoutItems>
@@ -89,21 +89,30 @@
         <customLabel>false</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
+        <label>InvoiceLineAddressInformation</label>
+        <layoutColumns/>
+        <layoutColumns/>
+        <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>false</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
         <label>TaxInformation</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>TaxRate</field>
+                <field>TaxName</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>TaxName</field>
+                <field>TaxEffectiveDate</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>TaxEffectiveDate</field>
+                <field>TaxRate</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-form-element">
+        <label if:true={labelExists} class="slds-form-element__label">{label}</label>
+        <div class="slds-form-element__control slds-border_bottom slds-input-has-icon slds-input-has-icon_right">
+            <p class="slds-p-bottom_xx-small slds-text-body_regular slds-form-element__static">{value}</p>
+            <button
+                class="slds-button slds-button_icon slds-input__icon slds-input__icon_right slds-p-bottom_x-small"
+                onclick={handleClick}
+                onmouseover={handleMouseOver}
+                onmouseout={handleMouseOut}
+            >
+                <lightning-icon class="light-icon" icon-name="utility:edit" size="xx-small"></lightning-icon>
+            </button>
+        </div>
+    </div>
+</template>

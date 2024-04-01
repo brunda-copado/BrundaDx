@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsExposed__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Clear this checkbox if you do not want this object to be visible in the Extension configuration tab.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Clear this checkbox if you do not want this object to be visible in the Extension configuration tab.</inlineHelpText>
+    <label>Is Exposed</label>
+    <type>Checkbox</type>
+</CustomField>

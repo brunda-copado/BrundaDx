@@ -1,0 +1,212 @@
+<template>
+    <template lwc:if={isReadOnly}>
+        <div class="slds-page-header slds-text-heading_small slds-var-m-bottom_small slds-var-p-around_x-small">{label.Manual_Task_Assignment}</div>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item class="slds-var-m-top_small" size="12">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                        <div class="slds-form-element slds-form-element_readonly">
+                            <span class="slds-form-element__label">{label.Task_Assignee}</span>
+                            <div class="slds-form-element__control">
+                                <div if:true={userName} class="slds-form-element__static">
+                                    <a href={userDetailLink} target="_blank" class="slds-text-link">{userName}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                        <div class="slds-form-element slds-form-element_readonly">
+                            <span class="slds-form-element__label">{label.Execution_Sequence}</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{executionSequence}</div>
+                            </div>
+                        </div>
+                    </lightning-layout-item></lightning-layout
+                >
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-var-m-top_small" size="12">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                        <div class="slds-form-element slds-form-element_readonly">
+                            <label class="slds-form-element__label" for="checkbox-unique-id-81">{label.Manual_Taks_Complete_In_Source}</label>
+                            <div class="slds-form-element__control">
+                                <span class="slds-checkbox slds-checkbox_standalone">
+                                    <input lwc:if={completeInSourceChecked} type="checkbox" disabled="" checked />
+                                    <input lwc:else type="checkbox" disabled="" />
+                                    <span class="slds-checkbox_faux"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6">
+                        <div class="slds-form-element slds-form-element_readonly">
+                            <label class="slds-form-element__label" for="checkbox-unique-id-81">{label.Manual_Taks_Complete_In_Destination}</label>
+                            <div class="slds-form-element__control">
+                                <span class="slds-checkbox slds-checkbox_standalone">
+                                    <input lwc:if={completeInDestinationChecked} type="checkbox" disabled="" checked />
+                                    <input lwc:else type="checkbox" disabled="" />
+                                    <span class="slds-checkbox_faux"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-var-m-top_small" size="12">
+                <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">{label.Task_Description}</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{taskDescription}</div>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item lwc:if={isJobExecution} class="slds-var-m-top_small" size="12">
+                <div class="slds-form-element slds-form-element_readonly">
+                    <span class="slds-form-element__label">{label.Manual_Task_Comment}</span>
+                    <div class="slds-form-element__control">
+                        <div class="slds-form-element__static">{taskComment}</div>
+                    </div>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <template lwc:if={showDisableOption}>
+            <div class="slds-var-m-top_medium">
+                <c-expandable-section id="disableOptionsEditMode" label={label.Manual_Task_Disable_Options}>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-m-top_xx-small">
+                        <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                            <div class="slds-form-element slds-form-element_readonly">
+                                <label class="slds-form-element__label" for="checkbox-unique-id-81"
+                                    >{label.Manual_Task_Disable_for_Back_Promotions}</label
+                                >
+                                <div class="slds-form-element__control">
+                                    <span class="slds-checkbox slds-checkbox_standalone">
+                                        <input lwc:if={disableForBackPromotions} type="checkbox" disabled="" checked />
+                                        <input lwc:else type="checkbox" disabled="" />
+                                        <span class="slds-checkbox_faux"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-var-p-bottom_medium" size="6">
+                            <lightning-layout multiple-rows>
+                                <lightning-layout-item class="slds-var-p-bottom_medium" size="12">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label slds-m-bottom_none">{label.Manual_Task_Disable_For_Stage} </label>
+                                        <div class="slds-form-element__control slds-border_bottom">
+                                            <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">
+                                                {selectedStageNames}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="slds-var-p-bottom_medium" size="12">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label slds-m-bottom_none"
+                                            >{label.Manual_Task_Disable_For_Environment}
+                                        </label>
+                                        <div class="slds-form-element__control slds-border_bottom">
+                                            <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">
+                                                {selectedEnvironmentNames}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+            </div>
+        </template>
+    </template>
+    <template lwc:else>
+        <div class="slds-page-header slds-text-heading_small slds-var-m-bottom_small slds-var-p-around_x-small">{label.Manual_Task_Assignment}</div>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                <c-lookup
+                    label={label.Task_Assignee}
+                    helptext={label.Manual_Tasks_Asignee_Helptext}
+                    onsearch={handleLookupSearch}
+                    onselectionchange={handleChangeUser}
+                    required={fullEditMode}>
+                </c-lookup>
+                <div if:false={selectedUserId} class="slds-has-error"><div class="slds-form-element__help">{label.COMPLETE_THIS_FIELD}</div></div>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-var-p-right_medium" size="6">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-grid">
+                        <lightning-checkbox-group
+                            name="performAtGroup"
+                            label={label.Manual_Task_to_be_completed_on}
+                            options={performAtOptions}
+                            value={performAtValue}
+                            onchange={handleChangePerformAt}></lightning-checkbox-group>
+                        <lightning-helptext content={label.Manual_Task_to_be_completed_on_Helptext}></lightning-helptext>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-var-m-top_small" size="12">
+                <lightning-textarea
+                    class="validValue"
+                    name="taskDescription"
+                    label={label.Task_Description}
+                    field-level-help={label.Manual_Task_Description_Helptext}
+                    value={taskDescription}
+                    onchange={handleDescriptionChange}
+                    required={fullEditMode}>
+                </lightning-textarea>
+            </lightning-layout-item>
+        </lightning-layout>
+        <template lwc:if={showDisableOption}>
+            <div class="slds-var-m-top_medium">
+                <c-expandable-section id="disableOptionsReadOnly" label={label.Manual_Task_Disable_Options} collapsed>
+                    <lightning-layout multiple-rows slot="body" class="slds-var-m-top_medium">
+                        <lightning-layout-item class="slds-var-p-bottom_medium" size="6">
+                            <lightning-input
+                                type="checkbox"
+                                label={label.Manual_Task_Disable_for_Back_Promotions}
+                                field-level-help={label.Manual_Task_Disable_for_Back_Promotions_Helptext}
+                                name="disableForBackPromotions"
+                                checked={disableForBackPromotions}
+                                onchange={handleChangeDisableForBackPromotions}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-var-p-bottom_medium" size="12">
+                            <lightning-combobox
+                                name="scopeMode"
+                                label={label.Manual_Task_Disable_For_Stages_or_Environments}
+                                field-level-help={label.Manual_Task_Disable_For_Stages_or_Environments_Helptext}
+                                value={scopeMode}
+                                options={scopeModeOptions}
+                                onchange={handleChangeScopeMode}></lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-var-p-bottom_medium" size="12">
+                            <lightning-dual-listbox
+                                lwc:if={isStageScopeMode}
+                                name="stages"
+                                disable-reordering
+                                label={label.STAGES}
+                                source-label={label.Enabled}
+                                selected-label={label.Disabled}
+                                field-level-help={label.Manual_Task_Disable_For_Stage_Helptext}
+                                options={stageOptions}
+                                value={selectedStages}
+                                onchange={handleChangeStage}></lightning-dual-listbox>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-var-p-bottom_medium" size="12">
+                            <lightning-dual-listbox
+                                lwc:if={isEnvironmentScopeMode}
+                                name="environments"
+                                disable-reordering
+                                label={label.ENVIRONMENTS}
+                                source-label={label.Enabled}
+                                selected-label={label.Disabled}
+                                field-level-help={label.Manual_Task_Disable_For_Environment_Helptext}
+                                options={environmentOptions}
+                                value={selectedEnvironments}
+                                onchange={handleChangeEnvironment}></lightning-dual-listbox>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </c-expandable-section>
+            </div>
+        </template>
+    </template>
+</template>

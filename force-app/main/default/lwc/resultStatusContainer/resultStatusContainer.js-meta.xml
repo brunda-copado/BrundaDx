@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Result Status Container</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property label="Context" name="context" datasource="Promotion Execution, Deployment Execution, Result Detail" type="String"/>
+        </targetConfig>
+        <targetConfig targets="lightning__FlowScreen">
+            <property label="Record Id" name="recordId" type="String"/>
+            <property label="Context" name="context" type="String"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

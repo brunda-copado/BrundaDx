@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Build</masterLabel>
+        <translation>ビルド</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Production</masterLabel>
+        <translation>プロダクション</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Test</masterLabel>
+        <translation>テスト</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

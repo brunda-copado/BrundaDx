@@ -1,0 +1,728 @@
+<template>
+    <div>
+        <div lwc:if={showLoading} class="authentication-spinner">
+            <div class="slds-align_absolute-center">
+                <lightning-spinner variant="Brand" invrse alternative-text="Loading...." size="large"> </lightning-spinner>
+            </div>
+        </div>
+        <lightning-messages data-id="message"></lightning-messages>
+        <lightning-card title={label.AUTHENTICATION_SETTINGS} icon-name="standard:apex_plugin">
+            <template if:true={IsNewMode}>
+                <lightning-messages data-id="message"></lightning-messages>
+                <c-copadocore-illustration name="error:no_connection" size="large" message="Not Authenticated">
+                    <div slot="body">
+                        <div>{label.PLEASE_AUTHENTICATE_REPO}</div>
+                        <div class="slds-var-m-top_large">
+                            <!-- lightning button for open modal window -->
+                            <lightning-button variant="brand" label="Configure Authentication" onclick={openAuthenticateModal}></lightning-button>
+                        </div>
+                    </div>
+                </c-copadocore-illustration>
+            </template>
+            <template if:false={IsNewMode}>
+                <lightning-button label="Edit" slot="actions" onclick={editAuthenticateModal}></lightning-button>
+                <lightning-messages data-id="message"></lightning-messages>
+                <div class="auth-form-wrap auth-form-wrap-view">
+                    <div class="repository-info-wrap">
+                        <div class="auth-form-wrap">
+                            <div class="repository-info-wrap">
+                                <h3 class="slds-section__title slds-theme_shade">
+                                    <span class="slds-truncate slds-p-horizontal_small" title="Repository Information">{label.REPO_INFORMATION}</span>
+                                </h3>
+                                <lightning-record-view-form record-id={recordId} object-api-name={schema.GIT_REPOSITORY}>
+                                    <lightning-layout multiple-rows>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="slds-form-element_readonly">
+                                                <lightning-output-field field-name={schema.GIT_PROVIDER_FIELD} data-name={schema.GIT_PROVIDER_FIELD}>
+                                                </lightning-output-field>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="slds-form-element_readonly">
+                                                <lightning-output-field field-name={schema.URI_FIELD} data-name="URI__c"> </lightning-output-field>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="slds-form-element_readonly">
+                                                <lightning-output-field field-name={schema.COMMIT_BASE_URL_FIELD} data-name="commitBaseURL">
+                                                </lightning-output-field>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="slds-form-element_readonly">
+                                                <lightning-output-field field-name={schema.BRANCH_BASE_URL_FIELD} data-name="branchBaseURL">
+                                                </lightning-output-field>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="slds-form-element_readonly">
+                                                <lightning-output-field
+                                                    field-name={schema.PULL_REQUEST_BASE_URL_FIELD}
+                                                    data-name="pullRequestBaseURL">
+                                                </lightning-output-field>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="slds-form-element_readonly">
+                                                <lightning-output-field field-name={schema.TAG_BASE_URL_FIELD} data-name="tagBaseURL">
+                                                </lightning-output-field>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </lightning-record-view-form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="repository-auth-wrap">
+                        <h3 class="slds-section__title slds-theme_shade">
+                            <span class="slds-truncate slds-p-horizontal_small" title="Authentication">Authentication</span>
+                        </h3>
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item
+                                size="12"
+                                small-device-size="12"
+                                medium-device-size="12"
+                                large-device-size="6"
+                                padding="around-small">
+                                <div class="slds-form-element slds-form-element_readonly form-control-input">
+                                    <div class="label-with-helptext">
+                                        <label class="slds-form-element__label slds-no-flex">Authentication Type</label>
+                                        <lightning-helptext content={label.AUTHENTICATION_TYPE_HELPTEXT}> </lightning-helptext>
+                                    </div>
+                                    <div class="slds-form-element__control">
+                                        <span class="slds-form-element__static slds-grow word-break-ie11">{authTypeReadOnly}</span>
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <template if:false={httpsfieldVisibleViewMode}>
+                            <lightning-layout multiple-rows>
+                                <template if:true={IsSSHKeyVisibleViewMode}>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="12"
+                                        padding="around-small">
+                                        <div class="slds-form-element slds-form-element_readonly form-control-input">
+                                            <div class="label-with-helptext">
+                                                <label class="slds-form-element__label slds-no-flex">{label.SSH_KEY}</label>
+                                            </div>
+                                            <div class="slds-form-element__control">
+                                                <span class="slds-form-element__static slds-grow word-break-ie11">{sshKey}</span>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="12"
+                                        padding="around-small">
+                                        <template if:false={_attachmentId}>
+                                            <lightning-button
+                                                variant="base"
+                                                label="Generate Key"
+                                                title="Generate Key"
+                                                icon-name="utility:refresh"
+                                                class="slds-m-left_x-small"
+                                                onclick={createSSHKey}></lightning-button>
+                                        </template>
+                                        <template if:true={_attachmentId}>
+                                            <lightning-button
+                                                variant="base"
+                                                label="Copy to Clipboard"
+                                                title="Copy to Clipboard"
+                                                icon-name="utility:copy_to_clipboard"
+                                                class="slds-m-right_x-small"
+                                                onclick={copyToClipboard}></lightning-button>
+                                            <lightning-button
+                                                variant="base"
+                                                label="Regenerate Key"
+                                                title="Regenerate Key"
+                                                icon-name="utility:refresh"
+                                                class="slds-m-left_x-small"
+                                                onclick={createSSHKey}></lightning-button>
+                                            <lightning-button
+                                                icon-name="utility:delete"
+                                                variant="base"
+                                                alternative-text="Delete Key"
+                                                class="slds-text-color_error slds-m-left_x-small"
+                                                title="Delete Key"
+                                                label="Delete Key"
+                                                onclick={handleDelete}></lightning-button>
+                                        </template>
+                                    </lightning-layout-item>
+                                </template>
+                                <lightning-layout-item
+                                    size="12"
+                                    small-device-size="12"
+                                    medium-device-size="12"
+                                    large-device-size="12"
+                                    padding="around-small">
+                                    <lightning-button-stateful
+                                        class="ssh-key-button"
+                                        variant="text"
+                                        label-when-off="Show SSH Key"
+                                        label-when-on="Hide SSH Key"
+                                        icon-name-when-off="utility:preview"
+                                        icon-name-when-on="utility:hide"
+                                        selected={isSelected}
+                                        onclick={keytoggleHandler}>
+                                    </lightning-button-stateful>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                        <template if:true={httpsfieldVisibleViewMode}>
+                            <lightning-layout multiple-rows>
+                                <lightning-layout-item
+                                    size="12"
+                                    small-device-size="12"
+                                    medium-device-size="12"
+                                    large-device-size="6"
+                                    padding="around-small">
+                                    <div class="slds-form-element slds-form-element_readonly form-control-input">
+                                        <div class="label-with-helptext">
+                                            <label class="slds-form-element__label slds-no-flex">Username</label>
+                                            <lightning-helptext content="Username"> </lightning-helptext>
+                                        </div>
+                                        <div class="slds-form-element__control">
+                                            <span class="slds-form-element__static slds-grow word-break-ie11">{unameReadOnly}</span>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </lightning-card>
+
+        <c-copadocore-modal size="medium" onmodalclose={closeModal}>
+            <div if:true={showLoading} class="authentication-spinner">
+                <div class="slds-align_absolute-center">
+                    <lightning-spinner variant="Brand" invrse alternative-text="Loading...." size="large"> </lightning-spinner>
+                </div>
+            </div>
+            <span slot="title">{label.AUTHENTICATION_SETTINGS}</span>
+            <slot>
+                <lightning-record-edit-form
+                    record-id={recordId}
+                    object-api-name={schema.GIT_REPOSITORY}
+                    onsubmit={validateFields}
+                    onerror={handleError}>
+                    <template lwc:if={IsNewMode}>
+                        <lightning-messages data-id="message"></lightning-messages>
+                        <template lwc:if={hasError}>
+                            <lightning-layout-item size="12">
+                                <c-copado-scoped-notification variant="error" message={errorMessage}></c-copado-scoped-notification>
+                            </lightning-layout-item>
+                        </template>
+                        <div class="auth-form-wrap">
+                            <div class="repository-info-wrap">
+                                <h3 class="slds-section__title slds-theme_shade">
+                                    <span class="slds-truncate slds-p-horizontal_small" title="Repository Information">{label.REPO_INFORMATION}</span>
+                                </h3>
+                                <lightning-layout multiple-rows>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field
+                                            field-name={schema.GIT_PROVIDER_FIELD}
+                                            data-name={schema.GIT_PROVIDER_FIELD}
+                                            required="true"
+                                            onchange={populateURLFields}>
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.URI_FIELD} data-name="URI__c" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.COMMIT_BASE_URL_FIELD} data-name="commitBaseURL" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.BRANCH_BASE_URL_FIELD} data-name="branchBaseURL" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field
+                                            field-name={schema.PULL_REQUEST_BASE_URL_FIELD}
+                                            data-name="pullRequestBaseURL"
+                                            required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.TAG_BASE_URL_FIELD} data-name="tagBaseURL" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                            <div class="repository-auth-wrap">
+                                <h3 class="slds-section__title slds-theme_shade">
+                                    <span class="slds-truncate slds-p-horizontal_small" title="Authentication">Authentication</span>
+                                </h3>
+                                <lightning-layout multiple-rows>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <div class="form-control-input">
+                                            <div class="label-with-helptext">
+                                                <label class="slds-form-element__label slds-no-flex">
+                                                    <abbr class="slds-required" title="required">*</abbr>{label.AUTHENTICATION_TYPE}</label
+                                                >
+                                                <lightning-helptext content={label.AUTHENTICATION_TYPE_HELPTEXT}> </lightning-helptext>
+                                            </div>
+                                            <lightning-combobox
+                                                data-section="repositoryAuth"
+                                                name="authenticationType"
+                                                variant="label-hidden"
+                                                value="SSH"
+                                                placeholder=""
+                                                options={authenticationTypeOptions}
+                                                onchange={handleauthTypeChange}
+                                                required></lightning-combobox>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <template if:false={httpsfieldVisible}>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="12"
+                                            padding="around-small">
+                                            <div class="form-control-input">
+                                                <div class="label-with-helptext">
+                                                    <label class="slds-form-element__label slds-no-flex"> {label.SSH_KEY}</label>
+                                                    <lightning-helptext content={label.SSHKEY_HELPTEXT}> </lightning-helptext>
+                                                </div>
+                                                <lightning-textarea
+                                                    data-section="repositoryAuth"
+                                                    name="sshKey"
+                                                    required
+                                                    placeholder=""
+                                                    value={sshKey}
+                                                    variant="label-hidden"
+                                                    readonly="true"></lightning-textarea>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="12"
+                                            padding="around-small">
+                                            <lightning-button
+                                                variant="base"
+                                                label="Copy to Clipboard"
+                                                title="Copy to Clipboard"
+                                                icon-name="utility:copy_to_clipboard"
+                                                class="slds-m-right_x-small"
+                                                onclick={copyToClipboard}></lightning-button>
+                                            <lightning-button
+                                                variant="base"
+                                                label="Generate Key"
+                                                title="Generate Key"
+                                                icon-name="utility:refresh"
+                                                class="slds-m-left_x-small"
+                                                onclick={createSSHKey}></lightning-button>
+                                        </lightning-layout-item>
+                                    </template>
+                                </lightning-layout>
+                                <template if:true={httpsfieldVisible}>
+                                    <lightning-layout multiple-rows>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="form-control-input">
+                                                <div class="label-with-helptext">
+                                                    <label class="slds-form-element__label slds-no-flex">
+                                                        <abbr class="slds-required" title="required">*</abbr>Username</label
+                                                    >
+                                                    <lightning-helptext content="Your Username"></lightning-helptext>
+                                                </div>
+                                                <lightning-input
+                                                    data-section="repositoryAuth"
+                                                    name="repositoryAuthUserName"
+                                                    type="text"
+                                                    variant="label-hidden"
+                                                    placeholder=""
+                                                    required
+                                                    value=""
+                                                    onchange={handleUnameChange}>
+                                                </lightning-input>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="form-control-input">
+                                                <div class="label-with-helptext">
+                                                    <label class="slds-form-element__label slds-no-flex">
+                                                        <abbr class="slds-required" title="required">*</abbr>Password</label
+                                                    >
+                                                    <lightning-helptext content="Your Password"></lightning-helptext>
+                                                </div>
+                                                <lightning-input
+                                                    data-section="repositoryAuth"
+                                                    name="repositoryAuthPassword"
+                                                    type="password"
+                                                    variant="label-hidden"
+                                                    placeholder=""
+                                                    required
+                                                    value=""
+                                                    onchange={handlePasswordChange}>
+                                                </lightning-input>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="12"
+                                            padding="around-small">
+                                            <div class="form-control-input">
+                                                <div class="label-with-helptext">
+                                                    <label class="slds-form-element__label slds-no-flex">Extra Header</label>
+                                                    <lightning-helptext content="Extra Header"> </lightning-helptext>
+                                                </div>
+                                                <lightning-textarea
+                                                    data-section="repositoryAuth"
+                                                    name="extraHeader"
+                                                    required
+                                                    placeholder=""
+                                                    variant="label-hidden"
+                                                    onchange={handleHeaderChange}></lightning-textarea>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <template lwc:if={hasError}>
+                            <lightning-layout-item size="12">
+                                <c-copado-scoped-notification variant="error" message={errorMessage}></c-copado-scoped-notification>
+                            </lightning-layout-item>
+                        </template>
+                        <div class="auth-form-wrap">
+                            <div class="repository-info-wrap">
+                                <h3 class="slds-section__title slds-theme_shade">
+                                    <span class="slds-truncate slds-p-horizontal_small" title="Repository Information">{label.REPO_INFORMATION}</span>
+                                </h3>
+                                <lightning-layout multiple-rows>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field
+                                            field-name={schema.GIT_PROVIDER_FIELD}
+                                            data-name={schema.GIT_PROVIDER_FIELD}
+                                            required="true"
+                                            onchange={populateURLFields}>
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.URI_FIELD} data-name="URI__c" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.COMMIT_BASE_URL_FIELD} data-name="commitBaseURL" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.BRANCH_BASE_URL_FIELD} data-name="branchBaseURL" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field
+                                            field-name={schema.PULL_REQUEST_BASE_URL_FIELD}
+                                            data-name="pullRequestBaseURL"
+                                            required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item
+                                        size="12"
+                                        small-device-size="12"
+                                        medium-device-size="12"
+                                        large-device-size="6"
+                                        padding="around-small">
+                                        <lightning-input-field field-name={schema.TAG_BASE_URL_FIELD} data-name="tagBaseURL" required="true">
+                                        </lightning-input-field>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                                <div class="repository-auth-wrap">
+                                    <h3 class="slds-section__title slds-theme_shade">
+                                        <span class="slds-truncate slds-p-horizontal_small" title="Authentication">Authentication</span>
+                                    </h3>
+                                    <lightning-layout multiple-rows>
+                                        <lightning-layout-item
+                                            size="12"
+                                            small-device-size="12"
+                                            medium-device-size="12"
+                                            large-device-size="6"
+                                            padding="around-small">
+                                            <div class="form-control-input">
+                                                <div class="label-with-helptext">
+                                                    <label class="slds-form-element__label slds-no-flex">
+                                                        <abbr class="slds-required" title="required">*</abbr>{label.AUTHENTICATION_TYPE}</label
+                                                    >
+                                                    <lightning-helptext content={label.AUTHENTICATION_TYPE_HELPTEXT}> </lightning-helptext>
+                                                </div>
+                                                <lightning-combobox
+                                                    data-section="repositoryAuth"
+                                                    name="authenticationType"
+                                                    variant="label-hidden"
+                                                    value={authType}
+                                                    placeholder=""
+                                                    options={authenticationTypeOptions}
+                                                    onchange={handleauthTypeChange}
+                                                    required></lightning-combobox>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <template if:false={httpsfieldVisible}>
+                                            <lightning-layout-item
+                                                size="12"
+                                                small-device-size="12"
+                                                medium-device-size="12"
+                                                large-device-size="12"
+                                                padding="around-small">
+                                                <div class="form-control-input">
+                                                    <div class="label-with-helptext">
+                                                        <label class="slds-form-element__label slds-no-flex"> {label.SSH_KEY}</label>
+                                                        <lightning-helptext content={label.SSHKEY_HELPTEXT}> </lightning-helptext>
+                                                    </div>
+                                                    <lightning-textarea
+                                                        data-section="repositoryAuth"
+                                                        name="sshKey"
+                                                        placeholder=""
+                                                        value={sshKey}
+                                                        variant="label-hidden"
+                                                        readonly="true"
+                                                        disabled="true"></lightning-textarea>
+                                                </div>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item
+                                                size="12"
+                                                small-device-size="12"
+                                                medium-device-size="12"
+                                                large-device-size="12"
+                                                padding="around-small">
+                                                <template if:false={_attachmentId}>
+                                                    <lightning-button
+                                                        variant="base"
+                                                        label="Generate Key"
+                                                        title="Generate Key"
+                                                        icon-name="utility:refresh"
+                                                        class="slds-m-left_x-small"
+                                                        onclick={createSSHKey}></lightning-button>
+                                                </template>
+                                                <template if:true={_attachmentId}>
+                                                    <lightning-button
+                                                        variant="base"
+                                                        label="Copy to Clipboard"
+                                                        title="Copy to Clipboard"
+                                                        icon-name="utility:copy_to_clipboard"
+                                                        class="slds-m-right_x-small"
+                                                        onclick={copyToClipboard}></lightning-button>
+                                                    <lightning-button
+                                                        variant="base"
+                                                        label="Regenerate Key"
+                                                        title="Regenerate Key"
+                                                        icon-name="utility:refresh"
+                                                        class="slds-m-left_x-small"
+                                                        onclick={createSSHKey}></lightning-button>
+                                                    <lightning-button
+                                                        icon-name="utility:delete"
+                                                        variant="base"
+                                                        style="color: red"
+                                                        alternative-text="Delete Key"
+                                                        class="slds-m-left_x-small"
+                                                        title="Delete Key"
+                                                        label="Delete Key"
+                                                        onclick={handleDelete}></lightning-button>
+                                                </template>
+                                            </lightning-layout-item>
+                                        </template>
+                                    </lightning-layout>
+                                    <template if:true={httpsfieldVisible}>
+                                        <lightning-layout multiple-rows>
+                                            <lightning-layout-item
+                                                size="12"
+                                                small-device-size="12"
+                                                medium-device-size="12"
+                                                large-device-size="6"
+                                                padding="around-small">
+                                                <div class="form-control-input">
+                                                    <div class="label-with-helptext">
+                                                        <label class="slds-form-element__label slds-no-flex">
+                                                            <abbr class="slds-required" title="required">*</abbr>Username</label
+                                                        >
+                                                        <lightning-helptext content="Your Username"></lightning-helptext>
+                                                    </div>
+                                                    <lightning-input
+                                                        data-section="repositoryAuth"
+                                                        name="repositoryAuthUserName"
+                                                        type="text"
+                                                        variant="label-hidden"
+                                                        placeholder=""
+                                                        onchange={handleUnameChange}
+                                                        required
+                                                        value={uname}>
+                                                    </lightning-input>
+                                                </div>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item
+                                                size="12"
+                                                small-device-size="12"
+                                                medium-device-size="12"
+                                                large-device-size="6"
+                                                padding="around-small">
+                                                <div class="form-control-input">
+                                                    <div class="label-with-helptext">
+                                                        <label class="slds-form-element__label slds-no-flex">
+                                                            <abbr class="slds-required" title="required">*</abbr>Password</label
+                                                        >
+                                                        <lightning-helptext content="Your Password"></lightning-helptext>
+                                                    </div>
+                                                    <lightning-input
+                                                        data-section="repositoryAuth"
+                                                        name="repositoryAuthPassword"
+                                                        type="password"
+                                                        variant="label-hidden"
+                                                        placeholder=""
+                                                        onchange={handlePasswordChange}
+                                                        required
+                                                        value={password}>
+                                                    </lightning-input>
+                                                </div>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item
+                                                size="12"
+                                                small-device-size="12"
+                                                medium-device-size="12"
+                                                large-device-size="12"
+                                                padding="around-small">
+                                                <div class="form-control-input">
+                                                    <div class="label-with-helptext">
+                                                        <label class="slds-form-element__label slds-no-flex">Extra Header</label>
+                                                        <lightning-helptext content="Extra Header"> </lightning-helptext>
+                                                    </div>
+                                                    <lightning-textarea
+                                                        data-section="repositoryAuth"
+                                                        name="extraHeader"
+                                                        placeholder=""
+                                                        variant="label-hidden"
+                                                        onchange={handleHeaderChange}
+                                                        value={extraHeaders}></lightning-textarea>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </lightning-record-edit-form>
+            </slot>
+
+            <span slot="footer">
+                <button class="slds-button slds-button_neutral" onclick={closeAuthenticateModal} title="Cancel">Cancel</button>
+                <button class="slds-button slds-button_brand" onclick={authenticateDetails} title="OK">Save</button>
+            </span>
+        </c-copadocore-modal>
+
+        <!--Use this for Edit Authentication-->
+    </div>
+</template>

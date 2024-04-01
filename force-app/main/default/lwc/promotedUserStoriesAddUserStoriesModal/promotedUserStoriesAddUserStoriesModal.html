@@ -1,0 +1,88 @@
+<template>
+    <c-copadocore-modal size="medium" hide-close>
+        <span slot="title">{label.Add_User_Stories}</span>
+        <template lwc:if={illustration.name}>
+            <lightning-layout>
+                <lightning-layout-item size="2"></lightning-layout-item>
+                <lightning-layout-item size="8">
+                    <c-copadocore-illustration name={illustration.name} size="large" message={illustration.title}>
+                        <p slot="body">{illustration.body}</p>
+                    </c-copadocore-illustration>
+                </lightning-layout-item>
+                <lightning-layout-item size="2"></lightning-layout-item>
+            </lightning-layout>
+        </template>
+        <template lwc:else>
+            <span slot="alert">
+                <div class="slds-var-p-top_small slds-var-p-right_medium slds-var-p-left_medium">
+                    <c-copado-scoped-notification lwc:if={showInfoMessage} message={infoMessage} variant="light"></c-copado-scoped-notification>
+                    <c-copado-scoped-notification
+                        lwc:if={showValidationError}
+                        message={validationErrorMessage}
+                        variant="error"
+                    ></c-copado-scoped-notification>
+                </div>
+            </span>
+
+            <slot>
+                <div class="slds-is-relative">
+                    <lightning-spinner lwc:if={showSpinner} variant="brand" alternative-text="Loading" size="large"> </lightning-spinner>
+
+                    <div data-id="datatable-container">
+                        <c-datatable-container
+                            has-body="true"
+                            rows={allRows}
+                            columns={columns}
+                            enable-default-search
+                            onsearch={handleApplySearch}
+                            onclearsearch={handleClearSearch}
+                        >
+                            <span slot="titleInfo">{subtitle}</span>
+
+                            <span slot="additionalOperations">
+                                <lightning-button-icon
+                                    class="slds-m-right_small"
+                                    icon-name="utility:refresh"
+                                    variant="border-filled"
+                                    alternative-text={label.Refresh}
+                                    title={label.Refresh}
+                                    onclick={resetTable}
+                                ></lightning-button-icon>
+                            </span>
+
+                            <span slot="datatable">
+                                <div style="height: auto">
+                                    <lightning-datatable
+                                        lwc:if={hasData}
+                                        key-field="id"
+                                        data={data}
+                                        columns={columns}
+                                        enable-infinite-loading
+                                        default-sort-direction={defaultSortDirection}
+                                        sorted-direction={sortDirection}
+                                        sorted-by={sortedBy}
+                                        onrowselection={handleRowSelection}
+                                        onsort={handleSort}
+                                        onloadmore={handleLoadMoreData}
+                                    ></lightning-datatable>
+                                </div>
+                            </span>
+                        </c-datatable-container>
+                    </div>
+                </div>
+            </slot>
+        </template>
+        <span slot="footer">
+            <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={handleCancel}> </lightning-button>
+            <lightning-button
+                disabled={saveButtonDisabled}
+                class="slds-var-m-left_x-small"
+                label={label.Save}
+                title={label.Save}
+                variant="brand"
+                onclick={handleSave}
+            >
+            </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

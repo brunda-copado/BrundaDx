@@ -1,0 +1,25 @@
+<template>
+    <c-cds-modal size="x-small">
+        <span slot="title">{label.Remove_User_from_Persona}</span>
+        <div slot="modalContent" class="remove-modal-content">
+            <lightning-spinner lwc:if={showSpinner} variant="brand" size="large"></lightning-spinner>
+            <p>{label.Remove_User_Confirmation}</p>
+        </div>
+        <span slot="footer">
+            <lightning-button
+                class="cds-button"
+                label={label.Cancel}
+                title={label.Cancel}
+                variant="neutral"
+                onclick={handleClickCancel}
+            ></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small cds-button"
+                label={label.Remove}
+                title={label.Remove}
+                variant="brand"
+                onclick={handleClickRemove}
+            ></lightning-button>
+        </span>
+    </c-cds-modal>
+</template>

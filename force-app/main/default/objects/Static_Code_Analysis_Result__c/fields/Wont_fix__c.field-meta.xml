@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Wont_fix__c</fullName>
+    <externalId>false</externalId>
+    <label>Won&apos;t fix</label>
+    <summaryFilterItems>
+        <field>Static_Code_Analysis_Violation__c.Resolution__c</field>
+        <operation>equals</operation>
+        <value>Won&apos;t fix</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Static_Code_Analysis_Violation__c.Static_Code_Analysis_Result__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,77 @@
+<template>
+    <c-datatable-container icon-name="standard:picklist_type" has-body>
+        <div slot="title">{cardTitle}</div>
+        <div slot="titleInfo">{itemsTitle}</div>
+
+        <div slot="actions">
+            <lightning-button if:true={validCredential} disabled={editMode} label={label.REFRESH} onclick={handleClickRefresh}> </lightning-button>
+            <lightning-button if:true={validCredential} disabled={editMode} label={label.EDIT} class="slds-m-left_xx-small" onclick={handleClickEdit}>
+            </lightning-button>
+        </div>
+
+        <div slot="search" style="min-width: 400px">
+            <lightning-input
+                type="search"
+                autocomplete="off"
+                placeholder={label.SEARCH_THIS_LIST}
+                variant="label-hidden"
+                value={searchTerm}
+                onchange={handleChangeSearchTerm}
+            ></lightning-input>
+        </div>
+
+        <div slot="datatable">
+            <div style={tableHeight}>
+                <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+                <c-data-template-table
+                    if:true={rows}
+                    key-field="name"
+                    hide-checkbox-column={hideCheckBox}
+                    show-row-number-column
+                    column-widths-mode="fixed"
+                    data={rows}
+                    columns={columns}
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}
+                    enable-infinite-loading
+                    onloadmore={handleLoadMoreData}
+                    selected-rows={selectedRows}
+                    onrowselection={handleRowSelection}
+                    onselectexternalid={handleSelectExternalId}
+                    onsetfieldcontentupdate={handleSetFieldContentUpdate}
+                    onsetreplacevalue={handleSetReplaceValue}
+                    onsetdeploymenttemplate={handleSetDeploymentTemplate}
+                >
+                </c-data-template-table>
+                <c-copadocore-illustration
+                    if:true={displayIllustration}
+                    class="slds-p-around_small"
+                    name="no_data:desert"
+                    size="medium"
+                    message={message}
+                >
+                </c-copadocore-illustration>
+            </div>
+            <div class="slds-card__footer slds-docked-form-footer slds-is-relative slds-m-top_none" if:true={editMode}>
+                <lightning-button label={label.CANCEL} onclick={handleClickCancel}></lightning-button>
+                <lightning-button label={label.SAVE} class="slds-m-left_small" variant="brand" onclick={handleClickSave}></lightning-button>
+            </div>
+        </div>
+    </c-datatable-container>
+    <c-copadocore-modal size="small" onmodalclose={handleEditCancel}>
+        <span slot="title">{label.EDIT_DATA_TEMPLATE}</span>
+        <slot class="slds-align_absolute-center"> {label.EDIT_VALIDATION_MESSAGE} </slot>
+        <span slot="footer">
+            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleEditCancel}></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.DEACTIVATE}
+                title={label.DEACTIVATE}
+                variant="brand"
+                onclick={handleClickDeactivate}
+            ></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Application_Highlight_Panel</fullName>
+    <fields>Name</fields>
+    <fields>Release_Status__c</fields>
+    <fields>Stability_Icon__c</fields>
+    <fields>Parent_Application__c</fields>
+    <fields>Product_Manager__c</fields>
+    <label>Application Highlight Panel</label>
+</CompactLayout>

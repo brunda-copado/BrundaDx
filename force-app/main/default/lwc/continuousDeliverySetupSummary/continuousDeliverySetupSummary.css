@@ -1,0 +1,14 @@
+:host .modal-height {
+    min-height: 530px;
+    max-height: 550px;
+}
+
+:host .modal-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+:host p.slds-text-color_weak {
+    font-size: 14px;
+}

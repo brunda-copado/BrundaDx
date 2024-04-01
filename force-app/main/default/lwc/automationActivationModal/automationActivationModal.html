@@ -1,0 +1,29 @@
+<template>
+    <lightning-quick-action-panel header={labels.HEADER}>
+        <div class="slds-is-relative">
+            <lightning-spinner
+                if:true={showSpinner}
+                alternative-text="loading"
+                size="large"
+                variant="brand">
+            </lightning-spinner>
+
+            <c-copado-alert if:true={errorMessage} message={labels.BANNER_ERROR} variant="error"></c-copado-alert>
+            <div if:false={errorMessage} class="slds-p-around_medium">{labels.BODY}</div>
+            <div if:true={errorMessage} class="slds-p-around_medium">{errorMessage}</div>
+
+            <lightning-datatable
+                if:true={duplicatedRules}
+                key-field="id"
+                data={duplicatedRules}
+                columns={duplicatedRulesColumns}
+                hide-checkbox-column>
+             </lightning-datatable>
+        </div>
+
+        <div slot="footer">
+            <lightning-button variant="neutral" label={labels.CANCEL} onclick={closeQuickAction} disabled={showSpinner}></lightning-button>
+            <lightning-button if:false={errorMessage} variant="brand" label={labels.ACTIVATE} onclick={activate} disabled={showSpinner} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

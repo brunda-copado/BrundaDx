@@ -1,0 +1,11 @@
+.red .slds-progress-bar__value {
+    background-color: rgb(186, 5, 23);
+}
+
+.yellow .slds-progress-bar__value {
+    background-color: rgb(252, 192, 3);
+}
+
+div.slds-docked-form-footer.slds-is-absolute {
+    position: fixed;
+}

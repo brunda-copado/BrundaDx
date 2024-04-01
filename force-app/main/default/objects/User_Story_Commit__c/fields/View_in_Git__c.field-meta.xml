@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_in_Git__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(
+    
+	IF(
+	AND(NOT(ISNULL(Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Commit_Base_URL__c)),	Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Commit_Base_URL__c != &apos;&apos;), 
+		IF(
+			AND(NOT(ISPICKVAL(Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Git_Provider__c,&apos;&apos;)),NOT(ISPICKVAL(Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Git_Provider__c, &apos;Others&apos;))),
+			Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Commit_Base_URL__c +  Snapshot_Commit__r.Commit_Id__c,
+			IF(
+				CONTAINS(Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Commit_Base_URL__c,&apos;[COMMIT_ID]&apos;),
+				SUBSTITUTE(Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Commit_Base_URL__c,&apos;[COMMIT_ID]&apos;,Snapshot_Commit__r.Commit_Id__c),
+				Snapshot_Commit__r.Git_Backup__r.Git_Repository__r.Commit_Base_URL__c + Snapshot_Commit__r.Commit_Id__c
+			)
+		),
+        IF(
+            AND(NOT(ISNULL(User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c)), User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c != &apos;&apos;), 
+                IF(
+                    AND(NOT(ISPICKVAL(User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Git_Provider__c,&apos;&apos;)),NOT(ISPICKVAL(User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Git_Provider__c, &apos;Others&apos;))),
+                    User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c +  Snapshot_Commit__r.Commit_Id__c,
+                    IF(
+                        CONTAINS(User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c,&apos;[COMMIT_ID]&apos;),
+                        SUBSTITUTE(User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c,&apos;[COMMIT_ID]&apos;,Snapshot_Commit__r.Commit_Id__c),
+                        User_Story__r.Release__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c + Snapshot_Commit__r.Commit_Id__c
+                    )
+                ),
+            IF(
+                AND(NOT(ISNULL(User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c)), User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c != &apos;&apos;), 
+                    IF(
+                        AND(NOT(ISPICKVAL(User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Git_Provider__c,&apos;&apos;)),NOT(ISPICKVAL(User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Git_Provider__c, &apos;Others&apos;))),
+                        User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c +  Snapshot_Commit__r.Commit_Id__c,
+                        IF(
+                            CONTAINS(User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c,&apos;[COMMIT_ID]&apos;),
+                            SUBSTITUTE(User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c,&apos;[COMMIT_ID]&apos;,Snapshot_Commit__r.Commit_Id__c),
+                            User_Story__r.Project__r.Deployment_Flow__r.Git_Repository__r.Commit_Base_URL__c + Snapshot_Commit__r.Commit_Id__c
+                        )
+                    ),
+                &apos;&apos;)
+        )
+    ), 
+	LEFT(Snapshot_Commit__r.Commit_Id__c, 7)
+)</formula>
+    <label>View in Git</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

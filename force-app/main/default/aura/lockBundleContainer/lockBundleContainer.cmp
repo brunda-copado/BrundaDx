@@ -1,0 +1,19 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+    <aura:html tag="style">
+        .cuf-content {
+        	padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        	padding: 0rem !important;
+        }
+        .slds-modal__content {
+        	height:unset !important;
+        	max-height:unset !important;
+        }
+        .slds-modal__container {
+        	max-width: 100rem;
+        	width: 60%;
+        }
+    </aura:html>
+    <c:lockBundle recordId="{!v.recordId}" onclose="{!c.closeQA}" />
+</aura:component>

@@ -5,12 +5,7 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Payment Group</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>SourceObjectId</field>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>

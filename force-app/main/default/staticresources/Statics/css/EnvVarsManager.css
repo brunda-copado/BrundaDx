@@ -1,0 +1,23 @@
+.CI {
+    background-color: #cccccc !important;
+    color: white;
+}
+
+.env {
+    text-align:center;
+    width:200px;
+    min-width:100px;
+}
+
+.bordered {
+	border-style: solid; 
+    border-width: 1px;    
+}
+
+.full-width {
+ 	width: 97%;   
+}
+
+tr.dataRow:hover {
+    background-color: #E3F3FF;
+}

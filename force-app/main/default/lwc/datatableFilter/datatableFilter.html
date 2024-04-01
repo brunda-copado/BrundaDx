@@ -1,0 +1,59 @@
+<template>
+    <lightning-button-icon
+        icon-name="utility:filterList"
+        alternative-text={label.QUICK_FILTERS}
+        title={label.QUICK_FILTERS}
+        class="slds-m-left_x-small"
+        variant="border-filled"
+        onclick={showFilters}
+    ></lightning-button-icon>
+
+    <div class="collapsible-filter collapsed">
+        <div class="slds-panel__header panel-header">
+            <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate slds-m-left_x-small">{label.QUICK_FILTERS}</h2>
+            <lightning-icon
+                icon-name="utility:close"
+                alternative-text={label.CLOSE}
+                title={label.CLOSE}
+                class="closeX-icon slds-m-left_x-small"
+                size="xx-small"
+                onclick={showFilters}
+            ></lightning-icon>
+        </div>
+        <div class="filter-container">
+
+            <div class="slds-panel__body panel-body">
+                <ul>
+                    <template if:true={filtersByColumn}>
+                        <template for:each={filtersByColumn} for:item="filterconfig">
+                            <li key={filterconfig.columnname}>
+                                <div class="filter-panel">
+                                    <span>
+                                        <c-filter-columns
+                                            filter-config={filterconfig}
+                                            selected-option={defaultOperation}
+                                            onvalidate={handleValidateFilterColumn}
+                                        >
+                                        </c-filter-columns>
+                                    </span>
+                                </div>
+                            </li>
+                        </template>
+                    </template>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slds-panel__header panel-footer">
+            <lightning-button label={label.CANCEL} title={label.CANCEL} onclick={showFilters} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button
+                variant="base"
+                label={label.CLEAR_ALL_FILTERS}
+                title={label.CLEAR_ALL_FILTERS}
+                onclick={removeAllFilters}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+            <lightning-button variant="brand" label={label.SAVE} title={label.SAVE} onclick={saveFilter} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </div>
+</template>

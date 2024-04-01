@@ -1,0 +1,12 @@
+<template>
+    <div style="min-height: 32px" class="slds-align_absolute-center">
+        <lightning-layout>
+            <lightning-layout-item if:true={typeAttributes.isExternalId} flexibility="auto" class="slds-p-right_xx-small">
+                <span style="color: #1b96ff">XID</span>
+            </lightning-layout-item>
+            <lightning-layout-item if:true={typeAttributes.isRequired} flexibility="auto">
+                <lightning-icon icon-name="utility:warning" title="Required" alternative-text="Required" size="xx-small"></lightning-icon>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

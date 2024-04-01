@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title={gitAuthenticationStatusTitle}>
+            <lightning-button variant="bare" label="Refesh" title="Authentication Status" onclick={doRefresh}
+                icon-name="utility:refresh" slot="actions">
+            </lightning-button>
+        
+        <div class="slds-m-around_medium">
+            <template if:false={loaded}>
+                <div class="slds-m-vertical_medium auth-spinner">
+                    <div class="slds-spinner_container">
+                        <div role="status" class="slds-spinner slds-spinner_x-small slds-spinner_brand">
+                            <span class="slds-assistive-text">Authenticating</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                    <span class="slds-form-element__label slds-m-left_x-small">Authenticating</span>
+                </div>
+            </template>
+            <template if:true={isFirstAuthentication}>
+                <div class="slds-m-vertical_medium">
+                    <lightning-icon icon-name="utility:warning" alternative-text="Failed" variant="warning"
+                        title={notAuthenticationMessege} size="x-small"></lightning-icon>
+                    <span class="slds-form-element__label slds-m-left_x-small">{notAuthenticationMessege}</span>
+                </div>
+            </template>
+            <template if:true={isAuthenticationSuccess}>
+                <div class="slds-m-vertical_medium">
+                    <lightning-icon icon-name="utility:success" alternative-text="Success" variant="success"
+                        title="success" size="x-small"></lightning-icon>
+                    <span class="slds-form-element__label slds-m-left_x-small">{successAuthenticationMessege}</span>
+                </div>
+            </template>
+            <template if:true={isAuthenticationFailed}>
+                <div class="slds-m-vertical_medium">
+                    <lightning-icon icon-name="utility:clear" alternative-text="Failed" variant="error" title="Failed"
+                        size="x-small"></lightning-icon>
+                    <span class="slds-form-element__label slds-m-left_x-small">{failedAuthenticationMessege}</span>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

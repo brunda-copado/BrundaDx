@@ -1,0 +1,55 @@
+<template>
+    <c-copadocore-modal size="small" onmodalclose={closeModal} onmodalrendered={initLookup}>
+        <span slot="title">{modalTitle}</span>
+
+        <slot>
+            <div class="slds-page-header slds-text-heading_small slds-var-p-around_x-small">{labels.Credentials}</div>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6">
+                    <c-lookup
+                        label={labels.Username}
+                        onsearch={handleLookupSearch}
+                        onselectionchange={getSelectedId}
+                        disabled={isDisabled}>
+                    </c-lookup>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <div class="slds-page-header slds-text-heading_small slds-var-m-top_small slds-var-p-around_x-small">
+                {labels.Configuration}
+            </div>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="12">
+                    <lightning-dual-listbox
+                        label={labels.CopadoActions}
+                        field-level-help={labels.CopadoActionsHelp}
+                        source-label={labels.Available}
+                        selected-label={labels.Selected}
+                        options={actionOptions}
+                        value={actions}
+                        required>
+                    </lightning-dual-listbox>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6">
+                    <lightning-input
+                        type="number"
+                        label={labels.ExpiresIn}
+                        field-level-help={labels.ExpiresInHelp}
+                        value={expiresInDays}
+                        data-id="expiresInDays"
+                        min=1
+                        max=365
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </slot>
+
+        <span slot="footer">
+            <lightning-button class="slds-m-right_medium" onclick={closeModal} label={labels.Cancel}></lightning-button>
+            <lightning-button variant="brand" onclick={save} label={labels.Save}></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

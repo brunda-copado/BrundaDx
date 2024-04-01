@@ -1,0 +1,183 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={isLoading} variant="brand" size="large" class="slds-align_absolute-center"> </lightning-spinner>
+
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item flexibility="auto" class="slds-p-right_xx-small" style="flex-grow: 1">
+                <div if:true={invalidFilters} class="slds-notify_container slds-is-relative" style="z-index: auto">
+                    <div
+                        class="slds-notify slds-notify_toast slds-theme_warning slds-p-around_xx-small"
+                        style="width: 100%; margin-left: 0; margin-right: 0"
+                    >
+                        <lightning-icon icon-name="utility:warning" size="x-small" class="slds-m-right_medium"></lightning-icon>
+                        <div class="slds-notify__content">
+                            <h2 class="slds-text-heading_small">{invalidFilterMessage}</h2>
+                        </div>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto, no-grow">
+                <lightning-button
+                    variant="base"
+                    label={label.RESET_FILTERS}
+                    icon-name="utility:undo"
+                    class="slds-float_right"
+                    disabled={inputsNotEditable}
+                    onclick={handleClickResetFilters}
+                ></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <ul>
+                    <lightning-layout multiple-rows="true">
+                        <template for:each={_filters} for:item="filter" for:index="index">
+                            <lightning-layout-item size="12" class="slds-p-vertical_xxx-small" key={filter.id}>
+                                <li>
+                                    <lightning-layout>
+                                        <lightning-layout-item
+                                            flexibility="auto, no-grow"
+                                            class="slds-p-top_x-small slds-p-right_x-small slds-p-bottom_x-small slds-align-bottom"
+                                        >
+                                            <lightning-badge label={filter.order} class="slds-badge_lightest"></lightning-badge>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            flexibility="auto"
+                                            class="slds-p-around_x-small slds-align-bottom"
+                                            style="flex-grow: 1; max-width: 300px"
+                                        >
+                                            <lightning-combobox
+                                                variant="label-hidden"
+                                                value={filter.fieldName}
+                                                options={fieldOptions}
+                                                placeholder={label.FIELD}
+                                                data-id={filter.id}
+                                                disabled={inputsNotEditable}
+                                                onchange={handleChangeField}
+                                            ></lightning-combobox>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            if:true={filter.isCustom}
+                                            flexibility="auto"
+                                            class="slds-p-around_x-small slds-align-bottom"
+                                            style="flex-grow: 1"
+                                        >
+                                            <lightning-textarea
+                                                class="custom-filter-input"
+                                                variant="label-hidden"
+                                                value={filter.inputValue}
+                                                placeholder={customFilterPlaceholder}
+                                                data-id={filter.id}
+                                                disabled={inputsNotEditable}
+                                                onchange={handleChangeCustomFilter}
+                                            ></lightning-textarea>
+                                        </lightning-layout-item>
+                                        <template if:false={filter.isCustom}>
+                                            <lightning-layout-item
+                                                flexibility="auto"
+                                                class="slds-p-around_x-small slds-align-bottom"
+                                                style="flex-grow: 1; max-width: 250px"
+                                            >
+                                                <lightning-combobox
+                                                    variant="label-hidden"
+                                                    value={filter.operatorCode}
+                                                    options={filter.operators}
+                                                    placeholder={label.OPERATOR}
+                                                    data-id={filter.id}
+                                                    disabled={inputsNotEditable}
+                                                    onchange={handleChangeOperator}
+                                                ></lightning-combobox>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item
+                                                if:true={filter.isDatepicker}
+                                                flexibility="auto"
+                                                class="slds-p-around_x-small slds-align-bottom"
+                                                style="flex-grow: 1"
+                                            >
+                                                <lightning-combobox
+                                                    variant="label-hidden"
+                                                    value={filter.dateOption}
+                                                    options={dateOptions}
+                                                    placeholder={label.SELECT}
+                                                    data-id={filter.id}
+                                                    disabled={inputsNotEditable}
+                                                    onchange={handleChangeDateOption}
+                                                ></lightning-combobox>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item
+                                                if:true={filter.isBoolean}
+                                                flexibility="auto"
+                                                class="slds-p-around_x-small slds-align-bottom"
+                                                style="flex-grow: 1"
+                                            >
+                                                <lightning-combobox
+                                                    variant="label-hidden"
+                                                    value={filter.inputValue}
+                                                    options={booleanOptions}
+                                                    placeholder={label.SELECT}
+                                                    data-id={filter.id}
+                                                    disabled={inputsNotEditable}
+                                                    onchange={handleChangeBooleanOption}
+                                                ></lightning-combobox>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item
+                                                if:true={filter.showValue}
+                                                flexibility="auto"
+                                                class="slds-p-around_x-small slds-align-bottom"
+                                                style="flex-grow: 1"
+                                            >
+                                                <lightning-input
+                                                    type={filter.inputType}
+                                                    formatter={filter.inputFormatter}
+                                                    variant="label-hidden"
+                                                    value={filter.inputValue}
+                                                    data-id={filter.id}
+                                                    disabled={inputsNotEditable}
+                                                    onchange={handleChangeValue}
+                                                ></lightning-input>
+                                            </lightning-layout-item>
+                                        </template>
+                                        <lightning-layout-item flexibility="auto, no-grow" class="slds-p-around_x-small slds-align-bottom">
+                                            <lightning-button-icon
+                                                icon-name="utility:delete"
+                                                alternative-text={label.DELETE}
+                                                data-id={filter.id}
+                                                title={label.DELETE}
+                                                disabled={inputsNotEditable}
+                                                onclick={handleClickDeleteFilter}
+                                            ></lightning-button-icon>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item
+                                            if:false={filter.isValid}
+                                            flexibility="auto, no-grow"
+                                            class="slds-p-around_x-small"
+                                            style="align-self: center"
+                                        >
+                                            <lightning-icon icon-name="utility:warning" variant="warning" size="x-small"></lightning-icon>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </li>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </ul>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-p-vertical_x-small">
+                <lightning-button
+                    label={label.ADD_NEW_PARAMETER}
+                    icon-name="utility:add"
+                    disabled={inputsNotEditable}
+                    onclick={handleClickAddFilter}
+                ></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-p-vertical_xxx-small">
+                <lightning-input
+                    type="text"
+                    name="filterLogic"
+                    value={filterLogic}
+                    label={label.FILTER_LOGIC}
+                    disabled={inputsNotEditable}
+                    onchange={handleChangeFilterLogic}
+                ></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

@@ -1,0 +1,12 @@
+.no-border {
+    border: none;
+    box-shadow: unset;
+}
+
+.no-vertical-align > .slds-form-element__icon {
+    vertical-align: unset !important;
+}
+
+.text-align-right {
+    text-align: right;
+}

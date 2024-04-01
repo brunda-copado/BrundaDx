@@ -1,0 +1,33 @@
+<template>
+    <c-copadocore-modal size="small" onmodalclose={handleEditCancel}>
+        <span slot="title">{label.NEW_GIT_SNAPSHOT}</span>
+        <slot class="slds-align_absolute-center">
+            <div class="slds-is-relative">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item class="slds-var-m-top_medium slds-text-align_center" size="12">
+                        <template for:each={bodyTexts} for:item="item">
+                            <div class="rows" key={item}>
+                                <p class="slds-var-m-left_xx-large slds-var-m-right_xx-large">{item}</p>
+                            </div>
+                        </template>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-var-m-top_large slds-var-m-bottom_x-large" size="12">
+                        <div class="custom-center">
+                            <lightning-radio-group name="radioGroup" value={selectedOption} options={options} onchange={handleRadioGroupOnChange}>
+                            </lightning-radio-group>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleEditCancel}></lightning-button>
+            <lightning-button
+                class="slds-var-m-left_x-small"
+                label={label.NEXT}
+                title={label.NEXT}
+                variant="brand"
+                onclick={navigateEditForm}></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

@@ -1,0 +1,302 @@
+<template>
+    <lightning-spinner lwc:if={isLoading} size="medium"></lightning-spinner>
+
+    <div lwc:if={isAccessible} class="slds-var-m-top_small">
+        <lightning-card icon-name="standard:filter_criteria_rule">
+            <div slot="title">{label.ADVANCED_CRITERIA}</div>
+
+            <div slot="actions">
+                <lightning-button lwc:if={showEditButton} label={label.EDIT} slot="actions" onclick={handleEdit}></lightning-button>
+                <lightning-button lwc:if={isEditMode} label={label.CLEAR_ALL} onclick={handleClear}></lightning-button>
+            </div>
+
+            <div>
+                <lightning-layout lwc:if={isEditMode} multiple-rows="true" class="slds-p-horizontal_small slds-p-vertical_x-small">
+                    <lightning-layout-item size="12" padding="around-small"> {label.FILTER_CRITERIA_INFO_MESSAGE} </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <lightning-layout>
+                            <lightning-layout-item size="3">
+                                <lightning-combobox
+                                    name="mainObject"
+                                    disabled
+                                    label={label.MAIN_OBJECT}
+                                    field-level-help={label.MAIN_OBJECT_HELP_TEXT}
+                                    value={mainObject}
+                                    options={mainObjectOptions}
+                                    onchange={handleChangeMainObject}></lightning-combobox>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-top_small">
+                        <lightning-layout>
+                            <lightning-layout-item size="3">
+                                <lightning-combobox
+                                    name="conditionLogic"
+                                    label={label.TAKE_ACTION_WHEN}
+                                    field-level-help={label.TAKE_ACTION_WHEN_HELP_TEXT}
+                                    value={conditionLogic}
+                                    options={conditionLogicOptions}
+                                    onchange={handleChangeConditionLogic}></lightning-combobox>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item lwc:if={isStandardCondition} size="12" class="slds-p-top_small">
+                        <template for:each={conditions} for:item="item">
+                            <lightning-layout key={item.id} class="slds-m-top_small">
+                                <lightning-layout-item flexibility="auto, no-grow" class="centered">
+                                    <legend class="slds-text-title_bold slds-p-left_small">
+                                        <span>{item.conditionNumber}</span>
+                                    </legend>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" class="slds-p-left_medium slds-m-bottom_xx-small">
+                                    <lightning-combobox
+                                        class="validValue"
+                                        name="field"
+                                        value={item.field}
+                                        label={fieldComboboxLabel}
+                                        field-level-help={label.FIELD_LABEL_HELP_TEXT}
+                                        dropdown-alignment="auto"
+                                        data-conditionid={item.id}
+                                        options={objectFields}
+                                        onchange={handleChangeField}
+                                        required></lightning-combobox>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="2" class="slds-p-left_medium slds-m-bottom_xx-small">
+                                    <lightning-combobox
+                                        class="validValue"
+                                        name="operator"
+                                        label={label.CONDITION_FILTER_OPERATOR_LABEL}
+                                        dropdown-alignment="auto"
+                                        value={item.operator}
+                                        data-conditionid={item.id}
+                                        options={item.operatorOptions}
+                                        onchange={handleChangeOperator}
+                                        required></lightning-combobox>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="5" class={item.inputLayoutClass}>
+                                    <template lwc:if={item.isLookUp}>
+                                        <c-lookup
+                                            variant={item.inputVariant}
+                                            label={label.CONDITION_FILTER_VALUE_LABEL}
+                                            data-conditionid={item.id}
+                                            onsearch={handleLookupSearch}
+                                            onselectionchange={handleChangeValue}
+                                            scroll-after-n-items="5">
+                                        </c-lookup>
+                                    </template>
+                                    <template lwc:else>
+                                        <lightning-input
+                                            name="value"
+                                            class={item.inputClass}
+                                            variant={item.inputVariant}
+                                            label={label.CONDITION_FILTER_VALUE_LABEL}
+                                            type={item.inputType}
+                                            value={item.value}
+                                            data-conditionid={item.id}
+                                            onchange={handleChangeValue}></lightning-input>
+                                    </template>
+                                </lightning-layout-item>
+                                <lightning-layout-item flexibility="auto, no-grow" class="slds-p-left_medium slds-m-top_large slds-m-bottom_large">
+                                    <lightning-button-icon
+                                        icon-name="utility:delete"
+                                        alternative-text={label.DELETE_CONDITION}
+                                        class="slds-m-left_xx-small"
+                                        title={label.DELETE_CONDITION}
+                                        name="deleteCondition"
+                                        data-conditionid={item.id}
+                                        onclick={handleDeleteCondition}></lightning-button-icon>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                    </lightning-layout-item>
+                    <lightning-layout-item lwc:if={isCustomCondition} size="12" class="slds-p-top_small">
+                        <lightning-textarea
+                            class="validValue"
+                            data-id="customCondition"
+                            label={label.CUSTOM_CONDITION}
+                            value={customFilterCriteria}
+                            field-level-help={label.CUSTOM_CONDITION_HELP_TEXT}
+                            required
+                            onchange={handleChangeCustomCriteria}></lightning-textarea>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-top_small">
+                        <lightning-button
+                            lwc:if={isCustomCondition}
+                            disabled={customConditionEmpty}
+                            label={label.CHECK_SYNTAX}
+                            onclick={handleCheckSyntax}
+                            variant="neutral"></lightning-button>
+                        <lightning-button
+                            lwc:else
+                            label={label.ADD_CONDITION}
+                            onclick={handleAddCondition}
+                            variant="neutral"
+                            icon-name="utility:add"></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <template lwc:else>
+                    <c-copadocore-illustration lwc:if={showIllustration} name="custom:lake_mountain" size="large" message={label.NO_CRITERIA_DEFINED}>
+                        <div slot="body">
+                            <div>{label.NO_CRITERIA_DEFINED_BODY}</div>
+                            <div class="slds-var-m-top_large">
+                                <lightning-button
+                                    lwc:if={showConfigureCriteriaButton}
+                                    variant="neutral"
+                                    label={label.CONFIGURE_CRITERIA}
+                                    onclick={handleConfigureCriteria}></lightning-button>
+                            </div>
+                        </div>
+                    </c-copadocore-illustration>
+
+                    <lightning-layout lwc:else multiple-rows="true" class="slds-p-horizontal_small slds-p-vertical_x-small">
+                        <lightning-layout-item size="12">
+                            <lightning-layout>
+                                <lightning-layout-item size="3">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label slds-m-bottom_none">{label.MAIN_OBJECT} </label>
+                                        <lightning-helptext
+                                            content={label.MAIN_OBJECT_HELP_TEXT}
+                                            class="slds-var-m-left_x-small"></lightning-helptext>
+                                        <div class="slds-form-element__control slds-border_bottom">
+                                            <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">
+                                                {mainObjectLabel}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <lightning-layout>
+                                <lightning-layout-item size="3" class="slds-p-top_small">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label slds-m-bottom_none">{label.TAKE_ACTION_WHEN} </label>
+                                        <lightning-helptext
+                                            content={label.TAKE_ACTION_WHEN_HELP_TEXT}
+                                            class="slds-var-m-left_x-small"></lightning-helptext>
+                                        <div class="slds-form-element__control slds-border_bottom">
+                                            <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">
+                                                {conditionLogicLabel}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        <lightning-layout-item lwc:if={isCustomCondition} size="12" class="slds-p-top_small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label slds-m-bottom_none">{label.CUSTOM_CONDITION} </label>
+                                <lightning-helptext content={label.CUSTOM_CONDITION_HELP_TEXT} class="slds-var-m-left_x-small"></lightning-helptext>
+                                <div class="slds-form-element__control slds-border_bottom">
+                                    <p class="slds-var-p-bottom_xx-small slds-text-body_regular slds-form-element__static">{customFilterCriteria}</p>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item lwc:else size="12" class="slds-p-top_small">
+                            <template for:each={conditions} for:item="item">
+                                <lightning-layout key={item.id} class="slds-m-top_small">
+                                    <lightning-layout-item flexibility="auto, no-grow" class="centered">
+                                        <legend class="slds-text-title_bold slds-p-left_small">
+                                            <span>{item.conditionNumber}</span>
+                                        </legend>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="4" class="slds-p-left_medium">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label slds-m-bottom_none">{fieldComboboxLabel} </label>
+                                            <lightning-helptext
+                                                content={label.FIELD_LABEL_HELP_TEXT}
+                                                class="slds-var-m-left_x-small"></lightning-helptext>
+                                            <div class="slds-form-element__control slds-border_bottom">
+                                                <p
+                                                    class="
+                                                        slds-var-p-bottom_xx-small
+                                                        slds-text-body_regular
+                                                        slds-form-element__static
+                                                        read-only-value
+                                                    ">
+                                                    {item.fieldLabel}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" class="slds-p-left_medium">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label slds-m-bottom_none"
+                                                >{label.CONDITION_FILTER_OPERATOR_LABEL}
+                                            </label>
+                                            <div class="slds-form-element__control slds-border_bottom">
+                                                <p
+                                                    class="
+                                                        slds-var-p-bottom_xx-small
+                                                        slds-text-body_regular
+                                                        slds-form-element__static
+                                                        read-only-value
+                                                    ">
+                                                    {item.operatorLabel}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="5" class="slds-p-left_medium">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label slds-m-bottom_none">{label.CONDITION_FILTER_VALUE_LABEL} </label>
+                                            <div class="slds-form-element__control slds-border_bottom">
+                                                <div class={item.valueClass}>
+                                                    <p
+                                                        class="
+                                                            slds-var-p-bottom_xx-small
+                                                            slds-text-body_regular
+                                                            slds-form-element__static
+                                                            read-only-value
+                                                        ">
+                                                        <template lwc:if={item.isLookUp}>
+                                                            <lightning-formatted-url
+                                                                label={item.lookUpRecordTitle}
+                                                                value={item.lookUpRecordUrl}
+                                                                target="_blank"></lightning-formatted-url>
+                                                        </template>
+                                                        <template lwc:else> {item.value} </template>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+
+                <template lwc:if={isEditMode}>
+                    <div slot="footer" class="slds-var-m-top_medium slds-align_absolute-center">
+                        <lightning-button label={label.CANCEL} onclick={handleCancel}></lightning-button>
+                        <lightning-button variant="brand" label={label.SAVE} onclick={handleSave} class="slds-var-m-left_x-small"></lightning-button>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+    <lightning-card lwc:else>
+        <c-copadocore-illustration name="error:no_access" size="small" message="">
+            <p slot="body">{label.INSUFFICIENT_PERMISSION}</p>
+        </c-copadocore-illustration>
+    </lightning-card>
+
+    <c-copadocore-modal size="small" hide-close>
+        <span slot="title">{label.CONFIGURE_CRITERIA}</span>
+        <slot>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12">
+                    <c-copado-scoped-notification variant="error" message={label.CRITERIA_CANNNOT_BE_CONFIGURED}></c-copado-scoped-notification>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="slds-p-top_medium">
+                    <div>{modalBody}</div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </slot>
+        <span slot="footer">
+            <lightning-button label={label.CLOSE} title={label.CLOSE} onclick={handleCloseModal}> </lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

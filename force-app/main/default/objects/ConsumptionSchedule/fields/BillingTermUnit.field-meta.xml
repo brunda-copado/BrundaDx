@@ -2,5 +2,6 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>BillingTermUnit</fullName>
     <inlineHelpText>The unit used with the billing term to determine the billing frequency.</inlineHelpText>
+    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
 </CustomField>

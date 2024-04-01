@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-is-relative modal-height">
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">
+                    {label.Setup_Continuous_Delivery}
+                </h2>
+            </div>
+        </header>
+
+        <div class="slds-modal__content slds-p-around_medium slds-text-align_center">
+            <h3 class="slds-text-heading_large slds-p-bottom_large slds-p-top_large">
+                {label.Summary}
+            </h3> 
+
+            <p class="slds-text-color_weak slds-p-bottom_xx-large">
+                {label.CD_Setup_Summary_Body}
+            </p>
+
+            <c-copado-alert-place-holder communication-id={modalCommunicationId}></c-copado-alert-place-holder>
+            
+            <div class="slds-p-top_medium slds-p-bottom_large">
+                <lightning-datatable if:true={isSummaryDataLoaded}
+                        key-field="summarydata"
+                        data={summaryData}
+                        columns={summaryColumns}
+                        hide-checkbox-column>
+                </lightning-datatable>
+            </div>
+        </div>
+
+        <footer class="slds-modal__footer modal-footer">
+            <lightning-button label={label.Back} variant="neutral" onclick={handlePrev} class="slds-float_left"> </lightning-button>
+            <lightning-button if:false={isSummaryDataLoaded} label={label.Cancel} variant="neutral" onclick={handleCancel}> </lightning-button>
+            <lightning-button 
+                if:true={isSummaryDataLoaded}
+                class="slds-m-left_x-small"
+                label={label.Activate_automations}
+                variant="brand"
+                onclick={updateConfigurationJsonField}
+            ></lightning-button>
+        </footer>
+    </div>
+</template>

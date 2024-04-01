@@ -1,0 +1,57 @@
+<template>
+    <div if:true={isFieldEditable} class="header text-align-right">
+        <lightning-button if:true={showEdit} label={label.Edit} variant="neutral" onclick={toggleEditMode}></lightning-button>
+    </div>
+
+    <div class="slds-is-relative">
+        <div class="slds-modal__content">
+            <lightning-layout if:true={areDetailsVisible}>
+                <lightning-layout-item size="6">
+                    <lightning-input
+                        type="text"
+                        label={label.ContextId}
+                        placeholder={label.EnterContextId}
+                        field-level-help={label.HelpTextForContextId}
+                        value={_contextId}
+                        onchange={handleChangeContextId}
+                    ></lightning-input>
+                </lightning-layout-item
+            ></lightning-layout>
+
+            <div class="slds-page-header slds-text-heading_small slds-var-m-top_medium slds-var-p-around_x-small no-border">
+                <span if:false={areDetailsVisible} class="slds-var-p-right_x-small">{label.Function_Parameters} ({parameterCount})</span>
+                <span if:true={areDetailsVisible} class="slds-var-p-right_x-small">{label.Overwrite_Parameters} ({parameterCount})</span>
+                <lightning-helptext content={label.Parameters_Field_Help_Text}> </lightning-helptext>
+            </div>
+
+            <lightning-layout class="slds-var-m-top_small">
+                <lightning-layout-item size="8" class="slds-var-p-right_large">
+                    <c-parameter-editor
+                        parameters={parameters}
+                        enable-required-input={enableRequiredInput}
+                        can-add-parameters={canAddParameters}
+                        edit-values-only={editValuesOnly}
+                        read-only={readOnly}
+                        onaddparameter={handleAddParameter}
+                        ondeleteparameter={handleDeleteParameter}
+                        onupdateparameter={handleUpdateParameter}
+                        onupdaterequired={handleUpdateRequired}
+                    ></c-parameter-editor>
+                </lightning-layout-item>
+                <lightning-layout-item if:true={hasParameters} size="4">
+                    <c-dynamic-expression-helper if:false={readOnly}></c-dynamic-expression-helper>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <footer class="slds-card__footer">
+            <div>
+                <lightning-button-group>
+                    <lightning-button if:true={areDetailsVisible} label={label.Execute} variant="brand" onclick={handleExecute}></lightning-button>
+                    <lightning-button if:true={editMode} label={label.Cancel} variant="neutral" onclick={handleCancel}></lightning-button>
+                    <lightning-button if:true={editMode} label={label.Save} variant="brand" onclick={handleSave}></lightning-button>
+                </lightning-button-group>
+            </div>
+        </footer>
+    </div>
+</template>

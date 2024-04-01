@@ -1,0 +1,65 @@
+<template>
+    <lightning-layout key={uniqueKey} class="slds-p-bottom_x-small slds-border_bottom">
+        <lightning-layout-item size="4" class={columnClass}>
+            <lightning-input
+                type="text"
+                label={label.Parameter_Name}
+                variant={variant}
+                name="parameterName"
+                value={parameter.parameterName}
+                placeholder={label.Parameter_Name_Placeholder}
+                data-id={parameter.id}
+                onchange={handleParameterChange}
+            >
+            </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={areDetailsVisible} size="5" class={columnClass}>
+            <lightning-input
+                type="text"
+                label={label.Parameter_Value}
+                variant={variant}
+                name="parameterValue"
+                value={parameter.parameterValue}
+                placeholder={label.Parameter_Value_Placeholder}
+                data-id={parameter.id}
+                onchange={handleParameterChange}
+            >
+            </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item if:false={areDetailsVisible} size="5" class={columnClass}>
+            <lightning-input
+                type="text"
+                label={label.Default_Value}
+                variant={variant}
+                name="parameterValue"
+                value={parameter.parameterValue}
+                placeholder={label.Parameter_Value_Placeholder}
+                data-id={parameter.id}
+                onchange={handleParameterChange}
+            >
+            </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item if:false={areDetailsVisible} size="2" class={columnClass}>
+            <lightning-input
+                type="checkbox"
+                label={checkboxLabel}
+                variant={variant}
+                data-id={parameter.id}
+                checked={parameter.parameterRequired}
+                onchange={handleParameterChange}
+                name="parameterRequired"
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="1" class={deleteClass}>
+            <lightning-button-icon
+                class="slds-p-top_small slds-text-align_right"
+                icon-name="utility:delete"
+                alternative-text={label.Delete}
+                title={label.Delete}
+                data-id={parameter.id}
+                onclick={handleDeleteParameter}
+            >
+            </lightning-button-icon>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

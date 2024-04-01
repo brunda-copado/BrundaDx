@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={showSpinner}> </lightning-spinner>
+
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">
+                    {label.Execute_Outstanding_Steps}
+                </h2>
+            </div>
+        </header>
+
+        <div class="slds-modal__content slds-var-p-around_medium">
+            <p class="custom-margin-p">
+                <c-copado-alert if:true={messageAlert}
+                    message={messageAlert.message}
+                    variant={messageAlert.variant}
+                ></c-copado-alert>
+            </p>
+
+            <p class="custom-margin-p">
+                <template if:true={nextStep}>
+                    <div class="slds-var-p-left_medium slds-var-p-top_medium">
+                        <p>{label.Executing_First}</p>
+                    </div>
+                    <lightning-card variant="narrow" icon-name="custom:custom67">
+                        <span class="slds-text-body_regular step-card-title" slot="title">{nextStep.Name}</span>
+                    </lightning-card>
+                </template>
+            </p>
+        </div>
+
+        <footer class="slds-modal__footer">
+            <lightning-button label={label.Cancel} title={label.Cancel} variant="neutral" onclick={handleCancel}> </lightning-button>
+            <lightning-button
+                class="slds-var-m-left_x-small"
+                label={label.Execute_Outstanding}
+                title={label.Execute_Outstanding}
+                variant="brand"
+                onclick={handleConfirm}
+            ></lightning-button>
+        </footer>
+    </div>
+</template>

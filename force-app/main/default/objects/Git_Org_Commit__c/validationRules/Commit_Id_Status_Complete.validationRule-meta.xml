@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Commit_Id_Status_Complete</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( !ISBLANK(Commit_Id__c), OR(ISPICKVAL(Status__c,&quot;Pending&quot;),ISPICKVAL(Status__c,&quot;No changes&quot;)))</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>The commit status cannot be &apos;Pending&apos; or &apos;No changes&apos; whenever there is a commit Id.</errorMessage>
+</ValidationRule>

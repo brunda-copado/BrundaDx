@@ -1,0 +1,4 @@
+.no-label>label {
+    visibility: hidden !important;
+    display: none !important;
+}

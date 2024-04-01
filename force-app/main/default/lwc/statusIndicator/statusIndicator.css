@@ -1,0 +1,9 @@
+.z-index-zero{
+    z-index: 0!important;
+}
+.slds-popover_tooltip{
+    position: absolute;
+    bottom: 40px;
+    left: 1px;
+    white-space: normal;
+}

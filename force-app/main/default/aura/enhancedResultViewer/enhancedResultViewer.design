@@ -1,0 +1,6 @@
+<design:component label="Result Status">
+    <design:attribute name="fieldApiName" label="Field API Name" description="Enter the API name of the field" />
+    <design:attribute name="recordId" label="Job Execution Id" description="Enter the job ID" />
+    <design:attribute name="noJobTitle" label="Title" description="Enter the job title" />
+    <design:attribute name="noJobMessage" label="Message" description="Enter the job message" />
+</design:component>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Copado Alert Communicator</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>  
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property
+                name="communicationId"
+                type="String"
+                label="Communication Id"
+                default=""
+                required="true"
+                description="Provide a unique communication id (used by Copado Alert Placeholder). It will be used to communicate to specific Copado Alert Placeholder component (even if multiple used on same page)."
+            />
+            <objects>
+                <object>User_Story__c</object>
+            </objects>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

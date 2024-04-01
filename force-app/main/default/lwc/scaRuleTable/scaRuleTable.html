@@ -1,0 +1,19 @@
+<template>
+    <div class="table-style">
+        <lightning-datatable
+            key-field="id"
+            columns={columns}
+            data={slicedData}
+            hide-checkbox-column
+            default-sort-direction="asc"
+            sorted-direction={sortDirection}
+            sorted-by={sortedBy}
+            onsort={onHandleSort}
+            enable-infinite-loading
+            is-loading={isLoading}
+            onloadmore={onLoadMore}
+            resize-column-disabled
+        >
+        </lightning-datatable>
+    </div>
+</template>

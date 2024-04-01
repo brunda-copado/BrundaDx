@@ -1,0 +1,68 @@
+<template>
+    <lightning-spinner if:true={showSpinner} alternative-text={labels.LOADING} size="large" variant="brand"></lightning-spinner>
+
+    <div class="slds-grid slds-wrap slds-gutters">
+        <c-datatable-container
+            class="slds-col slds-size_2-of-3"
+            rows={defaultNotification.subscriptions}
+            columns={columns}
+            icon-name="custom:custom53"
+            icon-size="medium"
+            onsearch={handleSearch}
+            onclearsearch={handleClearSearch}
+            has-body
+            enable-default-search>
+            <span slot="title">{labels.AVAILABLE_NOTIFICATIONS}</span>
+            <span slot="titleInfo">{filteredRows.length} {labels.ITEMS}</span>
+            <lightning-datatable
+                slot="datatable"
+                key-field="id"
+                data={filteredRows}
+                columns={columns}
+                onsort={handleSort}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onrowaction={handleRowAction}
+                hide-checkbox-column
+                show-row-number-column>
+            </lightning-datatable>
+        </c-datatable-container>
+
+        <div class="slds-card slds-card_boundary slds-col slds-size_1-of-3 slds-p-around_none">
+            <div class="slds-card__header slds-text-heading_medium">{labels.title}</div>
+            <div class="slds-card__body slds-card__body_inner">
+                <span>{labels.body}</span>
+                <div class="slds-p-top_medium">
+                    <template for:each={allChannels} for:item="channel">
+                        <div key={channel.name}>
+                            <lightning-input
+                                data-input="channel"
+                                data-channel={channel.value}
+                                type="checkbox"
+                                label={channel.label}
+                                variant="label-stacked"
+                                disabled={isReadMode}
+                                checked={channel.isDefault}>
+                            </lightning-input>
+                            <!-- FOR NEXT RELEASE -->
+                            <!--div if:true={isReadMode} class="slds-m-bottom_small" style="margin-top: -1.5rem;">
+                                <c-copadocore-read-mode-field onturnedit={handleEdit}></c-copadocore-read-mode-field>
+                            </div-->
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <footer class="slds-card__footer slds-theme_shade" if:false={isReadMode}>
+                <lightning-button label={labels.CANCEL} onclick={handleCancel} class="slds-m-right_small"></lightning-button>
+                <lightning-button label={labels.SAVE} onclick={handleSave} variant="brand"></lightning-button>
+            </footer>
+        </div>
+    </div>
+
+    <c-notification-subscription
+        tab={tab}
+        all-channels={allChannels}
+        default-notification={defaultNotification}
+        onchange={getData}>
+    </c-notification-subscription>
+</template>

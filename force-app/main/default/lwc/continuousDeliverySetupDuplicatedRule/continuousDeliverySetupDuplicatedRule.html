@@ -1,0 +1,34 @@
+<template>
+    <div class="slds-is-relative modal-height">
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">
+                    {label.Setup_Continuous_Delivery}
+                </h2>
+            </div>
+        </header>
+
+        <div if:true={isRendered} class="slds-modal__content slds-p-around_medium slds-text-align_center">
+            <c-copado-alert message={label.ContinuousDeliveryDuplicatedRuleWarning} variant="warning"></c-copado-alert>
+
+            <p class="slds-text-color_weak slds-p-vertical_medium">
+                {label.ContinuousDeliveryDuplicatedRuleError}
+            </p>
+            
+            <div class="slds-p-top_medium slds-p-bottom_large">
+                <lightning-datatable
+                    if:true={duplicatedRules}
+                    key-field="id"
+                    data={duplicatedRules}
+                    columns={duplicatedRulesColumns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </div>
+        </div>
+
+        <footer if:true={isRendered} class="slds-modal__footer modal-footer">
+            <lightning-button label={label.Back} variant="neutral" onclick={handlePrev} class="slds-float_left"> </lightning-button>
+            <lightning-button label={label.Cancel} variant="neutral" onclick={handleCancel}> </lightning-button>
+        </footer>
+    </div>
+</template>

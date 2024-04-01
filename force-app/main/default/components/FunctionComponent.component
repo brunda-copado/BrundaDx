@@ -1,0 +1,138 @@
+<apex:component layout="block" controller="FunctionComponentController">
+    <apex:attribute name="isEdit" description="" type="Boolean" required="true" default="false" />
+    <apex:attribute name="deploymentTaskId" description="" type="String" required="true" />
+
+    <apex:outputPanel layout="none" rendered="{!!isEdit}">
+        <c:IncludeStaticsResourceComponent addJQuery="true" />
+        <apex:outputPanel id="js-stepBlock-FunctionView">
+            <div class="slds-grid">
+                <div class="slds-col" style="flex: unset;width: 52.5%;">
+                    <div class="slds-has-flexi-truncate slds-p-horizontal_x-small full forcePageBlockItem forcePageBlockItemView" role="listitem">
+                        <div class="slds-form-element {!IF(!isEdit,'slds-has-divider--bottom','')} ">
+                            <span class="slds-form-element__label">{!$Label.Function}</span>
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                <span class="slds-form-element__static" style="width:95%">
+                                    <output name="jsFunction" id="jsFunction_View" />
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="slds-form-element {!IF(!isEdit,'slds-has-divider--bottom','')} ">
+                            <span class="slds-form-element__label">{!$Label.Function} {!$Label.Parameter}</span>
+                            <div class="slds-form-element__control">
+                                <div id="jsFunction_viewPram_div"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+    </apex:outputPanel>
+
+    <apex:outputPanel layout="none" rendered="{!isEdit}">
+        <apex:outputPanel id="js-stepBlock-Function">
+            <div class="slds-grid">
+                <div class="slds-col" style="padding-right:0px;flex: unset;width: 50%;">
+                    <div class="slds-form-element {!IF(!isEdit,'slds-has-divider--bottom','')}" style="width:98.5%;">
+                        <span class="slds-required">*</span>
+                        <span class="slds-form-element__label">{!$Label.SELECT} {!$Label.Function}</span>
+
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">
+                                <input type="hidden" name="jsFunction_lkid" id="jsFunction_lkid" value="000000000000000" />
+                                <input name="jsFunction_editLkid" id="jsFunction_editLkid" value="" style="display: none" onchange="getLookupId('jsFunction_editLkid')"
+                                />
+                                <input type="hidden" name="jsFunction_lkold" id="jsFunction_lkold" value="" />
+                                <input type="hidden" name="jsFunction_lktp" id="jsFunction_lktp" value="{!$ObjectType.Function__c.keyPrefix}" />
+                                <input type="hidden" name="jsFunction_lspf" id="jsFunction_lspf" value="0" />
+                                <input type="hidden" name="jsFunction_lspfsub" id="jsFunction_lspfsub" value="0" />
+                                <input type="hidden" name="jsFunction_mod" id="jsFunction_mod" value="0" />
+                                <input type="hidden" name="jsFunction_api" id="jsFunction_api" value="" />
+                                <span class="lookupInput" style="display: table;width: 100%;">
+                                    <input id="jsFunction" maxlength="255" class="slds-input" name="jsFunction" onchange="getLookupId('jsFunction_lkid');getElementByIdCS('jsFunction_lkid').value='';getElementByIdCS('jsFunction_mod').value='1';"
+                                        size="20" tabindex="3" type="text" value="" />
+                                    <a href="javascript:%20openLookup%28%27%2F_ui%2Fcommon%2Fdata%2FLookupPage%3Flkfm%3DeditPage%26lknm%3DjsFunction%26lktp%3D%27%20%2B%20getElementByIdCS%28%27jsFunction_lktp%27%29.value%2C670%2C%271%27%2C%27%26lksrch%3D%27%20%2B%20escapeUTF%28getElementByIdCS%28%27jsFunction%27%29.value.substring%280%2C%2080%29%29%29"
+                                        id="jsFunction_lkwgt" onclick="setLastMousePosition(event)" tabindex="3" title="Function Lookup (New Window)">
+                                        <img src="/img/s.gif" alt="Function Lookup (New Window)" class="lookupIcon" onblur="this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';"
+                                            onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';"
+                                            title="Function Lookup (New Window)" />
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <span id="jsFunction_header" class="slds-form-element__label" style="display: none;font-weight: bold">{!$Label.Function} {!$Label.Parameter} </span>
+
+                    <div id="js-Function-Param" class="function_param">
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+    </apex:outputPanel>
+
+    <script type="text/javascript">
+        function getLookupId(lkid) {
+            var divId = 'js-Function-Param';
+            removeChildNodes(divId);
+            var namespace = '{!namespace}';
+            var functionId = document.getElementById(lkid).value;
+            var callFunction = namespace ? copado.FunctionComponentController : FunctionComponentController;
+            const deploymentTaskId = '{!deploymentTaskId}';
+
+            callFunction.functionParameters(
+                functionId,
+                deploymentTaskId,
+                function (result) {
+                    if (result) {
+                        var function_api = result['apiName'];
+                        document.getElementById('jsFunction_api').value = function_api;
+                        document.getElementById("jsFunction_header").style.display = "block";
+
+                        for (var i = 0; i < result['parameters'].length; i++) {
+                            var parent = document.getElementById('js-Function-Param');
+                            var childDiv = document.createElement('div');
+                            childDiv.setAttribute("id", "input_param" + i);
+                            childDiv.setAttribute("class", "slds-form-element {!IF(!isEdit,'slds-has-divider--bottom','')}");
+                            childDiv.setAttribute("style", "width:98.5%;");
+
+                            var childSpan = document.createElement('span');
+                            childSpan.setAttribute("class", "slds-form-element__label");
+                            childSpan.setAttribute("id", "param_name");
+
+                            if(result['parameters'][i].required) {
+                                childSpan.innerHTML = '<abbr class="slds-required" title="required">* </abbr>' + result['parameters'][i].name + '</label>';
+                            } else {
+                                childSpan.innerHTML = result['parameters'][i].name;
+                            }
+
+                            var innerDiv = document.createElement('div');
+                            innerDiv.setAttribute = ("id", "inner_input_param" + i);
+                            innerDiv.setAttribute = ("class", "slds-form-element__control");
+
+                            innerDiv.innerHTML += '<input id="param_value' + i + '" maxlength="255" class="slds-input" name="param_value' + [i] + '" size="50" tabindex="3" type="text" value="' + (result['parameters'][i]['value'] || '') + '" />';
+
+                            childSpan.append(innerDiv);
+                            childDiv.append(childSpan);
+                            parent.append(childDiv);
+                        }
+                    }
+
+                }
+            );
+
+        }
+
+        function removeChildNodes(divId) {
+            const container = document.querySelector('#' + divId);
+            removeAllChildNodes(container);
+        }
+
+        function removeAllChildNodes(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+        }
+
+    </script>
+</apex:component>

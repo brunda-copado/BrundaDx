@@ -1,0 +1,123 @@
+{
+  "recordTypeMap": {},
+  "RecordSetBundles": [
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__JobTemplate__c",
+            "url": "/services/data/v54.0/sobjects/copado__JobTemplate__c/a1r5p00000HTNktAAH"
+          },
+          "copado__ApiName__c": "Issuetest_1",
+          "copado__Type__c": "Custom",
+          "copado__Version__c": 1,
+          "Id": "a1r5p00000HTNktAAH",
+          "LastReferencedDate": "2022-03-03T08:57:56.000+0000",
+          "LastViewedDate": "2022-03-03T08:57:56.000+0000",
+          "Name": "Issuetest"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobTemplate__c",
+            "url": "/services/data/v54.0/sobjects/copado__JobTemplate__c/a1r5p00000HTjf3AAD"
+          },
+          "copado__ApiName__c": "Jsontest_1",
+          "copado__Type__c": "Custom",
+          "copado__Version__c": 1,
+          "Id": "a1r5p00000HTjf3AAD",
+          "LastReferencedDate": "2022-03-03T08:53:27.000+0000",
+          "LastViewedDate": "2022-03-03T08:53:27.000+0000",
+          "Name": "Jsontest"
+        }
+      ],
+      "ObjectType": "copado__JobTemplate__c"
+    },
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v54.0/sobjects/copado__JobStep__c/a1q5p000004gX4HAAU"
+          },
+          "copado__ApiName__c": "Issuetest_Fun1",
+          "copado__ConfigJson__c": "{\"functionName\":\"Issue_2\",\"parameters\":[{\"name\":\"name1\",\"value\":\"Hi\"},{\"name\":\"name2\",\"value\":\"Hello\"},{\"name\":\"FF2\",\"value\":\"GA\"}]}",
+          "copado__CustomType__c": "Function",
+          "copado__JobTemplate__c": "a1r5p00000HTNktAAH",
+          "copado__Order__c": 1,
+          "copado__Type__c": "Function",
+          "Id": "a1q5p000004gX4HAAU",
+          "Name": "Fun1"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v54.0/sobjects/copado__JobStep__c/a1q5p000004gwRGAAY"
+          },
+          "copado__ApiName__c": "Issuetest_MT1",
+          "copado__ConfigJson__c": "{\"instructions\":\"MT1\",\"parameters\":[]}",
+          "copado__CustomType__c": "Manual Task",
+          "copado__JobTemplate__c": "a1r5p00000HTNktAAH",
+          "copado__Order__c": 2,
+          "copado__Type__c": "Manual",
+          "Id": "a1q5p000004gwRGAAY",
+          "Name": "MT1"
+        },
+        {
+          "attributes": {
+            "type": "copado__JobStep__c",
+            "url": "/services/data/v54.0/sobjects/copado__JobStep__c/a1q5p000004gwRkAAI"
+          },
+          "copado__ApiName__c": "Jsontest_Fun",
+          "copado__ConfigJson__c": "{\"functionName\":\"QAEngineer\",\"parameters\":[]}",
+          "copado__CustomType__c": "Function",
+          "copado__JobTemplate__c": "a1r5p00000HTjf3AAD",
+          "copado__Order__c": 1,
+          "copado__Type__c": "Function",
+          "Id": "a1q5p000004gwRkAAI",
+          "Name": "Fun"
+        }
+      ],
+      "ObjectType": "copado__JobStep__c"
+    },
+    {
+      "Records": [
+        {
+          "attributes": {
+            "type": "copado__Function__c",
+            "url": "/services/data/v54.0/sobjects/copado__Function__c/a1h5p000003zVaLAAU"
+          },
+          "copado__API_Name__c": "EchoOrgCredential",
+          "copado__Image_Name__c": "copado-function-core:v1",
+          "copado__Options__c": "[ ]",
+          "copado__Parameters__c": "[ {\n  \"required\" : false,\n  \"name\" : \"org_endpoint\",\n  \"defaultValue\" : \"{$Destination.Credential.SessionId}\"\n}, {\n  \"name\" : \"org_session\",\n  \"defaultValue\" : \"{$Destination.Credential.Endpoint}\"\n} ]",
+          "copado__Script__c": "echo \"Endpoint\"\necho $org_endpoint\necho \"Session\"\necho $org_session",
+          "copado__Type__c": "Custom",
+          "copado__Worker_Size__c": "S",
+          "Id": "a1h5p000003zVaLAAU",
+          "LastReferencedDate": "2022-03-02T07:32:00.000+0000",
+          "LastViewedDate": "2022-03-02T07:32:00.000+0000",
+          "Name": "Echo Org credential"
+        },
+        {
+          "attributes": {
+            "type": "copado__Function__c",
+            "url": "/services/data/v54.0/sobjects/copado__Function__c/a1h5p000008HYH5AAO"
+          },
+          "copado__API_Name__c": "QAEngineer",
+          "copado__Image_Name__c": "copado-function-core:v1",
+          "copado__Options__c": "[ ]",
+          "copado__Parameters__c": "[ ]",
+          "copado__Script__c": "git --version",
+          "copado__Type__c": "Custom",
+          "copado__Worker_Size__c": "S",
+          "Id": "a1h5p000008HYH5AAO",
+          "LastReferencedDate": "2022-03-03T08:54:00.000+0000",
+          "LastViewedDate": "2022-03-03T08:54:00.000+0000",
+          "Name": "QA Engineer"
+        }
+      ],
+      "ObjectType": "copado__Function__c"
+    }
+  ],
+  "blobsByUID": {}
+}

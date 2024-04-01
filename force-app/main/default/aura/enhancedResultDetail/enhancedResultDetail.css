@@ -1,0 +1,13 @@
+.THIS .clickable {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.THIS .icon {
+    --sds-c-icon-color-foreground-default: white;
+}
+
+.THIS .tab-property {
+    height: 50vh;
+    overflow-y: auto;
+}

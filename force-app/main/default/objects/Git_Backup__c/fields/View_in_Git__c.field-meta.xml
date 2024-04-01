@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_in_Git__c</fullName>
+    <description>Link to the branch in your Git Repository.</description>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(
+	IF(
+		AND(NOT(ISNULL(Git_Repository__r.Branch_Base_URL__c)), Git_Repository__r.Branch_Base_URL__c != &apos;&apos;), 
+		IF(
+			AND(NOT(ISPICKVAL(Git_Repository__r.Git_Provider__c,&apos;&apos;)),NOT(ISPICKVAL(Git_Repository__r.Git_Provider__c, &apos;Others&apos;))),
+			Git_Repository__r.Branch_Base_URL__c +  Branch__c,
+			IF(
+				CONTAINS(Git_Repository__r.Branch_Base_URL__c,&apos;[BRANCH_NAME]&apos;),
+				SUBSTITUTE(Git_Repository__r.Branch_Base_URL__c,&apos;[BRANCH_NAME]&apos;,Branch__c),
+				Git_Repository__r.Branch_Base_URL__c + Branch__c
+			)
+		),
+	&apos;&apos;), 
+	Branch__c
+)</formula>
+    <inlineHelpText>Link to the branch in your Git Repository.</inlineHelpText>
+    <label>View in Git</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

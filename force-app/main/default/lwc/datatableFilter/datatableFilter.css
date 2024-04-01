@@ -1,0 +1,72 @@
+.collapsible-filter {
+    position: absolute;
+    right: 0;
+    top: 89px;
+    height: calc(100% - 89px);
+    background-color: #ffffff;
+    border-left: 1px solid #ecebea;
+    border-radius: 0 5px 5px 0;
+    box-shadow: var(--lwc-shadowDrag, -2px 0px 5px 0 rgba(0, 0, 0, 0.4));
+}
+
+.collapsible-filter.expanded {
+    width: 321px;
+    z-index: 50;
+}
+
+.collapsible-filter.collapsed {
+    width: 0px;
+    display: none;
+}
+
+.collapsible-filter .filter-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: unset;
+}
+
+.collapsible-filter .filter-container .panel-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible-filter .filter-container .panel-header lightning-button {
+    margin-left: 0;
+}
+
+.collapsible-filter .filter-container .panel-body li {
+    list-style-type: none;
+}
+.collapsible-filter .filter-container{
+    background-color: #ffffff;
+}
+
+.collapsible-filter .filter-container .filter-panel {
+    cursor: pointer;
+}
+
+.collapsible-filter .panel-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-top: 2px solid rgb(229, 229, 229);
+    background-color: rgb(243, 243, 243);
+    flex-shrink: 0;
+    padding-top: 0.75rem;
+    padding-right: 1rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    text-align: right;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+}
+
+.collapsible-filter .panel-footer lightning-button {
+    margin-left: 0;
+}
+
+.closeX-icon {
+    cursor: pointer;
+}

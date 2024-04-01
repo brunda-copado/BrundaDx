@@ -1,0 +1,83 @@
+<template>
+    <div class="datatable-container quick-filter">
+        <template if:false={isTextInput}>
+            <template if:false={isListInput}>
+                <template if:false={isRangeInput}>
+                    <template if:false={isArrayInput}>
+                        <div>
+                            <lightning-input
+                                data-field="filterInput"
+                                name="column-search-type"
+                                label={fieldLabel}
+                                value={searchValue}
+                                type={type}
+                                variant={fieldLabelVariant}
+                            ></lightning-input>
+                        </div>
+                    </template>
+                    <template if:true={isArrayInput}>
+                        <div>
+                            <c-multi-select-combo-box
+                                label={fieldLabel}
+                                options={options}
+                                onvaluechange={handleValueChange}
+                            ></c-multi-select-combo-box>
+                        </div>
+                    </template>
+                </template>
+                <template if:true={isRangeInput}>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1">
+                            <label class="slds-form-element_stacked slds-form-element slds-form-element__label">{fieldLabel}</label>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input
+                                data-field="filterRangeMin"
+                                name="column-search-type"
+                                label={minValueLabel}
+                                value={minValue}
+                                type={rangeType}
+                                variant={fieldLabelVariant}
+                            ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input
+                                data-field="filterRangeMax"
+                                name="column-search-type"
+                                label={maxValueLabel}
+                                value={maxValue}
+                                type={rangeType}
+                                variant={fieldLabelVariant}
+                            ></lightning-input>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template if:true={isListInput}>
+                <div>
+                    <lightning-combobox
+                        data-field="filterInputList"
+                        label={fieldLabel}
+                        name="column-search-list"
+                        value={searchValue}
+                        options={options}
+                        variant={fieldLabelVariant}
+                    ></lightning-combobox>
+                </div>
+            </template>
+        </template>
+        <template if:true={isTextInput}>
+            <div>
+                <lightning-input
+                    data-field="filterInputText"
+                    class="textInp"
+                    name="column-search-text"
+                    label={fieldLabel}
+                    value={searchValue}
+                    type="text"
+                    variant={fieldLabelVariant}
+                ></lightning-input>
+            </div>
+        </template>
+    </div>
+</template>

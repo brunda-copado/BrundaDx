@@ -1,0 +1,90 @@
+<template>
+    <lightning-modal-header label={labels.Set_Release_Version}></lightning-modal-header>
+    <lightning-modal-body>
+        <div class="slds-box slds-theme_shade">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="1">
+                    <lightning-icon icon-name="utility:info" alternative-text={labels.Commit_Page_Info} title={labels.Commit_Page_Info} class="slds-var-m-left_x-small"></lightning-icon>
+                </lightning-layout-item>
+                <lightning-layout-item size="11">{labels.Info}</lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <c-expandable-section id="previousReleaseInfo" label={labels.Previous_Release_Information}>
+            <lightning-layout multiple-rows slot="body">
+                <lightning-layout-item size="6" padding="around-small">
+                    <c-lookup
+                        label={labels.Previous_Release}
+                        onsearch={handleLookupSearch}
+                        onselectionchange={addToSelectedRecord}
+                        helptext={labels.Previous_Release_Helptext}
+                        placeholder={labels.Previous_Release_Placeholder}>
+                    </c-lookup>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6">
+                    <div class="slds-form-element_readonly">
+                        <label class="slds-form-element__label">{labels.Previous_Release_Version}</label>
+                        <div class="slds-form-element__icon" style="top:-5px">
+                            <lightning-helptext content={labels.Previous_Release_Version_Helptext}></lightning-helptext>
+                        </div>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">{prevReleaseVersion}</div>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <template lwc:if={releaseId}>
+                    <lightning-layout-item size="6" class="hidden-section">
+                        <div class="slds-form-element_readonly">
+                            <label class="slds-form-element__label">{labels.Project_label}</label>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{projectName}</div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" class="hidden-section">
+                        <div class="slds-form-element_readonly">
+                            <label class="slds-form-element__label">{labels.Status_label}</label>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static">{status}</div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </c-expandable-section>
+        <c-expandable-section id="newReleaseInfo" label={labels.New_Release_Information}>
+            <lightning-layout multiple-rows slot="body">
+                <lightning-layout-item padding="around-small" size="6">
+                    <label class="slds-form-element__label"> <abbr class="slds-required" title="required">*</abbr> {labels.Version_Type} </label>
+                    <lightning-helptext content={labels.Version_Type_Helptext}></lightning-helptext>
+                    <lightning-radio-group
+                        name="radioGroup"
+                        class="validate"
+                        label={labels.Version_Type}
+                        options={options}
+                        value={versionType}
+                        type="radio"
+                        variant="label-hidden"
+                        onchange={handleChange}
+                        required>
+                    </lightning-radio-group>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6">
+                    <lightning-input
+                        type="text"
+                        class="validate"
+                        label={labels.New_Release_Version}
+                        value={newVersion}
+                        placeholder={labels.New_Release_Version_Placeholder}
+                        disabled={isDisabled}
+                        onchange={handleInputChange}
+                        required
+                        field-level-help={labels.New_Release_Version_Helptext}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </c-expandable-section>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button variant="neutral" label={labels.Cancel} onclick={handleCancel} class="slds-var-p-right_x-small"></lightning-button>
+        <lightning-button variant="brand" label={labels.Save} onclick={handleSave}></lightning-button>
+    </lightning-modal-footer>
+</template>

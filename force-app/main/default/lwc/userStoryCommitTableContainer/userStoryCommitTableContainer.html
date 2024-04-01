@@ -1,0 +1,90 @@
+<template>
+    <c-datatable-container
+        icon-name="standard:picklist_type"
+        has-body
+        enable-default-search
+        rows={allRows}
+        columns={columns}
+        onsearch={handleApplySearch}
+        onclearsearch={handleClearSearch}
+        enable-quick-filter
+        onfilter={handleApplyFilter}
+        onclearfilter={handleClearFilter}
+    >
+        <div slot="title">{tableTitle}</div>
+        <div slot="titleInfo">{tableInfo}</div>
+
+        <div slot="additionalOperations">
+            <lightning-layout horizontal-align="spread" class="slds-var-m-right_xx-large">
+                <lightning-layout-item flexibility="auto" class="slds-var-m-right_xx-large">
+                    <lightning-layout horizontal-align="spread">
+                        <lightning-layout-item flexibility="auto">
+                            <div class="slds-text-align_center toggle-element">
+                                <label class="slds-truncate" title={label.PREVIOUS_SELECTIONS}>{label.PREVIOUS_SELECTIONS}</label>
+                                <lightning-helptext content={previousSelectionsHelpText}></lightning-helptext>
+
+                                <lightning-input
+                                    type="toggle"
+                                    disabled={previousSelectionsToggleDisabled}
+                                    label={label.PREVIOUS_SELECTIONS}
+                                    variant="label-hidden"
+                                    message-toggle-active={label.YES}
+                                    message-toggle-inactive={label.NO}
+                                    data-element="previous-selections-toggle"
+                                    onchange={handleTogglePreviousSelections}
+                                >
+                                </lightning-input>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <div class="slds-text-align_center toggle-element">
+                        <label class="slds-truncate" title={label.SHOW_SELECTED}>{label.SHOW_SELECTED}</label>
+                        <lightning-input
+                            type="toggle"
+                            label={label.SHOW_SELECTED}
+                            variant="label-hidden"
+                            message-toggle-active={label.YES}
+                            message-toggle-inactive={label.NO}
+                            data-element="current-selections-toggle"
+                            value={currentSelectedEnabled}
+                            onchange={handleToggleCurrentSelections}
+                        >
+                        </lightning-input>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <div data-id="table-container" slot="datatable">
+            <div class="commit-table" style={heightStyle}>
+                <lightning-spinner if:true={isLoading} variant="brand" size="large"></lightning-spinner>
+                <c-user-story-commit-table
+                    key-field={keyField}
+                    columns={columns}
+                    data={tableRows}
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}
+                    column-widths-mode="auto"
+                    selected-rows={selectedRows}
+                    onrowselection={handleRowSelection}
+                    enable-infinite-loading
+                    onloadmore={handleLoadMore}
+                    oncancel={handleCancel}
+                    onsave={handleSave}
+                    draft-values={draftValues}
+                    onchangedraftvalue={handleChangeDraftValue}
+                    oneditcolumn={handleEditColumn}
+                    oncancelmultiedit={handleCancelMultiEdit}
+                    onchangemultidraftvalue={handleChangeMultiDraftValue}
+                >
+                </c-user-story-commit-table>
+                <lightning-formatted-text if:true={noItems} style="position: absolute; left: 40%; bottom: 40%" value={label.NO_ITEMS_TO_DISPLAY}>
+                </lightning-formatted-text>
+            </div>
+        </div>
+    </c-datatable-container>
+</template>

@@ -1,0 +1,71 @@
+<template>
+    <div class="cds-side-nav-wrappper">
+        <div class="cds-sidebar-header">
+            <h2>{label.PERSONAS}</h2>
+            <div class="custom-persona-button">
+                <lightning-button
+                    class="cds-button"
+                    label={label.CUSTOM_PERSONAS}
+                    title={label.CUSTOM_PERSONAS}
+                    icon-name="utility:adduser"
+                    onclick={handleAddPersona}
+                    disable-animation></lightning-button>
+            </div>
+        </div>
+        <div class="cds-sidebar-wrap">
+            <template lwc:if={personas}>
+                <ul class="cds-sidebar-list">
+                    <template for:each={personas} for:item="personaDefinition">
+                        <li
+                            class={personaDefinition.elementClass}
+                            key={personaDefinition.persona.Id}
+                            onclick={handleNavClick}
+                            data-target-id={personaDefinition.persona.Id}>
+                            <div class="cds-sidebar-item">
+                                <div class="cds-sidebar-item-left">
+                                    <template lwc:if={personaDefinition.isStandard}>
+                                        <lightning-icon
+                                            icon-name={personaDefinition.iconName}
+                                            alternative-text="User"
+                                            class="cds-icon"
+                                            size="x-small">
+                                        </lightning-icon> </template
+                                    ><template lwc:else>
+                                        <lightning-icon icon-name="utility:user" alternative-text="User" class="cds-icon" size="x-small">
+                                        </lightning-icon>
+                                    </template>
+                                    <span class="cds-sidebar-label"> {personaDefinition.persona.Name} </span>
+                                </div>
+                                <div class="cds-sidebar-item-right">
+                                    <lightning-badge class="cds-badge" label={personaDefinition.numberOfUsers}></lightning-badge>
+                                    <template lwc:if={personaDefinition.isStandard}></template>
+                                    <template lwc:else>
+                                        <lightning-button-menu
+                                            class="cds-button-menu"
+                                            icon-size="small"
+                                            menu-alignment="right"
+                                            onselect={handleMenuSelect}>
+                                            <lightning-menu-item
+                                                value="editPersona"
+                                                icon-name="utility:edit"
+                                                label={editDescriptionText}
+                                                onclick={handleRowAction}></lightning-menu-item>
+                                            <lightning-menu-item
+                                                value="removePersona"
+                                                icon-name="utility:delete"
+                                                label={label.DELETE}
+                                                onclick={handleRowAction}></lightning-menu-item>
+                                        </lightning-button-menu>
+                                    </template>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </div>
+    <c-add-custom-persona-modal personas={personas} onrefreshpersona={refreshPersonaDefinitions}></c-add-custom-persona-modal>
+    <c-edit-custom-persona-modal onrefreshpersona={refreshPersonaDefinitions}></c-edit-custom-persona-modal>
+    <c-remove-persona-confirmation-modal onrefreshpersona={refreshPersonaDefinitions}></c-remove-persona-confirmation-modal>
+</template>

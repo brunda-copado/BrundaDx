@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>To make callout for action execution</description>
+        <name>PerformActionCallout</name>
+        <label>Perform Action Callout</label>
+        <locationX>484</locationX>
+        <locationY>638</locationY>
+        <actionName>PerformUserStoryAction</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>WaitForEvent</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>actionType</name>
+            <value>
+                <elementReference>ActionType</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>commitId</name>
+            <value>
+                <elementReference>ForEachAction</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>storyId</name>
+            <value>
+                <elementReference>StoryId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PerformUserStoryAction</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>51.0</apiVersion>
+    <assignments>
+        <description>Set ContinueAction To false</description>
+        <name>DiscontinueActions</name>
+        <label>Discontinue Actions</label>
+        <locationX>264</locationX>
+        <locationY>878</locationY>
+        <assignmentItems>
+            <assignToReference>ContinueAction</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ForEachAction</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>To generate topic URI of a failed event</description>
+        <name>TopicURIForFailedEvent</name>
+        <label>Topic URI For Failed Event</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>FailedEventTopicUri</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>/events/copado/v1/{!ActionTypeCommit}/{!SnapshotId}/finished=true&amp;success=false</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ForEachAction</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>To generate topic URI of a successful event</description>
+        <name>TopicURIForSuccessfulEvent</name>
+        <label>Topic URI For Successful Event</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignmentItems>
+            <assignToReference>SuccessfulEventTopicUri</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>/events/copado/v1/{!ActionTypeCommit}/{!SnapshotId}/finished=true&amp;success=true</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>TopicURIForFailedEvent</targetReference>
+        </connector>
+    </assignments>
+    <constants>
+        <description>Action Type = Commit</description>
+        <name>ActionTypeCommit</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>commit</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Publisher Code = Copado Backend</description>
+        <name>PublisherCodeCopadoBackend</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Copado Backend</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if the previous action failed.</description>
+        <name>CheckIfEventFailed</name>
+        <label>Check If Event Failed</label>
+        <locationX>682</locationX>
+        <locationY>518</locationY>
+        <defaultConnector>
+            <targetReference>ForEachAction</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Event Failed</defaultConnectorLabel>
+        <rules>
+            <name>EventSucceeded</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ContinueAction</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>PerformActionCallout</targetReference>
+            </connector>
+            <label>Event Succeeded</label>
+        </rules>
+    </decisions>
+    <description>To perform user story actions and callouts</description>
+    <interviewLabel>Perform User Story Actions {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Perform User Story Actions</label>
+    <loops>
+        <description>Looping over actions e.g. Commit Ids</description>
+        <name>ForEachAction</name>
+        <label>For Each Action</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <collectionReference>ActionIds</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>CheckIfEventFailed</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>TopicURIForSuccessfulEvent</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Id of action records e.g. snapshot commit</description>
+        <name>ActionIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Type of action to be performed. e.g. commit</description>
+        <name>ActionType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Boolean to continue action if true</description>
+        <name>ContinueAction</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <description>To detect the failed event to skip flow</description>
+        <name>FailedEventTopicUri</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Id of the Git Snapshot</description>
+        <name>SnapshotId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Id of the user story</description>
+        <name>StoryId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Topic URI of a successful event</description>
+        <name>SuccessfulEventTopicUri</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <waits>
+        <name>WaitForEvent</name>
+        <label>Wait For Event</label>
+        <locationX>484</locationX>
+        <locationY>758</locationY>
+        <defaultConnector>
+            <targetReference>ForEachAction</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Event Pause</defaultConnectorLabel>
+        <waitEvents>
+            <name>OnFailedEvent</name>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>DiscontinueActions</targetReference>
+            </connector>
+            <eventType>copado__Event__e</eventType>
+            <inputParameters>
+                <name>copado__Publisher_Code__c</name>
+                <value>
+                    <elementReference>PublisherCodeCopadoBackend</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>copado__Topic_Uri__c</name>
+                <value>
+                    <elementReference>FailedEventTopicUri</elementReference>
+                </value>
+            </inputParameters>
+            <label>On Failed Event</label>
+        </waitEvents>
+        <waitEvents>
+            <name>OnSuccessfulEvent</name>
+            <conditionLogic>and</conditionLogic>
+            <connector>
+                <targetReference>ForEachAction</targetReference>
+            </connector>
+            <eventType>copado__Event__e</eventType>
+            <inputParameters>
+                <name>copado__Publisher_Code__c</name>
+                <value>
+                    <elementReference>PublisherCodeCopadoBackend</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>copado__Topic_Uri__c</name>
+                <value>
+                    <elementReference>SuccessfulEventTopicUri</elementReference>
+                </value>
+            </inputParameters>
+            <label>On Successful Event</label>
+        </waitEvents>
+    </waits>
+</Flow>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enable_ADD__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Data Deployer License</description>
+    <externalId>false</externalId>
+    <label>Enable ADD</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

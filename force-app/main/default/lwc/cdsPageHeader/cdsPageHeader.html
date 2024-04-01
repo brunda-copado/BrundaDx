@@ -1,0 +1,26 @@
+<template>
+    <div class="cds-pageheader-wrapper">
+        <div class="cds-pageheader-header">
+            <div slot="title" class="cds-pageheader-left">
+                <slot name="headerIcon">
+                    <div if:true={iconName} class="cds-icon-container">
+                        <lightning-icon icon-name={iconName} size={iconSize} class="cds-icon"></lightning-icon>
+                    </div>
+                    <div class="cds-title-container">
+                        <h2 class="cds-pageheader-title">
+                            <slot name="title"></slot>
+                        </h2>
+                        <p class="cds-pageheader-subtitle">
+                            <slot name="subtitle"></slot>
+                        </p>
+                    </div>
+                </slot>
+            </div>
+            <div slot="actions" class="cds-pageheader-right">
+                <div class="cds-pageheader-actions">
+                    <slot name="actions"></slot>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

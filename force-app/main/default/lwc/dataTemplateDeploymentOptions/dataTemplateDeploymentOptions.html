@@ -1,0 +1,78 @@
+<template>
+    <div class="slds-box slds-p-around_none">
+        <lightning-record-edit-form object-api-name={schema.DATA_TEMPLATE.objectApiName} record-id={recordId} onsubmit={handleSave}>
+            <div class="slds-card">
+                <div class="slds-card__header slds-grid">
+                    <div class="slds-media slds-media_center slds-has-flexi-truncate slds-p-left_small slds-p-top_small slds-p-right_small">
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <span class="slds-text-heading_small slds-truncate">{label.DEPLOYMENT_OPTIONS}</span>
+                            </h2>
+                        </div>
+                        <div class="slds-no-flex">
+                            <div class="slds-button-group-row">
+                                <lightning-button
+                                    if:true={validCredential}
+                                    disabled={editMode}
+                                    variant="neutral"
+                                    label={label.EDIT}
+                                    onclick={handleEdit}
+                                ></lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-card__body slds-m-around_none">
+                    <lightning-spinner if:true={showSpinner} variant="brand" size="large"></lightning-spinner>
+                    <div class="slds-p-left_small slds-p-bottom_small slds-p-right_small">
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="6">
+                                <lightning-input-field field-name={fields.ATTACHMENT_OPTIONS} disabled={disableInputs}> </lightning-input-field>
+                                <div class="slds-var-p-left_xx-small">
+                                    <lightning-radio-group
+                                        name="attachmentType"
+                                        label={label.SELECT_ATTACHMENT_TYPE}
+                                        options={attachmentOptions}
+                                        value={attachmentType}
+                                        type="radio"
+                                        disabled={disableInputs}
+                                        onchange={handleChange}
+                                    ></lightning-radio-group>
+                                </div>
+                                <lightning-input-field field-name={fields.CONTINUE_ON_ERROR} disabled={disableInputs}> </lightning-input-field>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="horizontal-large" size="6">
+                                <lightning-input-field variant="label-stacked" field-name={fields.MATCH_OWNERS} disabled={disbledMatchOwner}>
+                                </lightning-input-field>
+                                <lightning-input-field
+                                    variant="label-stacked"
+                                    field-name={fields.MATCH_RECORD_TYPES}
+                                    disabled={disableMatchRecordType}
+                                >
+                                </lightning-input-field>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </div>
+                <div class="slds-card__footer slds-docked-form-footer slds-is-relative" if:true={editMode}>
+                    <lightning-button variant="neutral" label={label.CANCEL} onclick={handleCancel}></lightning-button>
+                    <lightning-button variant="brand" class="slds-m-left_x-small" type="submit" label={label.SAVE}> </lightning-button>
+                </div>
+            </div>
+        </lightning-record-edit-form>
+    </div>
+    <c-copadocore-modal size="small" onmodalclose={handleEditCancel}>
+        <span slot="title">{label.EDIT_DATA_TEMPLATE}</span>
+        <slot class="slds-align_absolute-center"> {label.EDIT_VALIDATION_MESSAGE} </slot>
+        <span slot="footer">
+            <lightning-button label={label.CANCEL} title={label.CANCEL} variant="neutral" onclick={handleEditCancel}></lightning-button>
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.DEACTIVATE}
+                title={label.DEACTIVATE}
+                variant="brand"
+                onclick={handleClickDeactivate}
+            ></lightning-button>
+        </span>
+    </c-copadocore-modal>
+</template>

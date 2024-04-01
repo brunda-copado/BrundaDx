@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UserStoryCommit__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This field refers to the parent User Story Commit record of the job execution.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field refers to the parent User Story Commit record of the job execution.</inlineHelpText>
+    <label>User Story Commit</label>
+    <referenceTo>User_Story_Commit__c</referenceTo>
+    <relationshipLabel>Job Executions</relationshipLabel>
+    <relationshipName>JobExecutions</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

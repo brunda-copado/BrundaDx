@@ -1,0 +1,18 @@
+<apex:component id="cmpVariableLookup">
+    <head>
+        <apex:includeScript value="{!URLFOR($Resource.variableLookup) }" />
+    </head>
+    <select id="js-selectorLevel1">
+        <option value="" selected="selected">{!$Label.SelectTextPickVal}</option>
+        <option value="destinationOrg">{!$Label.DestinationOrg}</option>
+        <option value="copadoOrg">{!$Label.CopadoOrg}</option>
+        <option value="deployment">{!$Label.Deployment}</option>
+        <option value="resumeUrl">{!$Label.ResumeUrl}</option>
+    </select>
+    <select id="js-selectorLevel2">
+    </select>
+    <input type="text" id="js-copyValue" />
+    <script type="text/javascript">
+    	variableLookup.bindings.bindActions();
+    </script>
+</apex:component>

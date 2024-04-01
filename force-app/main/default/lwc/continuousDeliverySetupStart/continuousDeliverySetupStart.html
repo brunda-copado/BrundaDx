@@ -1,0 +1,29 @@
+<template>
+    <div class="slds-is-relative modal-height">
+        <header class="slds-modal__header">
+            <div>
+                <h2 class="slds-text-heading_medium slds-hyphenate">
+                    {label.Setup_Continuous_Delivery}
+                </h2>
+            </div>
+        </header>
+
+        <div class="slds-modal__content slds-p-around_medium slds-text-align_center">
+            <h3 class="slds-text-heading_large slds-p-bottom_large slds-p-top_xx-large">
+                {label.Continuous_Delivery_wizard}
+            </h3>  
+            <p class="slds-text-color_weak slds-p-bottom_large slds-p-left_large slds-p-right_large">
+                {label.CD_Setup_Start_Body}
+            </p>
+        </div>
+
+        <footer class="slds-modal__footer modal-footer">
+            <lightning-button
+                class="slds-m-left_x-small"
+                label={label.Start}
+                variant="brand"
+                onclick={handleNext}
+            ></lightning-button>
+        </footer>
+    </div>
+</template>

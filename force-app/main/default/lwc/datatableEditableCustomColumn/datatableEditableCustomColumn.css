@@ -1,0 +1,13 @@
+.editable-column .edit-button {
+    visibility: hidden;
+}
+
+.editable-column:hover {
+    background-color: white;
+}
+
+.editable-column:hover .edit-button {
+    visibility: visible;
+    cursor: pointer;
+    --sds-c-icon-color-foreground-default: #bbbab9;
+}

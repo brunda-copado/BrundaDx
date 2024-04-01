@@ -1,0 +1,19 @@
+<template>
+    <template lwc:if={loading}>
+        <div class="slds-is-relative">
+            <lightning-spinner size="small" variant="brand"> </lightning-spinner>
+        </div>
+    </template>
+    <template lwc:else>
+        <c-copado-alert lwc:if={showWarning} message={message} variant="warning">
+            <lightning-button
+                lwc:if={showButton}
+                slot="additionalMessage"
+                variant="base"
+                label={buttonLabel}
+                onclick={fixQualityGateRules}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+        </c-copado-alert>
+    </template>
+</template>
