@@ -12,5 +12,5 @@
     <shouldMatchSkillLevel>true</shouldMatchSkillLevel>
     <shouldRespectVisitingHours>true</shouldRespectVisitingHours>
     <shouldUsePrimaryMembers>true</shouldUsePrimaryMembers>
-    <shouldUseSecondaryMembers>true</shouldUseSecondaryMembers>
+    <shouldUseSecondaryMembers>false</shouldUseSecondaryMembers>
 </AppointmentSchedulingPolicy>
